@@ -24,6 +24,9 @@ public class SinglyLinkedList {
         for(Node n = head; n != null; n=n.next) result++;
         return result;
     }
+    public  int getTop() {
+        return head.value;
+    }
     public void addFirst(int e) {
         head = new Node(e, head);
         tail = head.next == null ? head: tail;
