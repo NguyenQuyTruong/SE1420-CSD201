@@ -1,10 +1,10 @@
 package com.company;
 
-public class SinglyLinkedList {
+public class SinglyLinkedList<E> {
     private class Node {
-        private int value;
+        private E value;
         private Node next;
-        public Node (int value, Node node) {
+        public Node (E value, Node node) {
             this.value = value;
             this.next = node;
         }
@@ -24,10 +24,10 @@ public class SinglyLinkedList {
         for(Node n = head; n != null; n=n.next) result++;
         return result;
     }
-    public  int getTop() {
+    public E getTop() {
         return head.value;
     }
-    public void addFirst(int e) {
+    public void addFirst(E e) {
         head = new Node(e, head);
         tail = head.next == null ? head: tail;
     }
@@ -35,7 +35,7 @@ public class SinglyLinkedList {
         return head == null;
     }
 
-    public void addLast(int e) {
+    public void addLast(E e) {
         Node new_node = new Node(e, null);
         if(isEmpty()) {
             head = new_node;
@@ -45,13 +45,24 @@ public class SinglyLinkedList {
             tail = new_node;
         }
     }
+
+
     public void print() {
         for(Node n = head; n != null; n=n.next)
             System.out.print(n.value + " ");
         System.out.print("\r\n");
     }
-    public int removeFirst() {
-        int result = Integer.MIN_VALUE;
+
+    public String toString() {
+        String result = "";
+        for(Node n = head; n != null; n=n.next)
+            result += n.value.toString() + " ";
+        result += "\n";
+        return result;
+    }
+
+    public E removeFirst() {
+        E result = null;
         if(head != null) {
             result = head.value;
             head = head.next;

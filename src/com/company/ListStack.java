@@ -1,20 +1,20 @@
 package com.company;
 
-public class ListStack implements Stack {
-    private SinglyLinkedList list = new SinglyLinkedList();
+public class ListStack<E> implements Stack<E> {
+    private SinglyLinkedList<E> list = new SinglyLinkedList<E>();
 
     @Override
-    public void push(int info) {
+    public void push(E info) {
         list.addFirst(info);
     }
 
     @Override
-    public int pop() {
+    public E pop() {
         return list.removeFirst();
     }
 
     @Override
-    public int top() {
+    public E top() {
         return list.getTop();
     }
 

@@ -2,24 +2,16 @@ package com.company;
 
 public class Main {
     public static void main(String[] args) {
-        // [9 5 7 9 10 12]
-        Stack s = new ListStack();
-        s.push(9);
-        s.push(5);
-        s.push(7);
-        s.print();
-//        list.addFirst(12);
-//        list.addFirst(10);
-//        list.addFirst(9);
-//        list.addFirst(7);
-//        list.addFirst(5);
-//        list.addFirst(9);
-//        list.addLast(9);
-//        list.addLast(5);
+        Entry A = new Entry(0, "A");
+        Entry B = new Entry(1, "B");
+        Entry C = new Entry(2, "B");
+        PriorityQueue queue = new PriorityQueue();
+        queue.enqueue(A);
+        queue.enqueue(B);
+        queue.enqueue(C);
+        Entry e = queue.dequeue();
+        e.set_rank(5);
 
-//        System.out.print(list.removeFirst() + "\r\n");
-//        System.out.print(list.removeFirst() + "\r\n");
-//        System.out.print(list.removeLast() + "\r\n");
-
+        System.out.print(A);
     }
 }
