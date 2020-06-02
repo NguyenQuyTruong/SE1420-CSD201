@@ -1,9 +1,9 @@
 /**
  * 
  */
-package vongockhang.lab1;
+package problem2;
 
-import vongockhang.lab1.Stack.StackException;
+import problem2.Stack.StackException;
 
 /**
  * @author skyho

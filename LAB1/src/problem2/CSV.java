@@ -1,4 +1,4 @@
-package vongockhang.lab1;
+package problem2;
 
 import java.io.FileWriter;
 import java.io.IOException;
