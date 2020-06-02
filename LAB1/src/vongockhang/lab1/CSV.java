@@ -3,7 +3,9 @@ package vongockhang.lab1;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * This class will contain method to write to CSV file
@@ -14,7 +16,7 @@ public class CSV {
 	Map<String, Integer> data; //map data contains tag and count, FORMAT: {key: "script", value: 5} 
 	
 	public CSV() {
-		data = new HashMap<String, Integer>(); //init hashmap 
+		data = new LinkedHashMap<String, Integer>(); //init hashmap 
 	}
 		
 	/**
@@ -36,6 +38,11 @@ public class CSV {
 	 */	
 	public void WriteCSV(String csvPath) throws IOException {
 		FileWriter csvFileWriter = new FileWriter(csvPath); //init FileWriter to write csv file
+		final Map<String, Integer> sortedByFrequences = data.entrySet()
+                .stream()
+                .sorted((Map.Entry.<String, Integer> comparingByValue().reversed()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+		//this will sort the HashMap by values, result is turn it to LinkedHashMap (LinkedHashMap has Order)
 		
 		// Add header of CSV file
 		csvFileWriter.append("Tag");
@@ -44,7 +51,7 @@ public class CSV {
 		csvFileWriter.append("\n");
 		// ========================
 		
-		for(Map.Entry<String, Integer> entry : data.entrySet()) {
+		for(Map.Entry<String, Integer> entry : sortedByFrequences.entrySet()) {
 			csvFileWriter.append(String.format("%s,%d\n", entry.getKey(), entry.getValue())); 
 			//String format {key: "html", value: 1} to raw string => "html,1\n" => append it to csv file
 		}
