@@ -3,6 +3,8 @@
  */
 package vongockhang.lab1;
 
+import problem2.Problem2;
+
 /**
  * @author vo ngoc khang
  *

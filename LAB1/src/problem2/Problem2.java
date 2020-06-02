@@ -1,8 +1,8 @@
-package vongockhang.lab1;
+package problem2;
 
 import java.io.IOException;
 
-import vongockhang.lab1.Stack.StackException;
+import problem2.Stack.StackException;
 
 public class Problem2 {
 	Stack stack = new Stack(200); //init stack
@@ -125,11 +125,10 @@ public class Problem2 {
 			ParsingHTML(body);
 			csv.WriteCSV(csvPath);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Some IO errors are happening, please try again!");
 		} catch (StackException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 }

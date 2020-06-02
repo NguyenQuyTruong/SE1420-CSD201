@@ -1,7 +1,7 @@
 /**
  * 
  */
-package vongockhang.lab1;
+package problem2;
 
 /**
  * @author skyho
