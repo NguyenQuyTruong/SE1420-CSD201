@@ -13,7 +13,7 @@ public class Stack implements IStack{
 	
 	/**
 	 * Stack constructor
-	 * @param capacity init the storage limit or the length of stack
+	 * @param capacity initiate the storage limit or the length of stack
 	 */
 	public Stack(int capacity) {
 		storage = new String[capacity]; //allocate array for storage
@@ -33,24 +33,43 @@ public class Stack implements IStack{
 		
 		top++; //increase top
 		storage[top] = tag; //set top to tag value
-		
 	}
 
+	/**
+	 * return top value then remove it from stack
+	 * 
+	 * @return String stack top value
+	 * @throws StackException 
+	 * 
+	 */
 	@Override
-	public String Pop() {
-		// TODO Auto-generated method stub
-		return null;
+	public String Pop() throws StackException {
+		if (top == -1) {
+			throw new StackException("Stack is empty");
+		}
+		return storage[top--];
 	}
 
+	/**
+	 * Get top value of stack, without remove it
+	 * @return String stack top value
+	 */
 	@Override
 	public String GetTop() {
-		// TODO Auto-generated method stub
-		return null;
+		if (top == -1) {
+			return null;	
+		}
+		return storage[top];
 	}
 
+	/**
+	 * Check if stack is empty
+	 */
 	@Override
 	public boolean IsEmpty() {
-		// TODO Auto-generated method stub
+		if (top == -1) {
+			return true;
+		}
 		return false;
 	}
 	
