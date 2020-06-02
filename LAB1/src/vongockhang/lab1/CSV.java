@@ -34,7 +34,7 @@ public class CSV {
 	 * @param path CSV file output path
 	 * @throws IOException file not found
 	 */	
-	public void WriteCSV(Map<String, Integer> data, String csvPath) throws IOException {
+	public void WriteCSV(String csvPath) throws IOException {
 		FileWriter csvFileWriter = new FileWriter(csvPath); //init FileWriter to write csv file
 		
 		// Add header of CSV file

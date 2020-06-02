@@ -8,7 +8,20 @@ public class Problem2 {
 	Stack stack = new Stack(500); //init stack
 	CSV csv = new CSV();
 
-	
+	/**
+	 * Some tag will have format like this <a href="..." > the goal is normalize it to => <a>
+	 * @param Tag
+	 * @return normalized tag
+	 */
+	private String NormalizeTag(String tag) {
+		String[] tagSplited = tag.split(" "); //split the tag based on space
+		if (tagSplited.length == 1) { //There is no space at all, so the tag is valid LIKE : <a> 
+			return tag;
+		}else { //there are another HTML attributes in tag, but we only need the tag name 
+			// LIKE: <a href="..."> ==> <a>
+			return tagSplited[0] + '>'; //<a + > ==> <a>
+		}
+	}
 	
 	/**
 	 *  to compare 2 tags current close tag and top of stack tag
@@ -18,7 +31,8 @@ public class Problem2 {
 	 * @return true if tag suitable with close tag
 	 */
 	private boolean compareTag(String tag, String stackTag) {
-		return false;
+		tag = tag.replace("/","");
+		return tag.contentEquals(stackTag);
 	}
 	
 	/**
@@ -45,14 +59,19 @@ public class Problem2 {
 			//meta tag is another special!
 		}else { 
 			//fun part which needs stack for process
+			tag = NormalizeTag(tag); //normalizing tag
 			
-			if (tag.contains("</")) { //this is not a closing tag, put it to stack
+			if (!tag.contains("</")) { //this is not a closing tag, put it to stack
 				stack.Push(tag);
-			}else { //This is Closting Tag condition, lets check it with the top of our Stack
+			}else if (compareTag(tag, stack.GetTop())){ //This is closing Tag condition, lets check it with the top of our Stack
+				//System.out.println("Stack pop! " + stack.GetTop()); //Debug line, comment it if you don't want to
+				csv.UpdateValue(stack.GetTop()); //remember, using open tag to increase count, not closing
+												// ==> using stack tag, not the closing one
+				stack.Pop(); 
 				
 			}
 			
-			System.out.println(tag);
+			
 		}
 	}
 	private void ParsingHTML(String body) throws StackException {
@@ -89,9 +108,8 @@ public class Problem2 {
 		
 		try {
 			String body = Website.DownloadWebsiteBody(webUrl);
-			
 			ParsingHTML(body);
-			
+			csv.WriteCSV(csvPath);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
