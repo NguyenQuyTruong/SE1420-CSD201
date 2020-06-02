@@ -47,9 +47,9 @@ public class Problem2 {
 	 * @return
 	 */
 	private boolean StandaloneTag(String tag, String body) {
-		tag = tag.replace("<", "</");
+		tag = tag.replace("<", "</"); //turn open tag to closing tag
 		
-		return !body.contains(tag);
+		return !body.contains(tag); //find closing tag if it not found => standalone
 	}
 	
 	/**
