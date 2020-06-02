@@ -16,7 +16,8 @@ public class Stack implements IStack{
 	 * @param capacity init the storage limit or the length of stack
 	 */
 	public Stack(int capacity) {
-		
+		storage = new int[capacity]; //allocate array
+		top = -1; //init top as -1 mean stack is empty while top = -1
 	}
 	
 	/**
