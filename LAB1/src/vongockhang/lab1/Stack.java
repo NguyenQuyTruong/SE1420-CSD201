@@ -47,6 +47,8 @@ public class Stack implements IStack{
 		if (top == -1) {
 			throw new StackException("Stack is empty");
 		}
+		
+		storage[top] = null; //free mem
 		return storage[top--];
 	}
 

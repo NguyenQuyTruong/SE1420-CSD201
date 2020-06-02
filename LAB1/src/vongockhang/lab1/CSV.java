@@ -52,7 +52,9 @@ public class CSV {
 		// ========================
 		
 		for(Map.Entry<String, Integer> entry : sortedByFrequences.entrySet()) {
-			csvFileWriter.append(String.format("%s,%d\n", entry.getKey(), entry.getValue())); 
+			String rawData = String.format("%s,%d\n", entry.getKey(), entry.getValue());
+			System.out.print(rawData);
+			csvFileWriter.append(rawData); 
 			//String format {key: "html", value: 1} to raw string => "html,1\n" => append it to csv file
 		}
 		

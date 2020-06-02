@@ -5,7 +5,7 @@ import java.io.IOException;
 import vongockhang.lab1.Stack.StackException;
 
 public class Problem2 {
-	Stack stack = new Stack(500); //init stack
+	Stack stack = new Stack(200); //init stack
 	CSV csv = new CSV();
 
 	/**
@@ -19,7 +19,12 @@ public class Problem2 {
 			return tag;
 		}else { //there are another HTML attributes in tag, but we only need the tag name 
 			// LIKE: <a href="..."> ==> <a>
-			return tagSplited[0] + '>'; //<a + > ==> <a>
+			
+			
+			String normalizedTag = tagSplited[0] + '>';
+			
+			System.out.println("\nNormalized: " + tag + " : " + normalizedTag);
+			return normalizedTag; //<a + > ==> <a>
 		}
 	}
 	
@@ -35,13 +40,20 @@ public class Problem2 {
 		return tag.contentEquals(stackTag);
 	}
 	
+	private boolean StandaloneTag(String tag, String body) {
+		tag = tag.replace("<", "</");
+		
+		return !body.contains(tag);
+	}
+	
 	/**
 	 * this method will simplify tags and put/get from stack to process it
 	 * some special tag will be skip (also count it)
 	 * @param tag current tag which need to process
+	 * @param body 
 	 * @throws StackException 
 	 */
-	private void ProcessTag(String tag) throws StackException {
+	private void ProcessTag(String tag, String body) throws StackException {
 		tag = tag.toLowerCase(); //make sure, test case can't trick us!
 		
 		switch(tag) {
@@ -51,13 +63,9 @@ public class Problem2 {
 			break;
 		}
 		
-		if (tag.contentEquals("<!doctype html>")) {
-			csv.UpdateValue("<!doctype html>"); 
-			//this doctype tag is one of special, so we count it as a tag for easy process	
-		}else if (tag.contains("<meta")) {
-			csv.UpdateValue("<meta>");
-			//meta tag is another special!
-		}else { 
+		if (!tag.contains("</") && StandaloneTag(tag, body)) { //not close tag and that is a standalone tag!! F*** This tag	
+			csv.UpdateValue(tag);
+		}else {
 			//fun part which needs stack for process
 			tag = NormalizeTag(tag); //normalizing tag
 			
@@ -68,11 +76,13 @@ public class Problem2 {
 				csv.UpdateValue(stack.GetTop()); //remember, using open tag to increase count, not closing
 												// ==> using stack tag, not the closing one
 				stack.Pop(); 
+			}else { //when tag is standalone, this can be happen
+				System.out.println("Special case:  " + tag + " : " + stack.GetTop());
 				
 			}
-			
-			
 		}
+		
+		
 	}
 	private void ParsingHTML(String body) throws StackException {
 		System.out.println(body);
@@ -87,15 +97,15 @@ public class Problem2 {
 				suckingCharacterToTag = true; 
 				//lol, this flag will let us know we're collecting characters into a TAG 
 				
-			}else if ((body.charAt(i) != '>') && (suckingCharacterToTag)){
+			}else if ((body.charAt(i) != '>' && body.charAt(i) != ' ') && (suckingCharacterToTag)){
 				tag += body.charAt(i); //normal character, add it to our incomplete tag
 				
-			}else if ((body.charAt(i) == '>') && (suckingCharacterToTag)) {
+			}else if ((body.charAt(i) == '>' || body.charAt(i) == ' ') && (suckingCharacterToTag)) {
 				tag += '>'; //close tag => end of tag
 				suckingCharacterToTag = false;  
 				//Turn this flag off, we already have enough characters to create a tag
 				
-				ProcessTag(tag);
+				ProcessTag(tag, body);
 			}
 		}
 	}
