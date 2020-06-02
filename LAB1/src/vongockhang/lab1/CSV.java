@@ -3,10 +3,7 @@ package vongockhang.lab1;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * This class will contain method to write to CSV file
@@ -43,7 +40,7 @@ public class CSV {
 		// Add header of CSV file
 		csvFileWriter.append("Tag");
 		csvFileWriter.append(",");
-		csvFileWriter.append("Count");
+		csvFileWriter.append("Frequence");
 		csvFileWriter.append("\n");
 		// ========================
 		
