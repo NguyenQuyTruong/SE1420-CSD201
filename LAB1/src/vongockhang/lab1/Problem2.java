@@ -40,6 +40,12 @@ public class Problem2 {
 		return tag.contentEquals(stackTag);
 	}
 	
+	/**
+	 * check if this is a standalone tag
+	 * @param tag
+	 * @param body
+	 * @return
+	 */
 	private boolean StandaloneTag(String tag, String body) {
 		tag = tag.replace("<", "</");
 		
@@ -55,13 +61,6 @@ public class Problem2 {
 	 */
 	private void ProcessTag(String tag, String body) throws StackException {
 		tag = tag.toLowerCase(); //make sure, test case can't trick us!
-		
-		switch(tag) {
-		case "<!doctype html>": 
-			
-		default:
-			break;
-		}
 		
 		if (!tag.contains("</") && StandaloneTag(tag, body)) { //not close tag and that is a standalone tag!! F*** This tag	
 			csv.UpdateValue(tag);
@@ -98,6 +97,11 @@ public class Problem2 {
 				//lol, this flag will let us know we're collecting characters into a TAG 
 				
 			}else if ((body.charAt(i) != '>' && body.charAt(i) != ' ') && (suckingCharacterToTag)){
+				
+				if (!(Character.isLetter(body.charAt(i))) && (body.charAt(i) != '!') && (body.charAt(i) != '/')) { //well, this is not a tag "<=" ???
+					suckingCharacterToTag = false; //turn off sucking flag
+				}
+				
 				tag += body.charAt(i); //normal character, add it to our incomplete tag
 				
 			}else if ((body.charAt(i) == '>' || body.charAt(i) == ' ') && (suckingCharacterToTag)) {
