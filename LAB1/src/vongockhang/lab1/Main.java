@@ -3,6 +3,7 @@
  */
 package vongockhang.lab1;
 
+import problem1.Problem1;
 import problem2.Problem2;
 
 /**
@@ -22,12 +23,13 @@ public class Main {
 		try {
 			switch (Integer.parseInt(args[0])) {
 			case 1:
+				Problem1 problem1 = new Problem1();
 				break;
 			case 2:
 				if (args.length < 3) {
 					throw new IllegalArgumentException("Not enough argument for problem 2");
 				}
-				Problem2 problem = new Problem2(args[1], args[2]);
+				Problem2 problem2 = new Problem2(args[1], args[2]);
 				break;
 			default:
 				break;	

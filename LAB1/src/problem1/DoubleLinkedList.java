@@ -1,5 +1,7 @@
 package problem1;
 
+import problem1.DoubleLinkedList.node;
+
 public class DoubleLinkedList {
 	 class node{
 		node left = null;
@@ -19,9 +21,10 @@ public class DoubleLinkedList {
 		public String getEmail() {
 			return email;
 		}
+		
 	}
 	 
-	 node head;
+	 public node headNode, tailNode;
 	 
 	 /**
 	  * create new node with email, point
@@ -40,15 +43,12 @@ public class DoubleLinkedList {
 	 * 
 	 */
 	public DoubleLinkedList() {
-		head = null; //init head is null
+		headNode = makeNode("", -1);
+		tailNode = makeNode("", -1);
+		
+		headNode.right = tailNode;
+		tailNode.left = headNode;
 	}
 	
-	public node getHead() {
-		return head;
-	}
-	
-	public void setHead(node head) {
-		this.head = head;
-	}
 	
 }
