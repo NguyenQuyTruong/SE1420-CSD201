@@ -4,14 +4,24 @@ public class DoubleLinkedList {
 	 class node{
 		node left = null;
 		node right = null;
-		String email;
-		long point;
+		private String email;
+		private long point;
 		
 		public node(String email, long point) {
 			this.email = email;
 			this.point = point;
 		}
+		
+		public long getPoint() {
+			return point;
+		}
+		
+		public String getEmail() {
+			return email;
+		}
 	}
+	 
+	 node head;
 	 
 	 /**
 	  * create new node with email, point
@@ -19,12 +29,12 @@ public class DoubleLinkedList {
 	  * @param point
 	  * @return new node
 	  */
-	private node makeNode(String email, long point) {
+	public node makeNode(String email, long point) {
 		node newNode = new node(email, point);
 		return newNode;
 	}
 	
-	node head;
+	
 	/**
 	 * DoubleLinkedList constructor, first we will set head to null (make sure) 
 	 * 
@@ -33,7 +43,12 @@ public class DoubleLinkedList {
 		head = null; //init head is null
 	}
 	
-	public void insert(String email, long point) {
-		
+	public node getHead() {
+		return head;
 	}
+	
+	public void setHead(node head) {
+		this.head = head;
+	}
+	
 }
