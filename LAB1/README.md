@@ -2,7 +2,7 @@
 
 ### Hiện thực 2 bài toán sau:
 
-1. Một mobile game có **hơn 5 triệu** người chơi, thông tin cần lưu trữ người chơi bao gồm email và point (điểm số), hãy **tự xây dựng** một cấu trúc dữ liệu (thông qua các kiến thức đã học) giúp thực hiện các chức năng quản lý thông tin người chơi **một cách hiệu quả**. Các chức năng cần để quản lý thông tin người chơi bao gồm: thêm (add), xóa (delete), sửa (update) và tìm kiếm (get). Yêu cầu độ phức tạp của giải thuật khi thực hiện các chức năng phải đạt **yêu cầu tối thiểu** là **O(N)**, riêng với chức năng tìm kiếm và xóa ứng với **người chơi có điểm số cao nhất** có độ phức tạp là **O(1)**.
+1. Một mobile game có **khoảng 1000** người chơi, thông tin cần lưu trữ người chơi bao gồm email và point (điểm số), hãy **tự xây dựng** một cấu trúc dữ liệu (thông qua các kiến thức đã học) giúp thực hiện các chức năng quản lý thông tin người chơi **một cách hiệu quả**. Các chức năng cần để quản lý thông tin người chơi bao gồm: thêm (add), xóa (delete), sửa (update) và tìm kiếm (get). Yêu cầu độ phức tạp của giải thuật khi thực hiện các chức năng phải đạt **yêu cầu tối thiểu** là **O(N)**, riêng với chức năng tìm kiếm và xóa ứng với **người chơi có điểm số cao nhất** có độ phức tạp là **O(1)**.
 2. Xây dựng một cấu trúc dữ liệu **stack dựa trên array** với các thao tác **pop** và **push** có độ phức tạp là **O(1)**. Sử dụng cấu trúc stack vừa được xây dựng truy xuất đến một website bất kỳ (ví dụ: vnexpress.net) và **thống kê số html TAG** được sử dụng trong website đó. Dữ liệu thống kê sẽ được ghi vào file CSV với thứ tự các tag tương ứng tần suất xuất hiện của nó từ cao đến thấp.
 
 ### Các yêu cầu trong LAB
@@ -18,14 +18,13 @@
    # Hướng dẫn sử dụng
    ./lab1 -h
    Help: 
-   ./lab1 1 -r <<user_CSV_file>>: Problem 1, read the user csv file
-   ./lab1 1 -a <<email>> <<point>>: Problem 1, add a new user into the data strucutre
-   ./lab1 1 -d <<email>>: Problem 1, delete a user in the data strucutre
-   ./lab1 1 -u <<email>> <<new_point>>: Problem 1, update new point for user in the data strucutre
-   ./lab1 1 -g <<email>>: Problem 1, get the point of user from the data strucutre
-   ./lab1 1 -t: Problem 1, get the point of the top user from the data strucutre
-   ./lab1 1 -dt: Problem 1, delete the top user from the data strucutre
-   ./lab1 1 -s <<new_user_CSV_file>>: Problem 1, save the data strucutre into csv file
+   ./lab1 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data strucutre into csv file
+   ./lab1 1 -r <<user_CSV_file>> -a <<email>> <<point>> -s <<new_user_CSV_file>>: Problem 1, add a new user into the data strucutre and save to new csv file
+   ./lab1 1 -r <<user_CSV_file>> -d <<email>> -s <<new_user_CSV_file>>: Problem 1, delete a user in the data strucutre
+   ./lab1 1 -r <<user_CSV_file>> -u <<email>> <<new_point>> -s <<new_user_CSV_file>>: Problem 1, update new point for user in the data strucutre
+   ./lab1 1 -r <<user_CSV_file>> -g <<email>> -s <<new_user_CSV_file>>: Problem 1, get the point of user from the data strucutre
+   ./lab1 1 -r <<user_CSV_file>> -t -s <<new_user_CSV_file>>: Problem 1, get the point of the top user from the data strucutre
+   ./lab1 1 -r <<user_CSV_file>> -dt -s <<new_user_CSV_file>>: Problem 1, delete the top user from the data strucutre
    ./lab1 2 <<URL-of-website>> <<output-CSV-file>>: Problem 2, read html info from a URL, save all tag information into the CSV output file
    ```
 5. Chuẩn đầu vào và đầu ra của ứng dụng
