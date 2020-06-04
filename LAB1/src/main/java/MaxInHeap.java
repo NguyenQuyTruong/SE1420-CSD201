@@ -94,7 +94,12 @@ public class MaxInHeap implements Manager {
             if(hasRightChild(index) && getLeftChild(index) < getRightChild(index)){
                 BiggerChildIndex = getRightChildIndex(index);
             }
-            
+            if(items[index] > items[BiggerChildIndex]){
+                break;
+            }
+            if(items[index] < items[BiggerChildIndex]){
+                
+            }
         }
     }
     
