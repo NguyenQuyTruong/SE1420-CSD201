@@ -30,6 +30,8 @@ public class CSV {
 				queue.insert(email, point);
 			}
 			
+			System.out.println("Finish reading csv file");
+			
 		}catch(FileNotFoundException e) {
 			System.out.println("Csv file not found, please check again!");
 		}finally {
