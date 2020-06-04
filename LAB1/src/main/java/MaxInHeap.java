@@ -11,7 +11,7 @@ import java.util.Arrays;
  *
  * @author KHAM
  */
-public class MaxInHeap implements Manager {
+public class MaxInHeap{
     // Using heaps
     
     private int capacity = 7;
@@ -71,13 +71,11 @@ public class MaxInHeap implements Manager {
     }
     
     
-    @Override
     public int getMaxValue() {
         if(size == 0) throw new IllegalStateException(); // Check empty array
         return items[0];
     }
 
-    @Override
     public void deleteMaxValue() {
         if(size == 0) throw new IllegalStateException(); // Check empty array
         int maxValue = items[0];
@@ -104,7 +102,6 @@ public class MaxInHeap implements Manager {
         }
     }
    
-    @Override
     public void add(int value) {
         checkArraySize();
         items[size] = value;
