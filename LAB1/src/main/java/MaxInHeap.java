@@ -63,7 +63,7 @@ public class MaxInHeap implements Manager {
     
     //When size are over capacity of items array, It will double its capacity
     
-    public void extendCapacity(){
+    public void checkArraySize(){
         if(capacity == size){
             items = Arrays.copyOf(items, capacity*2);
             capacity = capacity*2;
@@ -103,10 +103,12 @@ public class MaxInHeap implements Manager {
             }
         }
     }
-    
+   
     @Override
     public void add(int value) {
-        
+        checkArraySize();
+        items[size] = value;
+        size++;
+        pullDown();
     }
-
 }
