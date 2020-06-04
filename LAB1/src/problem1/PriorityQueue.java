@@ -19,7 +19,7 @@ public class PriorityQueue implements Serializable{
 	public void insert(String email, long point) {
 		node newNode = list.makeNode(email, point);
 		
-		if (list.headNode.right == list.tailNode) { 
+		if (list.isEmpty()) { 
 			//if head link to tail ==> queue empty ==> insert center between HEAD and TAIL
 			list.headNode.right = newNode;
 			newNode.left = list.headNode;
@@ -128,12 +128,32 @@ public class PriorityQueue implements Serializable{
 		return null;
 	}
 
+	
+	/**
+	 * Get top user
+	 */
 	public void getTop() {
-		if (list.headNode.right == null) {
+		if (list.isEmpty()) {
 			System.out.println("data is empty!");
 		}else {
 			System.out.format("Top user:\n%s : %d point\n", list.headNode.right.getEmail(), list.headNode.right.getPoint());
 		}
-		
 	}
+	
+	public void DeleteTop() {
+		if (list.isEmpty()) {
+			System.out.println("Data is empty, cancel deletion!");
+		}else {
+			node currentNode = list.headNode.right;
+			currentNode.left.right = currentNode.right;
+			currentNode.right.left = currentNode.left;
+			currentNode = null; //free mem
+			
+			System.out.println("Deleted top user!");
+		}
+	}
+	
+	
+	
+	
 }
