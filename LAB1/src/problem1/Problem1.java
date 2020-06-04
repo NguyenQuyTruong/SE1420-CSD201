@@ -1,8 +1,25 @@
 package problem1;
 
 public class Problem1{	
+	
+	PriorityQueue queue;
 	public Problem1() {
-		PriorityQueue queue = new PriorityQueue();
+		queue = new PriorityQueue();
+	}
+	
+	
+	
+	public void ParseArguments(String[] args) {
+		
+		try {
+			switch(args[0]) {
+			default:
+				System.out.println("Command not found, try again!");
+			}
+		}catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("Not enough argument to excecute command!");
+		}
+		
 		
 	}
 }
