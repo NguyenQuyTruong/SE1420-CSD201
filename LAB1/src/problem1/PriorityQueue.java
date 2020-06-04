@@ -59,15 +59,21 @@ public class PriorityQueue implements Serializable{
 		
 	}
 	
+	private node SearchByEmail(String email) {
+		node currentNode = list.headNode.right;
+		while(!(currentNode.getEmail().contentEquals(email)) && (currentNode != list.tailNode)) {
+			currentNode = currentNode.right;
+		}
+		
+		return currentNode;
+	}
+	
 	/**
 	 * Delete a node using email
 	 * @param email
 	 */
 	public void Delete(String email) {
-		node currentNode = list.headNode.right;
-		while(!(currentNode.getEmail().contentEquals(email)) && (currentNode != list.tailNode)) {
-			currentNode = currentNode.right;
-		}
+		node currentNode = SearchByEmail(email);
 		
 		if (currentNode == list.tailNode) {
 			System.out.println("Warning: not found to delete.. no problem!");
@@ -87,10 +93,7 @@ public class PriorityQueue implements Serializable{
 	 * @param newPoint
 	 */
 	public void Update(String email, long newPoint) {
-		node currentNode = list.headNode.right;
-		while(!(currentNode.getEmail().contentEquals(email)) && (currentNode != list.tailNode)) {
-			currentNode = currentNode.right;
-		}
+		node currentNode = SearchByEmail(email);
 		
 		if (currentNode == list.tailNode) {
 			System.out.println("Warning: not found to update.. no problem!");
@@ -108,5 +111,20 @@ public class PriorityQueue implements Serializable{
 			}
 			currentNode = currentNode.right;
 		}
+	}
+
+	/**
+	 * Get point of user
+	 * @param email
+	 * @return null if cant find user else, a value
+	 */
+	public Long GetPoint(String email) {
+		node currentNode = SearchByEmail(email);
+		
+		if (currentNode != list.tailNode) {
+			return currentNode.getPoint();
+		}
+		
+		return null;
 	}
 }
