@@ -5,7 +5,7 @@ import java.io.IOException;
 import problem2.Stack.StackException;
 
 public class Problem2 {
-	Stack stack = new Stack(200); //init stack
+	Stack stack = new Stack(300); //init stack
 	CSV csv = new CSV();
 
 	/**
@@ -118,7 +118,7 @@ public class Problem2 {
 	 * @param webUrl
 	 * @param csvPath
 	 */
-	public Problem2(String webUrl, String csvPath) {
+	public void SolvingProblem(String webUrl, String csvPath) {
 		
 		try {
 			String body = Website.DownloadWebsiteBody(webUrl);
@@ -130,5 +130,18 @@ public class Problem2 {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
+	}
+
+	/**
+	 * Main part, parse argument then run solving problem 2, <url csv>
+	 * @param parametersRemovedProblemID
+	 */
+	public void ParseArguments(String[] parametersRemovedProblemID) {
+		if (parametersRemovedProblemID.length < 2) {
+			System.out.println("Not enough arguments to run solving problem 2");
+		}else {
+			SolvingProblem(parametersRemovedProblemID[0], parametersRemovedProblemID[1]);
+		}
+		
 	}
 }
