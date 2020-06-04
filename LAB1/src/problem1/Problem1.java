@@ -22,6 +22,59 @@ public class Problem1{
 		LoadData(); //load previous data
 	}
 	
+
+	private void InsertNewData(String email, String point){
+		try {
+			long lpoint = Long.parseLong(point.trim()); //parse string to long
+			queue.insert(email, lpoint);
+			
+			System.out.println("Inserted new data!");	
+		}catch(NumberFormatException e) {
+			System.out.println("ERROR: Please make sure the point is number!");
+		}
+		
+	}
+	
+	private void DeleteEmail(String email) {
+		queue.Delete(email);
+	}
+	
+	
+	/**
+	 * parse the rest of arguments then excecute command
+	 * @param args
+	 */
+	public void ParseArguments(String[] args) {
+		
+		try {
+			switch(args[0]) {
+			case "-r": //read csv
+				queue = new PriorityQueue(); //make new one! (clear old data)
+				CSV.ReadAndPushToQueue(queue, args[1]);
+				break;
+			case "-a": //add new user
+				InsertNewData(args[1], args[2]);
+				break;
+			case "-d": //delete a user
+				DeleteEmail(args[1]);
+				break;
+			default:
+				System.out.println("Command not found, try again!");
+			}
+		}catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("Not enough argument to excecute command!");
+		}catch (IOException e) {
+			System.out.println("There is an error happen, please check your csv file or any input parameter");
+		}
+		
+		SaveData();
+		
+	}
+	
+	
+	/**
+	 * Loading previous data to memory
+	 */
 	public void LoadData() {
 		try {
 			FileInputStream inputStream = new FileInputStream(storageFile);
@@ -45,6 +98,9 @@ public class Problem1{
 		
 	}
 	
+	/**
+	 * saving data to disk for the next time
+	 */
 	public void SaveData() {
 		try {
 			FileOutputStream fileOutputStream = new FileOutputStream(storageFile);
@@ -61,30 +117,4 @@ public class Problem1{
 		}
 	}
 	
-	
-	
-	/**
-	 * parse the rest of arguments then excecute command
-	 * @param args
-	 */
-	public void ParseArguments(String[] args) {
-		
-		try {
-			switch(args[0]) {
-			case "-r": //read csv
-				queue = new PriorityQueue(); //make new one! (clear old data)
-				CSV.ReadAndPushToQueue(queue, args[1]);
-				break;
-			default:
-				System.out.println("Command not found, try again!");
-			}
-		}catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println("Not enough argument to excecute command!");
-		} catch (IOException e) {
-			System.out.println("There is an error happen, please check your csv file or any input parameter");
-		}
-		
-		SaveData();
-		
-	}
 }
