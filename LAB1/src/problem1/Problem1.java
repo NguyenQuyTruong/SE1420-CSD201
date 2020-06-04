@@ -58,7 +58,11 @@ public class Problem1{
 	}
 
 	
-
+	/**
+	 * update new user
+	 * @param email
+	 * @param point
+	 */
 	private void UpdateUser(String email, String point) {
 		try {
 			long newPoint = Long.parseLong(point.trim()); //parse string to long
@@ -68,6 +72,20 @@ public class Problem1{
 			System.out.println("ERROR: Please make sure the point is number!");
 		}
 		
+	}
+
+	/**
+	 * Get user most point
+	 */
+	private void GetTopPointUser() {
+		queue.getTop();
+	}
+
+	/**
+	 * Delete most point user
+	 */
+	private void DeleteTopUser() {
+		queue.DeleteTop();
 	}
 	
 	
@@ -96,7 +114,11 @@ public class Problem1{
 				GetPointUser(args[1]);
 				break;
 			case "-t":
-				
+				GetTopPointUser();
+				break;
+			case "-dt":
+				DeleteTopUser();
+				break;
 			default:
 				System.out.println("Command not found, try again!");
 			}
@@ -109,8 +131,6 @@ public class Problem1{
 		SaveData();
 		
 	}
-	
-	
 
 
 	/**
