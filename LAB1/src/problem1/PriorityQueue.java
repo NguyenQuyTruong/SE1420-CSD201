@@ -55,6 +55,8 @@ public class PriorityQueue implements Serializable{
 			
 		}
 		
+		System.out.println("Inserted new data!");
+		
 	}
 	
 	/**
