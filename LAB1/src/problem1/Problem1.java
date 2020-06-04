@@ -39,6 +39,12 @@ public class Problem1{
 		queue.Delete(email);
 	}
 	
+
+	private void UpdateUser(String string) {
+		
+		
+	}
+	
 	
 	/**
 	 * parse the rest of arguments then excecute command
@@ -58,6 +64,9 @@ public class Problem1{
 			case "-d": //delete a user
 				DeleteEmail(args[1]);
 				break;
+			case "-u":
+				UpdateUser(args[1]);
+				break;
 			default:
 				System.out.println("Command not found, try again!");
 			}
@@ -72,6 +81,8 @@ public class Problem1{
 	}
 	
 	
+
+
 	/**
 	 * Loading previous data to memory
 	 */
@@ -86,6 +97,7 @@ public class Problem1{
 			objectInputStream.close();
 			
 			System.out.println("Loaded previous data!");
+			queue.printAll();
 		} catch (FileNotFoundException e) {
 			System.out.println("Warning: data file not found, after some command we will create one");
 		} catch (IOException e) {
