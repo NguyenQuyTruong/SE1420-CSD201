@@ -78,6 +78,26 @@ public class PriorityQueue implements Serializable{
 		}
 		
 	}
+	
+	/**
+	 * find and update point of email
+	 * @param email
+	 * @param newPoint
+	 */
+	public void Update(String email, long newPoint) {
+		node currentNode = list.headNode.right;
+		while(!(currentNode.getEmail().contentEquals(email)) && (currentNode != list.tailNode)) {
+			currentNode = currentNode.right;
+		}
+		
+		if (currentNode == list.tailNode) {
+			System.out.println("Warning: not found to update.. no problem!");
+		}else {
+			currentNode.setPoint(newPoint);
+			System.out.println("Updated " + email + " new point: " + newPoint);
+		}
+	}
+	
 	public void printAll() {
 		node currentNode = list.headNode;
 		while(currentNode.right != null) {
