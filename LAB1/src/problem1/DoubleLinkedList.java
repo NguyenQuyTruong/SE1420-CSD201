@@ -26,6 +26,10 @@ public class DoubleLinkedList implements Serializable{
 			return email;
 		}
 		
+		public void setPoint(long point) {
+			this.point = point;
+		}
+		
 	}
 	 
 	 public node headNode, tailNode;
