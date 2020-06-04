@@ -26,7 +26,8 @@ public class CSV {
 				}
 				
 				String email = rowData[0];
-				long point =  Long.parseLong(rowData[1]);
+				String unparsedPoint = rowData[1];
+				long point =  Long.parseLong(unparsedPoint.trim());
 				queue.insert(email, point);
 			}
 			
