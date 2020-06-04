@@ -1,8 +1,14 @@
 package problem1;
 
+import java.io.Serializable;
+
 import problem1.DoubleLinkedList.node;
 
-public class PriorityQueue {
+public class PriorityQueue implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
 	DoubleLinkedList list = new DoubleLinkedList();
 	
 	/**
