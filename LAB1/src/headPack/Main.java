@@ -29,7 +29,7 @@ public class Main {
 	public static void main(String[] args) {
 		Problem1 problem1 = new Problem1();
 		if (args.length > 0) {
-			String[] parametersRemovedProblemID = Arrays.copyOfRange(args, 1, args.length); 
+			final String[] parametersRemovedProblemID = Arrays.copyOfRange(args, 1, args.length); 
 			//remove the problemID from parameter, leave the rest
 			
 			switch (args[0]) {
