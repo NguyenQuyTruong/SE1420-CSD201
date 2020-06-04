@@ -7,15 +7,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
-public class Problem1 implements Serializable{	
+public class Problem1{	
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	private static final String storageFile = "temp/problem1.data";
+	private static final String storageFile = "problem1.data";
 	
 	PriorityQueue queue;
 	public Problem1() {
@@ -31,6 +29,10 @@ public class Problem1 implements Serializable{
 			
 			queue = (PriorityQueue) objectInputStream.readObject();
 			
+			inputStream.close();
+			objectInputStream.close();
+			
+			System.out.println("Loaded previous data!");
 		} catch (FileNotFoundException e) {
 			System.out.println("Warning: data file not found, after some command we will create one");
 		} catch (IOException e) {
@@ -52,8 +54,10 @@ public class Problem1 implements Serializable{
 			
 			outputStream.close();
 			fileOutputStream.close();
-		}catch(IOException e) {
+		}catch(FileNotFoundException e) {
 			System.out.println("CANNOT save data, please try again!");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -80,7 +84,7 @@ public class Problem1 implements Serializable{
 			System.out.println("There is an error happen, please check your csv file or any input parameter");
 		}
 		
-		SaveData(); //after every command, save it
+		SaveData();
 		
 	}
 }
