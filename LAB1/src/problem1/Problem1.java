@@ -9,10 +9,13 @@ public class Problem1{
 	
 	
 	
+	
 	public void ParseArguments(String[] args) {
 		
 		try {
 			switch(args[0]) {
+			case "-r": //read csv
+				
 			default:
 				System.out.println("Command not found, try again!");
 			}
