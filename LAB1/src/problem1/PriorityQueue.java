@@ -127,4 +127,13 @@ public class PriorityQueue implements Serializable{
 		
 		return null;
 	}
+
+	public void getTop() {
+		if (list.headNode.right == null) {
+			System.out.println("data is empty!");
+		}else {
+			System.out.format("%s : %ld point\n", list.headNode.right.getEmail(), list.headNode.right.getPoint());
+		}
+		
+	}
 }
