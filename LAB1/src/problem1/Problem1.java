@@ -28,20 +28,45 @@ public class Problem1{
 			long lpoint = Long.parseLong(point.trim()); //parse string to long
 			queue.insert(email, lpoint);
 			
-			System.out.println("Inserted new data!");	
+				
 		}catch(NumberFormatException e) {
 			System.out.println("ERROR: Please make sure the point is number!");
 		}
 		
 	}
 	
+	/**
+	 * Delete user by email
+	 * @param email
+	 */
 	private void DeleteEmail(String email) {
 		queue.Delete(email);
 	}
 	
+	
+	/**
+	 * Get point of user
+	 * @param email
+	 */
+	private void GetPointUser(String email) {
+		Long point = queue.GetPoint(email);
+		if (point == null) {
+			System.out.println("CAN'T find " + email + " please try again!");
+		}else {
+			System.out.println(email + " : " + point + " points");
+		}
+	}
 
-	private void UpdateUser(String string) {
-		
+	
+
+	private void UpdateUser(String email, String point) {
+		try {
+			long newPoint = Long.parseLong(point.trim()); //parse string to long
+			queue.Update(email, newPoint);	
+			
+		}catch(NumberFormatException e) {
+			System.out.println("ERROR: Please make sure the point is number!");
+		}
 		
 	}
 	
@@ -65,8 +90,13 @@ public class Problem1{
 				DeleteEmail(args[1]);
 				break;
 			case "-u":
-				UpdateUser(args[1]);
+				UpdateUser(args[1], args[2]);
 				break;
+			case "-g":
+				GetPointUser(args[1]);
+				break;
+			case "-t":
+				
 			default:
 				System.out.println("Command not found, try again!");
 			}
