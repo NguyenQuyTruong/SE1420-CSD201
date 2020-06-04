@@ -45,6 +45,10 @@ public class DoubleLinkedList implements Serializable{
 		return newNode;
 	}
 	
+	public boolean isEmpty() {
+		return (headNode.right == tailNode);
+	}
+	
 	
 	/**
 	 * DoubleLinkedList constructor, first we will set head to null (make sure) 
