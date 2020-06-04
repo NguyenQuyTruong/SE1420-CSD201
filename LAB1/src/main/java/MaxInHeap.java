@@ -111,4 +111,14 @@ public class MaxInHeap implements Manager {
         size++;
         pullDown();
     }
+    
+    public void pullDown(){
+        int index = size - 1;
+        while(hasParent(index)){
+            if(items[index] > items[getParentIndex(index)]){
+                swap(index, getParentIndex(index));
+                index = getParentIndex(index);
+            }
+        }
+    }
 }
