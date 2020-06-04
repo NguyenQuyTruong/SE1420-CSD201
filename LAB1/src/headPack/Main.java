@@ -13,15 +13,8 @@ import problem2.Problem2;
  */
 public class Main {
 
-	/**
-	 * @param args
-	 * args[0]: problem 1 or 2
-	 * if problem 2: 
-	 * 		+ args[1]: url of website
-	 * 		+ args[2]: csv file path
-	 */
 	public static void main(String[] args) {
-		int exitCode = new CommandLine(new Problem1()).execute(args);
+		int exitCode = new CommandLine(new ProblemCLI()).execute(args);
 		System.exit(exitCode);
 		
 	}
