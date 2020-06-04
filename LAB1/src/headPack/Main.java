@@ -34,7 +34,7 @@ public class Main {
 			
 			switch (args[0]) {
 			case "1":
-				problem1.ParseArguments(args);
+				problem1.ParseArguments(parametersRemovedProblemID);
 				break;
 			default:
 				System.out.println("Not valid arguments, please see tutorial\n" + tutorials);
