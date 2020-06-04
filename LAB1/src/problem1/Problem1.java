@@ -88,6 +88,18 @@ public class Problem1{
 		queue.DeleteTop();
 	}
 	
+	/**
+	 * Save data to csv file
+	 */
+	private void SaveCSV(String path) {
+		try {
+			CSV.WriteQueueIntoCSV(queue, path);
+		} catch (IOException e) {
+			System.out.println("Error: something wrong then write file to CSV!");
+		}
+		
+	}
+	
 	
 	/**
 	 * parse the rest of arguments then excecute command
@@ -119,6 +131,9 @@ public class Problem1{
 			case "-dt":
 				DeleteTopUser();
 				break;
+			case "-s":
+				SaveCSV(args[1]);
+				break;
 			default:
 				System.out.println("Command not found, try again!");
 			}
@@ -131,6 +146,9 @@ public class Problem1{
 		SaveData();
 		
 	}
+
+
+
 
 
 	/**
