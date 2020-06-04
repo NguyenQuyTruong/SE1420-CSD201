@@ -1,9 +1,13 @@
 package problem1;
 
-import problem1.DoubleLinkedList.node;
+import java.io.Serializable;
 
-public class DoubleLinkedList {
-	 class node{
+public class DoubleLinkedList implements Serializable{
+	private static final long serialVersionUID = 4L;
+
+
+	class node implements Serializable{
+		private static final long serialVersionUID = 3L;
 		node left = null;
 		node right = null;
 		private String email;
