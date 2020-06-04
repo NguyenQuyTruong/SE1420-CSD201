@@ -1,22 +1,74 @@
 package problem1;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class Problem1{	
+public class Problem1 implements Serializable{	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final String storageFile = "temp/problem1.data";
 	
 	PriorityQueue queue;
 	public Problem1() {
 		queue = new PriorityQueue();
+		
+		LoadData(); //load previous data
+	}
+	
+	public void LoadData() {
+		try {
+			FileInputStream inputStream = new FileInputStream(storageFile);
+			ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+			
+			queue = (PriorityQueue) objectInputStream.readObject();
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("Warning: data file not found, after some command we will create one");
+		} catch (IOException e) {
+			System.out.println("Error happen when loading data, try again!");
+		} catch (ClassNotFoundException e) {
+			System.out.println("File data is not valid! let we delete it, and try again");
+			File file = new File(storageFile);
+			file.delete();
+		}
+		
+	}
+	
+	public void SaveData() {
+		try {
+			FileOutputStream fileOutputStream = new FileOutputStream(storageFile);
+			ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
+			
+			outputStream.writeObject(queue);
+			
+			outputStream.close();
+			fileOutputStream.close();
+		}catch(IOException e) {
+			System.out.println("CANNOT save data, please try again!");
+		}
 	}
 	
 	
 	
-	
+	/**
+	 * parse the rest of arguments then excecute command
+	 * @param args
+	 */
 	public void ParseArguments(String[] args) {
 		
 		try {
 			switch(args[0]) {
 			case "-r": //read csv
+				queue = new PriorityQueue(); //make new one! (clear old data)
 				CSV.ReadAndPushToQueue(queue, args[1]);
 				break;
 			default:
@@ -28,6 +80,7 @@ public class Problem1{
 			System.out.println("There is an error happen, please check your csv file or any input parameter");
 		}
 		
+		SaveData(); //after every command, save it
 		
 	}
 }
