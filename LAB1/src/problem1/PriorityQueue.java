@@ -1,5 +1,7 @@
 package problem1;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 
 import problem1.DoubleLinkedList.node;
@@ -140,6 +142,9 @@ public class PriorityQueue implements Serializable{
 		}
 	}
 	
+	/**
+	 * Delete top user
+	 */
 	public void DeleteTop() {
 		if (list.isEmpty()) {
 			System.out.println("Data is empty, cancel deletion!");
@@ -151,6 +156,29 @@ public class PriorityQueue implements Serializable{
 			
 			System.out.println("Deleted top user!");
 		}
+	}
+
+	/**
+	 * write current queue to CSV
+	 * @param path
+	 * @throws IOException
+	 */
+	public void writeCSV(String path) throws IOException {
+		FileWriter writer = new FileWriter(path);
+		
+		node currentNode = list.headNode.right;
+		
+		while(currentNode != list.tailNode) {
+			String rawData = String.format("%s,%d\n", currentNode.getEmail(), currentNode.getPoint());
+			writer.append(rawData);
+			
+			currentNode = currentNode.right;
+		}
+		
+		writer.flush();
+		writer.close();
+		
+		System.out.println("Saved data to CSV file!");
 	}
 	
 	

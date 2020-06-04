@@ -6,6 +6,7 @@ package headPack;
 import java.util.Arrays;
 
 import problem1.Problem1;
+import problem2.Problem2;
 
 /**
  * @author vo ngoc khang
@@ -28,6 +29,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Problem1 problem1 = new Problem1();
+		Problem2 problem2 = new Problem2();
 		if (args.length > 0) {
 			final String[] parametersRemovedProblemID = Arrays.copyOfRange(args, 1, args.length); 
 			//remove the problemID from parameter, leave the rest
@@ -35,6 +37,9 @@ public class Main {
 			switch (args[0]) {
 			case "1":
 				problem1.ParseArguments(parametersRemovedProblemID);
+				break;
+			case "2":
+				problem2.ParseArguments(parametersRemovedProblemID);
 				break;
 			default:
 				System.out.println("Not valid arguments, please see tutorial\n" + tutorials);
