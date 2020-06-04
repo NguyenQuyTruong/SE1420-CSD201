@@ -95,10 +95,11 @@ public class MaxInHeap implements Manager {
                 BiggerChildIndex = getRightChildIndex(index);
             }
             if(items[index] > items[BiggerChildIndex]){
-                break;
+                return;
             }
-            if(items[index] < items[BiggerChildIndex]){
-                
+            else{
+                swap(index,BiggerChildIndex);
+                index = BiggerChildIndex;
             }
         }
     }
