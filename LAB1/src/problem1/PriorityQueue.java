@@ -63,16 +63,18 @@ public class PriorityQueue implements Serializable{
 	 */
 	public void Delete(String email) {
 		node currentNode = list.headNode.right;
-		while(!(currentNode.getEmail().contentEquals(email))) {
+		while(!(currentNode.getEmail().contentEquals(email)) && (currentNode != list.tailNode)) {
 			currentNode = currentNode.right;
 		}
 		
 		if (currentNode == list.tailNode) {
-			System.out.println("Warning: not found to delete..");
+			System.out.println("Warning: not found to delete.. no problem!");
 		}else {
 			currentNode.left.right = currentNode.right;
 			currentNode.right.left = currentNode.left;
 			currentNode = null; //free mem
+			
+			System.out.println("Deleted " + email + " from queue");
 		}
 		
 	}
