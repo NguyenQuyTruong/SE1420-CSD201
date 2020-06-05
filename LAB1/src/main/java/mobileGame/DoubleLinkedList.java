@@ -78,6 +78,7 @@ public class DoubleLinkedList<Gamer> {
      * @param right
      */
     private void addBetween(Gamer gamer, Node<Gamer> right, Node<Gamer> left) {
+	//create new node to add
 	Node<Gamer> newbie = new Node<>(gamer, right, left);
 	left.setRight(newbie);
 	right.setLeft(newbie);
@@ -131,13 +132,27 @@ public class DoubleLinkedList<Gamer> {
     public void addFirst(Gamer data) {
 	addBetween(data, header.getRight(), header);
     }
-    
+
     /**
      * add Gamer to the last of the list
+     *
      * @param data
      */
     public void addLast(Gamer data) {
-	addBetween(data, trailer.getLeft(), trailer);
+	addBetween(data, trailer, trailer.getLeft());
     }
 
+    /**
+     * this method will print all gamer in the list by go through the list
+     * @param list
+     */
+    public void printList(DoubleLinkedList list) {
+	//begin in the first node after header
+	Node currentNode = header.getRight();
+	//this loop will scan every node and it will stop until meet the trailer
+	while (currentNode != trailer) {
+	    System.out.println(currentNode.getGamer() + "\n");
+	    currentNode = currentNode.getRight();
+	}
+    }
 }
