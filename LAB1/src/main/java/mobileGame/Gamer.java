@@ -39,6 +39,7 @@ public class Gamer {
 	this.point = point;
     }
 
+    //print info method
     @Override
     public String toString() {
 	return "Gamer{" + "email=" + email + ", point=" + point + '}';
