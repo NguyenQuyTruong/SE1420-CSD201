@@ -189,8 +189,9 @@ public class DoublyLinkedList<User> {
     
     public void addBetweenNode(User data, Node<User> nodePrev) {
 	Node<User> nextNode = nodePrev.getNext();
-	Node<User> preNode = nodePrev.getNext();
 	
-	Node<User> newNode = new Node<User>(data nodePrev)
+	Node<User> newNode = new Node<User>(data, nextNode, nodePrev);
+	nextNode.setPrev(newNode);
+	nodePrev.setNext(newNode);
     }
 }
