@@ -72,5 +72,21 @@ public class DoublyLinkedList <User>{
 	header.setNext(trailer);		//set next of header is trailer
     }
     
+    /**
+     * Get size of list
+     * @return number of size
+     */
+    public int sizeOfList() {
+	return sizeList;
+    }
+    
+    /**
+     * Check list is empty or not
+     * @return true or false
+     */
+    public boolean isEmpty() {
+	return sizeList == 0;
+    }
+    
     
 }
