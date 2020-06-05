@@ -124,7 +124,7 @@ public class DoublyLinkedList<User> {
      * Remove an node from list. Don't need to know the position of node
      * Just need to receive this Node
      * @param userNode
-     * @return data user of node have been Remove
+     * @return data user of node have been removed
      */
     private User remove(Node<User> userNode) {
 	Node<User> nextNode = userNode.getNext(); //get next Node of Node inputted
@@ -135,10 +135,14 @@ public class DoublyLinkedList<User> {
 	return userNode.getData(); //return data
     }
     
+    /**
+     * Remove first user of list
+     * @return data user of node have been removed
+     */
     public User removeFirst() {
 	if (isEmpty()) {    //no user to remove
 	    return null;
 	}
-	
+	return remove(header.getNext());
     }
 }
