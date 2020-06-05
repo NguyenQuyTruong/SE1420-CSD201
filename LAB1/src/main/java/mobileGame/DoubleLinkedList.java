@@ -53,7 +53,8 @@ public class DoubleLinkedList<Gamer> {
     }
 
     //create 2 main node
-    private Node header, trailer;
+    private Node<Gamer> header;
+    private Node<Gamer> trailer;
     private int size = 0;
 
     //create DoubleLinkedList constructor
@@ -107,7 +108,7 @@ public class DoubleLinkedList<Gamer> {
 	if (isEmpty()) {
 	    return null;
 	}
-	return (Gamer) header.getRight().getGamer();
+	return header.getRight().getGamer();
     }
 
     /**
@@ -119,6 +120,6 @@ public class DoubleLinkedList<Gamer> {
 	if (isEmpty()) {
 	    return null;
 	}
-	return (Gamer) remove(header.getRight());
+	return remove(header.getRight());
     }
 }
