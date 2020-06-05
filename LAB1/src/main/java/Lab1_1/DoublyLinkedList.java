@@ -187,11 +187,18 @@ public class DoublyLinkedList<User> {
 	addForFirstLast(data, trailer, trailer.getPrev());
     }
     
+    /**
+     * Add node between 2 node
+     * Use for add an element in priority queue
+     * @param data
+     * @param nodePrev 
+     */
     public void addBetweenNode(User data, Node<User> nodePrev) {
 	Node<User> nextNode = nodePrev.getNext();
 	
 	Node<User> newNode = new Node<User>(data, nextNode, nodePrev);
 	nextNode.setPrev(newNode);
 	nodePrev.setNext(newNode);
+	sizeList++;
     }
 }
