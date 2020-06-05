@@ -122,4 +122,13 @@ public class DoubleLinkedList<Gamer> {
 	}
 	return remove(header.getRight());
     }
+
+    /**
+     * add Gamer to first of the list
+     *
+     * @param data
+     */
+    public void addFirst(Gamer data) {
+	addBetween(data, header, header.getRight());
+    }
 }
