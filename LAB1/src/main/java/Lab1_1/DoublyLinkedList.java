@@ -61,7 +61,16 @@ public class DoublyLinkedList <User>{
     
     private Node<User> header; //header of doubly lined list
     private Node<User> trailer; //trailer of doubly lined list
-    private int sizeList = 0; //sizre of list
+    private int sizeList = 0; //size of list
+    
+    /**
+     * Constructor default
+     */
+    public DoublyLinkedList() {
+	header = new Node<>(null, null, null);
+	trailer = new Node(null, header, null); //trailer is behind header
+	header.setNext(trailer);		//set next of header is trailer
+    }
     
     
 }
