@@ -121,8 +121,11 @@ public class DoublyLinkedList<User> {
     }
 
     private User remove(Node<User> userNode) {
-	Node<User> newNode = new Node(this, header, header)
-	return userNode;
+	Node<User> nextNode = userNode.getNext();
+	Node<User> prevNode = userNode.getPrev();
+	nextNode.setPrev(prevNode);
+	prevNode.setNext(nextNode);
+	return userNode.getData();
     }
     
     public User removeFirst() {
