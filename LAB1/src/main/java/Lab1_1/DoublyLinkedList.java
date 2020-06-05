@@ -72,7 +72,7 @@ public class DoublyLinkedList<User> {
      */
     public DoublyLinkedList() {
 	header = new Node<>(null, null, null);
-	trailer = new Node(null, header, null); //trailer is behind header
+	trailer = new Node(null, null, header); //trailer is behind header
 	header.setNext(trailer);		//set next of header is trailer
     }
 
@@ -120,4 +120,5 @@ public class DoublyLinkedList<User> {
 	return trailer.getNext().getData();
     }
 
+    public 
 }
