@@ -155,4 +155,5 @@ public class DoubleLinkedList<Gamer> {
 	    currentNode = currentNode.getRight();
 	}
     }
+    //bug
 }
