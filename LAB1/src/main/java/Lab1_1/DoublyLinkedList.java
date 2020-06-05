@@ -71,8 +71,8 @@ public class DoublyLinkedList<User> {
      * Constructor default
      */
     public DoublyLinkedList() {
-	header = new Node<>(null, null, null);
-	trailer = new Node(null, null, header); //trailer is behind header
+	header = new Node<User>(null, null, null);
+	trailer = new Node<User>(null, null, header); //trailer is behind header
 	header.setNext(trailer);		//set next of header is trailer
     }
 
@@ -157,7 +157,7 @@ public class DoublyLinkedList<User> {
 	return remove(trailer.getPrev());
     }
     
-    private void add(User data, Node<User> nextNode, Node<User> prevNode) {
-	
+    private void addForFirstLast(User data, Node<User> nextNode, Node<User> prevNode) {
+	Node<User> newNode = new Node<User>(data, nextNode, prevNode);
     }
 }
