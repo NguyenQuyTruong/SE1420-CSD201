@@ -120,12 +120,19 @@ public class DoublyLinkedList<User> {
 	return trailer.getNext().getData();
     }
 
+    /**
+     * Remove an node from list. Don't need to know the position of node
+     * Just need to receive this Node
+     * @param userNode
+     * @return data user of node have been Remove
+     */
     private User remove(Node<User> userNode) {
-	Node<User> nextNode = userNode.getNext();
-	Node<User> prevNode = userNode.getPrev();
-	nextNode.setPrev(prevNode);
-	prevNode.setNext(nextNode);
-	return userNode.getData();
+	Node<User> nextNode = userNode.getNext(); //get next Node of Node inputted
+	Node<User> prevNode = userNode.getPrev(); //get prev Node of Node inputted
+	nextNode.setPrev(prevNode); //set prev of next Node is prev Node has getted
+	prevNode.setNext(nextNode); //set next of prev Node is next Node has getted
+	sizeList--;		    //decrease size of list after remoce
+	return userNode.getData(); //return data
     }
     
     public User removeFirst() {
