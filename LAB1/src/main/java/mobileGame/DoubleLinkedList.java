@@ -81,11 +81,11 @@ public class DoubleLinkedList<Gamer> {
 	right.setLeft(newbie);
 	size++;
     }
-    
+
     /**
      * this method use to remove Node with the info Node given and return it
      * @param node
-     * @return 
+     * @return info of node
      */
     private Gamer remove(Node<Gamer> node) {
 	Node<Gamer> left = node.left;
