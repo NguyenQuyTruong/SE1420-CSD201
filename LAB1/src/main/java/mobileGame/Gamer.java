@@ -43,4 +43,5 @@ public class Gamer {
     public String toString() {
 	return "Gamer{" + "email=" + email + ", point=" + point + '}';
     }
+    
 }
