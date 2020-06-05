@@ -65,8 +65,8 @@ public class DoubleLinkedList<Gamer> {
 
     //check the list is empty or not
     public boolean isEmpty() {
-	return (header.right == trailer);
-	//if next to header is trailer(null) it mean not thing in the list
+	return size == 0;
+	//if size = 0, list is empty
     }
 
     /**
