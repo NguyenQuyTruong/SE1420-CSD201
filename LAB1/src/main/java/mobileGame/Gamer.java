@@ -11,6 +11,7 @@ package mobileGame;
  */
 public class Gamer {
 
+    //gamer has email and point
     private String email;
     private int point;
 
