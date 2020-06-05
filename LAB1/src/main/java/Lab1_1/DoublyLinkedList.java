@@ -17,9 +17,9 @@ public class DoublyLinkedList <User>{
      * @param <User> 
      */
     private class Node<User> {
-	User data;
-	Node<User> next;
-	Node<User> prev;
+	User data;	    //data user
+	Node<User> next;    //reference to next node
+	Node<User> prev;    //reference to prev node
 	
 	/**
 	 * Constructor for Node
@@ -58,4 +58,10 @@ public class DoublyLinkedList <User>{
 	    this.prev = prev;
 	}
     }
+    
+    private Node<User> header; //header of doubly lined list
+    private Node<User> trailer; //trailer of doubly lined list
+    private int sizeList = 0; //sizre of list
+    
+    
 }
