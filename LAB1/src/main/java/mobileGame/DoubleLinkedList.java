@@ -59,4 +59,9 @@ public class DoubleLinkedList {
 	trailer = new Node(null, null, header);
 	header.right = trailer;
     }
+    
+    //check the list is empty or not
+    public boolean isEmpty() {
+	return (header.right == trailer);
+    }
 }
