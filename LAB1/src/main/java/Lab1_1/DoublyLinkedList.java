@@ -88,5 +88,20 @@ public class DoublyLinkedList <User>{
 	return sizeList == 0;
     }
     
+    /**
+     * Return data of user at the top of list
+     * @return User
+     */
+    public User getFisrt() {
+	return header.getNext().getData();
+    }
     
+    /**
+     * Return data of user at the last of list
+     * Repair for get the highest score
+     * @return User
+     */
+    public User getLast() {
+	return trailer.getNext().getData();
+    }
 }
