@@ -208,19 +208,12 @@ public class DoublyLinkedList<User> {
 	sizeList++;
     }
 
-    public void printlist(Node<User> node) {
-	Node last = null;
-	System.out.println("Traversal in forward Direction");
-	while (node != null) {
-	    System.out.print(node.data + " ");
-	    last = node;
+    public void printlist(DoublyLinkedList<User> list) {
+	Node<User> node = header.getNext();
+	System.out.println("Doubly Linked List: ");
+	while (node != trailer) {
+	    System.out.println(node.getData());
 	    node = node.next;
-	}
-	System.out.println();
-	System.out.println("Traversal in reverse direction");
-	while (last != null) {
-	    System.out.print(last.data + " ");
-	    last = last.prev;
 	}
     }
 }
