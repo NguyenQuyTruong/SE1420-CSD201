@@ -121,8 +121,9 @@ public class DoublyLinkedList<User> {
     }
 
     /**
-     * Remove an node from list. Don't need to know the position of node
-     * Just need to receive this Node
+     * Remove an node from list. Don't need to know the position of node Just
+     * need to receive this Node
+     *
      * @param userNode
      * @return data user of node have been removed
      */
@@ -134,9 +135,10 @@ public class DoublyLinkedList<User> {
 	sizeList--;		    //decrease size of list after remoce
 	return userNode.getData(); //return data
     }
-    
+
     /**
      * Remove first user of list
+     *
      * @return data user of node have been removed
      */
     public User removeFirst() {
@@ -145,9 +147,10 @@ public class DoublyLinkedList<User> {
 	}
 	return remove(header.getNext());
     }
-    
+
     /**
      * Remove last user of list
+     *
      * @return data user of node have been removed
      */
     public User removeLast() {
@@ -156,12 +159,13 @@ public class DoublyLinkedList<User> {
 	}
 	return remove(trailer.getPrev());
     }
-    
+
     /**
      * Add new node
+     *
      * @param data
      * @param nextNode
-     * @param prevNode 
+     * @param prevNode
      */
     private void addForFirstLast(User data, Node<User> nextNode, Node<User> prevNode) {
 	//create new node
@@ -170,35 +174,53 @@ public class DoublyLinkedList<User> {
 	prevNode.setNext(newNode);  //set next of prev node is new node
 	sizeList++;		    //increase size of list
     }
-    
+
     /**
      * Add node at the top of list
-     * @param data 
+     *
+     * @param data
      */
     public void addFirst(User data) {
 	addForFirstLast(data, header.getNext(), header);
     }
-    
+
     /**
      * Add node at the last of list
-     * @param data 
+     *
+     * @param data
      */
     public void addLast(User data) {
 	addForFirstLast(data, trailer, trailer.getPrev());
     }
-    
+
     /**
-     * Add node between 2 node
-     * Use for add an element in priority queue
+     * Add node between 2 node Use for add an element in priority queue
+     *
      * @param data
-     * @param nodePrev 
+     * @param nodePrev
      */
     public void addBetweenNode(User data, Node<User> nodePrev) {
 	Node<User> nextNode = nodePrev.getNext();
-	
+
 	Node<User> newNode = new Node<User>(data, nextNode, nodePrev);
 	nextNode.setPrev(newNode);
 	nodePrev.setNext(newNode);
 	sizeList++;
+    }
+
+    public void printlist(Node<User> node) {
+	Node last = null;
+	System.out.println("Traversal in forward Direction");
+	while (node != null) {
+	    System.out.print(node.data + " ");
+	    last = node;
+	    node = node.next;
+	}
+	System.out.println();
+	System.out.println("Traversal in reverse direction");
+	while (last != null) {
+	    System.out.print(last.data + " ");
+	    last = last.prev;
+	}
     }
 }
