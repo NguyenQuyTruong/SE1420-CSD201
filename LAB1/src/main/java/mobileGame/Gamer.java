@@ -10,5 +10,32 @@ package mobileGame;
  * @author nhoxr
  */
 public class Gamer {
-    
+
+    private String email;
+    private int point;
+
+    public Gamer() {
+    }
+
+    public Gamer(String email, int point) {
+	this.email = email;
+	this.point = point;
+    }
+
+    public String getEmail() {
+	return email;
+    }
+
+    public void setEmail(String email) {
+	this.email = email;
+    }
+
+    public int getPoint() {
+	return point;
+    }
+
+    public void setPoint(int point) {
+	this.point = point;
+    }
+
 }
