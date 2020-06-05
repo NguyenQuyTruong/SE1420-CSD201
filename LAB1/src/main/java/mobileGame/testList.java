@@ -18,6 +18,7 @@ public class testList {
 	Gamer g8 = new Gamer("PL", 320);
 	Gamer g7 = new Gamer("LOL", 280);
 
+	//test list
 	list.addFirst(g1);
 	list.addFirst(g2);
 	list.addFirst(g3);
