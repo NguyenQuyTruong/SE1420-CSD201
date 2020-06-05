@@ -120,5 +120,15 @@ public class DoublyLinkedList<User> {
 	return trailer.getNext().getData();
     }
 
-    public 
+    private User remove(Node<User> userNode) {
+	Node<User> newNode = new Node(this, header, header)
+	return userNode;
+    }
+    
+    public User removeFirst() {
+	if (isEmpty()) {    //no user to remove
+	    return null;
+	}
+	
+    }
 }
