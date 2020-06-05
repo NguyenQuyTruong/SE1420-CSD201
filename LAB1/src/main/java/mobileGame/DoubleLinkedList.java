@@ -10,12 +10,14 @@ package mobileGame;
  * @author nhoxr
  */
 public class DoubleLinkedList {
+
     //create class Node
     private class Node {
+
 	private Gamer gamer;
-	private Node right;
-	private Node left;
-	
+	private Node right = null;
+	private Node left = null;
+
 	//constructor
 	public Node(Gamer gamer, Node right, Node left) {
 	    this.gamer = gamer;
@@ -47,5 +49,14 @@ public class DoubleLinkedList {
 	public void setLeft(Node left) {
 	    this.left = left;
 	}
+    }
+    //create 2 main node
+    private Node header, trailer;
+
+    //create DoubleLinkedList constructor
+    public DoubleLinkedList() {
+	header = new Node(null, null, null);
+	trailer = new Node(null, null, header);
+	header.right = trailer;
     }
 }
