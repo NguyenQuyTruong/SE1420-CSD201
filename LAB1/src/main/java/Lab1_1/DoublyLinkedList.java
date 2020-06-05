@@ -10,22 +10,26 @@ package Lab1_1;
  * @author minhv
  * @param <User>
  */
-public class DoublyLinkedList <User>{
+public class DoublyLinkedList<User> {
+
     /**
-     * Create an node of doubly lined list
-     * use private to hide information - encapsulation
-     * @param <User> 
+     * Create an node of doubly lined list use private to hide information -
+     * encapsulation
+     *
+     * @param <User>
      */
     private class Node<User> {
+
 	User data;	    //data user
 	Node<User> next;    //reference to next node
 	Node<User> prev;    //reference to prev node
-	
+
 	/**
 	 * Constructor for Node
+	 *
 	 * @param data
 	 * @param next
-	 * @param prev 
+	 * @param prev
 	 */
 	public Node(User data, Node<User> next, Node<User> prev) {
 	    this.data = data;
@@ -58,11 +62,11 @@ public class DoublyLinkedList <User>{
 	    this.prev = prev;
 	}
     }
-    
+
     private Node<User> header; //header of doubly lined list
     private Node<User> trailer; //trailer of doubly lined list
     private int sizeList = 0; //size of list
-    
+
     /**
      * Constructor default
      */
@@ -71,37 +75,49 @@ public class DoublyLinkedList <User>{
 	trailer = new Node(null, header, null); //trailer is behind header
 	header.setNext(trailer);		//set next of header is trailer
     }
-    
+
     /**
      * Get size of list
+     *
      * @return number of size
      */
     public int sizeOfList() {
 	return sizeList;
     }
-    
+
     /**
      * Check list is empty or not
+     *
      * @return true or false
      */
     public boolean isEmpty() {
 	return sizeList == 0;
     }
-    
+
     /**
      * Return data of user at the top of list
+     *
      * @return User
      */
     public User getFisrt() {
+	//catch exception the list is empty and function make error
+	if (isEmpty()) {
+	    return null;
+	}
 	return header.getNext().getData();
     }
-    
+
     /**
-     * Return data of user at the last of list
-     * Repair for get the highest score
+     * Return data of user at the last of list Repair for get the highest score
+     *
      * @return User
      */
     public User getLast() {
+	//catch exception the list is empty and function make error
+	if (isEmpty()) {
+	    return null;
+	}
 	return trailer.getNext().getData();
     }
+
 }
