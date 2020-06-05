@@ -11,17 +11,29 @@ package Lab1_1;
  * @param <User>
  */
 public class DoublyLinkedList <User>{
+    /**
+     * Create an node of doubly lined list
+     * use private to hide information - encapsulation
+     * @param <User> 
+     */
     private class Node<User> {
 	User data;
 	Node<User> next;
 	Node<User> prev;
-
+	
+	/**
+	 * Constructor for Node
+	 * @param data
+	 * @param next
+	 * @param prev 
+	 */
 	public Node(User data, Node<User> next, Node<User> prev) {
 	    this.data = data;
 	    this.next = next;
 	    this.prev = prev;
 	}
 
+	//getter and setter
 	public User getData() {
 	    return data;
 	}
@@ -45,7 +57,5 @@ public class DoublyLinkedList <User>{
 	public void setPrev(Node<User> prev) {
 	    this.prev = prev;
 	}
-	
-	
     }
 }
