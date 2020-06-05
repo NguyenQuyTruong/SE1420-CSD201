@@ -171,7 +171,26 @@ public class DoublyLinkedList<User> {
 	sizeList++;		    //increase size of list
     }
     
+    /**
+     * Add node at the top of list
+     * @param data 
+     */
     public void addFirst(User data) {
 	addForFirstLast(data, header.getNext(), header);
+    }
+    
+    /**
+     * Add node at the last of list
+     * @param data 
+     */
+    public void addLast(User data) {
+	addForFirstLast(data, trailer, trailer.getPrev());
+    }
+    
+    public void addBetweenNode(User data, Node<User> nodePrev) {
+	Node<User> nextNode = nodePrev.getNext();
+	Node<User> preNode = nodePrev.getNext();
+	
+	Node<User> newNode = new Node<User>(data nodePrev)
     }
 }
