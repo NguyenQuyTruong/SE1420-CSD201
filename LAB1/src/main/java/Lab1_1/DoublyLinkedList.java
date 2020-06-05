@@ -159,5 +159,8 @@ public class DoublyLinkedList<User> {
     
     private void addForFirstLast(User data, Node<User> nextNode, Node<User> prevNode) {
 	Node<User> newNode = new Node<User>(data, nextNode, prevNode);
+	nextNode.setPrev(newNode);  //set prev of next node is new node
+	prevNode.setPrev(newNode);  //set next of prev node is new node
+	sizeList++;
     }
 }
