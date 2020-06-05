@@ -77,8 +77,8 @@ public class DoubleLinkedList<Gamer> {
      * @param left
      * @param right
      */
-    private void addBetween(Gamer gamer, Node<Gamer> left, Node<Gamer> right) {
-	Node<Gamer> newbie = new Node<>(gamer, left, right);
+    private void addBetween(Gamer gamer, Node<Gamer> right, Node<Gamer> left) {
+	Node<Gamer> newbie = new Node<>(gamer, right, left);
 	left.setRight(newbie);
 	right.setLeft(newbie);
 	size++;
@@ -129,6 +129,15 @@ public class DoubleLinkedList<Gamer> {
      * @param data
      */
     public void addFirst(Gamer data) {
-	addBetween(data, header, header.getRight());
+	addBetween(data, header.getRight(), header);
     }
+    
+    /**
+     * add Gamer to the last of the list
+     * @param data
+     */
+    public void addLast(Gamer data) {
+	addBetween(data, trailer.getLeft(), trailer);
+    }
+
 }
