@@ -95,4 +95,15 @@ public class DoubleLinkedList<Gamer> {
 	size--;
 	return node.getGamer();
     }
+    
+    /**
+     * this method will get the first gamer of the list
+     * @return Gamer
+     */
+    public Gamer first() {
+	if (isEmpty()) {
+	    return null;
+	}
+	return (Gamer) header.getRight().getGamer();
+    }
 }
