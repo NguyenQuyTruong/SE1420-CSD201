@@ -71,6 +71,7 @@ public class DoubleLinkedList<Gamer> {
 
     /**
      * this method use to add element to the list in between given node
+     *
      * @param gamer
      * @param left
      * @param right
@@ -84,6 +85,7 @@ public class DoubleLinkedList<Gamer> {
 
     /**
      * this method use to remove Node with the info Node given and return it
+     *
      * @param node
      * @return info of node
      */
@@ -95,9 +97,10 @@ public class DoubleLinkedList<Gamer> {
 	size--;
 	return node.getGamer();
     }
-    
+
     /**
      * this method will get the first gamer of the list
+     *
      * @return Gamer
      */
     public Gamer first() {
@@ -105,5 +108,17 @@ public class DoubleLinkedList<Gamer> {
 	    return null;
 	}
 	return (Gamer) header.getRight().getGamer();
+    }
+
+    /**
+     * this method will remove first gamer of the list
+     *
+     * @return Gamer
+     */
+    public Gamer removeFirst() {
+	if (isEmpty()) {
+	    return null;
+	}
+	return (Gamer) remove(header.getRight());
     }
 }
