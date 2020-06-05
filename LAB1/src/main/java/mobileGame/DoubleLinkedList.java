@@ -8,18 +8,19 @@ package mobileGame;
 /**
  *
  * @author nhoxr
+ * @param <Gamer>
  */
-public class DoubleLinkedList {
+public class DoubleLinkedList<Gamer> {
 
     //create class Node
-    private class Node {
+    private class Node<Gamer> {
 
 	private Gamer gamer;
-	private Node right = null;
-	private Node left = null;
+	private Node<Gamer> right = null;
+	private Node<Gamer> left = null;
 
 	//constructor
-	public Node(Gamer gamer, Node right, Node left) {
+	public Node(Gamer gamer, Node<Gamer> right, Node<Gamer> left) {
 	    this.gamer = gamer;
 	    this.right = right;
 	    this.left = left;
@@ -34,29 +35,30 @@ public class DoubleLinkedList {
 	    this.gamer = gamer;
 	}
 
-	public Node getRight() {
+	public Node<Gamer> getRight() {
 	    return right;
 	}
 
-	public void setRight(Node right) {
+	public void setRight(Node<Gamer> right) {
 	    this.right = right;
 	}
 
-	public Node getLeft() {
+	public Node<Gamer> getLeft() {
 	    return left;
 	}
 
-	public void setLeft(Node left) {
+	public void setLeft(Node<Gamer> left) {
 	    this.left = left;
 	}
     }
+
     //create 2 main node
     private Node header, trailer;
 
     //create DoubleLinkedList constructor
     public DoubleLinkedList() {
-	header = new Node(null, null, null);
-	trailer = new Node(null, null, header);
+	header = new Node<>(null, null, null);
+	trailer = new Node<>(null, null, header);
 	header.right = trailer;
     }
 
@@ -64,5 +66,12 @@ public class DoubleLinkedList {
     public boolean isEmpty() {
 	return (header.right == trailer);
 	//if next to header is trailer(null) it mean not thing in the list
+    }
+    
+    /**
+     * 
+     */
+    private void addBetween() {
+	
     }
 }
