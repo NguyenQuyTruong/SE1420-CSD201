@@ -145,4 +145,15 @@ public class DoublyLinkedList<User> {
 	}
 	return remove(header.getNext());
     }
+    
+    /**
+     * Remove last user of list
+     * @return data user of node have been removed
+     */
+    public User removeLast() {
+	if (isEmpty()) {    //no user to remove
+	    return null;
+	}
+	return remove(trailer.getPrev());
+    }
 }
