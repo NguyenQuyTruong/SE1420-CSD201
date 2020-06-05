@@ -13,7 +13,7 @@ package mobileGame;
 public class DoubleLinkedList<Gamer> {
 
     //create class Node
-    private class Node<Gamer> {
+    private static class Node<Gamer> {
 
 	private Gamer gamer;
 	private Node<Gamer> right = null;
@@ -68,7 +68,7 @@ public class DoubleLinkedList<Gamer> {
 	return (header.right == trailer);
 	//if next to header is trailer(null) it mean not thing in the list
     }
-    
+
     /**
      * this method use to add element to the list in between given node
      * @param gamer
@@ -76,9 +76,23 @@ public class DoubleLinkedList<Gamer> {
      * @param right
      */
     private void addBetween(Gamer gamer, Node<Gamer> left, Node<Gamer> right) {
-	Node<Gamer> newbie = new Node<Gamer>(gamer, left, right);
+	Node<Gamer> newbie = new Node<>(gamer, left, right);
 	left.setRight(newbie);
 	right.setLeft(newbie);
 	size++;
+    }
+    
+    /**
+     * this method use to remove Node with the info Node given and return it
+     * @param node
+     * @return 
+     */
+    private Gamer remove(Node<Gamer> node) {
+	Node<Gamer> left = node.left;
+	Node<Gamer> right = node.right;
+	left.setRight(right);
+	right.setLeft(left);
+	size--;
+	return node.getGamer();
     }
 }
