@@ -102,17 +102,22 @@ public class DoubleLinkedList {
 	} else {
 	    int pointOfHeader = header.right.getGamer().getPoint();
 	    int pointOfTrailer = trailer.left.getGamer().getPoint();
+	    //if input point < point of trailer, add new trailer
 	    if (point < pointOfTrailer) {
 		trailer.left.right = newbie;
 		newbie.left = trailer.left;
 		newbie.right = trailer;
 		trailer.left = newbie;
-	    } else if (point > pointOfHeader) {
+	    }
+	    //if input point > point of header, add new header
+	    else if (point > pointOfHeader) {
 		header.right.left = newbie;
 		newbie.right = header.right;
 		newbie.left = header;
 		header.right = newbie;
-	    } else {
+	    }
+	    //normail case, go through the list and compare every node till get right position
+	    else {
 		Node currentNode = header.right;
 		while (currentNode.getGamer().getPoint() > newbie.getGamer().getPoint()) {
 		    currentNode = currentNode.right;
