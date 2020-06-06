@@ -13,7 +13,7 @@ package mobileGame;
 public class DoubleLinkedList<Gamer> {
 
     //create class Node
-    private static class Node<Gamer> {
+    private class Node<Gamer> {
 
 	private Gamer gamer;
 	private Node<Gamer> right = null;
@@ -162,5 +162,4 @@ public class DoubleLinkedList<Gamer> {
 	    currentNode = currentNode.getRight();
 	}
     }
-    //bug
 }
