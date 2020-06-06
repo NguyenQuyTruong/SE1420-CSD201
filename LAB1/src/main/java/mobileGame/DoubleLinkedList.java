@@ -8,19 +8,18 @@ package mobileGame;
 /**
  *
  * @author nhoxr
- * @param <Gamer>
  */
-public class DoubleLinkedList<Gamer> {
+public class DoubleLinkedList {
 
     //create class Node
-    public class Node<Gamer> {
+    public class Node {
 
 	private Gamer gamer;
-	private Node<Gamer> right = null;
-	private Node<Gamer> left = null;
+	private Node right = null;
+	private Node left = null;
 
 	//constructor
-	public Node(Gamer gamer, Node<Gamer> right, Node<Gamer> left) {
+	public Node(Gamer gamer, Node right, Node left) {
 	    this.gamer = gamer;
 	    this.right = right;
 	    this.left = left;
@@ -39,32 +38,32 @@ public class DoubleLinkedList<Gamer> {
 	    this.gamer = gamer;
 	}
 
-	public Node<Gamer> getRight() {
+	public Node getRight() {
 	    return right;
 	}
 
-	public void setRight(Node<Gamer> right) {
+	public void setRight(Node right) {
 	    this.right = right;
 	}
 
-	public Node<Gamer> getLeft() {
+	public Node getLeft() {
 	    return left;
 	}
 
-	public void setLeft(Node<Gamer> left) {
+	public void setLeft(Node left) {
 	    this.left = left;
 	}
     }
 
     //create 2 main node
-    public Node<Gamer> header;
-    public Node<Gamer> trailer;
+    public Node header;
+    public Node trailer;
     public int size = 0;
 
     //create DoubleLinkedList constructor
     public DoubleLinkedList() {
-	header = new Node<>(null, null, null);
-	trailer = new Node<>(null, null, header);
+	header = new Node(null, null, null);
+	trailer = new Node(null, null, header);
 	header.right = trailer;
     }
 
@@ -90,9 +89,9 @@ public class DoubleLinkedList<Gamer> {
      * @param left
      * @param right
      */
-    private void addBetween(Gamer data, Node<Gamer> right, Node<Gamer> left) {
+    private void addBetween(Gamer data, Node right, Node left) {
 	//create new node to add
-	Node<Gamer> newbie = new Node<>(data, right, left);
+	Node newbie = new Node(data, right, left);
 	left.setRight(newbie);
 	right.setLeft(newbie);
 	size++;
@@ -104,9 +103,9 @@ public class DoubleLinkedList<Gamer> {
      * @param node
      * @return info of node
      */
-    private Gamer remove(Node<Gamer> node) {
-	Node<Gamer> left = node.left;
-	Node<Gamer> right = node.right;
+    private Gamer remove(Node node) {
+	Node left = node.left;
+	Node right = node.right;
 	left.setRight(right);
 	right.setLeft(left);
 	size--;
