@@ -9,7 +9,7 @@ package mobileGame;
  *
  * @author nhoxr
  */
-public class Gamer implements Comparable<Gamer> {
+public class Gamer{
 
     //gamer has email and point
     private String email;
