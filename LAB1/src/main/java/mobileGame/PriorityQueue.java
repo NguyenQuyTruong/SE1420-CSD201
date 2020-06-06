@@ -21,4 +21,16 @@ public class PriorityQueue {
 	list.add(data);
 	System.out.println("push Gamer data successful!!");
     }
+    
+    /**
+     * this method will get the top Gamer of the list depend on his point
+     * @return top Gamer
+     */
+    public Gamer getTop() {
+	return list.first();
+    }
+    
+    public void deleteTop() {
+	list.removeFirst();
+    }
 }
