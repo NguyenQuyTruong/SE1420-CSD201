@@ -50,15 +50,18 @@ public class PriorityQueue {
 	}
     }
     
+    /**
+     * this method will receive email input and print the Gamer info
+     */
     public void searchGamer() {
 	Gamer data = inputMailForSearchGamer();
 	if (data == null) {
 	    System.out.println("Not found!!");
 	} else {
-	    
+	    System.out.println("Email: " + data.getEmail() + ", Point: " + data.getPoint());
 	}
     }
-    
+
     /**
      * this method use to input Mail and return Gamer
      * @return Gamer
