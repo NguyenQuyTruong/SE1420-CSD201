@@ -9,7 +9,7 @@ package mobileGame;
  *
  * @author nhoxr
  */
-public class Gamer {
+public class Gamer implements Comparable<Gamer> {
 
     //gamer has email and point
     private String email;
@@ -44,5 +44,16 @@ public class Gamer {
     public String toString() {
 	return "Gamer{" + "email=" + email + ", point=" + point + '}';
     }
-    
+
+    //use comprareTo method to sort point of user
+    @Override
+    public int compareTo(Gamer user) {
+	if (point < user.getPoint()) {
+	    return -1;
+	} else if (point > user.getPoint()) {
+	    return 1;
+	}
+	return 0;
+    }
+
 }
