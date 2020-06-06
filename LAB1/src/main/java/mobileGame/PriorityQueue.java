@@ -13,8 +13,7 @@ public class PriorityQueue {
 
     private DoubleLinkedList list = new DoubleLinkedList();
     /**
-     * this method will add user to the queue and sort it depend on their point
-     * from low to high
+     * this method will add user to the queue
      *
      * @param data user
      */
