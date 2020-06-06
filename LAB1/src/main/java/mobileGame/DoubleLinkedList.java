@@ -5,8 +5,6 @@
  */
 package mobileGame;
 
-import java.util.Collections;
-
 /**
  *
  * @author nhoxr
