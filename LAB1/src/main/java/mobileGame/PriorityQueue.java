@@ -5,6 +5,8 @@
  */
 package mobileGame;
 
+import java.util.Scanner;
+
 /**
  *
  * @author nhoxr
@@ -37,5 +39,35 @@ public class PriorityQueue {
      */
     public void deleteTop() {
 	list.removeFirst();
+    }
+    
+    public void deleteGamer() {
+	if (list.isEmpty()) {
+	    System.out.println("List is empty!!");
+	} else {
+	    System.out.print("Enter email: ");
+	    String email = 
+	}
+    }
+    
+    public void searchGamer() {
+	Gamer data = inputMailForSearchGamer();
+	if (data == null) {
+	    System.out.println("Not found!!");
+	} else {
+	    
+	}
+    }
+    
+    /**
+     * this method use to input Mail and return Gamer
+     * @return Gamer
+     */
+    public Gamer inputMailForSearchGamer() {
+	Scanner sc = new Scanner(System.in);
+	System.out.print("Enter email: ");
+	String email = sc.nextLine();
+	Gamer data = list.searchGamerByEmail(email);
+	return data;
     }
 }
