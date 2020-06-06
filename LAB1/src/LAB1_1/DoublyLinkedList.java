@@ -116,7 +116,7 @@ public class DoublyLinkedList {
 	if (isEmpty()) {
 	    return null;
 	}
-	return trailer.getNext().getData();
+	return trailer.getPrev().getData();
     }
 
     /**
