@@ -5,6 +5,8 @@
  */
 package mobileGame;
 
+import java.util.Collections;
+
 /**
  *
  * @author nhoxr
@@ -168,15 +170,5 @@ public class DoubleLinkedList<Gamer> {
 	    System.out.println(currentNode.getGamer() + "\n");
 	    currentNode = currentNode.getRight();
 	}
-    }
-
-    /**
-     * this method will create a node to use in queue
-     * @param data of Gamer(email, point)
-     * @return Node
-     */
-    public Node createNode(Gamer data) {
-	Node currentNode = new Node(data);
-	return currentNode;
     }
 }
