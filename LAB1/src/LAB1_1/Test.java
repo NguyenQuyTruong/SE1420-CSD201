@@ -5,8 +5,6 @@
  */
 package Lab1_1;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author minhv
@@ -31,9 +29,9 @@ public class Test {
 	list.addFirst(user5);
 	list.addLast(user9);
 	list.addLast(user6);
-//	list.addBetweenNode(user10, );
+	
+	list.addBetweenNode(user7, list.searchNode(user7.getPoint()));
 
 	list.printlist(list);
-	ArrayList<User>
     }
 }
