@@ -10,7 +10,7 @@ package Lab1_1;
  * @author minhv
  * @param <User>
  */
-public class DoublyLinkedList<User> {
+public class DoublyLinkedList {
 
     /**
      * Create an node of doubly lined list use private to hide information -
@@ -18,11 +18,11 @@ public class DoublyLinkedList<User> {
      *
      * @param <User>
      */
-    private class Node<User> {
+    private class Node {
 
 	User data;	    //data user
-	Node<User> next;    //reference to next node
-	Node<User> prev;    //reference to prev node
+	Node next;    //reference to next node
+	Node prev;    //reference to prev node
 
 	/**
 	 * Constructor for Node
@@ -31,7 +31,7 @@ public class DoublyLinkedList<User> {
 	 * @param next
 	 * @param prev
 	 */
-	public Node(User data, Node<User> next, Node<User> prev) {
+	public Node(User data, Node next, Node prev) {
 	    this.data = data;
 	    this.next = next;
 	    this.prev = prev;
@@ -46,33 +46,33 @@ public class DoublyLinkedList<User> {
 	    this.data = data;
 	}
 
-	public Node<User> getNext() {
+	public Node getNext() {
 	    return next;
 	}
 
-	public void setNext(Node<User> next) {
+	public void setNext(Node next) {
 	    this.next = next;
 	}
 
-	public Node<User> getPrev() {
+	public Node getPrev() {
 	    return prev;
 	}
 
-	public void setPrev(Node<User> prev) {
+	public void setPrev(Node prev) {
 	    this.prev = prev;
 	}
     }
 
-    private Node<User> header; //header of doubly lined list
-    private Node<User> trailer; //trailer of doubly lined list
+    private Node header; //header of doubly lined list
+    private Node trailer; //trailer of doubly lined list
     private int sizeList = 0; //size of list
 
     /**
      * Constructor default
      */
     public DoublyLinkedList() {
-	header = new Node<>(null, null, null);
-	trailer = new Node<>(null, null, header); //trailer is behind header
+	header = new Node(null, null, null);
+	trailer = new Node(null, null, header); //trailer is behind header
 	header.setNext(trailer);		//set next of header is trailer
     }
 
@@ -127,9 +127,9 @@ public class DoublyLinkedList<User> {
      * @param userNode
      * @return data user of node have been removed
      */
-    public User remove(Node<User> userNode) {
-	Node<User> nextNode = userNode.getNext(); //get next Node of Node inputted
-	Node<User> prevNode = userNode.getPrev(); //get prev Node of Node inputted
+    public User remove(Node userNode) {
+	Node nextNode = userNode.getNext(); //get next Node of Node inputted
+	Node prevNode = userNode.getPrev(); //get prev Node of Node inputted
 	nextNode.setPrev(prevNode); //set prev of next Node is prev Node has getted
 	prevNode.setNext(nextNode); //set next of prev Node is next Node has getted
 	sizeList--;		    //decrease size of list after remoce
@@ -167,9 +167,9 @@ public class DoublyLinkedList<User> {
      * @param nextNode
      * @param prevNode
      */
-    private void addForFirstLast(User data, Node<User> nextNode, Node<User> prevNode) {
+    private void addForFirstLast(User data, Node nextNode, Node prevNode) {
 	//create new node
-	Node<User> newNode = new Node<>(data, nextNode, prevNode);
+	Node newNode = new Node(data, nextNode, prevNode);
 	nextNode.setPrev(newNode);  //set prev of next node is new node
 	prevNode.setNext(newNode);  //set next of prev node is new node
 	sizeList++;		    //increase size of list
@@ -199,10 +199,10 @@ public class DoublyLinkedList<User> {
      * @param data
      * @param nodePrev
      */
-    public void addBetweenNode(User data, Node<User> nodePrev) {
-	Node<User> nextNode = nodePrev.getNext();
+    public void addBetweenNode(User data, Node nodePrev) {
+	Node nextNode = nodePrev.getNext();
 
-	Node<User> newNode = new Node<>(data, nextNode, nodePrev);
+	Node newNode = new Node(data, nextNode, nodePrev);
 	nextNode.setPrev(newNode);
 	nodePrev.setNext(newNode);
 	sizeList++;
@@ -212,8 +212,8 @@ public class DoublyLinkedList<User> {
      * Function print for testing
      * @param list 
      */
-    public void printlist(DoublyLinkedList<User> list) {
-	Node<User> node = header.getNext();
+    public void printlist(DoublyLinkedList list) {
+	Node node = header.getNext();
 	System.out.println("Doubly Linked List: ");
 	while (node != trailer) {
 	    System.out.println(node.getData());
@@ -221,7 +221,12 @@ public class DoublyLinkedList<User> {
 	}
     }
     
-    public  getNode() {
+    public Node searchNode(int point) {
+	Node nodeNext = header.getNext();
 	
+	if (nodeNext.getData().getPoint() == point) {
+	    return nodeNext;
+	}
+	return null;
     }
 }
