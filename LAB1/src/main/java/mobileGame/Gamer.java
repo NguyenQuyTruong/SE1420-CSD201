@@ -48,9 +48,9 @@ public class Gamer implements Comparable<Gamer> {
     //use comprareTo method to sort point of user
     @Override
     public int compareTo(Gamer user) {
-	if (point < user.getPoint()) {
+	if (this.point < user.getPoint()) {
 	    return -1;
-	} else if (point > user.getPoint()) {
+	} else if (this.point > user.getPoint()) {
 	    return 1;
 	}
 	return 0;
