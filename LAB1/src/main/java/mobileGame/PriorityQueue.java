@@ -41,12 +41,18 @@ public class PriorityQueue {
 	list.removeFirst();
     }
 
+    /**
+     * this method will delete Gamer depend on input email
+     */
     public void deleteGamer() {
-	Gamer data = inputMailForSearchGamer();
+	Scanner sc = new Scanner(System.in);
+	System.out.print("Enter email: ");
+	String email = sc.nextLine();
+	Gamer data = list.removeNode(email);
 	if (data == null) {
-	    System.out.println("Not fount");
+	    System.out.println("Not found!!");
 	} else {
-
+	    System.out.println("Remove " + data.getEmail() + " successful!");
 	}
     }
 
