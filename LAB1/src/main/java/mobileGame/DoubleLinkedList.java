@@ -228,9 +228,13 @@ public class DoubleLinkedList {
     /**
      * this method will delete the node of the Gamer have the input email
      * @param email
+     * @return Gamer
      */
-    public void removeNode(String email) {
+    public Gamer removeNode(String email) {
 	Node delNode = searchGamerToDelete(email);
-	remove(delNode);
+	if (delNode != null) {
+	    return remove(delNode);
+	}
+	return null;
     }
 }
