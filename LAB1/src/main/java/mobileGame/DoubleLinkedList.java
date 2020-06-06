@@ -71,6 +71,13 @@ public class DoubleLinkedList<Gamer> {
     }
 
     /**
+     * this method use to get the size of the list
+     * @return size
+     */
+    public int size() {
+	return size;
+    }
+    /**
      * this method use to add element to the list in between given node
      *
      * @param gamer
