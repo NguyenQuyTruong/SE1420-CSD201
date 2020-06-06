@@ -190,4 +190,20 @@ public class DoubleLinkedList {
 	    currentNode = currentNode.getRight();
 	}
     }
+
+    /**
+     * this method will go through the list and check email of gamer if input
+     * email equal email on the list, it will return that gamer have this email
+     * if don't, return null
+     * @param email
+     * @return gamer
+     */
+    public Gamer searchGamerByEmail(String email) {
+	for (Node n = header.right; n != trailer; n = n.right) {
+	    if (n.getGamer().getEmail().contentEquals(email)) {
+		return n.getGamer();
+	    }
+	}
+	return null;
+    }
 }
