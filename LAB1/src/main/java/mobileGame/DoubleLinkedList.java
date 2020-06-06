@@ -158,14 +158,13 @@ public class DoubleLinkedList {
 
     /**
      * this method will remove first gamer of the list
-     *
-     * @return Gamer
      */
-    public Gamer removeFirst() {
+    public void removeFirst() {
 	if (isEmpty()) {
-	    return null;
+	    System.out.println("The list is empty!!");
+	} else {
+	    remove(header.getRight());
 	}
-	return remove(header.getRight());
     }
 
     /**
