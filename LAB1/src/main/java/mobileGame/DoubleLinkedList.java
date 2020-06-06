@@ -13,7 +13,7 @@ package mobileGame;
 public class DoubleLinkedList<Gamer> {
 
     //create class Node
-    private class Node<Gamer> {
+    public class Node<Gamer> {
 
 	private Gamer gamer;
 	private Node<Gamer> right = null;
@@ -53,9 +53,9 @@ public class DoubleLinkedList<Gamer> {
     }
 
     //create 2 main node
-    private Node<Gamer> header;
-    private Node<Gamer> trailer;
-    private int size = 0;
+    public Node<Gamer> header;
+    public Node<Gamer> trailer;
+    public int size = 0;
 
     //create DoubleLinkedList constructor
     public DoubleLinkedList() {
@@ -161,5 +161,9 @@ public class DoubleLinkedList<Gamer> {
 	    System.out.println(currentNode.getGamer() + "\n");
 	    currentNode = currentNode.getRight();
 	}
+    }
+    
+    public void addGamerSortByPoint(int point) {
+	
     }
 }
