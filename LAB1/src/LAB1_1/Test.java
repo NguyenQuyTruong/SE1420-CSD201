@@ -5,6 +5,8 @@
  */
 package Lab1_1;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author minhv
@@ -12,7 +14,7 @@ package Lab1_1;
 public class Test {
 
     public static void main(String[] args) {
-	DoublyLinkedList<User> list = new DoublyLinkedList<>();
+	DoublyLinkedList list = new DoublyLinkedList();
 	User user1 = new User("123", 1);
 	User user2 = new User("294", 2);
 	User user3 = new User("345", 3);
@@ -32,6 +34,6 @@ public class Test {
 //	list.addBetweenNode(user10, );
 
 	list.printlist(list);
-	
+	ArrayList<User>
     }
 }
