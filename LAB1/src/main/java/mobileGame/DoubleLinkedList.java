@@ -26,6 +26,10 @@ public class DoubleLinkedList<Gamer> {
 	    this.left = left;
 	}
 
+	public Node(Gamer gamer) {
+	    this.gamer = gamer;
+	}
+
 	//getter and setter for Node
 	public Gamer getGamer() {
 	    return gamer;
@@ -72,11 +76,13 @@ public class DoubleLinkedList<Gamer> {
 
     /**
      * this method use to get the size of the list
+     *
      * @return size
      */
     public int size() {
 	return size;
     }
+
     /**
      * this method use to add element to the list in between given node
      *
@@ -151,6 +157,7 @@ public class DoubleLinkedList<Gamer> {
 
     /**
      * this method will print all gamer in the list by go through the list
+     *
      * @param list
      */
     public void printList(DoubleLinkedList list) {
@@ -162,8 +169,9 @@ public class DoubleLinkedList<Gamer> {
 	    currentNode = currentNode.getRight();
 	}
     }
-    
-    public void addGamerSortByPoint(int point) {
-	
+
+    public Node createNode(Gamer data) {
+	Node currentNode = new Node(data, trailer, header);
+	return currentNode;
     }
 }
