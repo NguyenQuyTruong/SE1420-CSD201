@@ -199,12 +199,15 @@ public class DoublyLinkedList {
      * @param nodeNext
      */
     public void addBetweenNode(User data, Node nodeNext) {
-	Node prevNode = nodeNext.getPrev();
-
-	Node newNode = new Node(data, nodeNext, prevNode);
-	nodeNext.setPrev(newNode);
-	prevNode.setNext(newNode);
-	sizeList++;
+	if (nodeNext == null) { //this node founded is highest score so use addLast
+	    addLast(data);
+	} else {
+	    Node prevNode = nodeNext.getPrev();	//get previous Node
+	    Node newNode = new Node(data, nodeNext, prevNode); //create new Node
+	    nodeNext.setPrev(newNode);	//set prev of next Node is new Node
+	    prevNode.setNext(newNode);	//set next of prev Node is new Node
+	    sizeList++;	//increase size of list
+	}
     }
 
     /**
@@ -221,6 +224,12 @@ public class DoublyLinkedList {
 	}
     }
 
+    /**
+     * Find the node for insert in priority queue which the node is higher
+     *
+     * @param point
+     * @return a node
+     */
     public Node searchNode(int point) {
 	Node nodeNext = header.getNext();
 
@@ -231,6 +240,6 @@ public class DoublyLinkedList {
 		nodeNext = nodeNext.getNext();
 	    }
 	} while (nodeNext != null);
-	return null;
+	return null;		    //this node is highest score
     }
 }
