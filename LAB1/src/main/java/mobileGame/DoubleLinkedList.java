@@ -83,8 +83,8 @@ public class DoubleLinkedList {
     }
 
     /**
-     * this method use to add element to the list in between given node
-     *
+     * this method use to add element to the list in between given node and sort
+     * them depend on their point
      * @param data
      * @param leftNode
      * @param rightNode
