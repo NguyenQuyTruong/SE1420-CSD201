@@ -40,18 +40,18 @@ public class PriorityQueue {
     public void deleteTop() {
 	list.removeFirst();
     }
-    
+
     public void deleteGamer() {
-	if (list.isEmpty()) {
-	    System.out.println("List is empty!!");
+	Gamer data = inputMailForSearchGamer();
+	if (data == null) {
+	    System.out.println("Not fount");
 	} else {
-	    System.out.print("Enter email: ");
-	    String email = 
+
 	}
     }
-    
+
     /**
-     * this method will receive email input and print the Gamer info
+     * this method will receive email input and print the Gamer info.
      */
     public void searchGamer() {
 	Gamer data = inputMailForSearchGamer();
@@ -63,7 +63,33 @@ public class PriorityQueue {
     }
 
     /**
-     * this method use to input Mail and return Gamer
+     * this method use to update Gamer by receive email input and let the user
+     * edit point.
+     */
+    public void updateGamer() {
+	Scanner sc = new Scanner(System.in);
+	Gamer data = inputMailForSearchGamer();
+	if (data == null) {
+	    System.out.println("Not found!!");
+	} else {
+	    int point = 0;
+	    System.out.println("Email: " + data.getEmail());
+	    System.out.print("Point: ");
+	    try {
+		point = Integer.parseInt(sc.nextLine());
+		if (point < 0) {
+		    System.out.println("point must be positive!!");
+		}
+	    } catch (Exception e) {
+		System.out.println("Wrong format");
+	    }
+	    data.setPoint(point);
+	}
+    }
+
+    /**
+     * this method use to input Mail and return Gamer.
+     *
      * @return Gamer
      */
     public Gamer inputMailForSearchGamer() {
@@ -72,5 +98,9 @@ public class PriorityQueue {
 	String email = sc.nextLine();
 	Gamer data = list.searchGamerByEmail(email);
 	return data;
+    }
+    
+    public void printQueue() {
+	list.printList(list);
     }
 }
