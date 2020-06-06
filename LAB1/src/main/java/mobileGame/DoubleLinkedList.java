@@ -92,8 +92,37 @@ public class DoubleLinkedList {
     private void addBetween(Gamer data, Node right, Node left) {
 	//create new node to add
 	Node newbie = new Node(data, right, left);
-	left.setRight(newbie);
-	right.setLeft(newbie);
+	int point = data.getPoint();
+	//if list is empty
+	if (isEmpty()) {
+	    header.right = newbie;
+	    newbie.left = header;
+	    newbie.right = trailer;
+	    trailer.left = newbie;
+	} else {
+	    int pointOfHeader = header.right.getGamer().getPoint();
+	    int pointOfTrailer = trailer.left.getGamer().getPoint();
+	    if (point < pointOfTrailer) {
+		trailer.left.right = newbie;
+		newbie.left = trailer.left;
+		newbie.right = trailer;
+		trailer.left = newbie;
+	    } else if (point > pointOfHeader) {
+		header.right.left = newbie;
+		newbie.right = header.right;
+		newbie.left = header;
+		header.right = newbie;
+	    } else {
+		Node currentNode = header.right;
+		while (currentNode.getGamer().getPoint() > newbie.getGamer().getPoint()) {
+		    currentNode = currentNode.right;
+		}
+		newbie.right = currentNode;
+		newbie.left = currentNode.left;
+		currentNode.left.right = newbie;
+		currentNode.left = newbie;
+	    }
+	}
 	size++;
     }
 
@@ -142,7 +171,7 @@ public class DoubleLinkedList {
      * @param data
      */
     public void addFirst(Gamer data) {
-	addBetween(data, header.getRight(), header);
+	addBetween(data, trailer, header);
     }
 
     /**
