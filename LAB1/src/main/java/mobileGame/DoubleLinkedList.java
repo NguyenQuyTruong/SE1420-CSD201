@@ -116,7 +116,7 @@ public class DoubleLinkedList {
 		newbie.left = header;
 		header.right = newbie;
 	    }
-	    //normail case, go through the list and compare every node till get right position
+	    //normail case, go through the list and compare every node until get right position
 	    else {
 		Node currentNode = header.right;
 		while (currentNode.getGamer().getPoint() > newbie.getGamer().getPoint()) {
