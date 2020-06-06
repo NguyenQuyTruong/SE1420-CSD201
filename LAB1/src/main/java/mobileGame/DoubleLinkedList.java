@@ -86,12 +86,12 @@ public class DoubleLinkedList {
      * this method use to add element to the list in between given node
      *
      * @param data
-     * @param left
-     * @param right
+     * @param leftNode
+     * @param rightNode
      */
-    private void addBetween(Gamer data, Node right, Node left) {
+    private void addBetween(Gamer data, Node rightNode, Node leftNode) {
 	//create new node to add
-	Node newbie = new Node(data, right, left);
+	Node newbie = new Node(data, rightNode, leftNode);
 	int point = data.getPoint();
 	//if list is empty
 	if (isEmpty()) {
@@ -175,17 +175,8 @@ public class DoubleLinkedList {
      *
      * @param data
      */
-    public void addFirst(Gamer data) {
+    public void add(Gamer data) {
 	addBetween(data, trailer, header);
-    }
-
-    /**
-     * add Gamer to the last of the list
-     *
-     * @param data
-     */
-    public void addLast(Gamer data) {
-	addBetween(data, trailer, trailer.getLeft());
     }
 
     /**
