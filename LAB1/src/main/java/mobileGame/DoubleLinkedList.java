@@ -181,9 +181,8 @@ public class DoubleLinkedList {
     /**
      * this method will print all gamer in the list by go through the list
      *
-     * @param list
      */
-    public void printList(DoubleLinkedList list) {
+    public void printList() {
 	//begin in the first node after header
 	Node currentNode = header.getRight();
 	//this loop will scan every node and it will stop until meet the trailer
@@ -224,7 +223,7 @@ public class DoubleLinkedList {
 	}
 	return null;
     }
-    
+
     /**
      * this method will delete the node of the Gamer have the input email
      * @param email
