@@ -5,6 +5,8 @@
  */
 package mobileGame;
 
+import java.util.Scanner;
+
 /**
  *
  * @author nhoxr
@@ -221,5 +223,14 @@ public class DoubleLinkedList {
 	    }
 	}
 	return null;
+    }
+    
+    /**
+     * this method will delete the node of the Gamer have the input email
+     * @param email
+     */
+    public void removeNode(String email) {
+	Node delNode = searchGamerToDelete(email);
+	remove(delNode);
     }
 }
