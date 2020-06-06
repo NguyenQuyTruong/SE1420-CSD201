@@ -170,8 +170,13 @@ public class DoubleLinkedList<Gamer> {
 	}
     }
 
+    /**
+     * this method will create a node to use in queue
+     * @param data of Gamer(email, point)
+     * @return Node
+     */
     public Node createNode(Gamer data) {
-	Node currentNode = new Node(data, trailer, header);
+	Node currentNode = new Node(data);
 	return currentNode;
     }
 }
