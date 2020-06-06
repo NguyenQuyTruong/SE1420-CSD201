@@ -86,13 +86,13 @@ public class DoubleLinkedList<Gamer> {
     /**
      * this method use to add element to the list in between given node
      *
-     * @param gamer
+     * @param data
      * @param left
      * @param right
      */
-    private void addBetween(Gamer gamer, Node<Gamer> right, Node<Gamer> left) {
+    private void addBetween(Gamer data, Node<Gamer> right, Node<Gamer> left) {
 	//create new node to add
-	Node<Gamer> newbie = new Node<>(gamer, right, left);
+	Node<Gamer> newbie = new Node<>(data, right, left);
 	left.setRight(newbie);
 	right.setLeft(newbie);
 	size++;
