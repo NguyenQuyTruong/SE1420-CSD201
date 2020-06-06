@@ -8,7 +8,6 @@ package Lab1_1;
 /**
  *
  * @author minhv
- * @param <User>
  */
 public class DoublyLinkedList {
 
@@ -127,7 +126,7 @@ public class DoublyLinkedList {
      * @param userNode
      * @return data user of node have been removed
      */
-    public User remove(Node userNode) {
+    private User remove(Node userNode) {
 	Node nextNode = userNode.getNext(); //get next Node of Node inputted
 	Node prevNode = userNode.getPrev(); //get prev Node of Node inputted
 	nextNode.setPrev(prevNode); //set prev of next Node is prev Node has getted
@@ -197,20 +196,21 @@ public class DoublyLinkedList {
      * Add node between 2 node Use for add an element in priority queue
      *
      * @param data
-     * @param nodePrev
+     * @param nodeNext
      */
-    public void addBetweenNode(User data, Node nodePrev) {
-	Node nextNode = nodePrev.getNext();
+    public void addBetweenNode(User data, Node nodeNext) {
+	Node prevNode = nodeNext.getPrev();
 
-	Node newNode = new Node(data, nextNode, nodePrev);
-	nextNode.setPrev(newNode);
-	nodePrev.setNext(newNode);
+	Node newNode = new Node(data, nodeNext, prevNode);
+	nodeNext.setPrev(newNode);
+	prevNode.setNext(newNode);
 	sizeList++;
     }
 
     /**
      * Function print for testing
-     * @param list 
+     *
+     * @param list
      */
     public void printlist(DoublyLinkedList list) {
 	Node node = header.getNext();
@@ -220,13 +220,17 @@ public class DoublyLinkedList {
 	    node = node.next;
 	}
     }
-    
+
     public Node searchNode(int point) {
 	Node nodeNext = header.getNext();
-	
-	if (nodeNext.getData().getPoint() == point) {
-	    return nodeNext;
-	}
+
+	do {
+	    if (nodeNext.getData().getPoint() > point) {
+		return nodeNext;
+	    } else {
+		nodeNext = nodeNext.getNext();
+	    }
+	} while (nodeNext != null);
 	return null;
     }
 }
