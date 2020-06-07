@@ -5,6 +5,8 @@
  */
 package lab;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import lab.DoubleLinkedList.Node;
 
 /**
@@ -101,5 +103,16 @@ public class PriorityQueue {
             n.prev.next = n.next;
             n = null;
         }
+    }
+    public void Writefile(String path) throws IOException{
+        FileWriter writer = new FileWriter(path);
+        Node n = dll.head.prev;
+       while(n != dll.tail){
+           String data = String.format("%s,%ld\n",n.getEmail(),n.getPoint());
+           writer.append(data);
+           n = n.prev;
+       }
+       writer.flush();
+       writer.close();
     }
 }
