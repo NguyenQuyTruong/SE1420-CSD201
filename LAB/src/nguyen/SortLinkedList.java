@@ -98,10 +98,17 @@ public class SortLinkedList {
         } 
     }
      public void RemoveMaxPointPlayer(){
-         //remove truong hop nguoi cao diem nhat Game
+                      //remove truong hop nguoi cao diem nhat Game
          int maxpoint = tail.getPoint();
          while (tail.getPoint()==maxpoint) {
              Remove(tail);
+         }
+     }
+     public void SearchMaxpointPlayer(){
+                      //Search nguoi co diem cao nhat Game
+         int Maxpoint = tail.getPoint();
+         while(tail.getPoint()==Maxpoint){
+             System.out.println(tail);
          }
      }
 }
