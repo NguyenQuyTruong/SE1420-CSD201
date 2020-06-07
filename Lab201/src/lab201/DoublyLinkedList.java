@@ -39,6 +39,10 @@ public class DoublyLinkedList {
         public void setNext(Node next){
             this.next=next;
         }
+        public void setPre(Node prev){
+            this.prev=prev;
+        }
+        
 
     }
 }
