@@ -99,16 +99,20 @@ public class SortLinkedList {
     }
      public void RemoveMaxPointPlayer(){
                       //remove truong hop nguoi cao diem nhat Game
-         int maxpoint = tail.getPoint();
-         while (tail.getPoint()==maxpoint) {
-             Remove(tail);
-         }
+//         int maxpoint = tail.getPoint();
+//         while (tail.getPoint()==maxpoint) {
+//             Remove(tail);
+//         }
+         //do yeu cau de toan deo phuc tap 0(1) >> ko vòng lặp
+         Remove(tail);
      }
      public void SearchMaxpointPlayer(){
                       //Search nguoi co diem cao nhat Game
-         int Maxpoint = tail.getPoint();
-         while(tail.getPoint()==Maxpoint){
-             System.out.println(tail);
-         }
+//         int Maxpoint = tail.getPoint();
+//         while(tail.getPoint()==Maxpoint){
+//             System.out.println(tail);
+//         }
+         //do yeu cau de toan deo phuc tap 0(1) >> ko vòng lặp
+         System.out.println(tail);
      }
 }
