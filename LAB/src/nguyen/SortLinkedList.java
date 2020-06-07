@@ -38,19 +38,7 @@ public class SortLinkedList {
         }
         return Result;
     }
-//    public Player UpdatePlayer(String Email, int newpoint){
-//        Player Result = PlayerSearchEmail(Email);
-//        if(Result!=null){
-//            remove(Result);
-//            Result.setPoint(newpoint);
-//            add(Email,newpoint);
-//            return Result;
-//        }
-//        else {
-//            return null;
-//        }
-//        
-//    }
+
     public Player add(String Email, int Point) {
         Player newPlayer = new Player(Email, Point);
         Player after = ceiling(Point);
@@ -95,5 +83,18 @@ public class SortLinkedList {
             After.beforePlayer = Before;
         }
         return Remref;
+    }
+     public Player UpdatePlayer(String Email, int newpoint){
+        Player Result = PlayerSearchEmail(Email);
+        if(Result!=null){
+            Remove(Result);
+            Result.setPoint(newpoint);
+            add(Email,newpoint);
+            return Result;
+        }       //Remove roi Add lai vi danh sach nay co sap xep,
+                //ko xoa di thi them lai theo thu tu 
+        else {
+            return null;
+        } 
     }
 }
