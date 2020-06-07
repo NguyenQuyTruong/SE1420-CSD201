@@ -62,9 +62,20 @@ public class PriorityQueue {
             System.out.println("Don't exit!");
         }
         else{
-            dnode.prev.next = dnode.prev;
-            dnode.next.prev = dnode.next;
+            dnode.next.prev = dnode.prev;
+            dnode.prev.next = dnode.next;
             dnode = null;
+        }
+    }
+    public void Update(String uEmail, long Newpoint){
+        Node uNode = dll.Push(uEmail, Newpoint);
+        if(uNode != dll.tail){
+            System.out.println("Don't exit!");
+        }
+        else{
+            uNode.next.prev = uNode.prev;
+            uNode.prev.next = uNode.next;
+            uNode = null;
         }
     }
 }
