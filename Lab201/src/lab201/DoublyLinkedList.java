@@ -11,9 +11,14 @@ package lab201;
  */
 public class DoublyLinkedList {
     /*
-    
-       create node base DoublyLinkedList 
-       using modifier private to hide detail user info
+     create node base DoublyLinkedList 
+     using modifier private to hide detail user info
         
-    */
+     */
+
+    private class Node {
+        User data;
+        Node next;
+        Node prev;
+    }
 }
