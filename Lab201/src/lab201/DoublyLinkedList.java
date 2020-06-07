@@ -55,6 +55,15 @@ public class DoublyLinkedList {
         public Node getPrev() {
             return prev;
         }
+    }
+    private Node header;
+    private Node trailer;
 
+    //create Constructor 
+
+    public DoublyLinkedList() {
+        header=new Node(null, header, header);
+        trailer=new Node(null, header, header);
+        
     }
 }
