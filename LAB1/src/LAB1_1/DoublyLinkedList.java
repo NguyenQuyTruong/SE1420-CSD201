@@ -180,6 +180,8 @@ public class DoublyLinkedList {
      * @param data
      */
     public void addFirst(User data) {
+	//call function addForFirstLast and past the reference of the header 
+	//to set up
 	addForFirstLast(data, header.getNext(), header);
     }
 
@@ -189,6 +191,8 @@ public class DoublyLinkedList {
      * @param data
      */
     public void addLast(User data) {
+	//call function addForFirstLast and past the reference of the trailer 
+	//to set up
 	addForFirstLast(data, trailer, trailer.getPrev());
     }
 
@@ -209,21 +213,27 @@ public class DoublyLinkedList {
 	    sizeList++;	//increase size of list
 	}
     }
-    
+
     /**
      * Add node use for priority queue
-     * @param data 
+     *
+     * @param data
      */
     public void add(User data) {
-	int point = data.getPoint();
-	if (isEmpty()) {
+	int point = data.getPoint();	//get point of data has been inpputed
+	if (isEmpty()) {		//check if list empty add first
 	    addFirst(data);
 	} else {
+	    //if user inputted have score less than the user next of header
+	    //then add first
 	    if (point < header.getNext().getData().getPoint()) {
 		addFirst(data);
 	    } else if (point > trailer.getPrev().getData().getPoint()) {
+		//else user inputted have score highest than the user prev of traler
+		//then add last
 		addLast(data);
 	    } else {
+		//the last didn;t know the postition then compare score and add it
 		Node nodeFounded = searchNode(point);
 		addBetweenNode(data, nodeFounded);
 	    }
@@ -240,7 +250,7 @@ public class DoublyLinkedList {
 	while (node != trailer) {
 	    String email = node.getData().getEmail();
 	    int point = node.getData().getPoint();
-	    System.out.println("Email: " + email  + ", Point: " + point);
+	    System.out.println("Email: " + email + ", Point: " + point);
 	    node = node.next;
 	}
     }
@@ -262,7 +272,27 @@ public class DoublyLinkedList {
 		// continue to the next node to find the user have higher score
 		nodeNext = nodeNext.getNext();
 	    }
-	} while (nodeNext != null);
+	} while (nodeNext != trailer);
 	return null;		    //this node is highest score
+    }
+
+    /**
+     * Find the node have user matches with email inputted. Else return null
+     *
+     * @param email
+     * @return a node
+     */
+    public Node searchUserByEmail(String email) {
+	Node nodeNext = header.getNext(); //get node after header
+
+	do {
+	    //compare email if found return
+	    if (nodeNext.getData().getEmail().equalsIgnoreCase(email)) {
+		return nodeNext;
+	    } else {	//countinue to search
+		nodeNext = nodeNext.getNext();
+	    }
+	} while (nodeNext != trailer);
+	return null;
     }
 }
