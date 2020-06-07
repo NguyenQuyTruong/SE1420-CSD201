@@ -15,9 +15,12 @@ public class SortLinkedList {
     public SortLinkedList(){
         head=tail=null;
     }
+    public boolean isEmpty(){
+        return head==null;
+    }
    
     public Player ceiling(int pointlling){
-        Player t = tail;
+        Player t = head;
         while(t!=null && t.getPoint()>pointlling) 
         {            
             t=t.getNextPlayer();
