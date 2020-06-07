@@ -26,4 +26,17 @@ public class Exercise1 {
 	    System.out.println("Point must be integer!!");
 	}
     }
+
+    /**
+     * this method use to Find point of Gamer depend on email input
+     * @param email
+     */
+    public void searchGamer(String email) {
+	Gamer data = queue.searchGamer(email);
+	if (data == null) {
+	    System.out.println("Not found!!");
+	} else {
+	    System.out.println("Email: " + email + ", Point: " + data.getPoint());
+	}
+    }
 }
