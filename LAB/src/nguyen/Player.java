@@ -18,11 +18,10 @@ public class Player {
     public Player() {
     }
 // constructor co tham so 
-    public Player(String Email, int Point, Player nextPlayer, Player beforePlayer) {
+    public Player(String Email, int Point) {
         this.Email = Email;
         this.Point = Point;
-        this.nextPlayer = nextPlayer;
-        this.beforePlayer = beforePlayer;
+        nextPlayer = beforePlayer = null;
     }
 // insert Get&&Set
     public String getEmail() {
