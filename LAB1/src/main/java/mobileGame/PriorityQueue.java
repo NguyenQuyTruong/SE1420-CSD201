@@ -77,19 +77,6 @@ public class PriorityQueue {
 	}
     }
 
-    /**
-     * this method use to input Mail and return Gamer.
-     *
-     * @return Gamer
-     */
-    public Gamer inputMailForSearchGamer() {
-	Scanner sc = new Scanner(System.in);
-	System.out.print("Enter email: ");
-	String email = sc.nextLine();
-	Gamer data = list.searchGamerByEmail(email);
-	return data;
-    }
-
     //write file method
     public void writeFile(String fileName) {
 	list.writeToCSVfile(fileName);
