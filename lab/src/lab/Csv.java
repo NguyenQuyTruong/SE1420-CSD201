@@ -11,12 +11,15 @@ package lab;
  */
 import java.io.*;
 public class Csv {
-    public static void ReadCsv(String path,PriorityQueue queue){
+    public static void ReadCsv(String path,PriorityQueue queue) throws IOException{
         String line ="";
         try{
             BufferedReader br = new BufferedReader(new FileReader(path));
-            line = br.readLine()
-            while(line = br.readLine() && line!=null){
+ 
+            while((line = br.readLine())!=null){
+                String[] data = line.split(",");
+                String email = data[0];
+                Long point = data[1];
                 
             }
         }catch(FileNotFoundException e){
