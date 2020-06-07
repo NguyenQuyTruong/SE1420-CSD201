@@ -27,4 +27,13 @@ public class SortLinkedList {
         }
         return t;
     }
+    public Player PlayerSearchEmail(String Email){
+        Player Result;
+        for(Result=head; Result!=null; Result=Result.nextPlayer){
+            if(Result.getEmail().equals(Email)){
+                return Result;
+            }
+        }
+        return Result;
+    }
 }
