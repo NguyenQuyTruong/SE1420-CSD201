@@ -97,4 +97,11 @@ public class SortLinkedList {
             return null;
         } 
     }
+     public void RemoveMaxPointPlayer(){
+         //remove truong hop nguoi cao diem nhat Game
+         int maxpoint = tail.getPoint();
+         while (tail.getPoint()==maxpoint) {
+             Remove(tail);
+         }
+     }
 }
