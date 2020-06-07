@@ -24,8 +24,12 @@ public class Csv {
                 queue.InSert(email, point);
                 
             }
+            br.close();
         }catch(FileNotFoundException e){
             System.out.println("File don.t exit!");
         }
+    }
+    public static void WriteToFile(PriorityQueue queue, String path) throws IOException{
+        queue.Writefile(path);
     }
 }
