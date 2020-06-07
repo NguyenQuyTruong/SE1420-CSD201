@@ -5,6 +5,11 @@
  */
 package lab;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 /**
  *
  * @author Khả Thi
@@ -14,9 +19,25 @@ public class Lab {
     /**
      * @param args the command line arguments
      */
+           PriorityQueue queue;
+           String filename;
+    public void Save() throws IOException {
+		try {
+			FileOutputStream FOS = new FileOutputStream(filename);
+			ObjectOutputStream OS = new ObjectOutputStream(FOS);
+			
+			OS.writeObject(queue);
+			
+			OS.close();
+			FOS.close();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("hello");
+ 
+        
     }
     
 }
