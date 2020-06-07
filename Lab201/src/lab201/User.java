@@ -35,4 +35,8 @@ public class User {
         return mark;
     }
 
+    public String toString() {
+        return email + " " + mark;
+    }
+
 }
