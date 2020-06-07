@@ -69,7 +69,7 @@ public class Exercise1 {
 	    System.out.println("Point must be Integer!!");
 	}
     }
-    
+
     /**
      * this method use to get top 1 Gamer
      */
@@ -77,5 +77,13 @@ public class Exercise1 {
 	Gamer data = queue.getTop();
 	System.out.println("Top 1 Gamer:");
 	System.out.println("Email: " + data.getEmail() + ", Point: " + data.getPoint());
+    }
+    
+    /**
+     * this method use to delete top 1 Gamer
+     */
+    public void deleteTopGamer() {
+	queue.deleteTop();
+	System.out.println("Remove top successful!!");
     }
 }
