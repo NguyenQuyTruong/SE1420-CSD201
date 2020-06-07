@@ -11,12 +11,12 @@
 public class MyQueue {
 
     private class Node {
+
         private Entry user;
         private Node next;
 
-        public Node(Entry user, Node next) {
-            this.user = user;
-            this.next = next;
+        public Node(Entry userInfo) {
+            this.user = userInfo;
         }
 
         public Node() {
@@ -37,9 +37,25 @@ public class MyQueue {
         public void setNext(Node next) {
             this.next = next;
         }
-        
+
+    }
+    private Node head = null;
+    private Node tail = null;
+    
+    public void enqueue(){
         
     }
     
+    public void dequeue(){
+        
+    }
+    
+    public void front(){
+        
+    }
+    
+    public void isEmpty(){
+        
+    }
     
 }
