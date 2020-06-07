@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         SortLinkedList list = new SortLinkedList();
-        list.add("tran van a", 5);
+        list.add("Nguyen Khoi Nguyen", 5);
         list.add("thit ga", 10);
         list.add("thit heo", 99);
         list.add("cute", 1111);
@@ -33,8 +33,8 @@ public class Main {
         list.printsortList();
         System.out.println("==Search Bach Ho==");
         System.out.println(list.SearchPlayerEmail("bach ho"));
-        System.out.println("==Updata tran van a >>8888 point==");
-        list.UpdatePlayer("tran van a", 8888);
+        System.out.println("==Updata Nguyen Khoi Nguyen >>8888 point==");
+        list.UpdatePlayer("Nguyen Khoi Nguyen", 8888);
         list.printsortList();
     }
     
