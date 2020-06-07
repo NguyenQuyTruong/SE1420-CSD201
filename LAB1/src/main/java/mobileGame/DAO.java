@@ -36,7 +36,7 @@ public class DAO {
 		queue.push(data);
 	    }
 	} catch (IOException e) {
-	    e.printStackTrace();
+	    System.out.println("File not exist!!");
 	} finally {
 	    try {
 		if (fr != null) {
