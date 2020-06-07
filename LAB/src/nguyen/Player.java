@@ -56,7 +56,8 @@ public class Player {
     public void setBeforePlayer(Player beforePlayer) {
         this.beforePlayer = beforePlayer;
     }
+    @Override
    public String toString(){
-        return String.format("%-15s%-10d",Email, email);
+        return String.format("%-15s%-10d",Email, Point);
     }
 }
