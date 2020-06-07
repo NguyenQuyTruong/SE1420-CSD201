@@ -91,15 +91,15 @@ public class PriorityQueue {
         System.out.println("Top:"+dll.head.prev.getEmail()+" "+dll.head.prev.getPoint()+"P");
     }
 }
-    public void DeleteT(String demail){
-        Node dnode = Find(demail);
-        if(dnode != dll.tail){
-            System.out.println("Don't exit!");
+    public void DeleteT(){
+        if(dll.IsEmpty()){
+            System.out.println("List empty!");
         }
         else{
-            dnode.next.prev = dnode.prev;
-            dnode.prev.next = dnode.next;
-            dnode = null;
+            Node n = dll.head.prev;
+            n.next.prev = n.prev;
+            n.prev.next = n.next;
+            n = null;
         }
     }
 }
