@@ -53,11 +53,12 @@ public class FileDAO {
 	}
     }
 
+    /**
+     * this method receive the queue and write to CSV file
+     * @param queue
+     * @param fileName
+     */
     public static void writeFile(PriorityQueue queue, String fileName) {
-	PrintWriter pw = null;
-	try {
-
-	} catch (Exception e) {
-	}
+	queue.writeFile(fileName);
     }
 }
