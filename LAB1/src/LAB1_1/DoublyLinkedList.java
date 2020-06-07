@@ -210,6 +210,10 @@ public class DoublyLinkedList {
 	}
     }
     
+    /**
+     * Add node use for priority queue
+     * @param data 
+     */
     public void add(User data) {
 	int point = data.getPoint();
 	if (isEmpty()) {
@@ -219,6 +223,9 @@ public class DoublyLinkedList {
 		addFirst(data);
 	    } else if (point > trailer.getPrev().getData().getPoint()) {
 		addLast(data);
+	    } else {
+		Node nodeFounded = searchNode(point);
+		addBetweenNode(data, nodeFounded);
 	    }
 	}
     }
