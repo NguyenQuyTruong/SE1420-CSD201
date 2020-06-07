@@ -10,7 +10,15 @@ package lab;
  * @author Khả Thi
  */
 public class DoubleLinkedList {
-    Node head,tail;
+    public Node head,tail;
+
+    public DoubleLinkedList(Node head, Node tail) {
+        head = Push("", 1);
+        tail = Push("", 1);
+        head.prev = tail;
+        tail.next = head;
+    }
+
     class Node{
         int data;
         Node prev = null;
@@ -38,19 +46,14 @@ public class DoubleLinkedList {
         public void setPoint(long point) {
             this.point = point;
         }
-        
-        Node(int d) {
-            data = d;
-        }
     }
-    public void push(int data){
-        Node newNode = new Node(data);
-        newNode.next = head;
-        newNode.prev = null;
-        if(head == null){
-            head.prev = newNode;
-        }
-        head = newNode;
+    public Node Push(String email, long point){
+        Node newNode = new Node(email, point);
+        return newNode;
     }
+    public boolean IsEmpty(){
+        return (head.prev == tail);
+    }
+
 }
 
