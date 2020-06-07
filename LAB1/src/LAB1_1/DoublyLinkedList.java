@@ -237,9 +237,10 @@ public class DoublyLinkedList {
      */
     public void printlist(DoublyLinkedList list) {
 	Node node = header.getNext();
-	System.out.println("Doubly Linked List: ");
 	while (node != trailer) {
-	    System.out.println(node.getData());
+	    String email = node.getData().getEmail();
+	    int point = node.getData().getPoint();
+	    System.out.println("Email: " + email  + ", Point: " + point);
 	    node = node.next;
 	}
     }
