@@ -15,4 +15,13 @@ public class SortLinkedList {
     public SortLinkedList(){
         head=tail=null;
     }
+   
+    public Player ceiling(int pointlling){
+        Player t = tail;
+        while(t!=null && t.getPoint()>pointlling) 
+        {            
+            t=t.getNextPlayer();
+        }
+        return t;
+    }
 }
