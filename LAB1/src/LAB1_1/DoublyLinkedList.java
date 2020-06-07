@@ -231,12 +231,14 @@ public class DoublyLinkedList {
      * @return a node
      */
     public Node searchNode(int point) {
-	Node nodeNext = header.getNext();
+	Node nodeNext = header.getNext(); //get node after header
 
 	do {
+	    //find the user have score higher than score inputted
 	    if (nodeNext.getData().getPoint() > point) {
 		return nodeNext;
 	    } else {
+		// continue to the next node to find the user have higher score
 		nodeNext = nodeNext.getNext();
 	    }
 	} while (nodeNext != null);
