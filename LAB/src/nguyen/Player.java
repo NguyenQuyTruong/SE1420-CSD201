@@ -11,14 +11,14 @@ package nguyen;
  */
 public class Player {
     private String Email;
-    private String Point;
+    private int Point;
     Player nextPlayer;
     Player beforePlayer;
 //tao contruccstor khong tham so
     public Player() {
     }
 // constructor co tham so 
-    public Player(String Email, String Point, Player nextPlayer, Player beforePlayer) {
+    public Player(String Email, int Point, Player nextPlayer, Player beforePlayer) {
         this.Email = Email;
         this.Point = Point;
         this.nextPlayer = nextPlayer;
@@ -33,11 +33,11 @@ public class Player {
         this.Email = Email;
     }
 
-    public String getPoint() {
+    public int getPoint() {
         return Point;
     }
 
-    public void setPoint(String Point) {
+    public void setPoint(int Point) {
         this.Point = Point;
     }
 
