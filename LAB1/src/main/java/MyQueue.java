@@ -46,20 +46,27 @@ public class MyQueue {
         Node newNode = new Node(user);
         if(isEmpty()){
             head = newNode;
+        }
+        if(tail == null){
             tail = newNode;
-        }else{
-            head.next = newNode;
-            tail = newNode;
+        }
+        else{
+            tail.next = newNode;
         }
     }
     
     public void dequeue(){
-        
+        Entry firstUser = head.user;
+        head = head.next;
+        if(head == null){
+            tail = null;
+        }
     }
     
-    public void front(){
-        
+    public Entry front(){
+        return head.user;
     }
+    
     
     public boolean isEmpty(){
         return head == null;
