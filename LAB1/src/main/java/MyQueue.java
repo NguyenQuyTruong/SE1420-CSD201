@@ -47,11 +47,10 @@ public class MyQueue {
         if(isEmpty()){
             head = newNode;
         }
-        if(tail == null){
-            tail = newNode;
-        }
-        else{
-            tail.next = newNode;
+        if(tail != null && (user.getPoint() > head.user.getPoint())){
+            tail = head;
+            head = newNode;
+            
         }
     }
     
