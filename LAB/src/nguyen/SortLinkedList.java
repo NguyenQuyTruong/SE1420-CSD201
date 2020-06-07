@@ -75,8 +75,13 @@ public class SortLinkedList {
             before.nextPlayer = newPlayer;
         }
         return newPlayer;
-        
-    
-    
 }
+    public Player Remove(Player Remref){
+        if(Remref == head && head ==tail)
+        {
+            head=tail=null;
+            return Remref;
+        }
+        return Remref;
+    }
 }
