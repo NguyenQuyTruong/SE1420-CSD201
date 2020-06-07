@@ -71,4 +71,7 @@ public class DoublyLinkedList {
         font.next=newNode;
         back.prev=newNode;
     }
+    public void addFirst(User value){
+        insert(value, header, header.next);
+    }
 }
