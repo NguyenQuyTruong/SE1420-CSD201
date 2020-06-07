@@ -15,6 +15,7 @@ public class Exercise1 {
 
     /**
      * this method use to add new Gamer to queue
+     *
      * @param email
      * @param point
      */
@@ -29,6 +30,7 @@ public class Exercise1 {
 
     /**
      * this method use to Find point of Gamer depend on email input
+     *
      * @param email
      */
     public void searchGamer(String email) {
@@ -37,6 +39,20 @@ public class Exercise1 {
 	    System.out.println("Not found!!");
 	} else {
 	    System.out.println("Email: " + email + ", Point: " + data.getPoint());
+	}
+    }
+
+    /**
+     * this method use to Delete Gamer depend on email input
+     *
+     * @param email
+     */
+    public void deleteGame(String email) {
+	Gamer data = queue.deleteGamer(email);
+	if (data == null) {
+	    System.out.println("Not found!!");
+	} else {
+	    System.out.println("Remove " + email + " successful!");
 	}
     }
 }
