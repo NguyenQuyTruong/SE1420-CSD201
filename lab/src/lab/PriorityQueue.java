@@ -58,11 +58,13 @@ public class PriorityQueue {
     }
     public void Delete(String demail){
         Node dnode = Find(demail);
-        if(dnode == dll.tail){
+        if(dnode != dll.tail){
             System.out.println("Don't exit!");
         }
         else{
-            
+            dnode.prev.next = dnode.prev;
+            dnode.next.prev = dnode.next;
+            dnode = null;
         }
     }
 }
