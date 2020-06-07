@@ -31,6 +31,11 @@ public class DoublyLinkedList {
             this.next = next;
             this.prev = prev;
         }
+        //functions getter setter for data next prev
+        
+        public void setUser(User data){
+            this.data=data;
+        }
 
     }
 }
