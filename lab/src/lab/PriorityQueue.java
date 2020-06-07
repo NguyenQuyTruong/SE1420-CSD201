@@ -31,7 +31,10 @@ public class PriorityQueue {
 				dll.tail.next = new_node;
 			}
 			else if (new_node.getPoint() > dll.head.prev.getPoint()) {
-
+                                dll.head.prev.next = new_node;
+				new_node.prev = dll.head.prev;
+				new_node.next = dll.head;
+				dll.head.prev = new_node;
 			}
 			else {
 				//normal case, looping though
