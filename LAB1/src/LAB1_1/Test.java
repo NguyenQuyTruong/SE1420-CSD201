@@ -30,7 +30,7 @@ public class Test {
 	list.addLast(user6);
 	list.addLast(user9);
 	list.add(user8);
-	list.remove(list.searchUserByEmail("123"));
+//	list.remove(list.searchUserByEmail("123"));
 
 	list.printlist(list);
     }
