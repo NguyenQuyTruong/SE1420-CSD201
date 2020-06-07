@@ -18,7 +18,9 @@ public class DoubleLinkedList {
         head.prev = tail;
         tail.next = head;
     }
-
+    public DoubleLinkedList(){
+        
+    }
     class Node{
         int data;
         Node prev = null;
