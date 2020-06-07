@@ -115,4 +115,11 @@ public class SortLinkedList {
          //do yeu cau de toan deo phuc tap 0(1) >> ko vòng lặp
          System.out.println(tail);
      }
+     public void printsortList(){
+         Player currentPlayer = head;
+         do {             
+             System.out.println(currentPlayer);
+             currentPlayer = currentPlayer.nextPlayer;
+         } while (currentPlayer!=null);
+     }
 }
