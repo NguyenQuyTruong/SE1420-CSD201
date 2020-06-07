@@ -126,7 +126,7 @@ public class DoublyLinkedList {
      * @param userNode
      * @return data user of node have been removed
      */
-    public User remove(Node userNode) {
+    private User remove(Node userNode) {
 	Node nextNode = userNode.getNext(); //get next Node of Node inputted
 	Node prevNode = userNode.getPrev(); //get prev Node of Node inputted
 	nextNode.setPrev(prevNode); //set prev of next Node is prev Node has getted
@@ -157,6 +157,25 @@ public class DoublyLinkedList {
 	    return null;
 	}
 	return remove(trailer.getPrev());
+    }
+
+    /**
+     * Delete an user by email use for priority queue
+     *
+     * @param email
+     * @throws java.lang.Exception
+     */
+    public void deleteUserNode(String email) throws Exception {
+	if (isEmpty()) {
+	    throw new Exception("The list is empty please add new user to use this feature");
+	} else {
+	    Node userNode = searchUserByEmail(email);
+	    if (userNode == null) {
+		throw new Exception("User doesn't exit");
+	    } else {
+		remove(userNode);
+	    }
+	}
     }
 
     /**
@@ -256,6 +275,40 @@ public class DoublyLinkedList {
     }
 
     /**
+     * Display point use for function search in priority queue
+     *
+     * @param email
+     * @throws Exception check for list is empty or not
+     */
+    public void displayPointUserEmail(String email) throws Exception {
+	Node userFounded = searchUserByEmail(email);
+	//get point of user founded
+	int point = userFounded.getData().getPoint();
+	//display it
+	System.out.println("Email: " + email + ", Point: " + point);
+    }
+
+    /**
+     * Display top point user for function get top of priority queue
+     *
+     * @throws Exception check for list is empty or not
+     */
+    public void displayPointTopUser() throws Exception {
+	//if list is empty getLast() function return null so use it for check is empty or not
+	if (getLast() == null) {
+	    throw new Exception("The list is empty please add new user to use this feature");
+	} else {
+	    //get user has highest score
+	    User userTopPoint = getLast();
+	    //get email and point
+	    String email = userTopPoint.getEmail();
+	    int point = userTopPoint.getPoint();
+	    //display it
+	    System.out.println("Email: " + email + ", Point: " + point);
+	}
+    }
+
+    /**
      * Find the node for insert in priority queue which the node is higher
      *
      * @param point
@@ -278,21 +331,49 @@ public class DoublyLinkedList {
 
     /**
      * Find the node have user matches with email inputted. Else return null
-     *
      * @param email
-     * @return a node
+     * @return
+     * @throws Exception check for list is empty or not
      */
-    public Node searchUserByEmail(String email) {
-	Node nodeNext = header.getNext(); //get node after header
+    public Node searchUserByEmail(String email) throws Exception {
+	if (isEmpty()) {
+	    throw new Exception("The list is empty. Please add new user to use this feature");
+	} else {
+	    Node nodeNext = header.getNext(); //get node after header
 
-	do {
-	    //compare email if found return
-	    if (nodeNext.getData().getEmail().equalsIgnoreCase(email)) {
-		return nodeNext;
-	    } else {	//countinue to search
-		nodeNext = nodeNext.getNext();
+	    do {
+		//compare email if found return
+		if (nodeNext.getData().getEmail().equalsIgnoreCase(email)) {
+		    return nodeNext;
+		} else {	//countinue to search
+		    nodeNext = nodeNext.getNext();
+		}
+	    } while (nodeNext != trailer);
+	    return null;	//no user founded
+	}
+    }
+
+    /**
+     * Update an user founded by email use for update funnction in priority queue
+     * 
+     * @param email
+     * @param point
+     * @throws Exception check for list is empty or not and user not found
+     */
+    public void updateUserNode(String email, int point) throws Exception {
+	//check for list is empty or not
+	if (isEmpty()) {
+	    throw new Exception("The list is empty please add new user to use this feature");
+	} else {
+	    Node userNode = searchUserByEmail(email);
+	    //check user is founded or not
+	    if (userNode == null) {
+		throw new Exception("User doesn't exist");
+	    } else {
+		//update email and point
+		userNode.getData().setEmail(email);
+		userNode.getData().setPoint(point);
 	    }
-	} while (nodeNext != trailer);
-	return null;	//no user founded
+	}
     }
 }
