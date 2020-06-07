@@ -13,12 +13,21 @@ public class DoubleLinkedList {
     Node head,tail;
     class Node{
         int data;
-        Node prev;
-        Node next;
+        Node prev = null;
+        Node next = null;
 
         Node(int d) {
             data = d;
         }
-        
+    }
+    public void push(int data){
+        Node newNode = new Node(data);
+        newNode.next = head;
+        newNode.prev = null;
+        if(head == null){
+            head.prev = newNode;
+        }
+        head = newNode;
     }
 }
+
