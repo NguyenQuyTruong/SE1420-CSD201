@@ -55,7 +55,7 @@ public class Exercise1 {
 	    System.out.println("Remove " + email + " successful!");
 	}
     }
-    
+
     /**
      * this method use to update point of Gamer depend on email input
      * @param email
@@ -63,7 +63,7 @@ public class Exercise1 {
      */
     public void updateGamer(String email, String point) {
 	try {
-	    int newPoint = Integer.parseInt(point);
+	    int newPoint = Integer.parseInt(point.trim());
 	    queue.updateGamer(email, newPoint);
 	} catch (NumberFormatException e) {
 	    System.out.println("Point must be Integer!!");
