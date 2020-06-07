@@ -44,16 +44,9 @@ public class PriorityQueue {
     /**
      * this method will delete Gamer depend on input email
      */
-    public void deleteGamer() {
-	Scanner sc = new Scanner(System.in);
-	System.out.print("Enter email: ");
-	String email = sc.nextLine();
+    public Gamer deleteGamer(String email) {
 	Gamer data = list.removeNode(email);
-	if (data == null) {
-	    System.out.println("Not found!!");
-	} else {
-	    System.out.println("Remove " + data.getEmail() + " successful!");
-	}
+	return data;
     }
 
     /**
@@ -70,25 +63,17 @@ public class PriorityQueue {
     /**
      * this method use to update Gamer by receive email input and let the user
      * edit point.
+     * @param email
+     * @param point
      */
-    public void updateGamer() {
-	Scanner sc = new Scanner(System.in);
-	Gamer data = inputMailForSearchGamer();
+    public void updateGamer(String email, int point) {
+	Gamer data = list.searchGamerByEmail(email);
 	if (data == null) {
 	    System.out.println("Not found!!");
 	} else {
-	    int point = 0;
-	    System.out.println("Email: " + data.getEmail());
-	    System.out.print("Point: ");
-	    try {
-		point = Integer.parseInt(sc.nextLine());
-		if (point < 0) {
-		    System.out.println("point must be positive!!");
-		}
-	    } catch (Exception e) {
-		System.out.println("Wrong format");
-	    }
 	    data.setPoint(point);
+	    System.out.println("Update point successfull");
+	    System.out.println("Email: " + email + ", New point: " + data.getPoint());
 	}
     }
 
