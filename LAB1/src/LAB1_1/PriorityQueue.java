@@ -9,8 +9,25 @@ package LAB1_1;
  *
  * @author minhv
  */
-public class PriorityQueue extends Lab1_1.DoublyLinkedList{
-    public void insert (){
+public class PriorityQueue extends Lab1_1.DoublyLinkedList {
+
+    public void insertUser(User data) {
+	this.add(data);
+    }
+
+    public void updateUser() {
+
+    }
+
+    public void deleteUser() {
+
+    }
+    
+    public void searchUser() {
 	
+    }
+
+    public void displayUser() {
+	printlist(this);
     }
 }
