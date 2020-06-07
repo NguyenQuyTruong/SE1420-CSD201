@@ -5,6 +5,8 @@
  */
 package mobileGame;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -87,6 +89,7 @@ public class DoubleLinkedList {
     /**
      * this method use to add element to the list in between given node and sort
      * them depend on their point
+     *
      * @param data
      * @param leftNode
      * @param rightNode
@@ -196,6 +199,7 @@ public class DoubleLinkedList {
      * this method will go through the list and check email of gamer if input
      * email equal email on the list, it will return that gamer have this email
      * if don't, return null
+     *
      * @param email
      * @return gamer
      */
@@ -212,6 +216,7 @@ public class DoubleLinkedList {
      * this method will go through the list and check email of gamer if input
      * email equal email on the list, it will return that node have this email
      * if don't, return null
+     *
      * @param email
      * @return Node
      */
@@ -226,6 +231,7 @@ public class DoubleLinkedList {
 
     /**
      * this method will delete the node of the Gamer have the input email
+     *
      * @param email
      * @return Gamer has been remove
      */
@@ -235,5 +241,31 @@ public class DoubleLinkedList {
 	    return remove(delNode);
 	}
 	return null;
+    }
+
+    /**
+     * this method will get the list and write all the Gamer info to CSV file
+     * @param fileName
+     */
+    public void writeToCSVfile(String fileName) {
+	FileWriter fr = null;
+//	Node nextNode = header.right;
+	try {
+	    fr = new FileWriter(fileName);
+	    for (Node n = header.right; n != trailer; n = n.right) {
+		String data = String.format("%s, %d\n", n.getGamer().getEmail(), n.getGamer().getPoint());
+		fr.append(data);
+	    }
+	} catch (IOException e) {
+	    System.out.println("File not exist!!");
+	} finally {
+	    try {
+		if (fr != null) {
+		    fr.close();
+		}
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    }
+	}
     }
 }
