@@ -24,12 +24,13 @@ public class Test {
 	User user9 = new User("342", 9);
 	User user10 = new User("546", 10);
 
-	list.addFirst(user1);
-	list.addFirst(user3);
 	list.addFirst(user5);
-	list.addLast(user9);
+	list.addFirst(user3);
+	list.addFirst(user1);
 	list.addLast(user6);
-	list.addBetweenNode(user7, list.searchNode(user7.getPoint()));
+	list.addLast(user9);
+	list.add(user8);
+	list.remove(list.searchUserByEmail("123"));
 
 	list.printlist(list);
     }
