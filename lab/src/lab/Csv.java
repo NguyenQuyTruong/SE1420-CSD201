@@ -19,7 +19,9 @@ public class Csv {
             while((line = br.readLine())!=null){
                 String[] data = line.split(",");
                 String email = data[0];
-                Long point = data[1];
+                String Spoint = data[1];
+                Long point = Long.parseLong(Spoint);
+                queue.InSert(email, point);
                 
             }
         }catch(FileNotFoundException e){
