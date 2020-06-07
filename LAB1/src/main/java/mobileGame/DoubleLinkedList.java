@@ -249,7 +249,6 @@ public class DoubleLinkedList {
      */
     public void writeToCSVfile(String fileName) {
 	FileWriter fr = null;
-//	Node nextNode = header.right;
 	try {
 	    fr = new FileWriter(fileName);
 	    for (Node n = header.right; n != trailer; n = n.right) {
