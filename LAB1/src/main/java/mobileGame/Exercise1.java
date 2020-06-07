@@ -5,6 +5,10 @@
  */
 package mobileGame;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author nhoxr
@@ -86,10 +90,10 @@ public class Exercise1 {
 	queue.deleteTop();
 	System.out.println("Remove top successful!!");
     }
-    
+
     /**
      * this method use to write all the queue to the file
-     * @param fileName 
+     * @param fileName
      */
     public void saveToFile(String fileName) {
 	try {
@@ -97,5 +101,28 @@ public class Exercise1 {
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
+    }
+    
+    public void readFromFile(String fileName) throws IOException {
+	queue = new PriorityQueue();
+	FileDAO.ReadFile(queue, fileName);
+    }
+    
+    public void printQueue() {
+	queue.printQueue();
+    }
+    
+    public static void main(String[] args) {
+	Exercise1 ex = new Exercise1();
+	try {
+	    ex.readFromFile("user.csv");
+	} catch (IOException ex1) {
+	    Logger.getLogger(Exercise1.class.getName()).log(Level.SEVERE, null, ex1);
+	}
+//	ex.printQueue();
+//	ex.updateGamer("roannvzhg@gmail.com", "a");
+//	ex.getTopGamer();
+//	ex.searchGamer("roannvzhg@gmail.com");
+	ex.saveToFile("newUser.csv");
     }
 }

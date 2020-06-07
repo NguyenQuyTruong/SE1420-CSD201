@@ -20,9 +20,8 @@ public class FileDAO {
      *
      * @param queue
      * @param fileName
-     * @throws IOException
      */
-    public static void ReadFile(PriorityQueue queue, String fileName) throws IOException {
+    public static void ReadFile(PriorityQueue queue, String fileName) {
 	FileReader fr = null;
 	BufferedReader bf = null;
 	try {
