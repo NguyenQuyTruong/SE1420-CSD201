@@ -126,7 +126,7 @@ public class DoublyLinkedList {
      * @param userNode
      * @return data user of node have been removed
      */
-    private User remove(Node userNode) {
+    public User remove(Node userNode) {
 	Node nextNode = userNode.getNext(); //get next Node of Node inputted
 	Node prevNode = userNode.getPrev(); //get prev Node of Node inputted
 	nextNode.setPrev(prevNode); //set prev of next Node is prev Node has getted
@@ -293,6 +293,6 @@ public class DoublyLinkedList {
 		nodeNext = nodeNext.getNext();
 	    }
 	} while (nodeNext != trailer);
-	return null;
+	return null;	//no user founded
     }
 }
