@@ -81,6 +81,25 @@ public class PriorityQueue {
         if(gNode != dll.tail){
             return gNode.getPoint();
         }
-        return -1;
+        return 0;
+    }
+    public void Gettop(){
+    if(dll.IsEmpty()){
+        System.out.println("List empty!");
+    }
+    else{
+        System.out.println("Top:"+dll.head.prev.getEmail()+" "+dll.head.prev.getPoint()+"P");
+    }
+}
+    public void DeleteT(String demail){
+        Node dnode = Find(demail);
+        if(dnode != dll.tail){
+            System.out.println("Don't exit!");
+        }
+        else{
+            dnode.next.prev = dnode.prev;
+            dnode.prev.next = dnode.next;
+            dnode = null;
+        }
     }
 }
