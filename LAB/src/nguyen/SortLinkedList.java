@@ -82,6 +82,19 @@ public class SortLinkedList {
             head=tail=null;
             return Remref;
         }
+        Player Before = Remref.getBeforePlayer();
+        Player After = Remref.getNextPlayer();
+        if(Remref == head){
+            After.beforePlayer = null;
+            head = After;
+        } else if (Remref==tail){
+            Before.nextPlayer=null;
+            tail = Before;
+        }else{
+            Before.nextPlayer = After;
+            After.beforePlayer = Before;
+        }
+        
         return Remref;
     }
 }
