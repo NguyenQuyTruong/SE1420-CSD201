@@ -10,15 +10,27 @@ package lab201;
  * @author nds72
  */
 public class DoublyLinkedList {
-    /*
-     create node base DoublyLinkedList 
-     using modifier private to hide detail user info
-        
+
+    /**
+     * Create node base DoublyLinkedList Using modifier private to hide detail
+     * user info
+     *
      */
 
     private class Node {
+
         User data;
         Node next;
         Node prev;
+
+        /**
+         * create constructor of Node using alt insert to create quickly
+         */
+        public Node(User data, Node next, Node prev) {
+            this.data = data;
+            this.next = next;
+            this.prev = prev;
+        }
+
     }
 }
