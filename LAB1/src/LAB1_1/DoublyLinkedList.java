@@ -209,6 +209,19 @@ public class DoublyLinkedList {
 	    sizeList++;	//increase size of list
 	}
     }
+    
+    public void add(User data) {
+	int point = data.getPoint();
+	if (isEmpty()) {
+	    addFirst(data);
+	} else {
+	    if (point < header.getNext().getData().getPoint()) {
+		addFirst(data);
+	    } else if (point > trailer.getPrev().getData().getPoint()) {
+		addLast(data);
+	    }
+	}
+    }
 
     /**
      * Function print for testing
