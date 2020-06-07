@@ -44,15 +44,4 @@ public class Gamer{
     public String toString() {
 	return "Gamer{" + "email=" + email + ", point=" + point + '}';
     }
-
-//    //use comprareTo method to sort point of user
-//    @Override
-//    public int compareTo(Gamer user) {
-//	if (this.point < user.getPoint()) {
-//	    return -1;
-//	} else if (this.point > user.getPoint()) {
-//	    return 1;
-//	}
-//	return 0;
-//    }
 }
