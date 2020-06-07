@@ -22,7 +22,7 @@ public class PriorityQueue {
      */
     public void push(Gamer data) {
 	list.add(data);
-	System.out.println("push Gamer data successful!!");
+//	System.out.println("push Gamer data successful!!");
     }
 
     /**
@@ -105,8 +105,16 @@ public class PriorityQueue {
 	Gamer data = list.searchGamerByEmail(email);
 	return data;
     }
-    
-    public void printQueue() {
-	list.printList(list);
+
+    //write file method
+    public void writeFile(String fileName) {
+	list.writeToCSVfile(fileName);
     }
+    
+    //this method use to testing =))
+    public void printQueue() {
+	list.printList();
+    }
+
+    
 }
