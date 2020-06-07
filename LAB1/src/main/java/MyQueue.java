@@ -42,8 +42,15 @@ public class MyQueue {
     private Node head = null;
     private Node tail = null;
     
-    public void enqueue(){
-        
+    public void enqueue(Entry user){
+        Node newNode = new Node(user);
+        if(isEmpty()){
+            head = newNode;
+            tail = newNode;
+        }else{
+            head.next = newNode;
+            tail = newNode;
+        }
     }
     
     public void dequeue(){
@@ -54,8 +61,8 @@ public class MyQueue {
         
     }
     
-    public void isEmpty(){
-        
+    public boolean isEmpty(){
+        return head == null;
     }
     
 }
