@@ -41,25 +41,31 @@ public class MyQueue {
     }
     private Node head = null;
     private Node tail = null;
+    int size = 0;
     
     public void enqueue(Entry user){
         Node newNode = new Node(user);
+        int point = user.getPoint();
         if(isEmpty()){
             head = newNode;
         }
-        if(tail != null && (user.getPoint() > head.user.getPoint())){
-            tail = head;
+        if(tail != null && (user.getPoint() >= head.user.getPoint())){
+            newNode.next = head;
             head = newNode;
-            
+        }else{
+            tail.next = newNode;
+            tail = newNode;
         }
+        size++;
     }
     
-    public void dequeue(){
+    public Entry dequeue(){
         Entry firstUser = head.user;
         head = head.next;
         if(head == null){
             tail = null;
         }
+        return firstUser;
     }
     
     public Entry front(){
