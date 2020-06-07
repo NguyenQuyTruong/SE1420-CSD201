@@ -78,12 +78,24 @@ public class Exercise1 {
 	System.out.println("Top 1 Gamer:");
 	System.out.println("Email: " + data.getEmail() + ", Point: " + data.getPoint());
     }
-    
+
     /**
      * this method use to delete top 1 Gamer
      */
     public void deleteTopGamer() {
 	queue.deleteTop();
 	System.out.println("Remove top successful!!");
+    }
+    
+    /**
+     * this method use to write all the queue to the file
+     * @param fileName 
+     */
+    public void saveToFile(String fileName) {
+	try {
+	    FileDAO.writeFile(queue, fileName);
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
     }
 }
