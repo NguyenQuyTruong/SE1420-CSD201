@@ -10,5 +10,10 @@ package lab201;
  * @author nds72
  */
 public class DoublyLinkedList {
+    /*
     
+       create node base DoublyLinkedList 
+       using modifier private to hide detail user info
+        
+    */
 }
