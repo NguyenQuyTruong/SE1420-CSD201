@@ -19,11 +19,12 @@ public class DAO {
     /**
      * this method will read the file and get info Gamer in every line, it will
      * add to the queue.
+     *
      * @param queue
      * @param fileName
      * @throws IOException
      */
-    public static void ReadFile(PriorityQueue queue, String fileName) throws IOException{
+    public static void ReadFile(PriorityQueue queue, String fileName) throws IOException {
 	FileReader fr = null;
 	BufferedReader bf = null;
 	try {
@@ -31,9 +32,10 @@ public class DAO {
 	    bf = new BufferedReader(fr);
 	    while (bf.ready()) {
 		String s = bf.readLine();
-		String[] arr = s.split(",");
-		Gamer data = new Gamer(arr[0], Integer.valueOf(arr[1]));
-		queue.push(data);
+		String[] arr = s.split(", ");
+		if (!(arr[1].equalsIgnoreCase("point"))) {
+		    queue.push(new Gamer(arr[0], Integer.valueOf(arr[1])));
+		}
 	    }
 	} catch (IOException e) {
 	    System.out.println("File not exist!!");
@@ -50,11 +52,11 @@ public class DAO {
 	    }
 	}
     }
-    
+
     public static void writeFile(PriorityQueue queue, String fileName) {
 	PrintWriter pw = null;
 	try {
-	    
+
 	} catch (Exception e) {
 	}
     }
