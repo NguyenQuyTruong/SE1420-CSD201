@@ -5,6 +5,7 @@
  */
 package nguyen;
 
+
 /**
  *
  * @author ADMIN
@@ -21,12 +22,13 @@ public class SortLinkedList {
    
     public Player ceiling(int pointlling){
         Player t = head;
-        while(t!=null && t.getPoint()>pointlling) 
+        while(t!=null && t.getPoint()<pointlling) 
         {            
             t=t.getNextPlayer();
         }
         return t;
     }
+    //search Email
     public Player PlayerSearchEmail(String Email){
         Player Result;
         for(Result=head; Result!=null; Result=Result.nextPlayer){
@@ -36,4 +38,40 @@ public class SortLinkedList {
         }
         return Result;
     }
+    public Player UpdatePlayer(String Email, int newpoint){
+        Player Result = PlayerSearchEmail(Email);
+        if(Result!=null){
+            remove(Result);
+            Result.setPoint(newpoint);
+            add(Email,newpoint);
+            return Result;
+        }
+        else {
+            return null;
+        }
+        
+    }
+    public Player add(String Email, int Point) {
+        Player newPlayer = new Player(Email, Point);
+        Player after = ceiling(Point);
+        if (head == null) {
+            head = tail = newPlayer;
+        }  else if  (after == head) {
+            newPlayer.nextPlayer = head;
+            newPlayer.beforePlayer = null;
+            head.beforePlayer = newPlayer;
+            head = newPlayer;
+        }
+        else {
+            Player before = after.beforePlayer;
+            newPlayer.nextPlayer = after;
+            newPlayer.beforePlayer = before;
+            after.beforePlayer = newPlayer;
+            before.nextPlayer = newPlayer;
+        }
+        return newPlayer;
+        
+    
+    
+}
 }
