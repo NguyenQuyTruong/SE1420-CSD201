@@ -103,26 +103,39 @@ public class Exercise1 {
 	}
     }
     
-    public void readFromFile(String fileName) throws IOException {
-	queue = new PriorityQueue();
-	FileDAO.ReadFile(queue, fileName);
-    }
-    
-    public void printQueue() {
-	queue.printQueue();
-    }
-    
-    public static void main(String[] args) {
-	Exercise1 ex = new Exercise1();
+    public void getArgument(String[] args) {
 	try {
-	    ex.readFromFile("user.csv");
-	} catch (IOException ex1) {
-	    Logger.getLogger(Exercise1.class.getName()).log(Level.SEVERE, null, ex1);
+	    switch(args[0]) {
+		case "-r": //read CSV file and add to queue
+		    queue = new PriorityQueue();
+		    FileDAO.ReadFile(queue, args[1]);
+		    break;
+		case "-s": //import the queue to new CSV file
+		    saveToFile(args[1]);
+		    break;
+		case "-a": //insert new Gamer to queue
+		    insertNewGamer(args[1], args[2]);
+		    break;
+		case "-d": //delete gamer from queue
+		    deleteGame(args[1]);
+		    break;
+		case "-u": //update gamer
+		    updateGamer(args[1], args[2]);
+		    break;
+		case "-dt": //delete top gamer
+		    deleteTopGamer();
+		    break;
+		case "-g": //get point of gamer
+		    searchGamer(args[1]);
+		    break;
+		case "-t": //get point of top gamer
+		    getTopGamer();
+		    break;
+		default:
+		    System.out.println("Error: command not found!!");
+	    }
+	} catch (ArrayIndexOutOfBoundsException e) {
+	    System.out.println("Can't find argument to excecute!");
 	}
-//	ex.printQueue();
-//	ex.updateGamer("roannvzhg@gmail.com", "a");
-//	ex.getTopGamer();
-//	ex.searchGamer("roannvzhg@gmail.com");
-	ex.saveToFile("newUser.csv");
     }
 }
