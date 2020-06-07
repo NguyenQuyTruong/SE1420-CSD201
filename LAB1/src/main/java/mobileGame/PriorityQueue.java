@@ -57,15 +57,14 @@ public class PriorityQueue {
     }
 
     /**
-     * this method will receive email input and print the Gamer info.
+     * this method will receive email input and return Gamer, if the list don't
+     * have this gamer return null
+     * @param email
+     * @return Gamer
      */
-    public void searchGamer() {
-	Gamer data = inputMailForSearchGamer();
-	if (data == null) {
-	    System.out.println("Not found!!");
-	} else {
-	    System.out.println("Email: " + data.getEmail() + ", Point: " + data.getPoint());
-	}
+    public Gamer searchGamer(String email) {
+	Gamer data = list.searchGamerByEmail(email);
+	return data;
     }
 
     /**
@@ -110,11 +109,9 @@ public class PriorityQueue {
     public void writeFile(String fileName) {
 	list.writeToCSVfile(fileName);
     }
-    
+
     //this method use to testing =))
     public void printQueue() {
 	list.printList();
     }
-
-    
 }
