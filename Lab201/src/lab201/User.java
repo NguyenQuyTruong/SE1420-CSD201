@@ -19,6 +19,9 @@ public class User {
         this.mark = 0;
     }
     
-    
+   public void setEmail(String email){
+       this.email=email;
+   }
+   
 
 }
