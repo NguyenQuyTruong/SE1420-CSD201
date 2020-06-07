@@ -37,7 +37,6 @@ public class PriorityQueue {
 				dll.head.prev = new_node;
 			}
 			else {
-				//normal case, looping though
 				Node currentNode = dll.head.prev;
 				while(currentNode.getPoint() > new_node.getPoint()) {
 					currentNode = currentNode.prev;
@@ -49,5 +48,21 @@ public class PriorityQueue {
 			}
         }
    
+    }
+    public Node Find(String fmail){
+        Node fnode = dll.head.prev;
+        while(fnode.getEmail().contentEquals(fmail) && fnode != dll.tail){
+            fnode = fnode.prev;
+        }
+        return fnode;
+    }
+    public void Delete(String demail){
+        Node dnode = Find(demail);
+        if(dnode == dll.tail){
+            System.out.println("Don't exit!");
+        }
+        else{
+            
+        }
     }
 }
