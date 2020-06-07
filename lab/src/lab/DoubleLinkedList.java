@@ -15,7 +15,30 @@ public class DoubleLinkedList {
         int data;
         Node prev = null;
         Node next = null;
+        private String email;
+        private long point;
 
+        public Node(String email, long point) {
+            this.email = email;
+            this.point = point;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public long getPoint() {
+            return point;
+        }
+
+        public void setPoint(long point) {
+            this.point = point;
+        }
+        
         Node(int d) {
             data = d;
         }
