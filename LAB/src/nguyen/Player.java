@@ -56,5 +56,7 @@ public class Player {
     public void setBeforePlayer(Player beforePlayer) {
         this.beforePlayer = beforePlayer;
     }
-    
+   public String toString(){
+        return String.format("%-15s%-10d",Email, email);
+    }
 }
