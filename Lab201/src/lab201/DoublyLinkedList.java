@@ -74,4 +74,7 @@ public class DoublyLinkedList {
     public void addFirst(User value){
         insert(value, header, header.next);
     }
+    public void addMid(User value){
+        
+    }
 }
