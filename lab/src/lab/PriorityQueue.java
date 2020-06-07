@@ -73,9 +73,14 @@ public class PriorityQueue {
             System.out.println("Don't exit!");
         }
         else{
-            uNode.next.prev = uNode.prev;
-            uNode.prev.next = uNode.next;
-            uNode = null;
+            uNode.setPoint(Newpoint);          
         }
+    }
+    public long GetP(String email){
+        Node gNode = Find(email);
+        if(gNode != dll.tail){
+            return gNode.getPoint();
+        }
+        return -1;
     }
 }
