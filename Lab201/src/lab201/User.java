@@ -12,7 +12,7 @@ package lab201;
 public class User {
 
     private String email;
-    private float mark;
+    private int mark;
 
     public User() {
         this.email = " ";
@@ -23,7 +23,7 @@ public class User {
         this.email = email;
     }
 
-    public void setMark(float mark) {
+    public void setMark(int mark) {
         this.mark = mark;
     }
 
@@ -31,7 +31,7 @@ public class User {
         return email;
     }
 
-    public float getMark() {
+    public int getMark() {
         return mark;
     }
 
