@@ -62,8 +62,8 @@ public class DoublyLinkedList {
     //create Constructor 
 
     public DoublyLinkedList() {
-        header=new Node(null, header, header);
-        trailer=new Node(null, header, header);
-        
+        header=new Node(null, null, null);
+        trailer=new Node(null, null, header);
+        header.next=trailer;
     }
 }
