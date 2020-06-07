@@ -12,19 +12,27 @@ package LAB1_1;
 public class PriorityQueue extends Lab1_1.DoublyLinkedList {
 
     public void insertUser(User data) {
-	this.add(data);
+	add(data);
     }
 
-    public void updateUser() {
-
+    public void deleteUser(String email) throws Exception {
+	deleteUserNode(email);
     }
 
-    public void deleteUser() {
+    public void updateUser(String email, int point) throws Exception {
+	updateUserNode(email, point);
+    }
 
+    public void searchUser(String email) throws Exception {
+	displayPointUserEmail(email);
     }
     
-    public void searchUser() {
-	
+    public void getTop() throws Exception {
+	displayPointTopUser();
+    }
+    
+    public void removeTop() {
+	removeLast();
     }
 
     public void displayUser() {
