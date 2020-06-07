@@ -60,10 +60,15 @@ public class DoublyLinkedList {
     private Node trailer;
 
     //create Constructor 
-
     public DoublyLinkedList() {
-        header=new Node(null, null, null);
-        trailer=new Node(null, null, header);
-        header.next=trailer;
+        header = new Node(null, null, null);
+        trailer = new Node(null, null, header);
+        header.next = trailer;
+    }
+
+    private void insert(User value, Node font, Node back) {
+        Node newNode = new Node(value, font, back);
+        font.next=newNode;
+        back.prev=newNode;
     }
 }
