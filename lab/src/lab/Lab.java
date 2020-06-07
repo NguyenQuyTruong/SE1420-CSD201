@@ -30,7 +30,9 @@ public class Lab {
 			
 			OS.close();
 			FOS.close();
-		}catch (IOException e) {
+		}catch(FileNotFoundException e){
+                    e.printStackTrace();
+                }catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
