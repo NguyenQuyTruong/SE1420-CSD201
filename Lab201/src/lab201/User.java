@@ -22,6 +22,8 @@ public class User {
    public void setEmail(String email){
        this.email=email;
    }
-   
+   public void setMark(float mark){
+       this.mark=mark;
+   }
 
 }
