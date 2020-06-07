@@ -38,25 +38,30 @@ public class SortLinkedList {
         }
         return Result;
     }
-    public Player UpdatePlayer(String Email, int newpoint){
-        Player Result = PlayerSearchEmail(Email);
-        if(Result!=null){
-            remove(Result);
-            Result.setPoint(newpoint);
-            add(Email,newpoint);
-            return Result;
-        }
-        else {
-            return null;
-        }
-        
-    }
+//    public Player UpdatePlayer(String Email, int newpoint){
+//        Player Result = PlayerSearchEmail(Email);
+//        if(Result!=null){
+//            remove(Result);
+//            Result.setPoint(newpoint);
+//            add(Email,newpoint);
+//            return Result;
+//        }
+//        else {
+//            return null;
+//        }
+//        
+//    }
     public Player add(String Email, int Point) {
         Player newPlayer = new Player(Email, Point);
         Player after = ceiling(Point);
         if (head == null) {
             head = tail = newPlayer;
-        }  else if  (after == head) {
+        } else if (after == null) {
+            newPlayer.nextPlayer = null;
+            newPlayer.beforePlayer = tail;
+            tail.nextPlayer = newPlayer;
+            tail = newPlayer;
+        } else if  (after == head) {
             newPlayer.nextPlayer = head;
             newPlayer.beforePlayer = null;
             head.beforePlayer = newPlayer;
