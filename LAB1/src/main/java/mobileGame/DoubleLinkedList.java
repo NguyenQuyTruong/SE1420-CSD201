@@ -92,9 +92,9 @@ public class DoubleLinkedList {
      */
     public void addFirst(Node newNode) {
 	header.right.left = newNode;
+	newNode.right = header.right;
 	newNode.left = header;
-	newNode.right = trailer;
-	trailer.left = newNode;
+	header.right = newNode;
     }
 
     /**
@@ -121,10 +121,10 @@ public class DoubleLinkedList {
 	int point = data.getPoint();
 	//if list is empty
 	if (isEmpty()) {
-	    header.right = newNode;
-	    newNode.left = header;
-	    newNode.right = trailer;
-	    trailer.left = newNode;
+	    header.right = newbie;
+	    newbie.left = header;
+	    newbie.right = trailer;
+	    trailer.left = newbie;
 	} else {
 	    int pointOfHeader = header.right.getGamer().getPoint();
 	    int pointOfTrailer = trailer.left.getGamer().getPoint();
