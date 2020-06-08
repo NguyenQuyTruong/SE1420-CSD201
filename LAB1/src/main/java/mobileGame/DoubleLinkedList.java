@@ -87,6 +87,18 @@ public class DoubleLinkedList {
     }
 
     /**
+     * add Gamer to first of the list
+     *
+     * @param newNode
+     */
+    public void addFirst(Node newNode) {
+	header.right = newNode;
+	newNode.left = header;
+	newNode.right = trailer;
+	trailer.left = newNode;
+    }
+
+    /**
      * this method use to add element to the list in between given node and sort
      * them depend on their point
      *
@@ -173,15 +185,6 @@ public class DoubleLinkedList {
     }
 
     /**
-     * add Gamer to first of the list
-     *
-     * @param data
-     */
-    public void add(Gamer data) {
-	addBetween(data, trailer, header);
-    }
-
-    /**
      * this method will print all gamer in the list by go through the list
      *
      */
@@ -245,6 +248,7 @@ public class DoubleLinkedList {
 
     /**
      * this method will get the list and write all the Gamer info to CSV file
+     *
      * @param fileName
      */
     public void writeToCSVfile(String fileName) {
