@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author PC
+ * @author Khanh Hoa
  */
 public class PriorityQueue implements Serializable {
 
