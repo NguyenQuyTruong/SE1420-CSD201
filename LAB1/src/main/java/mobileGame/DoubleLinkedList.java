@@ -249,7 +249,7 @@ public class DoubleLinkedList {
 	return null;
     }
 
-    
+
     /**
      * this method will get the list and write all the Gamer info to CSV file
      *
