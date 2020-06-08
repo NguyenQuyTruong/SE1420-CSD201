@@ -7,7 +7,6 @@ package mobileGame;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  *
@@ -92,7 +91,7 @@ public class DoubleLinkedList {
      * @param newNode
      */
     public void addFirst(Node newNode) {
-	header.right = newNode;
+	header.right.left = newNode;
 	newNode.left = header;
 	newNode.right = trailer;
 	trailer.left = newNode;
@@ -100,6 +99,7 @@ public class DoubleLinkedList {
 
     /**
      * add Node to the end of the list
+     *
      * @param newNode
      */
     public void addLast(Node newNode) {
@@ -114,28 +114,23 @@ public class DoubleLinkedList {
      * them depend on their point
      *
      * @param data
-     * @param leftNode
-     * @param rightNode
      */
-    private void addBetween(Gamer data, Node rightNode, Node leftNode) {
+    public void addBetween(Gamer data) {
 	//create new node to add
-	Node newbie = new Node(data, rightNode, leftNode);
+	Node newbie = new Node(data, trailer, header);
 	int point = data.getPoint();
 	//if list is empty
 	if (isEmpty()) {
-	    header.right = newbie;
-	    newbie.left = header;
-	    newbie.right = trailer;
-	    trailer.left = newbie;
+	    header.right = newNode;
+	    newNode.left = header;
+	    newNode.right = trailer;
+	    trailer.left = newNode;
 	} else {
 	    int pointOfHeader = header.right.getGamer().getPoint();
 	    int pointOfTrailer = trailer.left.getGamer().getPoint();
 	    //if input point < point of trailer, add new trailer
 	    if (point < pointOfTrailer) {
-		trailer.left.right = newbie;
-		newbie.left = trailer.left;
-		newbie.right = trailer;
-		trailer.left = newbie;
+		addLast(newbie);
 	    } //if input point > point of header, add new header
 	    else if (point > pointOfHeader) {
 		header.right.left = newbie;
