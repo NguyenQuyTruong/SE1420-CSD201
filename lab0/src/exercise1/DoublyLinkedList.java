@@ -11,8 +11,6 @@ package exercise1;
  */
 public class DoublyLinkedList<E> {
 
-
-
     // instance variables of the DoublyLinkedList
     public Node<E> header; // header sentinel
     public Node<E> trailer; // trailer sentinel
