@@ -87,13 +87,24 @@ public class DoubleLinkedList {
     }
 
     /**
-     * add Gamer to first of the list
+     * add Node to first of the list
      *
      * @param newNode
      */
     public void addFirst(Node newNode) {
 	header.right = newNode;
 	newNode.left = header;
+	newNode.right = trailer;
+	trailer.left = newNode;
+    }
+
+    /**
+     * add Node to the end of the list
+     * @param newNode
+     */
+    public void addLast(Node newNode) {
+	trailer.left.right = newNode;
+	newNode.left = trailer.left;
 	newNode.right = trailer;
 	trailer.left = newNode;
     }
