@@ -126,8 +126,13 @@ public class MyQueue {
         }
         return deleted.user;
     }
-    public Entry update(String email){
-        Entry User = search(email);
-        
+    public Entry update(String email, int New_point, String new_email){
+        Entry user = search(email);
+        if(user != null){
+            user.setEmail(new_email);
+            user.setPoint(New_point);
+            return user;
+        }
+        return null;
     }
 }
