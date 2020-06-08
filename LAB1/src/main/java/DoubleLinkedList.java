@@ -38,5 +38,9 @@ public class DoubleLinkedList {
         }
         
     }
+    //Create Main Nodes
+    public Node Head;
+    public Node Tail;
+    public int nodeSize = 0;
     
 }
