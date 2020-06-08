@@ -5,6 +5,8 @@
  */
 package Lab1_1;
 
+import java.io.PrintWriter;
+
 /**
  *
  * @author minhv
@@ -163,15 +165,14 @@ public class DoublyLinkedList {
      * Delete an user by email use for priority queue
      *
      * @param email
-     * @throws java.lang.Exception
      */
-    public void deleteUserNode(String email) throws Exception {
+    public void deleteUserNode(String email) {
 	if (isEmpty()) {
-	    throw new Exception("The list is empty please add new user to use this feature");
+	    System.out.println("The list is empty please add new user to use this feature");
 	} else {
 	    Node userNode = searchUserByEmail(email);
 	    if (userNode == null) {
-		throw new Exception("User doesn't exit");
+		System.out.println("User doesn't exit");
 	    } else {
 		remove(userNode);
 	    }
@@ -260,27 +261,11 @@ public class DoublyLinkedList {
     }
 
     /**
-     * Function print for testing
-     *
-     * @param list
-     */
-    public void printlist(DoublyLinkedList list) {
-	Node node = header.getNext();
-	while (node != trailer) {
-	    String email = node.getData().getEmail();
-	    int point = node.getData().getPoint();
-	    System.out.println("Email: " + email + ", Point: " + point);
-	    node = node.next;
-	}
-    }
-
-    /**
      * Display point use for function search in priority queue
      *
      * @param email
-     * @throws Exception check for list is empty or not
      */
-    public void displayPointUserEmail(String email) throws Exception {
+    public void displayPointUserEmail(String email) {
 	Node userFounded = searchUserByEmail(email);
 	//get point of user founded
 	int point = userFounded.getData().getPoint();
@@ -290,13 +275,11 @@ public class DoublyLinkedList {
 
     /**
      * Display top point user for function get top of priority queue
-     *
-     * @throws Exception check for list is empty or not
      */
-    public void displayPointTopUser() throws Exception {
+    public void displayPointTopUser() {
 	//if list is empty getLast() function return null so use it for check is empty or not
 	if (getLast() == null) {
-	    throw new Exception("The list is empty please add new user to use this feature");
+	    System.out.println("The list is empty please add new user to use this feature");
 	} else {
 	    //get user has highest score
 	    User userTopPoint = getLast();
@@ -331,13 +314,13 @@ public class DoublyLinkedList {
 
     /**
      * Find the node have user matches with email inputted. Else return null
+     *
      * @param email
-     * @return
-     * @throws Exception check for list is empty or not
+     * @return null if not founded
      */
-    public Node searchUserByEmail(String email) throws Exception {
+    public Node searchUserByEmail(String email) {
 	if (isEmpty()) {
-	    throw new Exception("The list is empty. Please add new user to use this feature");
+	    System.out.println("The list is empty. Please add new user to use this feature");
 	} else {
 	    Node nodeNext = header.getNext(); //get node after header
 
@@ -349,30 +332,80 @@ public class DoublyLinkedList {
 		    nodeNext = nodeNext.getNext();
 		}
 	    } while (nodeNext != trailer);
-	    return null;	//no user founded
 	}
+	return null;	//no user founded
     }
 
     /**
-     * Update an user founded by email use for update funnction in priority queue
-     * 
+     * Update an user founded by email use for update funnction in priority
+     * queue
+     *
      * @param email
      * @param point
-     * @throws Exception check for list is empty or not and user not found
      */
-    public void updateUserNode(String email, int point) throws Exception {
+    public void updateUserNode(String email, int point) {
 	//check for list is empty or not
 	if (isEmpty()) {
-	    throw new Exception("The list is empty please add new user to use this feature");
+	    System.out.println("The list is empty please add new user to use this feature");
 	} else {
 	    Node userNode = searchUserByEmail(email);
 	    //check user is founded or not
 	    if (userNode == null) {
-		throw new Exception("User doesn't exist");
+		System.out.println("User doesn't exist");
 	    } else {
 		//update email and point
 		userNode.getData().setEmail(email);
 		userNode.getData().setPoint(point);
+		checkPositionAfterUpdate(userNode);
+	    }
+	}
+    }
+
+    /**
+     * Update position of a user after update point to make sure it don't break
+     * structure priority queue
+     *
+     * @param user
+     */
+    public void checkPositionAfterUpdate(Node user) {
+	Node checkNode = searchNode(user.getData().getPoint());
+	if (checkNode == null) {
+	    remove(user);
+	    addLast(user.getData());
+	} else {
+	    remove(user);
+	    addBetweenNode(user.getData(), checkNode);
+	}
+    }
+
+    /**
+     * Function write File
+     * @param list
+     * @param fileName 
+     */
+    public void writeData(DoublyLinkedList list, String fileName) {
+	//prevent exception
+	if (list == null || list.isEmpty()) {
+	    return;
+	}
+	//create file write
+	PrintWriter writeFile = null;
+	try {
+	    writeFile = new PrintWriter(fileName);
+	    //create loop to read all list and write to File
+	    Node node = header.getNext();
+	    while (node != trailer) {
+		writeFile.println(node.getData().toString());
+	    }
+	} catch (Exception e) {
+	    e.printStackTrace();
+	} finally {
+	    try {
+		if (writeFile != null) {
+		    writeFile.close();
+		}
+	    } catch (Exception e) {
+		e.printStackTrace();
 	    }
 	}
     }
