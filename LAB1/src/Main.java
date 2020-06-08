@@ -19,15 +19,7 @@ public class Main {
 
         mq.enqueue(user1);
         mq.enqueue(user2);
-        mq.enqueue(user3);
-        mq.enqueue(user4);
-        mq.enqueue(user5);
-        mq.dequeue();
-        mq.dequeue();
-        mq.dequeue();
-        mq.dequeue();
         Entry e = mq.front();
-        
         System.out.println(e.getPoint());
     }
 }
