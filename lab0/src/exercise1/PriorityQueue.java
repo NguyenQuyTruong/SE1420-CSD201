@@ -24,7 +24,7 @@ public class PriorityQueue {
         if (g.point < list.trailer.getPrev().getElement().getPoint()) {
             list.addLast(g);
         }
-        //if new point>head point then add new point in front
+        //if new point>head point then add new point in front of list
         if (g.point > list.header.next.getElement().getPoint()) {
             list.addFirst(g);
         }
