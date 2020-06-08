@@ -14,7 +14,8 @@ public class Guest {
     private int point;
     
     public Guest(){
-        
+        email= "";
+        point= 0;
     }
 
     public Guest(String email, int point) {
@@ -38,4 +39,8 @@ public class Guest {
         this.point = point;
     }
     
+   
+    public String toString(){
+        return email + "," + point;
+    }
 }
