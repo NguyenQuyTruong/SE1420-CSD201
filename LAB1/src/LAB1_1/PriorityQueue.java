@@ -27,12 +27,16 @@ public class PriorityQueue extends Lab1_1.DoublyLinkedList {
 	displayPointUserEmail(email);
     }
 
-    public void getTop() throws Exception {
+    public void getTop() {
 	displayPointTopUser();
     }
 
     public void removeTop() {
-	removeLast();
+	if (removeLast() == null) {
+	    System.out.println("The list is empty. Please add new user to use this feature");
+	} else {
+	    removeLast();
+	}
     }
 
     public void writeUserToFile(String fileName) {

@@ -168,7 +168,7 @@ public class DoublyLinkedList {
      */
     public void deleteUserNode(String email) {
 	if (isEmpty()) {
-	    System.out.println("The list is empty please add new user to use this feature");
+	    System.out.println("The list is empty. Please add new user to use this feature");
 	} else {
 	    Node userNode = searchUserByEmail(email);
 	    if (userNode == null) {
@@ -266,11 +266,20 @@ public class DoublyLinkedList {
      * @param email
      */
     public void displayPointUserEmail(String email) {
-	Node userFounded = searchUserByEmail(email);
-	//get point of user founded
-	int point = userFounded.getData().getPoint();
-	//display it
-	System.out.println("Email: " + email + ", Point: " + point);
+	if (isEmpty()) {
+	    System.out.println("The list is empty. Please add new user to use this feature");
+	} else {
+	    Node userFounded = searchUserByEmail(email);
+	    //user not founded
+	    if (userFounded == null) {
+		System.out.println("User doesn't exist");
+	    } else {
+		//get point of user founded
+		int point = userFounded.getData().getPoint();
+		//display it
+		System.out.println("Email: " + email + ", Point: " + point);
+	    }
+	}
     }
 
     /**
@@ -279,7 +288,7 @@ public class DoublyLinkedList {
     public void displayPointTopUser() {
 	//if list is empty getLast() function return null so use it for check is empty or not
 	if (getLast() == null) {
-	    System.out.println("The list is empty please add new user to use this feature");
+	    System.out.println("The list is empty. Please add new user to use this feature");
 	} else {
 	    //get user has highest score
 	    User userTopPoint = getLast();
@@ -380,8 +389,9 @@ public class DoublyLinkedList {
 
     /**
      * Function write File
+     *
      * @param list
-     * @param fileName 
+     * @param fileName
      */
     public void writeData(DoublyLinkedList list, String fileName) {
 	//prevent exception
@@ -396,6 +406,7 @@ public class DoublyLinkedList {
 	    Node node = header.getNext();
 	    while (node != trailer) {
 		writeFile.println(node.getData().toString());
+		node = node.next;
 	    }
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -407,6 +418,21 @@ public class DoublyLinkedList {
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
+	}
+    }
+
+    /**
+     * Function print for testing
+     *
+     * @param list
+     */
+    public void printlist(DoublyLinkedList list) {
+	Node node = header.getNext();
+	while (node != trailer) {
+	    String email = node.getData().getEmail();
+	    int point = node.getData().getPoint();
+	    System.out.println("Email: " + email + ", Point: " + point);
+	    node = node.next;
 	}
     }
 }
