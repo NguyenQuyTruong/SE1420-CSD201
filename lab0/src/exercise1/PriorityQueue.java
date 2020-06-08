@@ -114,11 +114,27 @@ public class PriorityQueue {
      */
     public void findTheTopUser() {
         if (list.isEmpty()) {
-            System.out.println("Player information is null now");
+            System.out.println("Player information is null");
         }
         if (!(list.isEmpty())) {
             System.out.println("Player has the highest point is: " + list.header.getNext().getElement().getEmail());
             System.out.println("Highest point:" + list.header.getNext().getElement().getPoint());
+        }
+    }
+
+    /**
+     * Delete the Top User
+     *
+     * @param
+     *
+     */
+    public void deleteTheTopUser() {
+        if (list.isEmpty()) {
+            System.out.println("Player information is null");
+        }
+        if (!(list.isEmpty())) {
+            list.remove(list.header.getNext());
+            System.out.println("Delete completed");
         }
     }
 }
