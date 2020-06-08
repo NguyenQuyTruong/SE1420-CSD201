@@ -83,7 +83,7 @@ public class DoublyLinkedList<E> {
     }
 // Removes the given node from the list and returns its element. 
 
-    private E remove(Node<E> node) {
+    public E remove(Node<E> node) {
         Node<E> predecessor = node.getPrev();
         Node<E> successor = node.getNext();
         predecessor.setNext(successor);
