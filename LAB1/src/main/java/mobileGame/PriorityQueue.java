@@ -113,13 +113,13 @@ public class PriorityQueue {
 		    bf.close();
 		}
 	    } catch (IOException e) {
-		e.printStackTrace();
+		System.out.println("Something wrong with Reading file");
 	    }
 	}
     }
 
     //write file method
-    public void writeFile(String fileName) {
+    public void writeFile(String fileName) throws IOException {
 	list.writeToCSVfile(fileName);
     }
 
