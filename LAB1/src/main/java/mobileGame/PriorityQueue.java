@@ -5,7 +5,6 @@
  */
 package mobileGame;
 
-import java.util.Scanner;
 
 /**
  *
@@ -21,7 +20,7 @@ public class PriorityQueue {
      * @param data user
      */
     public void push(Gamer data) {
-	list.add(data);
+	list.addBetween(data);
 //	System.out.println("push Gamer data successful!!");
     }
 
@@ -43,6 +42,7 @@ public class PriorityQueue {
 
     /**
      * this method will delete Gamer depend on input email
+     * @param email
      */
     public Gamer deleteGamer(String email) {
 	Gamer data = list.removeNode(email);
@@ -72,6 +72,8 @@ public class PriorityQueue {
 	    System.out.println("Not found!!");
 	} else {
 	    data.setPoint(point);
+	    deleteGamer(email);
+	    list.addBetween(data);
 	    System.out.println("Update point successfull");
 	    System.out.println("Email: " + email + ", New point: " + data.getPoint());
 	}
