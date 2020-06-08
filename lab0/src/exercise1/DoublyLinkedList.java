@@ -11,44 +11,12 @@ package exercise1;
  */
 public class DoublyLinkedList<E> {
 
-    //---------------- nested Node class ----------------
-    private static class Node<E> {
 
-        private E element; // reference to the element stored at this node
-        private Node<E> prev; // reference to the previous node in the list
-        private Node<E> next; // reference to the subsequent node in the list
-
-        public Node(E e, Node<E> p, Node<E> n) {
-            element = e;
-            prev = p;
-            next = n;
-        }
-
-        public E getElement() {
-            return element;
-        }
-
-        public Node<E> getPrev() {
-            return prev;
-        }
-
-        public Node<E> getNext() {
-            return next;
-        }
-
-        public void setPrev(Node<E> p) {
-            prev = p;
-        }
-
-        public void setNext(Node<E> n) {
-            next = n;
-        }
-    } //----------- end of nested Node class -----------
 
     // instance variables of the DoublyLinkedList
-    private Node<E> header; // header sentinel
-    private Node<E> trailer; // trailer sentinel
-    private int size = 0; // number of elements in the list
+    public Node<E> header; // header sentinel
+    public Node<E> trailer; // trailer sentinel
+    public int size = 0; // number of elements in the list
 
     public DoublyLinkedList() {
         header = new Node<>(null, null, null); // create header
@@ -106,7 +74,7 @@ public class DoublyLinkedList<E> {
     }
 
     // private update methods
-    private void addBetween(E e, Node<E> predecessor, Node<E> successor) {
+    public void addBetween(E e, Node<E> predecessor, Node<E> successor) {
         // create and link a new node
         Node<E> newest = new Node<>(e, predecessor, successor);
         predecessor.setNext(newest);
