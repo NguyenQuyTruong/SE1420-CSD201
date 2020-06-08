@@ -5,6 +5,7 @@
  */
 package mobileGame;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -94,8 +95,9 @@ public class Exercise1 {
      * this method use to write all the queue to the file
      *
      * @param fileName
+     * @throws java.io.IOException
      */
-    public void saveToFile(String fileName) {
+    public void saveToFile(String fileName) throws IOException {
 	queue.writeFile(fileName);
     }
 
@@ -137,16 +139,17 @@ public class Exercise1 {
 //	    System.out.println("Can't find argument to excecute!");
 //	}
 //    }
+
     public static void main(String[] args) {
 	Exercise1 ex = new Exercise1();
 //	final String[] ID = Arrays.copyOfRange(args, 1, args.length);
 //	String choice;
-
+//
 //	try {
 //	    switch(args[0]) {
 //		case "-r": //read CSV file and add to queue
 //		    queue = new PriorityQueue();
-//		    FileDAO.ReadFile(queue, args[1]);
+//		    queue.ReadFile(queue, args[1]);
 //		    break;
 //		case "-s": //import the queue to new CSV file
 //		    ex.saveToFile(args[1]);
@@ -175,14 +178,14 @@ public class Exercise1 {
 //	} catch (ArrayIndexOutOfBoundsException e) {
 //	    System.out.println("Can't find argument to excecute!");
 //	}
-	Scanner sc = new Scanner(System.in);
-	queue = new PriorityQueue();
-	queue.ReadFile(queue, "user.csv");
+//	Scanner sc = new Scanner(System.in);
+//	queue = new PriorityQueue();
+//	queue.ReadFile(queue, "user.csv");
 //	FileDAO.writeFile(queue, "newUser.csv");
 //	ex.insertNewGamer("LOL", "123");
 //	ex.insertNewGamer("LO1", "203");
 //	ex.insertNewGamer("LO2", "103");
-	ex.printQueue();
+//	ex.printQueue();
 //	ex.updateGamer("LOL", "50");
 //	ex.printQueue();
 //	ex.getTopGamer();
@@ -194,5 +197,18 @@ public class Exercise1 {
 //	queue.updateGamer(email, point);
 //	ex.printQueue();
 //	FileDAO.writeFile(queue, "newUser.csv");
+	if (args.length > 0) {
+	    System.out.println("The command line"
+		    + " arguments are:");
+
+	    // iterating the args array and printing 
+	    // the command line arguments 
+	    for (String val : args) {
+		System.out.println(val);
+	    }
+	} else {
+	    System.out.println("No command line "
+		    + "arguments found.");
+	}
     }
 }
