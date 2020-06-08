@@ -91,7 +91,7 @@ public class PriorityQueue {
     }
 
     /**
-     * Get player information
+     * Get point of user
      *
      * @param String email
      *
@@ -137,4 +137,5 @@ public class PriorityQueue {
             System.out.println("Delete completed");
         }
     }
+    
 }
