@@ -97,7 +97,15 @@ public class MyQueue {
         return head == null;
     }
     
-    public void search(String email){
-        
+    public Entry search(String email){
+        Node current = head;
+        while(current != null){
+            if(current.user.getEmail().equals(email)){
+                return current.user;
+            }
+            current = current.next;
+        }
+        return null;
     }
+    
 }
