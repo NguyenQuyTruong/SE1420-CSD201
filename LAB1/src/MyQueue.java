@@ -14,7 +14,7 @@ public class MyQueue {
 
         private Entry user;
         private Node next;
-        
+
         public Node(Entry userInfo) {
             this.user = userInfo;
         }
@@ -42,8 +42,8 @@ public class MyQueue {
     private Node head = null;
     private Node tail = null;
     private int size = 0;
-    
-    public void enqueue(Entry e){
+
+    public void enqueue(Entry e) {
 //        Entry e = new Entry(point, email);
         Node newNode = new Node(e);
         Node current = null;
@@ -79,33 +79,55 @@ public class MyQueue {
             size++;
         }
     }
-    
-    public Entry dequeue(){
+
+    public Entry dequeue() {
         Entry firstUser = head.user;
         head = head.next;
-        if(head == null){
+        if (head == null) {
             tail = null;
         }
         return firstUser;
     }
-    
-    public Entry front(){
+
+    public Entry front() {
         return head.user;
     }
-    
-    public boolean isEmpty(){
+
+    public boolean isEmpty() {
         return head == null;
     }
-    
-    public Entry search(String email){
+
+    public Entry search(String email) {
         Node current = head;
-        while(current != null){
-            if(current.user.getEmail().equals(email)){
+        while (current != null) {
+            if (current.user.getEmail().equals(email)) {
                 return current.user;
             }
             current = current.next;
         }
         return null;
     }
-    
+
+    public Entry delete(String email) {
+        Node deleted = null;
+        Node current = head;
+        if(head.user.getEmail().equals(email)){
+            head = head.next;
+            return head.user;
+        }
+        
+        while (current != tail) {
+            if (current.next.user.getEmail().equals(email)) {
+                deleted = current.next;
+                current.next = current.next.next;
+                return deleted.user;
+            }
+            current = current.next;
+        }
+        return deleted.user;
+    }
+    public Entry update(String email){
+        Entry User = search(email);
+        
+    }
 }
