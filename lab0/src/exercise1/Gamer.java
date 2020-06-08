@@ -5,11 +5,14 @@
  */
 package exercise1;
 
+import java.io.Serializable;
+
 /**
  *
  * @author PC
  */
-public class Gamer {
+public class Gamer implements Serializable{
+    private static final long serialVersionUID = 1L;
     String email;
     int point;
 
