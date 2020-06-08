@@ -10,9 +10,14 @@ package exercise1;
  * @author PC
  */
 public class PriorityQueue {
-
+    Node<Gamer> node;
     private DoublyLinkedList<Gamer> list = new DoublyLinkedList<>();
-
+    
+    /**
+     * Insert into Priority Queue
+     *
+     * @param Gamer g
+     */
     public void insert(Gamer g) {
         //list is decrease
         //if list is empty, insert between head and tail
@@ -29,7 +34,7 @@ public class PriorityQueue {
             list.addFirst(g);
         }
         //normal case
-        Node<Gamer> node;
+        
         if (g.point > list.trailer.prev.getElement().getPoint() && g.point < list.header.next.getElement().getPoint()) {
             node = list.header.getNext();
             while (node.getElement().getPoint() > g.getPoint()) {
@@ -37,6 +42,19 @@ public class PriorityQueue {
             }
             list.addBetween(g, node.getPrev(), node);
         }
+    }
+    
+    /**
+     * Search Game player By Email
+     *
+     * @param String email
+     */
+    public Gamer searchByEmail(String email){
+        node =list.header.getNext();
+        while(!(node.getElement().getEmail().contentEquals(email))&& (node !=list.trailer)){
+            node=node.getNext();
+        }
+        return node.getElement();
     }
 
 }
