@@ -249,12 +249,14 @@ public class DoubleLinkedList {
 	return null;
     }
 
+    
     /**
      * this method will get the list and write all the Gamer info to CSV file
      *
      * @param fileName
+     * @throws java.io.IOException
      */
-    public void writeToCSVfile(String fileName) {
+    public void writeToCSVfile(String fileName) throws IOException{
 	FileWriter fr = null;
 	try {
 	    fr = new FileWriter(fileName);
@@ -270,7 +272,7 @@ public class DoubleLinkedList {
 		    fr.close();
 		}
 	    } catch (IOException e) {
-		e.printStackTrace();
+		System.out.println("Something wrong with writing to file!!");
 	    }
 	}
     }
