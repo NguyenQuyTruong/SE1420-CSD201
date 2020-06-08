@@ -47,6 +47,7 @@ public class PriorityQueue {
     /**
      * this method will delete Gamer depend on input email
      * @param email
+     * @return Gamer
      */
     public Gamer deleteGamer(String email) {
 	Gamer data = list.removeNode(email);
@@ -86,7 +87,7 @@ public class PriorityQueue {
     /**
      * this method use to Read the file and import Gamer data(email, point) to the queue
      * @param queue
-     * @param fileName 
+     * @param fileName
      */
     public void ReadFile(PriorityQueue queue, String fileName) {
 	FileReader fr = null;
@@ -116,6 +117,7 @@ public class PriorityQueue {
 	    }
 	}
     }
+
     //write file method
     public void writeFile(String fileName) {
 	list.writeToCSVfile(fileName);
