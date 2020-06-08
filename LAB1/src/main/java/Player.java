@@ -35,6 +35,7 @@ public class Player {
     public int getPoint() {
         return point;
     }
+    
     @Override
     public String toString() {
         return "Gamer{" + "email= "+ email + ", point= " + point + '}';
