@@ -5,12 +5,15 @@
  */
 package exercise1;
 
+import java.io.Serializable;
+
 /**
  *
  * @author PC
  */
-public class Node<E> {
+public class Node<E> implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     public E element; // reference to the element stored at this node
     public Node<E> prev; // reference to the previous node in the list
     public Node<E> next; // reference to the subsequent node in the list

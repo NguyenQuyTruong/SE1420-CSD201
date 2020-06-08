@@ -5,12 +5,15 @@
  */
 package exercise1;
 
+import java.io.Serializable;
+
 /**
  *
  * @author PC
  */
-public class PriorityQueue {
+public class PriorityQueue implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     Node<Gamer> node;
     private DoublyLinkedList<Gamer> list = new DoublyLinkedList<>();
 
@@ -137,5 +140,5 @@ public class PriorityQueue {
             System.out.println("Delete completed");
         }
     }
-    
+
 }
