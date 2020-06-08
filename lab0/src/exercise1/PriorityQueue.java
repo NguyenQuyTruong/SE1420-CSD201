@@ -89,4 +89,20 @@ public class PriorityQueue {
             System.out.println("Update email:" + email + " with the point:" + point + " completed");
         }
     }
+
+    /**
+     * Get player information
+     *
+     * @param String email
+     *
+     */
+    public void Search(String email) {
+        node = searchByEmail(email);
+        if (node == list.trailer) {
+            System.out.println("Don't have this email in list");
+        } else {
+            System.out.println("Email: " + email);
+            System.out.println("Point: " + node.getElement().getPoint());
+        }
+    }
 }
