@@ -9,7 +9,7 @@ package exercise1;
  *
  * @author PC
  */
-public class LQ_Gamer extends LinkedQueue<Gamer>{
+public class LQ_Gamer{
 
     public LQ_Gamer() {
         super();
