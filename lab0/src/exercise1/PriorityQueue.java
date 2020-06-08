@@ -105,4 +105,20 @@ public class PriorityQueue {
             System.out.println("Point: " + node.getElement().getPoint());
         }
     }
+
+    /**
+     * Find the Top User
+     *
+     * @param
+     *
+     */
+    public void findTheTopUser() {
+        if (list.isEmpty()) {
+            System.out.println("Player information is null now");
+        }
+        if (!(list.isEmpty())) {
+            System.out.println("Player has the highest point is: " + list.header.getNext().getElement().getEmail());
+            System.out.println("Highest point:" + list.header.getNext().getElement().getPoint());
+        }
+    }
 }
