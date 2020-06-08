@@ -1,13 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This code is reference from the book Data Structures and Algorithms in Java.
  */
 package exercise1;
 
 /**
  *
- * @author PC
+ * @author Khanh Hoa
  */
 public class DoublyLinkedList<E> {
 
@@ -16,7 +14,7 @@ public class DoublyLinkedList<E> {
     public Node<E> header; // header sentinel
     public Node<E> trailer; // trailer sentinel
     public int size = 0; // number of elements in the list
-
+/**Constructs a new empty list. */
     public DoublyLinkedList() {
         header = new Node<>(null, null, null); // create header
         trailer = new Node<>(null, header, null); // trailer is preceded by header
@@ -46,7 +44,7 @@ public class DoublyLinkedList<E> {
         }
         return trailer.getPrev().getElement(); // last element is before trailer
     }
-    // public update methods
+    
 // Adds element e to the front of the list.
 
     public void addFirst(E e) {
@@ -72,7 +70,7 @@ public class DoublyLinkedList<E> {
         return remove(trailer.getPrev()); // last element is before trailer
     }
 
-    // private update methods
+    
     public void addBetween(E e, Node<E> predecessor, Node<E> successor) {
         // create and link a new node
         Node<E> newest = new Node<>(e, predecessor, successor);
