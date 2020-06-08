@@ -133,10 +133,7 @@ public class DoubleLinkedList {
 		addLast(newbie);
 	    } //if input point > point of header, add new header
 	    else if (point > pointOfHeader) {
-		header.right.left = newbie;
-		newbie.right = header.right;
-		newbie.left = header;
-		header.right = newbie;
+		addFirst(newbie);
 	    } //normail case, go through the list and compare every node until get right position
 	    else {
 		Node currentNode = header.right;
