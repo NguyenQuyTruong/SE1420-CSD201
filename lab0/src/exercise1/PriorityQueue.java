@@ -63,7 +63,6 @@ public class PriorityQueue {
      *
      * @param String email
      */
-
     public void Delete(String email) {
         if (node == list.trailer) {
             System.out.println("Don't have this email in list!");
@@ -71,8 +70,23 @@ public class PriorityQueue {
             node = searchByEmail(email);
 
             list.remove(node);
-            System.out.println("Remove completed");
+            System.out.println("Remove email: " + email + " completed");
         }
     }
 
+    /**
+     * Update a game player account
+     *
+     * @param String email
+     * @param int point
+     */
+    public void Update(String email, int point) {
+        node = searchByEmail(email);
+        if (node == list.trailer) {
+            System.out.println("Don't have this email in list");
+        } else {
+            node.getElement().setPoint(point);
+            System.out.println("Update email:" + email + " with the point:" + point + " completed");
+        }
+    }
 }
