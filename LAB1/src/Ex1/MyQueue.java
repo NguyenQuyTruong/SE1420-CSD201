@@ -91,13 +91,12 @@ public class MyQueue {
         return str;
     }
 
-    public Entry dequeue() {
-        Entry firstUser = head.user;
+    public void dequeue() {
         head = head.next;
         if (head == null) {
             tail = null;
         }
-        return firstUser;
+        size --;
     }
 
     public Entry front() {
