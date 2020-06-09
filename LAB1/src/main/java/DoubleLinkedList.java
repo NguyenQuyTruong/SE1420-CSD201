@@ -58,4 +58,13 @@ public class DoubleLinkedList {
     public boolean isEmpty(){
         return nodeSize == 0;
     }
+    //
+    //Return Size of the List
+    //
+    //@return number of size
+    //
+    public int sizeOfList(){
+        return nodeSize;
+    }
+     
 }
