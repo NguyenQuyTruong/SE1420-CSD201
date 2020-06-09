@@ -123,23 +123,24 @@ public class MyQueue {
         return null;
     }
 
-    public Entry delete(String email) {
-        Node deleted = null;
-        Node current = head;
+    public void delete(String email) {
         if (head.user.getEmail().equals(email)) {
             head = head.next;
-            return head.user;
+            System.out.println("Deleted ! ! !");
+            delete(email);
+            size --;
+            
         }
-
+        Node current = head;
+        
         while (current != tail) {
             if (current.next.user.getEmail().equals(email)) {
-                deleted = current.next;
                 current.next = current.next.next;
-                return deleted.user;
+                System.out.println("Deleted ! ! !");
+                size--;
             }
             current = current.next;
         }
-        return deleted.user;
     }
 
     public Entry update(String email, int New_point) {
