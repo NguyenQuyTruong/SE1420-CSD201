@@ -49,7 +49,7 @@ public class CSV {
 	 * @throws IOException
 	 */
 	public static void WriteQueueIntoCSV(PriorityQueue queue, String path) throws IOException {
-		queue.writeCSV(path);
+		queue.exportCSV(path);
 
 	}
 }

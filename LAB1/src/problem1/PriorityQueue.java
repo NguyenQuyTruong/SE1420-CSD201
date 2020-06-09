@@ -163,7 +163,7 @@ public class PriorityQueue implements Serializable{
 	 * @param path
 	 * @throws IOException
 	 */
-	public void writeCSV(String path) throws IOException {
+	public void exportCSV(String path) throws IOException {
 		FileWriter writer = new FileWriter(path);
 		
 		node currentNode = list.headNode.right;
