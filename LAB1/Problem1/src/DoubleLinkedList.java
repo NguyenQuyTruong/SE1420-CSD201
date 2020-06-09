@@ -38,7 +38,7 @@ public class DoubleLinkedList {
     private Node trailer;
     
     /**
-     * Constructs a new empty list.
+     * Constructs a new empty node.
      */
     public DoubleLinkedList() {
         header = new Node(null, null, null);
@@ -50,9 +50,13 @@ public class DoubleLinkedList {
      * Add new node
      *
      * @param data
-     * @param nextNode
-     * @param prevNode
+     * @param front
+     * @param back
      */
+    public boolean isEmpty() {
+	return header == null;
+    }
+    
     private void insert(User data, Node front, Node back){
         Node n = new Node(data, back, front);
         front.next = n;
