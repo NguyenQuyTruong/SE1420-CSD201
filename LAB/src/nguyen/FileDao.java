@@ -23,7 +23,7 @@ public class FileDao {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String detail = "";
-            while ((detail = br.readLine()) == null) {
+            while ((detail = br.readLine()) != null) {
                 String [] result=detail.split(",");
                 if(!result[0].equalsIgnoreCase("Email")){
                     list.add(result[0], Integer.parseInt(result[1]));
