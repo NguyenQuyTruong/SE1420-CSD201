@@ -5,6 +5,7 @@
  */
 package UserManager;
 
+import HTMLParser.Stack;
 import java.util.Scanner;
 
 /**
