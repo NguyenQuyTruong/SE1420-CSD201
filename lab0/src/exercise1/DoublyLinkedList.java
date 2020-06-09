@@ -1,5 +1,5 @@
 /*
- * This code is reference from the book Data Structures and Algorithms in Java.
+ *  Reference from the book Data Structures and Algorithms in Java.
  */
 package exercise1;
 
