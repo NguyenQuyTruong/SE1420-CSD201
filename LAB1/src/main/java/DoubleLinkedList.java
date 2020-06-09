@@ -50,27 +50,27 @@ public class DoubleLinkedList {
         trail = new Node(null,null,head);
         head.setNext(head);
     }
-    //
-    //Check if List is empty or not
-    //
-    //return @Player
-    //
+/**    
+   * Check if List is empty or not
+   *
+   * @return Player
+   */ 
     public boolean isEmpty(){
         return nodeSize == 0;
     }
-    //
-    //Return Size of the List
-    //
-    //@return number of size
-    //
+/**    
+   *Return Size of the List
+   * 
+   * @return number of size
+   */ 
     public int sizeOfList(){
         return nodeSize;
     }
-     //
-    //Return the data of the Player on top of the List
-    //
-    // @return Player
-    //
+/**     
+   * Return the data of the Player on top of the List
+   * 
+   *  @return Player
+   */ 
     public Player getFirst(){
         //Check if the List is Empty or not...
         if(isEmpty()){
@@ -80,11 +80,11 @@ public class DoubleLinkedList {
             return head.getNext().getPlayer();
         }
     }
-    //
-    //Return the data of the Player on the bottom of the List
-    //
-    // @return Player
-    //
+/**    
+   * Return the data of the Player on the bottom of the List
+   * 
+   *  @return Player
+   */ 
     public Player getLast(){
         //Check if the List is Empty or not...
         if(isEmpty()){
@@ -94,12 +94,12 @@ public class DoubleLinkedList {
             return trail.getPrev().getPlayer();
         }
     }
-    //
-    //Remove a node from List
-    //
-    //@param playerNode
-    //@return Data of the removed node
-    //
+/**    
+   * Remove a node from List
+   * 
+   * @param playerNode
+   * @return Data of the removed node
+   */ 
     private Player remove(Node playerNode){
         Node nextNode = playerNode.getNext();
         Node prevNode = playerNode.getPrev();
@@ -108,23 +108,23 @@ public class DoubleLinkedList {
         nodeSize--;
         return playerNode.getPlayer();
     }
-    //
-    //Remove the Last Player of the List
-    //
-    // @Data of the removed Player
-    //
+/**    
+   * Remove the Last Player of the List
+   * 
+   *  @Data of the removed Player
+   */ 
     public Player removeLast(){
         if(isEmpty()){
             return null;
         }else{
-            return remove(head.getPrev());
+            return remove(trail.getPrev());
         }
     }
-    //
-    //Remove the First Player of the List
-    //
-    // @Data of the removed Player
-    //
+/**    
+   * Remove the First Player of the List
+   * 
+   *  @Data of the removed Player
+   */ 
     public Player removeFirst(){
         if(isEmpty()){
             return null;
