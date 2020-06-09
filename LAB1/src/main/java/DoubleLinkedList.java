@@ -132,4 +132,33 @@ public class DoubleLinkedList {
             return remove(head.getNext());
         }
     }
+
+    public void deletePlayerNode(String email){
+        //Check if the List is Empty or not...
+        if(isEmpty()){
+            System.out.println("The List is Empty... Try input some data first.");
+        } else{
+            Node playerNode;
+        }
+    }
+    /**
+     * Find the node for priority queue what is higher
+     * 
+     * @param inputpoint
+     * @return Node
+     */
+    public Node searchNode(int inputpoint){
+        //Get Node after head
+        Node nextNode = head.getNext();
+        
+        do{
+            if (nextNode.getPlayer().getPoint() > inputpoint)//find the first player that have higher point
+            {
+                return nextNode;
+            } else {
+                nextNode = nextNode.getNext(); //Move to next Node
+            }
+        } while (nextNode != trail);
+        return null;   //this is the highest point on the List
+    }
 }
