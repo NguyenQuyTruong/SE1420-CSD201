@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Lab1_1;
+package LAB1;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Test {
 
     public static void main(String[] args) {
-	LAB1_1.PriorityQueue list = new LAB1_1.PriorityQueue();
+	LAB1.PriorityQueue list = new LAB1.PriorityQueue();
 	Scanner sc = new Scanner(System.in);
 	int choice;
 	do {
@@ -23,7 +23,7 @@ public class Test {
 	    choice = Integer.parseInt(sc.nextLine());
 	    switch (choice) {
 		case 1:
-		    LAB1_1.FileWriteRead.readData("user.csv", list);
+		    LAB1.FileWriteRead.readData("user.csv", list);
 		    break;
 		case 2:
 		    System.out.print("Email: ");
@@ -39,7 +39,7 @@ public class Test {
 		    System.out.print("Point: ");
 		    int point = Integer.parseInt(sc.nextLine());
 		    list.updateUser(email, point);
-		    LAB1_1.FileWriteRead.writeData("user.csv", list);
+		    LAB1.FileWriteRead.writeData("user.csv", list);
 		    break;
 		case 4:
 		    System.out.print("Email: ");

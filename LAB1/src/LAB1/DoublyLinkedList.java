@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Lab1_1;
+package LAB1;
 
 import java.io.PrintWriter;
 

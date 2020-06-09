@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LAB1_1;
+package LAB1;
 
-import Lab1_1.User;
+import LAB1.User;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -38,7 +38,7 @@ public class FileWriteRead {
 		//skip line Email and Point in file
 		if (!arr[0].equalsIgnoreCase("Email") || !arr[1].equalsIgnoreCase("Point")) {
 		    //create new object and insert email and point from array readed
-		    User userData = new Lab1_1.User(arr[0], Integer.parseInt(arr[1]));
+		    User userData = new LAB1.User(arr[0], Integer.parseInt(arr[1]));
 		    //add to list
 		    list.insertUser(userData);
 		}

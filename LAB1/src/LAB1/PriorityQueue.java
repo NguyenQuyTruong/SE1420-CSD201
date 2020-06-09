@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LAB1_1;
+package LAB1;
 
 /**
  *
  * @author minhv
  */
-public class PriorityQueue extends Lab1_1.DoublyLinkedList {
+public class PriorityQueue extends LAB1.DoublyLinkedList {
 
     public PriorityQueue() {
     }
 
-    public void insertUser(Lab1_1.User data) {
+    public void insertUser(LAB1.User data) {
 	add(data);
     }
 
