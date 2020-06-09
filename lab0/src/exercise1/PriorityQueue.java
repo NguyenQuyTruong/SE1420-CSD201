@@ -91,7 +91,7 @@ public class PriorityQueue implements Serializable {
      * @param email
      * @param point
      */
-    public void Update(String email, int point) {
+    public void Update(String email, long point) {
         node = searchByEmail(email);
         if (node == list.trailer) {
             System.out.println("Don't have this email in list");

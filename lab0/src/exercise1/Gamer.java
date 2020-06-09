@@ -15,7 +15,7 @@ public class Gamer implements Serializable {
 
     private static final long serialVersionUID = 1L;
     String email;//email of gamer
-    int point;//point of gamer
+    long point;//point of gamer
 
     public Gamer() {
     }
@@ -23,7 +23,7 @@ public class Gamer implements Serializable {
     /**
      * Constructs a game entry with given parameters.
      */
-    public Gamer(String email, int point) {
+    public Gamer(String email, long point) {
         this.email = email;
         this.point = point;
     }
@@ -45,14 +45,14 @@ public class Gamer implements Serializable {
     /**
      * Returns the point field.
      */
-    public int getPoint() {
+    public long getPoint() {
         return point;
     }
 
     /**
      * Set the point field.
      */
-    public void setPoint(int point) {
+    public void setPoint(long point) {
         this.point = point;
     }
 
