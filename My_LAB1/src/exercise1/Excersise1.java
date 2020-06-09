@@ -7,4 +7,5 @@ package exercise1;
  */
 public class Excersise1 {
     //private static final String
+    private static final String storageFile = "excersise1.data";
 }
