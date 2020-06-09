@@ -25,7 +25,7 @@ public class Stack {
     public int size() {
 	return (t + 1);
     }
-    
+
     /**
      * this method use to check is the stack empty or not
      * @return true or false
@@ -33,7 +33,7 @@ public class Stack {
     public boolean isEmpty() {
 	return (t == -1);
     }
-    
+
     /**
      * this method use to push data(String htmlTag) to the stack
      * and it will check the stack is full or not
@@ -46,7 +46,7 @@ public class Stack {
 	    tag[++t] = htmlTag; //increment size of stack before storing new item
 	}
     }
-    
+
     /**
      * this method use to return the top of the Stack
      * @return top tag
@@ -56,5 +56,19 @@ public class Stack {
 	    return null;
 	}
 	return tag[t];
+    }
+    
+    /**
+     * this method use to remove the top of the stack
+     * @return htmlTag(String)
+     */
+    public String pop() {
+	if (isEmpty()) {
+	    return null;
+	}
+	String htmlTag = tag[t];
+	tag[t] = null; //free the top of stack
+	t--;
+	return htmlTag;
     }
 }
