@@ -1,10 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This class has these methods: 
+ * insert information of a game player to the queue so that the queue is sorted as decreasing the point of player.
+ * That means the player who has the highest point will be in the head.
+ * search game player by email.
+ * delete a game player account (use method search game player by email to identify which account is deleted).
+ * update a game player account (use method search game player by email to identify account updated)
+ * find and delete the top user.
+ * write queue to CSV files.
  */
 package exercise1;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -20,7 +27,7 @@ public class PriorityQueue implements Serializable {
     /**
      * Insert into Priority Queue
      *
-     * @param Gamer g
+     * @param g
      */
     public void insert(Gamer g) {
         //list is decrease
@@ -51,7 +58,8 @@ public class PriorityQueue implements Serializable {
     /**
      * Search Game player By Email
      *
-     * @param String email
+     * @param email
+     * @return node
      */
     public Node<Gamer> searchByEmail(String email) {
         node = list.header.getNext();
@@ -64,7 +72,7 @@ public class PriorityQueue implements Serializable {
     /**
      * Delete a game player account
      *
-     * @param String email
+     * @param email
      */
     public void Delete(String email) {
         if (node == list.trailer) {
@@ -80,8 +88,8 @@ public class PriorityQueue implements Serializable {
     /**
      * Update a game player account
      *
-     * @param String email
-     * @param int point
+     * @param email
+     * @param point
      */
     public void Update(String email, int point) {
         node = searchByEmail(email);
@@ -96,7 +104,7 @@ public class PriorityQueue implements Serializable {
     /**
      * Get point of user
      *
-     * @param String email
+     * @param email
      *
      */
     public void Search(String email) {
@@ -130,6 +138,7 @@ public class PriorityQueue implements Serializable {
      *
      * @param
      *
+     *
      */
     public void deleteTheTopUser() {
         if (list.isEmpty()) {
@@ -141,4 +150,22 @@ public class PriorityQueue implements Serializable {
         }
     }
 
+    /**
+     * Write queue to CSV
+     *
+     * @param path
+     * @throw IOException
+     *
+     */
+    public void writeToCSV(String path) throws IOException {
+        FileWriter writer = new FileWriter(path);
+        node = list.header.getNext();
+        while (node != list.trailer) {
+            String data = String.format("%s,%d\n", node.getElement().getEmail(), node.getElement().getPoint());
+            writer.append(data);
+        }
+        writer.flush();
+        writer.close();
+        System.out.println("Saved data to CSV file");
+    }
 }
