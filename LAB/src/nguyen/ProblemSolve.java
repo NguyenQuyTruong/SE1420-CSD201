@@ -54,4 +54,41 @@ public class ProblemSolve {
     private void loadFile() {
         FileDao.readFile(list, filename);
     }
+    public void getArguments(String[] args) {
+
+        try {
+            switch (args[0]) {
+                case "-r": //read csv
+                    loadFile();
+                case "-a": //add new user
+                    addNewPlayer(args[1], args[2]);
+                    break;
+                case "-d": //delete a user
+                    removePlayer(args[1]);
+                    break;
+                case "-u":
+                    updatePlayer(args[1], args[2]);
+                    break;
+                case "-g":
+                    GetPointPlayer(args[1]);
+                    break;
+                case "-t":
+                    searchMaxPointPlayer();
+                    break;
+                case "-dt":
+                    removeMaxPointP();
+                    break;
+                case "-s":
+                    saveFile();
+                    break;
+                default:
+                    System.out.println("Command not found, try again!");
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Not enough argument");
+        } catch (Exception e) {
+            System.out.println("There is an error happen, please check your csv file or any input parameter");
+        }
+
+    }
 }
