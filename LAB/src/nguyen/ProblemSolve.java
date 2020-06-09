@@ -20,4 +20,12 @@ public class ProblemSolve {
         } catch (Exception e) {
         }
     }
+    private void GetPointPlayer(String email) {
+        Player rs=list.SearchPlayerEmail(email);
+        if (rs == null) {
+            System.out.println(email);
+        } else {
+            System.out.println(email);
+        }
+    }
 }
