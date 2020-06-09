@@ -1,13 +1,12 @@
 /*
- *  Reference from the book Data Structures and Algorithms in Java.
+ *  Reference: Data Structures and Algorithms in Java(Sixth Edition).
  */
 package exercise1;
 
-/**
- *
- * @author Khanh Hoa
- */
-public class DoublyLinkedList<E> {
+import java.io.Serializable;
+
+
+public class DoublyLinkedList<E> implements Serializable{
 
     private static final long serialVersionUID = 1L;
     // instance variables of the DoublyLinkedList
