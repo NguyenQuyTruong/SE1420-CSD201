@@ -28,50 +28,50 @@ public class Main {
         String email = "";
         int point = 0;
         int choice = 0;
-//        if (args[0].equals("-h")) {
-//            System.out.println("Exercise 1");
-//            System.out.print("java -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data strucuture into csv file\n");
-//            System.out.print("java -r <<user_CSV_file>> -s <<new_user_CSV_file>> -a <<email>> <<point>>: Problem 1, add a new user into the data strucutre and save to new csv file\n");
-//            System.out.print("java -r <<user_CSV_file>> -s <<new_user_CSV_file>> -d <<email>>: Problem 1, delete a user in the data strucutre and save to new csv file\n");
-//            System.out.print("java -r <<user_CSV_file>> -s <<new_user_CSV_file>> -u <<email>> <<new_point>>: Problem 1, update new point for user in the data strucutre and save to new csv file\n");
-//            System.out.print("java -r <<user_CSV_file>> -s <<new_user_CSV_file>> -dt: Problem 1, delete the top user from the data strucutre and save to new csv file\n");
-//            System.out.print("java -r <<user_CSV_file>> -g <<email>>: Problem 1, get the point of user from the data strucutre\n");
-//            System.out.print("java -r <<user_CSV_file>> -t: Problem 1, get the point of the top user from the data strucutre\n");
-//        }
-//
-//        for (i = 0; i < args.length; i++) {
-//
-//            if (args[i].equals("-r")) {
-//                oldFileName = args[i + 1];
-//            }
-//            if (args[i].equals("-s")) {
-//                newFileName = args[i + 1];
-//            }
-//            if (args[i].equals("-a")) {
-//                email = args[i + 1];
-//                point = Integer.parseInt(args[i + 2]);
-//                choice = 1;
-//            }
-//            if (args[i].equals("-d")) {
-//                email = args[i + 1];
-//                choice = 2;
-//            }
-//            if (args[i].equals("-u")) {
-//                email = args[i + 1];
-//                point = Integer.parseInt(args[i + 2]);
-//                choice = 3;
-//            }
-//            if (args[i].equals("-dt")) {
-//                choice = 4;
-//            }
-//            if (args[i].equals("-g")) {
-//                email = args[i + 1];
-//                choice = 5;
-//            }
-//            if (args[i].equals("-t")) {
-//                choice = 6;
-//            }
-//        }
+        if (args[0].equals("-h")) {
+            System.out.println("Exercise 1");
+            System.out.print("java -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data strucuture into csv file\n");
+            System.out.print("java -r <<user_CSV_file>> -s <<new_user_CSV_file>> -a <<email>> <<point>>: Problem 1, add a new user into the data strucutre and save to new csv file\n");
+            System.out.print("java -r <<user_CSV_file>> -s <<new_user_CSV_file>> -d <<email>>: Problem 1, delete a user in the data strucutre and save to new csv file\n");
+            System.out.print("java -r <<user_CSV_file>> -s <<new_user_CSV_file>> -u <<email>> <<new_point>>: Problem 1, update new point for user in the data strucutre and save to new csv file\n");
+            System.out.print("java -r <<user_CSV_file>> -s <<new_user_CSV_file>> -dt: Problem 1, delete the top user from the data strucutre and save to new csv file\n");
+            System.out.print("java -r <<user_CSV_file>> -g <<email>>: Problem 1, get the point of user from the data strucutre\n");
+            System.out.print("java -r <<user_CSV_file>> -t: Problem 1, get the point of the top user from the data strucutre\n");
+        }
+
+        for (i = 0; i < args.length; i++) {
+
+            if (args[i].equals("-r")) {
+                oldFileName = args[i + 1];
+            }
+            if (args[i].equals("-s")) {
+                newFileName = args[i + 1];
+            }
+            if (args[i].equals("-a")) {
+                email = args[i + 1];
+                point = Integer.parseInt(args[i + 2]);
+                choice = 1;
+            }
+            if (args[i].equals("-d")) {
+                email = args[i + 1];
+                choice = 2;
+            }
+            if (args[i].equals("-u")) {
+                email = args[i + 1];
+                point = Integer.parseInt(args[i + 2]);
+                choice = 3;
+            }
+            if (args[i].equals("-dt")) {
+                choice = 4;
+            }
+            if (args[i].equals("-g")) {
+                email = args[i + 1];
+                choice = 5;
+            }
+            if (args[i].equals("-t")) {
+                choice = 6;
+            }
+        }
         switch (choice) {
             case 0: {
                 try {
@@ -164,13 +164,13 @@ public class Main {
             }
             case 3: {
                 try {
-                    FileReader file = new FileReader("user.csv");
+                    FileReader file = new FileReader(oldFileName);
                     PrintWriter pw = null;
                     int pointRead = 0;
                     String emailRead = "";
                     try (Scanner inputStream = new Scanner(file)) {
                         inputStream.nextLine();
-                        FileWriter fw = new FileWriter("newuser.csv");
+                        FileWriter fw = new FileWriter(newFileName);
                         BufferedWriter bw = new BufferedWriter(fw);
                         pw = new PrintWriter(bw);
                         String line;
@@ -183,7 +183,7 @@ public class Main {
                         inputStream.close();
                     }
                     mq.update(email, point);
-                    pw.println("Email ,Point\n");
+                    pw.println("Email ,Point");
                     pw.write(mq.print());
                     pw.close();
                 } catch (IOException e) {
@@ -193,13 +193,13 @@ public class Main {
             }
             case 4:{
                 try {
-                    FileReader file = new FileReader("user.csv");
+                    FileReader file = new FileReader(oldFileName);
                     PrintWriter pw = null;
                     int pointRead = 0;
                     String emailRead = "";
                     try (Scanner inputStream = new Scanner(file)) {
                         inputStream.nextLine();
-                        FileWriter fw = new FileWriter("newuser.csv");
+                        FileWriter fw = new FileWriter(newFileName);
                         BufferedWriter bw = new BufferedWriter(fw);
                         pw = new PrintWriter(bw);
                         String line;
@@ -212,7 +212,7 @@ public class Main {
                         inputStream.close();
                     }
                     mq.dequeue();
-                    pw.println("Email ,Point\n");
+                    pw.println("Email ,Point");
                     pw.write(mq.print());
                     pw.close();
                 } catch (IOException e) {
@@ -222,13 +222,13 @@ public class Main {
             }
             case 5:{
                 try {
-                    FileReader file = new FileReader("user.csv");
+                    FileReader file = new FileReader(oldFileName);
                     PrintWriter pw = null;
                     int pointRead = 0;
                     String emailRead = "";
                     try (Scanner inputStream = new Scanner(file)) {
                         inputStream.nextLine();
-                        FileWriter fw = new FileWriter("newuser.csv");
+                        FileWriter fw = new FileWriter(newFileName);
                         BufferedWriter bw = new BufferedWriter(fw);
                         pw = new PrintWriter(bw);
                         String line;
@@ -248,13 +248,13 @@ public class Main {
             }
             case 6: {
                 try {
-                    FileReader file = new FileReader("user.csv");
+                    FileReader file = new FileReader(oldFileName);
                     PrintWriter pw = null;
                     int pointRead = 0;
                     String emailRead = "";
                     try (Scanner inputStream = new Scanner(file)) {
                         inputStream.nextLine();
-                        FileWriter fw = new FileWriter("newuser.csv");
+                        FileWriter fw = new FileWriter(newFileName);
                         BufferedWriter bw = new BufferedWriter(fw);
                         pw = new PrintWriter(bw);
                         String line;
