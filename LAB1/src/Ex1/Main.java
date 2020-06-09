@@ -71,6 +71,7 @@ public class Main {
             if (args[i].equals("-t")) {
                 choice = 6;
             }
+
         }
         switch (choice) {
             case 0: {
@@ -90,7 +91,7 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
-                            Entry e = new Entry(pointRead,emailRead);
+                            Entry e = new Entry(pointRead, emailRead);
                             mq.enqueue(e);
                         }
                         inputStream.close();
@@ -120,12 +121,12 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
-                            Entry e = new Entry(pointRead,emailRead);
+                            Entry e = new Entry(pointRead, emailRead);
                             mq.enqueue(e);
                         }
                         inputStream.close();
                     }
-                    Entry e = new Entry(point,email);
+                    Entry e = new Entry(point, email);
                     mq.enqueue(e);
                     pw.println("Email ,Point");
                     pw.write(mq.print());
@@ -133,6 +134,7 @@ public class Main {
                 } catch (IOException e) {
                     System.out.println("Email not found");
                 }
+                choice = 0;
                 break;
             }
             case 2: {
@@ -152,7 +154,7 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
-                            Entry e = new Entry(pointRead,emailRead);
+                            Entry e = new Entry(pointRead, emailRead);
                             mq.enqueue(e);
                         }
                         inputStream.close();
@@ -164,6 +166,7 @@ public class Main {
                 } catch (IOException e) {
                     System.out.println("Email not found");
                 }
+                choice = 0;
                 break;
             }
             case 3: {
@@ -183,7 +186,7 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
-                            Entry e = new Entry(pointRead,emailRead);
+                            Entry e = new Entry(pointRead, emailRead);
                             mq.enqueue(e);
                         }
                         inputStream.close();
@@ -195,9 +198,10 @@ public class Main {
                 } catch (IOException e) {
                     System.out.println("Email not found");
                 }
+                choice = 0;
                 break;
             }
-            case 4:{
+            case 4: {
                 try {
                     FileReader file = new FileReader(oldFileName);
                     PrintWriter pw = null;
@@ -214,7 +218,7 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
-                            Entry e = new Entry(pointRead,emailRead);
+                            Entry e = new Entry(pointRead, emailRead);
                             mq.enqueue(e);
                         }
                         inputStream.close();
@@ -226,9 +230,10 @@ public class Main {
                 } catch (IOException e) {
                     System.out.println("Email not found");
                 }
+                choice = 0;
                 break;
             }
-            case 5:{
+            case 5: {
                 try {
                     FileReader file = new FileReader(oldFileName);
                     PrintWriter pw = null;
@@ -245,15 +250,16 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
-                            Entry e = new Entry(pointRead,emailRead);
+                            Entry e = new Entry(pointRead, emailRead);
                             mq.enqueue(e);
                         }
                         inputStream.close();
                     }
-                    System.out.println("Point: "+mq.search(email).getPoint());
+                    System.out.println("Point: " + mq.search(email).getPoint());
                 } catch (IOException e) {
                     System.out.println("Email not found");
                 }
+                choice = 0;
                 break;
             }
             case 6: {
@@ -273,7 +279,7 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
-                            Entry e = new Entry(pointRead,emailRead);
+                            Entry e = new Entry(pointRead, emailRead);
                             mq.enqueue(e);
                         }
                         inputStream.close();
@@ -282,6 +288,7 @@ public class Main {
                 } catch (IOException e) {
                     System.out.println("Email not found");
                 }
+                choice = 0;
                 break;
             }
 
