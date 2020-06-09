@@ -27,4 +27,8 @@ public class Player {
         return point;
     }
    
+    @Override
+    public String toString(){
+        return "Player{" + "email: " + email + ", point: "+ point + '}'; 
+    }
 }
