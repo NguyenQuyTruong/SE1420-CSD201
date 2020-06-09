@@ -120,6 +120,8 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
+                            Entry e = new Entry(pointRead,emailRead);
+                            mq.enqueue(e);
                         }
                         inputStream.close();
                     }
@@ -150,6 +152,8 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
+                            Entry e = new Entry(pointRead,emailRead);
+                            mq.enqueue(e);
                         }
                         inputStream.close();
                     }
@@ -179,6 +183,8 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
+                            Entry e = new Entry(pointRead,emailRead);
+                            mq.enqueue(e);
                         }
                         inputStream.close();
                     }
@@ -208,6 +214,8 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
+                            Entry e = new Entry(pointRead,emailRead);
+                            mq.enqueue(e);
                         }
                         inputStream.close();
                     }
@@ -237,6 +245,8 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
+                            Entry e = new Entry(pointRead,emailRead);
+                            mq.enqueue(e);
                         }
                         inputStream.close();
                     }
@@ -263,6 +273,8 @@ public class Main {
                             String[] results = line.split(", ");
                             pointRead = Integer.parseInt(results[1]);
                             emailRead = results[0];
+                            Entry e = new Entry(pointRead,emailRead);
+                            mq.enqueue(e);
                         }
                         inputStream.close();
                     }
