@@ -77,7 +77,7 @@ public class DoubleLinkedList {
             return null;
         }else{
             //Return the Player's data
-            return trail.getNext().getPlayer();
+            return head.getNext().getPlayer();
         }
     }
     //
@@ -91,8 +91,37 @@ public class DoubleLinkedList {
             return null;
         }else{
             //Return the Player's data
-            return head.getPrev().getPlayer();
+            return trail.getPrev().getPlayer();
         }
     }
-    
+    //
+    //Remove a node from List
+    //
+    //@param playerNode
+    //@return Data of the removed node
+    //
+    private Player remove(Node playerNode){
+        Node nextNode = playerNode.getNext();
+        Node prevNode = playerNode.getPrev();
+        prevNode.setPrev(prevNode);
+        nextNode.setNext(nextNode);
+        nodeSize--;
+        return playerNode.getPlayer();
+    }
+    //
+    //Remove the Last Player of the List
+    //
+    // @Data of the removed Player
+    //
+    public Player removeLast(){
+        
+    }
+    //
+    //Remove the First Player of the List
+    //
+    // @Data of the removed Player
+    //
+    public Player removeFirst(){
+        
+    }
 }
