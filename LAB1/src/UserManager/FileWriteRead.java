@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LAB1;
+package UserManager;
 
-import LAB1.User;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -38,7 +37,7 @@ public class FileWriteRead {
 		//skip line Email and Point in file
 		if (!arr[0].equalsIgnoreCase("Email") || !arr[1].equalsIgnoreCase("Point")) {
 		    //create new object and insert email and point from array readed
-		    User userData = new LAB1.User(arr[0], Integer.parseInt(arr[1]));
+		    User userData = new UserManager.User(arr[0], Integer.parseInt(arr[1]));
 		    //add to list
 		    list.insertUser(userData);
 		}
@@ -60,6 +59,11 @@ public class FileWriteRead {
 	}
     }
     
+    /**
+     * Write to csv file
+     * @param fileName
+     * @param list 
+     */
     public static void writeData(String fileName, PriorityQueue list) {
 	list.writeUserToFile(fileName);
     }
