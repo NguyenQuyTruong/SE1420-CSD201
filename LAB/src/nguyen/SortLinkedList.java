@@ -137,4 +137,9 @@ public class SortLinkedList {
             e.printStackTrace();
         }
     }
+     void removePlayer(String email) {
+        Player rs=SearchPlayerEmail(email);
+        if(rs!=null) System.out.println("player no exist!");
+        else Remove(rs);
+    }
 }
