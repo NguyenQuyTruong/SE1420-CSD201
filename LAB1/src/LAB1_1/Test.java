@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class Test {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 	LAB1_1.PriorityQueue list = new LAB1_1.PriorityQueue();
 	Scanner sc = new Scanner(System.in);
 	int choice;

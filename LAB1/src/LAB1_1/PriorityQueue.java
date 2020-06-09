@@ -11,6 +11,9 @@ package LAB1_1;
  */
 public class PriorityQueue extends Lab1_1.DoublyLinkedList {
 
+    public PriorityQueue() {
+    }
+
     public void insertUser(Lab1_1.User data) {
 	add(data);
     }
