@@ -105,8 +105,8 @@ public class DoubleLinkedList {
         Node prevNode = playerNode.getPrev();
         prevNode.setPrev(prevNode);
         nextNode.setNext(nextNode);
-        return playerNode.getPlayer();
         nodeSize--;
+        return playerNode.getPlayer();
     }
     //
     //Remove the Last Player of the List
@@ -114,7 +114,11 @@ public class DoubleLinkedList {
     // @Data of the removed Player
     //
     public Player removeLast(){
-        
+        if(isEmpty()){
+            return null;
+        }else{
+            return remove(head.getPrev());
+        }
     }
     //
     //Remove the First Player of the List
@@ -122,6 +126,10 @@ public class DoubleLinkedList {
     // @Data of the removed Player
     //
     public Player removeFirst(){
-        
+        if(isEmpty()){
+            return null;
+        }else{
+            return remove(head.getNext());
+        }
     }
 }
