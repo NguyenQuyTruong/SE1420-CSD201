@@ -46,4 +46,15 @@ public class Stack {
 	    tag[++t] = htmlTag; //increment size of stack before storing new item
 	}
     }
+    
+    /**
+     * this method use to return the top of the Stack
+     * @return top tag
+     */
+    public String top() {
+	if (isEmpty()) {
+	    return null;
+	}
+	return tag[t];
+    }
 }
