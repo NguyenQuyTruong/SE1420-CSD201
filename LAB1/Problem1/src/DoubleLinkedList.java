@@ -44,6 +44,26 @@ public class DoubleLinkedList {
         header = new Node(null, null, null);
         trailer = new Node(null, null, header);
         header.next = trailer;
+    }   
+    
+    /**
+     * Check list is empty or not
+     *
+     * @return true or false
+     */
+    public boolean isEmpty() {
+	return header == null;
+    }
+    
+    /**
+     * Get size of list
+     *
+     * @return number of size
+     */
+    public int size() {
+        int result = 0;
+        for(Node n = header; n != null; n=n.next) result++;
+        return result;
     }
     
     /**
@@ -53,10 +73,6 @@ public class DoubleLinkedList {
      * @param front
      * @param back
      */
-    public boolean isEmpty() {
-	return header == null;
-    }
-    
     private void insert(User data, Node front, Node back){
         Node n = new Node(data, back, front);
         front.next = n;
