@@ -79,14 +79,30 @@ public class DoubleLinkedList {
         back.pre = n;
     }   
     
+    /**
+     * add Node to first of the list
+     *
+     * @param data
+     */
     public void addFirst(User data){
         insert(data, header, header.next);
     }
     
+    /**
+     * add Node to the end of the list
+     *
+     * @param data
+     */
     public void addLast(User data){
         insert(data, trailer.pre, trailer);
     }
     
+    /**
+     * this method use to remove Node with the info Node given and return it
+     *
+     * @param node
+     * @return info of node
+     */
     private Node remove(Node n){
         if(n != header && n!= trailer){
             Node front = n.pre;
