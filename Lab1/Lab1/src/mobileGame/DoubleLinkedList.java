@@ -258,7 +258,7 @@ public class DoubleLinkedList {
         FileWriter fr = null;
         try {
             fr = new FileWriter(fileName);
-	    fr.append("Email, Point");
+	    fr.append("Email, Point\n");
             for (Node n = header.right; n != trailer; n = n.right) {
                 String data = String.format("%s, %d\n", n.getGamer().getEmail(), n.getGamer().getPoint());
                 fr.append(data);
