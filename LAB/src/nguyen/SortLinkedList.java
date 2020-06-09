@@ -5,6 +5,8 @@
  */
 package nguyen;
 
+import java.io.PrintWriter;
+
 
 /**
  *
@@ -29,7 +31,7 @@ public class SortLinkedList {
         return t;
     }
     //search Email
-    public Player PlayerSearchEmail(String Email){
+    public Player SearchPlayerEmail(String Email){
         Player Result;
         for(Result=head; Result!=null; Result=Result.nextPlayer){
             if(Result.getEmail().equals(Email)){
@@ -85,7 +87,7 @@ public class SortLinkedList {
         return Remref;
     }
      public Player UpdatePlayer(String Email, int newpoint){
-        Player Result = PlayerSearchEmail(Email);
+        Player Result = SearchPlayerEmail(Email);
         if(Result!=null){
             Remove(Result);
             Result.setPoint(newpoint);
@@ -122,4 +124,17 @@ public class SortLinkedList {
              currentPlayer = currentPlayer.nextPlayer;
          } while (currentPlayer!=null);
      }
+     public void writeFile(String filename) {
+        try {
+            PrintWriter pw = new PrintWriter(filename);
+            Player p;
+            for (p = head; p != null; p = p.nextPlayer) {
+                String line = p.getEmail() + "," + p.getPoint();
+                pw.println(line);
+            }
+            pw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
