@@ -50,5 +50,12 @@ public class DoubleLinkedList {
         trail = new Node(null,null,head);
         head.setNext(head);
     }
-    
+    //
+    //Check if List is empty or not
+    //
+    //return @Player
+    //
+    public boolean isEmpty(){
+        return nodeSize == 0;
+    }
 }
