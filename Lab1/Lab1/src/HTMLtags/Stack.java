@@ -34,4 +34,16 @@ public class Stack {
 	return (t == -1);
     }
     
+    /**
+     * this method use to push data(String htmlTag) to the stack
+     * and it will check the stack is full or not
+     * @param htmlTag
+     */
+    public void push(String htmlTag) {
+	if (size() == tag.length) {
+	    System.out.println("Stack is full");
+	} else {
+	    tag[++t] = htmlTag; //increment size of stack before storing new item
+	}
+    }
 }
