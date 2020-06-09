@@ -23,9 +23,28 @@ public class ProblemSolve {
     private void GetPointPlayer(String email) {
         Player rs=list.SearchPlayerEmail(email);
         if (rs == null) {
-            System.out.println(email);
+            System.out.println("CAN'T find " + email + " please try again!");
         } else {
-            System.out.println(email);
+            System.out.println(email + " : " + rs.getPoint() + " points");
+        }
+    }
+     private void removePlayer(String email) {
+        list.removePlayer(email);
+    }
+
+    private void removeMaxPointP() {
+        list.RemoveMaxPointPlayer();
+    }
+
+    private void searchMaxPointPlayer() {
+        list.SearchMaxpointPlayer();
+    }
+
+    private void updatePlayer(String email, String point) {
+        try {
+            int ppoint = Integer.parseInt(point.trim());
+            list.UpdatePlayer(email, ppoint);
+        } catch (Exception e) {
         }
     }
 }
