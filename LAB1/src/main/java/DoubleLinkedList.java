@@ -105,8 +105,8 @@ public class DoubleLinkedList {
         Node prevNode = playerNode.getPrev();
         prevNode.setPrev(prevNode);
         nextNode.setNext(nextNode);
-        nodeSize--;
         return playerNode.getPlayer();
+        nodeSize--;
     }
     //
     //Remove the Last Player of the List
