@@ -15,7 +15,7 @@ import problem2.Problem2;
 public class Main {
 	
 	static String tutorials = "./lab1 -h\r\n" + 
-			"   Help: \r\n" + 
+			"   Help me please: \r\n" + 
 			"   ./lab1 1 -r <<user_CSV_file>>: Problem 1, read the user csv file\r\n" + 
 			"   ./lab1 1 -a <<email>> <<point>>: Problem 1, add a new user into the data strucutre\r\n" + 
 			"   ./lab1 1 -d <<email>>: Problem 1, delete a user in the data strucutre\r\n" + 
