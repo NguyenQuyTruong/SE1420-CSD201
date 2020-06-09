@@ -14,10 +14,10 @@ import javax.xml.soap.Node;
  */
 public class DoubleLinkedList {
     private class Node{
-        private int data;
-        private Node prev;
-        private Node next;
-
+        private int data;//user data
+        private Node prev;//data head
+        private Node next;//next data
+      //constuctor
         public Node(int data, Node prev, Node next) {
             this.data = data;
             this.prev = prev;
@@ -30,6 +30,7 @@ public class DoubleLinkedList {
     private Node tail;
         public DoubleLinkedList(){
           head = tail = null;
+          //return true if DoubleLinkedList empty otherwise return false
         }
         
         public boolean isEmpty(){
@@ -37,21 +38,32 @@ public class DoubleLinkedList {
         //append a new node to the end of list
     }
         
-        public void insert(int x, Node font, Node back){
-            Node node = new Node(x, font, back);
-            font.next = node;
-            back.prev = node;
+        //insert a new node to the beginning of list
+        public void addFirst(int z, Node font, Node back){
+            Node p = new Node(z, font, back);
+            if(isEmpty()){
+                head = tail = p;
+            }
+            else{
+                p.next = head; 
+                head = p;
+            }    
         }
-        
-        public void addFirst(int z){
-            insert(z, head.next, head);
-        }
-        public void addLast(int y){
-            insert(y, tail.prev, tail);
-            
+        //append a new node to the end of list
+        public void addLast(int y, Node font, Node back){
+            Node p = new Node(y, font, back);
+            if(isEmpty()){
+                head = tail = p;
+            }
+            else{
+                tail.next = p;
+                tail = p;
+            }
     }
 
         public int size(){
             return 0;
     }
+        
+        
 }
