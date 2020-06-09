@@ -47,4 +47,11 @@ public class ProblemSolve {
         } catch (Exception e) {
         }
     }
+     private void saveFile() {
+       FileDao.writeFile(list, filename);
+    }
+
+    private void loadFile() {
+        FileDao.readFile(list, filename);
+    }
 }
