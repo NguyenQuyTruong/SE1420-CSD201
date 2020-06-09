@@ -66,5 +66,33 @@ public class DoubleLinkedList {
     public int sizeOfList(){
         return nodeSize;
     }
-     
+     //
+    //Return the data of the Player on top of the List
+    //
+    // @return Player
+    //
+    public Player getFirst(){
+        //Check if the List is Empty or not...
+        if(isEmpty()){
+            return null;
+        }else{
+            //Return the Player's data
+            return trail.getNext().getPlayer();
+        }
+    }
+    //
+    //Return the data of the Player on the bottom of the List
+    //
+    // @return Player
+    //
+    public Player getLast(){
+        //Check if the List is Empty or not...
+        if(isEmpty()){
+            return null;
+        }else{
+            //Return the Player's data
+            return head.getPrev().getPlayer();
+        }
+    }
+    
 }
