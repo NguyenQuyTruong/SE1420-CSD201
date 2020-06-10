@@ -21,12 +21,12 @@ public class Exercise1 {
      * @param point
      */
     public void insertNewGamer(String email, String point) {
-        try {
-            int checkPoint = Integer.parseInt(point.trim());
-            queue.push(new Gamer(email, checkPoint));
-        } catch (NumberFormatException e) {
-            System.out.println("Point must be integer!!");
-        }
+	try {
+	    int checkPoint = Integer.parseInt(point.trim());
+	    queue.push(new Gamer(email, checkPoint));
+	} catch (NumberFormatException e) {
+	    System.out.println("Point must be integer!!");
+	}
     }
 
     /**
@@ -35,12 +35,12 @@ public class Exercise1 {
      * @param email
      */
     public void searchGamer(String email) {
-        Gamer data = queue.searchGamer(email);
-        if (data == null) {
-            System.out.println("Not found!!");
-        } else {
-            System.out.println("Email: " + email + ", Point: " + data.getPoint());
-        }
+	Gamer data = queue.searchGamer(email);
+	if (data == null) {
+	    System.out.println("Not found!!");
+	} else {
+	    System.out.println("Email: " + email + ", Point: " + data.getPoint());
+	}
     }
 
     /**
@@ -49,12 +49,12 @@ public class Exercise1 {
      * @param email
      */
     public void deleteGame(String email) {
-        Gamer data = queue.deleteGamer(email);
-        if (data == null) {
-            System.out.println("Not found!!");
-        } else {
-            System.out.println("Remove " + email + " successful!");
-        }
+	Gamer data = queue.deleteGamer(email);
+	if (data == null) {
+	    System.out.println("Not found!!");
+	} else {
+	    System.out.println("Remove " + email + " successful!");
+	}
     }
 
     /**
@@ -64,29 +64,29 @@ public class Exercise1 {
      * @param point
      */
     public void updateGamer(String email, String point) {
-        try {
-            int newPoint = Integer.parseInt(point.trim());
-            queue.updateGamer(email, newPoint);
-        } catch (NumberFormatException e) {
-            System.out.println("Point must be Integer!!");
-        }
+	try {
+	    int newPoint = Integer.parseInt(point.trim());
+	    queue.updateGamer(email, newPoint);
+	} catch (NumberFormatException e) {
+	    System.out.println("Point must be Integer!!");
+	}
     }
 
     /**
      * this method use to get top 1 Gamer and print info to screen
      */
     public void getTopGamer() {
-        Gamer data = queue.getTop();
-        System.out.println("Top 1 Gamer:");
-        System.out.println("Email: " + data.getEmail() + ", Point: " + data.getPoint());
+	Gamer data = queue.getTop();
+	System.out.println("Top 1 Gamer:");
+	System.out.println("Email: " + data.getEmail() + ", Point: " + data.getPoint());
     }
 
     /**
      * this method use to delete top 1 Gamer
      */
     public void deleteTopGamer() {
-        queue.deleteTop();
-        System.out.println("Remove top successful!!");
+	queue.deleteTop();
+	System.out.println("Remove top successful!!");
     }
 
     /**
@@ -96,53 +96,56 @@ public class Exercise1 {
      * @throws java.io.IOException
      */
     public void saveToFile(String fileName) throws IOException {
-        queue.writeFile(fileName);
+	queue.writeFile(fileName);
     }
 
     public void printQueue() {
-        queue.printQueue();
+	queue.printQueue();
     }
 
     public static void main(String[] args) throws IOException {
-        Exercise1 ex = new Exercise1();
-        String inputFile = "";
-        String outputFile = "";
-        for (int i = 0; i < args.length; i++) {
-            try {
-                switch (args[i]) {
-                    case "-r": //read CSV file and add to queue
-                        queue = new PriorityQueue();
-                        inputFile = args[i + 1];
-                        queue.ReadFile(queue, inputFile);
-                        break;
-                    case "-s": //import the queue to new CSV file
-                        outputFile = args[i + 1];
-                        ex.saveToFile(outputFile);
-                        break;
-                    case "-a": //insert new Gamer to queue
-                        ex.insertNewGamer(args[i + 1], args[i + 2]);
-                        break;
-                    case "-d": //delete gamer from queue
-                        ex.deleteGame(args[i + 1]);
-                        break;
-                    case "-u": //update gamer
-                        ex.updateGamer(args[i + 1], args[i + 2]);
-                        break;
-                    case "-dt": //delete top gamer
-                        ex.deleteTopGamer();
-                        break;
-                    case "-g": //get point of gamer
-                        ex.searchGamer(args[i + 1]);
-                        break;
-                    case "-t": //get point of top gamer
-                        ex.getTopGamer();
-                        break;
-                }
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Can't find argument to excecute!");
-            }
-        }
-        System.out.println(inputFile);
-        System.out.println(outputFile);
+	Exercise1 ex = new Exercise1();
+	String inputFile = "";
+	String outputFile = "";
+	for (int i = 0; i < args.length; i++) {
+	    try {
+		switch (args[i]) {
+		    case "-r": //read CSV file and add to queue
+			queue = new PriorityQueue();
+			inputFile = args[i + 1];
+			queue.ReadFile(queue, inputFile);
+			break;
+		    case "-s": //import the queue to new CSV file
+			outputFile = args[i + 1];
+			ex.saveToFile(outputFile);
+			break;
+		    case "-a": //insert new Gamer to queue
+			ex.insertNewGamer(args[i + 1], args[i + 2]);
+			ex.saveToFile(outputFile);
+			break;
+		    case "-d": //delete gamer from queue
+			ex.deleteGame(args[i + 1]);
+			ex.saveToFile(outputFile);
+			break;
+		    case "-u": //update gamer
+			ex.updateGamer(args[i + 1], args[i + 2]);
+			ex.saveToFile(outputFile);
+			break;
+		    case "-dt": //delete top gamer
+			ex.deleteTopGamer();
+			break;
+		    case "-g": //get point of gamer
+			ex.searchGamer(args[i + 1]);
+			break;
+		    case "-t": //get point of top gamer
+			ex.getTopGamer();
+			break;
+		}
+	    } catch (ArrayIndexOutOfBoundsException e) {
+		System.out.println("Can't find argument to excecute!");
+	    }
+	}
+	System.out.println(inputFile);
+	System.out.println(outputFile);
     }
 }
