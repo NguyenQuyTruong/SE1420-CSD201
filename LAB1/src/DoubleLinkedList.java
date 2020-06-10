@@ -17,17 +17,17 @@ public class DoubleLinkedList{
         private int data;//user data
         private Node prev;//data head
         private Node next;//next data
-      //constuctor
+      ///Node constuctor 
         public Node(int data, Node prev, Node next) {
             this.data = data;
             this.prev = prev;
             this.next = next;
-        }
-        
+        }  
 }
     
     private Node head;
     private Node tail;
+    private int size = 0;
         public DoubleLinkedList(){
           head = tail = null;
           //return true if DoubleLinkedList empty otherwise return false
@@ -91,9 +91,10 @@ public class DoubleLinkedList{
             }
             return c;
         }
-        
+        //delete the first node
         public void delete(Node q){
-            Node f,p; f=null;p=head;
+            Node f,p; 
+            f = null;p = head;
             while(p != null){
                 if(p == q) break;
                 f = p;
@@ -129,5 +130,12 @@ public class DoubleLinkedList{
                 p.next = null;
             }
         }
-        
+        //return the first node which data = given n otherwise return null
+       public Node search(int n){
+           Node p = head;
+           while(p != null && p.data != n){
+                p = p.next;
+           }     
+           return p;
+       }
 }
