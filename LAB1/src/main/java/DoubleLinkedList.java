@@ -182,6 +182,12 @@ public class DoubleLinkedList {
     public void addLast(Player data){
         addNewNode(data, trail, trail.getPrev()); //Call the addNewNode function (next to the trail)
     }
+    /**
+     * Add a Node in between
+     * 
+     * @param data
+     * @param nextNode 
+     */
     public void addBetween(Player data,Node nextNode){
         if(nextNode == null){
             addLast(data); //if the Player inputed have the point lower than the lowest one already there
@@ -235,7 +241,11 @@ public class DoubleLinkedList {
         }
         return null; //when the node is not found.
     }
-    
+    /**
+     * Add a new Player
+     * 
+     * @param data 
+     */
     public void add(Player data){
         int point = data.getPoint();
         //Check if the List is empty or not
