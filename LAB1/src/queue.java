@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author SE140279
  */
 public class queue {
-
+    singlyLinkedList sll =new singlyLinkedList();
     //Entry manageGamer to arrayList
     private ArrayList<manageGamer> list = new ArrayList<>();
     // insert to manageGamer
