@@ -159,12 +159,12 @@ public class DoubleLinkedList {
      * @param nextNode
      * @param prevNode 
      */
-    public void addNewNode(Player data, Node nextNode, Node prevNode){
+    private void addNewNode(Player data, Node nextNode, Node prevNode){
         //Make a new Node
         Node newNode = new Node(data, nextNode, prevNode);
-        nextNode.setNext(newNode);
-        prevNode.setPrev(newNode);
-        nodeSize++;
+        nextNode.setPrev(newNode); //set prev of next node is new node
+        prevNode.setNext(newNode); //set next of prev node is new node
+        nodeSize++; //Increase the List's size
     }
     /**
      * Add a Node on top of the List
@@ -229,7 +229,19 @@ public class DoubleLinkedList {
         int point = data.getPoint();
         //Check if the List is empty or not
         if(isEmpty()){
-            add;
+            addFirst(data);
+        } else{
+            //If the Player inputed have higher score than the one next to the header
+            //Add First
+            if (point > head.getNext().getPlayer().getPoint()){
+                addFirst(data);
+            } else if (point < trail.getPrev().getPlayer().getPoint()){
+                addLast(data);
+            } else {
+                // If the point is between the highest and lowest 
+                Node randomNode = searchNode(point);
+                addBetween;
+            }
         }
     }
 }
