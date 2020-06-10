@@ -246,9 +246,9 @@ public class DoublyLinkedList {
 	} else {
 	    //if user inputted have score less than the user next of header
 	    //then add first
-	    if (point < header.getNext().getData().getPoint()) {
+	    if (point > header.getNext().getData().getPoint()) {
 		addFirst(data);
-	    } else if (point > trailer.getPrev().getData().getPoint()) {
+	    } else if (point < trailer.getPrev().getData().getPoint()) {
 		//else user inputted have score highest than the user prev of traler
 		//then add last
 		addLast(data);
