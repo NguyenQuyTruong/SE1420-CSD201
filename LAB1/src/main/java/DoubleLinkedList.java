@@ -111,7 +111,8 @@ public class DoubleLinkedList {
 /**    
    * Remove the Last Player of the List
    * 
-   *  @Data of the removed Player
+     * @return Data of the removed Player
+   * 
    */ 
     public Player removeLast(){
         if(isEmpty()){
@@ -150,6 +151,36 @@ public class DoubleLinkedList {
                 remove(playerNode);
             }
         }
+    }
+    /**
+     * Add a new Node
+     * 
+     * @param data
+     * @param nextNode
+     * @param prevNode 
+     */
+    public void addNewNode(Player data, Node nextNode, Node prevNode){
+        //Make a new Node
+        Node newNode = new Node(data, nextNode, prevNode);
+        nextNode.setNext(newNode);
+        prevNode.setPrev(newNode);
+        nodeSize++;
+    }
+    /**
+     * Add a Node on top of the List
+     * 
+     * @param data 
+     */
+    public void addFirst(Player data){
+        addNewNode(data, head.getNext(), head); //Call the addNewNode function (next to the head)
+    }
+    /**
+     * Add a Node on the bottom of the List
+     * 
+     * @param data 
+     */
+    public void addLast(Player data){
+        addNewNode(data, trail, trail.getPrev()); //Call the addNewNode function (next to the trail)
     }
     /**
      * Find the node for priority queue what is higher
@@ -194,5 +225,11 @@ public class DoubleLinkedList {
         return null; //when the node is not found.
     }
     
-    
+    public void add(Player data){
+        int point = data.getPoint();
+        //Check if the List is empty or not
+        if(isEmpty()){
+            add;
+        }
+    }
 }
