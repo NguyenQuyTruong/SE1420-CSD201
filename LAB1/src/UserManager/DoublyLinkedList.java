@@ -96,7 +96,7 @@ public class DoublyLinkedList {
     }
 
     /**
-     * Return data of user at the top of list
+     * Return data of user at the top of list Repair for get the highest score
      *
      * @return User
      */
@@ -109,7 +109,7 @@ public class DoublyLinkedList {
     }
 
     /**
-     * Return data of user at the last of list Repair for get the highest score
+     * Return data of user at the last of list
      *
      * @return User
      */
@@ -128,6 +128,7 @@ public class DoublyLinkedList {
      * @param userNode
      * @return data user of node have been removed
      */
+    
     private User remove(Node userNode) {
 	Node nextNode = userNode.getNext(); //get next Node of Node inputted
 	Node prevNode = userNode.getPrev(); //get prev Node of Node inputted
@@ -170,11 +171,11 @@ public class DoublyLinkedList {
 	if (isEmpty()) {
 	    System.out.println("The list is empty. Please add new user to use this feature");
 	} else {
-	    Node userNode = searchUserByEmail(email);
-	    if (userNode == null) {
+	    Node userNode = searchUserByEmail(email);	//receive node founded
+	    if (userNode == null) {			//not founded
 		System.out.println("User doesn't exit");
-	    } else {
-		remove(userNode);
+	    } else {					//founded
+		remove(userNode);			//remove
 	    }
 	}
     }
@@ -200,7 +201,7 @@ public class DoublyLinkedList {
      * @param data
      */
     public void addFirst(User data) {
-	//call function addForFirstLast and past the reference of the header 
+	//call function addForFirstLast and paste the reference of the header 
 	//to set up
 	addForFirstLast(data, header.getNext(), header);
     }
@@ -211,7 +212,7 @@ public class DoublyLinkedList {
      * @param data
      */
     public void addLast(User data) {
-	//call function addForFirstLast and past the reference of the trailer 
+	//call function addForFirstLast and paste the reference of the trailer 
 	//to set up
 	addForFirstLast(data, trailer, trailer.getPrev());
     }
@@ -223,7 +224,7 @@ public class DoublyLinkedList {
      * @param nodeNext
      */
     public void addBetweenNode(User data, Node nodeNext) {
-	if (nodeNext == null) { //this node founded is highest score so use addLast
+	if (nodeNext == null) { //this node founded is lowest score so use addLast
 	    addLast(data);
 	} else {
 	    Node prevNode = nodeNext.getPrev();	//get previous Node
@@ -244,16 +245,16 @@ public class DoublyLinkedList {
 	if (isEmpty()) {		//check if list empty add first
 	    addFirst(data);
 	} else {
-	    //if user inputted have score less than the user next of header
+	    //if user inputted have score highest than the user next of header
 	    //then add first
 	    if (point > header.getNext().getData().getPoint()) {
 		addFirst(data);
 	    } else if (point < trailer.getPrev().getData().getPoint()) {
-		//else user inputted have score highest than the user prev of traler
+		//else user inputted have score lowest than the user prev of traler
 		//then add last
 		addLast(data);
 	    } else {
-		//the last didn;t know the postition then compare score and add it
+		//the last didn't know the postition then compare score and add it
 		Node nodeFounded = searchNode(point);
 		addBetweenNode(data, nodeFounded);
 	    }
@@ -287,11 +288,11 @@ public class DoublyLinkedList {
      */
     public void displayPointTopUser() {
 	//if list is empty getLast() function return null so use it for check is empty or not
-	if (getLast() == null) {
+	if (getFisrt()== null) {
 	    System.out.println("The list is empty. Please add new user to use this feature");
 	} else {
 	    //get user has highest score
-	    User userTopPoint = getLast();
+	    User userTopPoint = getFisrt();
 	    //get email and point
 	    String email = userTopPoint.getEmail();
 	    int point = userTopPoint.getPoint();
@@ -310,15 +311,15 @@ public class DoublyLinkedList {
 	Node nodeNext = header.getNext(); //get node after header
 
 	do {
-	    //find the user have score higher than score inputted
-	    if (nodeNext.getData().getPoint() > point) {
+	    //find the user have score lower than score inputted
+	    if (point > nodeNext.getData().getPoint()) {
 		return nodeNext;
 	    } else {
 		// continue to the next node to find the user have higher score
 		nodeNext = nodeNext.getNext();
 	    }
 	} while (nodeNext != trailer);
-	return null;		    //this node is highest score
+	return null;		    //this node is lowest score
     }
 
     /**
@@ -377,12 +378,14 @@ public class DoublyLinkedList {
      * @param user
      */
     public void checkPositionAfterUpdate(Node user) {
+	//find user have been update
 	Node checkNode = searchNode(user.getData().getPoint());
-	if (checkNode == null) {
-	    remove(user);
-	    addLast(user.getData());
+	if (checkNode == null) {    //user have the lowest score
+	    remove(user);	    //remove it
+	    addLast(user.getData());//add again
 	} else {
-	    remove(user);
+	    remove(user);	    //remove it
+				    //add again
 	    addBetweenNode(user.getData(), checkNode);
 	}
     }
