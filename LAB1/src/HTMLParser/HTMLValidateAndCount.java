@@ -16,16 +16,27 @@ public class HTMLValidateAndCount {
      * @return true or false
      */
     private boolean isOpenTag(String tag) {
-	//if it contain 
+	//if it contain "<" and don't contain "</"
 	return tag.contains("<") && !tag.contains("</");
     }
     
+    /**
+     * Check is close tag or not
+     * @param tag
+     * @return true or false 
+     */
     private boolean isCloseTag(String tag) {
+	//if it contain "</"
 	return tag.contains("</");
     }
     
+    /**
+     * 
+     * 
+     * @param tag
+     * @return 
+     */
     public String checkTag(String tag) {
-	String tagResult = "";
 	if (isOpenTag(tag)) {
 	    String[] separateTag = tag.split(" ");
 	    if (separateTag.length == 1) {
@@ -38,6 +49,4 @@ public class HTMLValidateAndCount {
 	}
 	return null;
     }
-    
-    public 
 }
