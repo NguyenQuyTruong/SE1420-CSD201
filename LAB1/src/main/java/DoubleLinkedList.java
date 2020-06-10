@@ -132,13 +132,23 @@ public class DoubleLinkedList {
             return remove(head.getNext());
         }
     }
-
+    /**
+    *Remove a player by email
+    *
+    *@param email 
+    *
+    */
     public void deletePlayerNode(String email){
         //Check if the List is Empty or not...
         if(isEmpty()){
             System.out.println("The List is Empty... Try input some data first.");
         } else{
-            Node playerNode;
+            Node playerNode = searchPlayerbyEmail(email);
+            if(playerNode == null){
+                System.out.println("Player doesn't exist."); //Check if the Player is valid
+            }else{
+                remove(playerNode);
+            }
         }
     }
     /**
@@ -183,4 +193,6 @@ public class DoubleLinkedList {
         }
         return null; //when the node is not found.
     }
+    
+    
 }
