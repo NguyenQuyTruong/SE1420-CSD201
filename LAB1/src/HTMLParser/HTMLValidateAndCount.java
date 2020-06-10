@@ -10,7 +10,13 @@ package HTMLParser;
  * @author minhv
  */
 public class HTMLValidateAndCount {
+    /**
+     * Check is open tag or not
+     * @param tag
+     * @return true or false
+     */
     private boolean isOpenTag(String tag) {
+	//if it contain 
 	return tag.contains("<") && !tag.contains("</");
     }
     
@@ -18,13 +24,20 @@ public class HTMLValidateAndCount {
 	return tag.contains("</");
     }
     
-    public String Tag(String tag) {
+    public String checkTag(String tag) {
 	String tagResult = "";
 	if (isOpenTag(tag)) {
-	    System.out.println("Open tag");
+	    String[] separateTag = tag.split(" ");
+	    if (separateTag.length == 1) {
+		return tag;
+	    } else {
+		return separateTag[0] + ">";
+	    }
 	}else if (isCloseTag(tag)) {
-	    System.out.println("Close tag");
+	    return tag;
 	}
 	return null;
     }
+    
+    public 
 }
