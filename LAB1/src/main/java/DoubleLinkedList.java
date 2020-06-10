@@ -182,6 +182,17 @@ public class DoubleLinkedList {
     public void addLast(Player data){
         addNewNode(data, trail, trail.getPrev()); //Call the addNewNode function (next to the trail)
     }
+    public void addBetween(Player data,Node nextNode){
+        if(nextNode == null){
+            addLast(data); //if the Player inputed have the point lower than the lowest one already there
+        }else{
+            Node prevNode = nextNode.getPrev();
+            Node newNode = new Node(data, nextNode, prevNode);
+            nextNode.setPrev(newNode); //Set the previous node of nextNode a NewNode
+            nextNode.setNext(newNode); //Set the next node of the nextNode a NewNode
+            nodeSize++; //Increase List's size
+        }
+    }
     /**
      * Find the node for priority queue what is higher
      * 
