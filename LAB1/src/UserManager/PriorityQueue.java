@@ -14,7 +14,7 @@ public class PriorityQueue extends UserManager.DoublyLinkedList {
     public PriorityQueue() {
     }
 
-    public void insertUser(UserManager.User data) {
+    public void insertUser(User data) {
 	add(data);
     }
 
@@ -35,10 +35,10 @@ public class PriorityQueue extends UserManager.DoublyLinkedList {
     }
 
     public void removeTop() {
-	if (removeLast() == null) {
+	if (isEmpty()) {
 	    System.out.println("The list is empty. Please add new user to use this feature");
 	} else {
-	    removeLast();
+	    removeFirst();
 	}
     }
 
