@@ -54,7 +54,7 @@ public class MyQueue {
             return;
         }
         for (int i = 0; i < size; i++) {
-            if (tail.user.getPoint() >= newNode.user.getPoint() && head.next == null) {
+            if (tail.user.getPoint() >= newNode.user.getPoint()) {
                 tail.next = newNode;
                 tail = newNode;
                 size++;
@@ -66,17 +66,34 @@ public class MyQueue {
                 size++;
                 return;
             }
-            for (current = head; current.next != null; current = current.next) {
-                if (current.next.user.getPoint() <= newNode.user.getPoint()) {
+            if (head.user.getPoint() == newNode.user.getPoint()) {
+                newNode.next = head;
+                head = newNode;
+                int tmpPoint;
+                String tmpEmail;
+                tmpPoint = newNode.user.getPoint();
+                newNode.user.setPoint(head.user.getPoint());
+                head.user.setPoint(tmpPoint);
+                tmpEmail = newNode.user.getEmail();
+                newNode.user.setEmail(head.user.getEmail());
+                head.user.setEmail(tmpEmail);
+                size++;
+                return;
+            }
+            for (current = head; current.next.next != null; current = current.next) {
+                if (current.next.user.getPoint() < newNode.user.getPoint()) {
                     newNode.next = current.next;
                     current.next = newNode;
                     size++;
                     return;
                 }
+                if (current.next.user.getPoint() == newNode.user.getPoint()) {
+                    newNode.next = current.next.next;
+                    current.next.next = newNode;
+                    size++;
+                    return;
+                }
             }
-            tail.next = newNode;
-            tail = newNode;
-            size++;
             return;
         }
     }
