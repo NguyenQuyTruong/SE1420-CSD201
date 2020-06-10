@@ -12,6 +12,6 @@ public class main {
     public static void main(String[] args) {
         queue qe = new queue();
         manageGamer user0 = new manageGamer("ygtoi@gmail.com", 72);
-        
+        qe.insert(user0);
     }
 }
