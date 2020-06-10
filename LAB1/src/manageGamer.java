@@ -9,22 +9,23 @@
  * @author SE140279
  */
 public class manageGamer {
-private String userGamer;
+    //contructor element file csv
+private String userEmail;
 private int point;
     public manageGamer() {
     }
 
     public manageGamer(String userGamer, int point) {
-        this.userGamer = userGamer;
+        this.userEmail = userGamer;
         this.point = point;
     }
-
+    // getter & setter
     public String getUserGamer() {
-        return userGamer;
+        return userEmail;
     }
 
     public void setUserGamer(String userGamer) {
-        this.userGamer = userGamer;
+        this.userEmail = userGamer;
     }
 
     public int getPoint() {
@@ -34,10 +35,9 @@ private int point;
     public void setPoint(int point) {
         this.point = point;
     }
-
-    @Override
+    // toString
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+        return "user {" + " email : " +userEmail+ ", point ="+ point+ "}";
     }
     
 }
