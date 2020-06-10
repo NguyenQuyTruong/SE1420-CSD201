@@ -5,7 +5,6 @@
  */
 package Ex2;
 
-import java.io.FileReader;
 import java.util.ArrayList;
 
 /**
@@ -14,31 +13,23 @@ import java.util.ArrayList;
  */
 public class MyStack {
 
-//    static int CAPACITY = 1000;
-//    char[] ar = new char[CAPACITY];
     ArrayList ar = new ArrayList();
     int top = -1;
-//    public boolean isEmpty() {
-//    }
-//
-//    public int pop() {
-//        
-//        top--;
-//    }
     public boolean isEmpty(){
         return top == -1;
     }
     
     public void pop(){
-        if(isEmpty()){
-            
-        }
+        if(isEmpty()) throw new IllegalStateException();
+        ar.remove(top);
+        top--;
     }
     
     public void push(String data) {
         top ++;
         ar.add(data);
     }
+    
     public void print(){
         System.out.println(ar);
     }
