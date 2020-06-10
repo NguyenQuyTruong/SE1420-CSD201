@@ -165,6 +165,7 @@ public class PriorityQueue implements Serializable{
 	 */
 	public void exportCSV(String path) throws IOException {
 		FileWriter writer = new FileWriter(path);
+		writer.append("Email, Point\n");
 		
 		node currentNode = list.headNode.right;
 		

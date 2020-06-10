@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * This class will contain method to write to CSV file
  * @author skyho
- *	
+ *
  */
 public class CSV {
 	Map<String, Integer> data; //map data contains tag and count, FORMAT: {key: "script", value: 5} 
