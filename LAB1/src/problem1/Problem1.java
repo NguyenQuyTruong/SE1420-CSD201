@@ -165,7 +165,7 @@ public class Problem1{
 			objectInputStream.close();
 			
 			System.out.println("Loaded previous data!");
-			queue.printAll();
+			//queue.printAll(); print is for debug
 		} catch (FileNotFoundException e) {
 			System.out.println("Warning: data file not found, after some command we will create one");
 		} catch (IOException e) {
