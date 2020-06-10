@@ -15,12 +15,16 @@ public class HTMLValidateAndCount {
     }
     
     private boolean isCloseTag(String tag) {
-	
+	return tag.contains("</");
     }
     
-    private String startTag(String tag) {
-	if (tag.contains("<") && tag.contains(">") && !tag.contains(" ") && !tag.contains("</")) {
-	    
+    public String Tag(String tag) {
+	String tagResult = "";
+	if (isOpenTag(tag)) {
+	    System.out.println("Open tag");
+	}else if (isCloseTag(tag)) {
+	    System.out.println("Close tag");
 	}
+	return null;
     }
 }
