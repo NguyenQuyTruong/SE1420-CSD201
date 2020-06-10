@@ -133,6 +133,7 @@ public class Exercise1 {
 			break;
 		    case "-dt": //delete top gamer
 			ex.deleteTopGamer();
+			ex.saveToFile(outputFile);
 			break;
 		    case "-g": //get point of gamer
 			ex.searchGamer(args[i + 1]);
