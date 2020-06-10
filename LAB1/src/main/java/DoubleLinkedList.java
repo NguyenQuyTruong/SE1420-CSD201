@@ -161,4 +161,26 @@ public class DoubleLinkedList {
         } while (nextNode != trail);
         return null;   //this is the highest point on the List
     }
+    /**
+     * Find node that the Player have the same inputted email
+     * 
+     * @param email
+     * @return Player (null if not found)
+     */
+    public Node searchPlayerbyEmail (String email){
+        //Check if the List is Empty or not
+        if(isEmpty()){
+            System.out.println("The List is Empty... Try input some data first.");
+        }else{
+            Node nextNode = head.getNext();
+            
+            do{
+                //Compare the email inputed
+                if(nextNode.getPlayer().equals(email)){
+                    return nextNode;
+                }else{nextNode.getNext();}//If not, then go to the next node
+            }while(nextNode != trail);
+        }
+        return null; //when the node is not found.
+    }
 }
