@@ -251,7 +251,7 @@ public class DoubleLinkedList {
             } else {
                 // If the point is between the highest and lowest 
                 Node randomNode = searchNode(point);
-                addBetween;
+                addBetween(data, randomNode);
             }
         }
     }
