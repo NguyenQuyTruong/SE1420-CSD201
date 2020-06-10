@@ -264,14 +264,14 @@ public class DoubleLinkedList {
                 fr.append(data);
             }
         } catch (IOException e) {
-            System.out.println("File not exist!!");
+            System.out.println("Something wrong with writing to file!!");
         } finally {
             try {
                 if (fr != null) {
                     fr.close();
                 }
             } catch (IOException e) {
-                System.out.println("Something wrong with writing to file!!");
+                System.out.println("File not exist!!");
             }
         }
     }
