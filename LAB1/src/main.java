@@ -10,6 +10,8 @@
  */
 public class main {
     public static void main(String[] args) {
-        System.out.println("");
+        queue qe = new queue();
+        manageGamer user0 = new manageGamer("ygtoi@gmail.com", 72);
+        
     }
 }
