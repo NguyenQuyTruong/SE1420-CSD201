@@ -67,8 +67,9 @@ public class HTMLValidateAndCount {
     }
 
     /**
-     * If it is contain in HTML return true, else return false. Khang explains
-     * for me how to identify alone tag like <br>
+     * If it (in status close tag after converted) is contain in HTML return
+     * true, else return false. Khang explains for me how to identify alone tag
+     * like <br>
      * Thanks for his helping
      *
      * @param tag
@@ -78,5 +79,18 @@ public class HTMLValidateAndCount {
     public boolean isAloneTag(String tag, String body) {
 	tag = converToCloseTag(tag);
 	return !body.contains(tag);
+    }
+
+    /**
+     * Compare two tag one is open and one is close Convert open to close for
+     * comparing
+     *
+     * @param tag
+     * @param tagInStack
+     * @return true or false
+     */
+    public boolean copareTag(String tag, String tagInStack) {
+	tagInStack = converToCloseTag(tagInStack);
+	return tag.equals(tagInStack);
     }
 }
