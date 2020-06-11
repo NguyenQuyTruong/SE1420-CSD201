@@ -318,7 +318,29 @@ public class DoubleLinkedList {
             currNode = currNode.getNext();
         }
     }
-    
+    /**
+     * Update point for inputed email
+     * 
+     * @param email
+     * @param point 
+     */
+    public void updateNode(String email, int point){
+        //Check if the List is Empty or not...
+        if(isEmpty()){
+            System.out.println("The List is Empty... try input some data first.");
+        }else{
+            Node playerNode = searchPlayerbyEmail(email);
+            //Check if the Email is valid for the List or not
+            if(playerNode == null){
+                System.out.println("The Player is invalid. Please check the email you inputed");
+            }else{
+                playerNode.getPlayer().setEmail(email);
+                playerNode.getPlayer().setPoint(point);
+                System.out.println("Update point successfull");
+                System.out.println("Email: " + email + ", New point: " + playerNode.getPlayer().getPoint());
+            }
+        }
+    }
     /**
      *Get the List and write the data down to the file.
      * 
