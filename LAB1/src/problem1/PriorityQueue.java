@@ -46,7 +46,7 @@ public class PriorityQueue implements Serializable{
 			else {
 				//normal case, looping though
 				node currentNode = list.headNode.right;
-				while(currentNode.getPoint() > newNode.getPoint()) {
+				while(currentNode.getPoint() >= newNode.getPoint()) {
 					currentNode = currentNode.right;
 				}
 				newNode.right = currentNode;

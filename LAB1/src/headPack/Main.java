@@ -46,7 +46,7 @@ public class Main {
 				break;
 			default:
 				System.out.println("Not valid arguments, please see tutorial\n" + tutorials);
-				
+				break;
 			}	
 		}
 		
