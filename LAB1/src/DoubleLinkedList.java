@@ -87,5 +87,9 @@ public class DoubleLinkedList {
         
     }
     
-
+    public int getTop(){
+        return header.point;
+    }
+    
+    
 }
