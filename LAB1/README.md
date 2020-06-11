@@ -38,7 +38,7 @@
    ...
 
    # OUTPUT CSV FILE
-   Tag, Frequence
+   Tag, Frequency
    div, 523
    img, 34
    li, 12
