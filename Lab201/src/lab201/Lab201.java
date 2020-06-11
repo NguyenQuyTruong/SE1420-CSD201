@@ -19,12 +19,18 @@ public class Lab201 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
         Lab201 lab = new Lab201();
-
         
-        switch(args[0]){
+        String savefile=null;
+        boolean save=false;
+        
+        switch(args[i]){
             case "-r":
-                lab.readDataQueue(args[1], doublyLinkedList);
+                lab.readDataQueue(args[i], doublyLinkedList);
                 break;
+            case "-s":
+                save=true;
+                savefile=args[i+1];
+                
         }
         
     }
