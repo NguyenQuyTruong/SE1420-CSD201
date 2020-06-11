@@ -17,8 +17,6 @@ public class Problem1{
 	
 	PriorityQueue queue;
 	public Problem1() {
-		queue = new PriorityQueue();
-		
 	}
 	
 
@@ -52,7 +50,7 @@ public class Problem1{
 		if (point == null) {
 			System.out.println("CAN'T find " + email + " please try again!");
 		}else {
-			System.out.println(email + " : " + point + " points");
+			System.out.println(point);
 		}
 	}
 
@@ -105,6 +103,64 @@ public class Problem1{
 	 * @param args
 	 */
 	public void ParseArguments(String[] args) {
+		boolean saveData = false;
+		String savePath = null; 
+		
+		try {
+			for(int i = 0; i < args.length; i++) {
+				switch(args[i]) {
+				case "-r":
+					queue = new PriorityQueue();
+					CSV.ReadAndPushToQueue(queue, args[i+1]);
+					break;
+					
+				case "-a":
+					InsertNewData(args[i+1], args[i+2]);
+					break;
+					
+				case "-d":
+					DeleteEmail(args[i+1]);
+					break;
+					
+				case "-u":
+					UpdateUser(args[i+1], args[i+2]);
+					break;
+				
+				case "-dt":
+					DeleteTopUser();
+					break;
+				
+				case "-g":
+					GetPointUser(args[i+1]);
+					break;
+				
+				case "-t":
+					GetTopPointUser();
+					break;
+					
+					
+				case "-s":
+					saveData = true; //save flag for the last execute command (save command)
+					savePath = args[i+1];
+					break;
+				default:
+					break;
+				}
+				
+			}
+			
+			//after every command, save is the last
+			if (saveData) {
+				SaveCSV(savePath);
+			}
+			
+			
+		}catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("Not enough arguments to execute commands");
+		}catch (IOException e) {
+			System.out.println("Error while reading csv file");
+		}
+		
 		/*
 		try {
 			switch(args[0]) {

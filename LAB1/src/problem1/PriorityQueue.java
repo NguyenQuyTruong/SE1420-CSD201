@@ -138,7 +138,7 @@ public class PriorityQueue implements Serializable{
 		if (list.isEmpty()) {
 			System.out.println("data is empty!");
 		}else {
-			System.out.format("Top user:\n%s : %d point\n", list.headNode.right.getEmail(), list.headNode.right.getPoint());
+			System.out.println(list.headNode.right.getPoint());
 		}
 	}
 	
