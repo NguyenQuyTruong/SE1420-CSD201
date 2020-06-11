@@ -1,12 +1,19 @@
 package Ex1;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Scanner;
+import javax.net.ssl.HttpsURLConnection;
 
 
 /*
@@ -20,7 +27,7 @@ import java.util.Scanner;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException, IOException {
         MyQueue mq = new MyQueue();
         int i = 0;
         String oldFileName = null;
@@ -296,8 +303,15 @@ public class Main {
                 break;
             }
             case 7: {
+                String link = "";
+                String line = "";
+                String content = "";
+                URL ur = new URL(link);
+
+                HttpsURLConnection urlc = (HttpsURLConnection) ur.openConnection();
+                BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
                 
-                choice = 0;
+                while((line = ))
                 break;
             }
         }
