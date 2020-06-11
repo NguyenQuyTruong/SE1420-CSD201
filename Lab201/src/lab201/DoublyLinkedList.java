@@ -49,11 +49,12 @@ public class DoublyLinkedList {
 
     public void print() {
         for (Node n = pre_Head.right; n != trailer; n = n.right) {
-            System.out.println("Email "+n.email +"Point "+ n.point);
+            System.out.println("Email " + n.email + "Point " + n.point);
         }
     }
 
     /**
+     * to insert element
      *
      * @param email
      * @param point
@@ -79,17 +80,21 @@ public class DoublyLinkedList {
             trailer.left = node;
             tmp.right = node;
             node.left = tmp;
-        }else{
-            Node tmp =head;
-            while(tmp.point>node.point){
-                tmp=tmp.right;
+        } else {
+            Node tmp = head;
+            while (tmp.point > node.point) {
+                tmp = tmp.right;
             }
-            Node prevTmp=tmp.left;
-            
-            tmp.left=node;
-            node.right=tmp;
-            prevTmp.right=node;
-            node.left=prevTmp;
+            Node prevTmp = tmp.left;
+
+            tmp.left = node;
+            node.right = tmp;
+            prevTmp.right = node;
+            node.left = prevTmp;
         }
+    }
+
+    public int getTop() {
+        return head.point;
     }
 }
