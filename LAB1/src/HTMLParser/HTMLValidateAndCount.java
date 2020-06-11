@@ -100,11 +100,30 @@ public class HTMLValidateAndCount {
 	return tag.equals(tagInStack);	
     }
     
+    /**
+     * 
+     * @param htmlString 
+     */
     public void seperateTag(String htmlString) {
-	
+	//htmlString.length() use to get length of string also include space
+	for (int i = 0; i < htmlString.length(); i++) {
+	    //check is "<" or not
+	    if (htmlString.charAt(i) == '<') {
+		//continue to read this String
+		for (int j = i; j < htmlString.length(); j++) {
+		    if (Character.isLetter(0)) {
+			
+		    }
+		}
+	    }
+	}
     }
     
     public void checkTag(String tag, String htmlString) {
 	
+    }
+    
+    public boolean regexCheckTag(String character) {
+	return character.matches("^[a-zA-Z0-9'\']+$");
     }
 }
