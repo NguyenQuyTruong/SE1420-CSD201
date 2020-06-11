@@ -1,5 +1,8 @@
 
+import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.io.IOException;
+
 
 public class DoubleLinkedList {
         //Create Node
@@ -316,4 +319,31 @@ public class DoubleLinkedList {
         }
     }
     
+    /**
+     *Get the List and write the data down to the file.
+     * 
+     * @param fileName
+     * @throws IOException
+     */
+    public void writeToFile ( String fileName) {
+        FileWriter file = null;
+        try{
+            file = new FileWriter(fileName);
+            file.append("Email, Point(s)\n");
+            for(Node n = head.getNext(); n!= trail; n = n.getNext()){
+                String data = String.format("%s, %d\n", n.getPlayer().getEmail(), n.getPlayer().getPoint());
+                file.append(data);
+            }
+        }catch(IOException e){
+            System.out.println("---Error: Something has gone wrong---");
+        } finally {
+            try {
+                if(file != null){
+                    file.close();
+                }
+            } catch (Exception e) {
+                System.out.println("File doesn't exist.");
+            }
+        }
+    }
 }
