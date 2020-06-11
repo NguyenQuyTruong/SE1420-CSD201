@@ -10,92 +10,135 @@
  */
 public class singlyLinkedList {
 
-    // create Node
     private class Node {
 
-        private manageGamer gamer;
-        private Node next;
+        String name;
+        int score;
+        Node next;
 
-        public Node() {
-        }
-        
-        
-        public Node(manageGamer gamer, Node next) {
-            this.gamer = gamer;
-            this.next = next;
-        }
+        /**
+         * Constructor.
+         *
+         * @param val The element to store in the node.
+         * @param n The reference to the successor node.
+         */
+        Node(String val1, int val2, Node n) {
 
-        public manageGamer getGamer() {
-            return gamer;
-        }
-
-        public void setGamer(manageGamer gamer) {
-            this.gamer = gamer;
+            name = val1;
+            score = val2;
+            next = n;
         }
 
-        public Node getNext() {
-            return next;
-        }
+        /**
+         * Constructor.
+         *
+         * @param val The element to store in the node.
+         */
+        Node(String val1, int val2) {
 
-        public void setNext(Node next) {
-            this.next = next;
+            this(val1, val2, null);
         }
-        
-    }
-    // head and and tail of node
-    private Node head = null;
-    private Node tail = null;
-    private int size=0;
-    
-    // top, size
-    
-    public int size() {
-        int result = 0;
-        for (Node s = head; s != null; s = s.next) {
-            result++;
-        }
-        return result;
     }
 
-    public manageGamer getTop() {
-        return head.gamer;
+    private Node head;
+    private Node tail;
+
+    /**
+     * Constructor.
+     */
+    public singlyLinkedList() {
+
+
+        head = null;
+        tail = null;
     }
 
-    // check empty
+    /**
+     * The isEmpty method checks to see if the list is empty.
+     *
+     * @return true if the list is empty, false otherwise.
+     */
     public boolean isEmpty() {
+
         return head == null;
     }
 
-    // add element
-    public void addFirst(manageGamer g) {
-        head = new Node(g, head);
-        tail = head.next == null ? head : tail;
+    /**
+     * The size method returns the length of the list.
+     *
+     * @return The number of elements in the list.
+     */
+    public int size() {
+
+        int count = 0;
+        Node p = head;
+
+        while (p != null) {
+
+            count++;
+            p = p.next;
+        }
+
+        return count;
     }
 
-    public void addLast(manageGamer g) {
-        Node newNode = new Node(g, null);
+    public void insert(String name, int score) {
+
+        Node node = new Node(name, score);
+
         if (isEmpty()) {
-            head = newNode;
-            tail = head;
+
+            head = node;
+            tail = node;
+        } else if (head.score <= node.score) {
+
+            node.next = head;
+            head = node;
         } else {
-            tail.next = newNode;
-            tail = newNode;
+
+            Node frontPtr = head.next;
+            Node backPtr = head;
+
+            while (frontPtr.score > node.score && frontPtr.next != null) {
+
+                backPtr = backPtr.next;
+                frontPtr = frontPtr.next;
+            }
+
+            if (frontPtr != null && frontPtr.score <= node.score) {
+
+                backPtr.next = node;
+                node.next = frontPtr;
+            } else {
+
+                frontPtr.next = node;
+                tail = node;
+            }
+        }
+        if (size() > 10) {
+
+            Node currentPtr = head;
+
+            while (currentPtr.next != tail) {
+
+                currentPtr = currentPtr.next;
+            }
+
+            tail = currentPtr;
+            currentPtr.next = null;
         }
     }
-    //remove
-    public manageGamer removeFirst() {
-        manageGamer result = null;
-        if (head != null) {
-            result = head.gamer;
-            head = head.next;
-            tail = head == null ? null : tail;
+
+    public void printList() {
+
+        Node temp = head;
+
+        while (temp != null) {
+
+            System.out.print(temp.name + " " + temp.score + " ");
+            System.out.println("");
+            temp = temp.next;
         }
-        return result;
     }
-    public manageGamer font(){
-        return head.gamer;
-    }
-   
-    // out put on screen
-    
+
 }
