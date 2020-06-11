@@ -32,15 +32,19 @@ public class Ex2Manager {
         StringBuilder sb = new StringBuilder();
         char c[] = content.toCharArray();
         int j = 0;
+        int k = 0;
+        int count2 = 0;
         for (int i = 0; i < c.length - 1; i++) {
             if (opening.indexOf(c[i]) != -1 && Mark.indexOf(c[i + 1]) == -1 && Mark2.indexOf(c[i + 1]) != -1) {
-                sb.insert(0, c[i]);
+                sb.insert(k, c[i]);
+                count++;
                 if ((c.length - i) > 20) {
                     for (j = 1; j < 20; j++) {
                         if (Character.isSpace(c[i + j]) || closing.indexOf(c[i + j]) != -1 ) {
                             break;
                         } else {
-                            sb.insert(j, c[i + j]);
+                            sb.insert(k, c[i + j]);
+                            count++;
                         }
                     }
                 } else {
@@ -48,14 +52,18 @@ public class Ex2Manager {
                         if (Character.isSpace(c[i + j]) || closing.indexOf(c[i + j]) != -1 ) {
                             break;
                         } else {
-                            sb.insert(j, c[i + j]);
+                            sb.insert(k, c[i + j]);
+                            count++;
                         }
                     }
                 }
-                sb.insert(j, closing);
-                sb.insert(j + 1, " ");
+                sb.insert(0, closing);
+                sb.insert(0 + 1, " ");
+                count += 2;
+                k = count;
             }
         }
+        sb.reverse();
         System.out.println(sb);
 
     }
