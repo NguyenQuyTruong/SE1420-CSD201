@@ -20,7 +20,10 @@ import javax.imageio.IIOException;
 public class Lab201 {
     public static void main(String[] args) {
         DoublyLinkedList dll=new DoublyLinkedList();
-        dll.insert("Sang", 1);
+        dll.insert("Sang", 9);
+        dll.insert("Minh", 4);
+        dll.insert("Anh", 1);
+        dll.insert("Bao", 5);
         dll.print();
     }
 }
