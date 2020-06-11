@@ -28,22 +28,35 @@ public class Ex2Manager {
         char c[] = content.toCharArray();
         int j = 0;
         int k = 0;
+        int tmp = 0;
         for (int i = 0; i < c.length - 1; i++) {
+            tmp = 0;
             if (opening.indexOf(c[i]) != -1) {
                 sb.insert(k, c[i]);
                 k++;
-                for (j = 1; j < c.length; j++) {
+                tmp++;
+                for (j = 1; j < (c.length - i); j++) {
                     if ((c[i + j] >= 'A' && (c[i + j] <= 'Z') || (c[i + j] >= 'a') && c[i + j] <= 'z')) {
                         sb.insert(k, c[i + j]);
                         k++;
+                        tmp++;
                     } else if(space.indexOf(c[i + j])!= -1){
-                        for(int v = 0; v < c.length; v++){
+                        for(int v = 1; v < (c.length - i - j); v++){
                             if(closing.indexOf(c[i + j + v]) != -1){
                                 sb.insert(k, c[i + j + v]);
-                            }else {
-                                
+                                k++;
+                                break;
+                            }
+                            if(opening.indexOf(c[i + j + v]) != -1){
+                                sb.delete(i, i+j);
+                                break;
                             }
                         }
+                    }
+                    else {
+                        sb.insert(k,closing);
+                        k++;
+                        
                     }
                 }
                 sb.insert(k, closing);
