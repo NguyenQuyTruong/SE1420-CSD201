@@ -303,4 +303,16 @@ public class DoubleLinkedList {
             System.out.println("'Email: "+ email +"; Point: " + point + ".");
         }
     }
+    /**
+     * Print the whole List by Looping
+     */
+    public void printList(){
+        //Start on the Node next to the Head
+        Node currNode = head.getNext();
+        //Loop until tail
+        while(currNode != trail){
+            System.out.println(currNode.getPlayer() + "\n");
+            currNode = currNode.getNext();
+        }
+    }
 }
