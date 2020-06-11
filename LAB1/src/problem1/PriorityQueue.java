@@ -80,13 +80,21 @@ public class PriorityQueue implements Serializable{
 		if (currentNode == list.tailNode) {
 			System.out.println("Warning: not found to delete.. no problem!");
 		}else {
-			currentNode.left.right = currentNode.right;
-			currentNode.right.left = currentNode.left;
-			currentNode = null; //free mem
+			Delete(currentNode); //remove that node
 			
 			System.out.println("Deleted " + email + " from queue");
 		}
 		
+	}
+	
+	/**
+	 * Delete using node as parameter
+	 * @param currentNode
+	 */
+	public void Delete(node currentNode) {
+		currentNode.left.right = currentNode.right;
+		currentNode.right.left = currentNode.left;
+		currentNode = null; //free mem
 	}
 	
 	/**
@@ -100,7 +108,7 @@ public class PriorityQueue implements Serializable{
 		if (currentNode == list.tailNode) {
 			System.out.println("Warning: not found to update.. no problem!");
 		}else {
-			Delete(email); 
+			Delete(currentNode);
 			insert(email, newPoint);
 			//reuse insert to "sort" the new point user
 			System.out.println("Updated " + email + " new point: " + newPoint);
