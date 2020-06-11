@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 /**
  *
  * @author nds72
@@ -18,12 +17,15 @@ import java.io.IOException;
 public class Lab201 {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
 
         FileReader fr = new FileReader("C:\\Users\\nds72\\Desktop\\user.csv");
         BufferedReader bufferedReader = new BufferedReader(fr);
         String line;
-        while(line=bufferedReader.readLine() && line!=null){
-            
+        while ((line = bufferedReader.readLine()) != null) {
+            String[] arr = line.split(",");
+
+            doublyLinkedList.insert(arr[0], Integer.parseInt(arr[1]));
         }
     }
 }
