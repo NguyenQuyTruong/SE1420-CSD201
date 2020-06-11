@@ -42,14 +42,18 @@ public class HTMLValidateAndCount {
      * @return an open tag or a close tag
      */
     public String checkTag(String tag) {
+	//check tag is open or close
 	if (isOpenTag(tag)) {
+	    //slipt an tag
 	    String[] separateTag = tag.split(" ");
+	    //an tag without next information inside this tag
 	    if (separateTag.length == 1) {
 		return tag;
 	    } else {
+		//put ">" to tag a tag
 		return separateTag[0] + ">";
 	    }
-	} else if (isCloseTag(tag)) {
+	} else if (isCloseTag(tag)) {	//is an close tag
 	    return tag;
 	}
 	return null;
@@ -62,7 +66,7 @@ public class HTMLValidateAndCount {
      * @return tag
      */
     public String converToCloseTag(String tag) {
-	tag = tag.replace("<", "</");
+	tag = tag.replace("<", "</");	//replace "<" to "</"
 	return tag;
     }
 
@@ -73,12 +77,12 @@ public class HTMLValidateAndCount {
      * Thanks for his helping
      *
      * @param tag
-     * @param body
+     * @param htmlString
      * @return true or false
      */
-    public boolean isAloneTag(String tag, String body) {
-	tag = converToCloseTag(tag);
-	return !body.contains(tag);
+    public boolean isAloneTag(String tag, String htmlString) {
+	tag = converToCloseTag(tag);	//convert to close tag
+	return !htmlString.contains(tag);	//compare tag in the HTMl
     }
 
     /**
@@ -89,8 +93,18 @@ public class HTMLValidateAndCount {
      * @param tagInStack
      * @return true or false
      */
-    public boolean copareTag(String tag, String tagInStack) {
+    public boolean compareTag(String tag, String tagInStack) {
+	//convert open tag to close tag
 	tagInStack = converToCloseTag(tagInStack);
-	return tag.equals(tagInStack);
+	//return an compare if equal return true else false
+	return tag.equals(tagInStack);	
+    }
+    
+    public void seperateTag(String htmlString) {
+	
+    }
+    
+    public void checkTag(String tag, String htmlString) {
+	
     }
 }
