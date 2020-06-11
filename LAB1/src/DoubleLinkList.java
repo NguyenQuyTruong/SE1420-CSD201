@@ -75,16 +75,23 @@ public class DoubleLinkList {
 
     public void print() {
         for (Node n = pre_head.right; n != tail; n = n.right) {
-            System.out.println("Email" + n.email + " Point" + n.point);
+            System.out.println("Email: " + n.email +" "+ " Point: " + n.point);
         }
     }
-  public static void main(String[] args) {
-        DoubleLinkList ls = new DoubleLinkList();
-        ls.insert("aaa", 9);
-    //    ls.insert("xxx", 2);
-    //    ls.insert("zzz", 6);
-     //   ls.insert("ppp", 5);
-        ls.print();
+    public void delete(String email){
+        Node tmp = head;
+        while(!(tmp.email.equals(email)) && tmp != tail){
+            tmp = tmp.right;
+        }boolean check = true;
+        if(tmp != tail){
+            
+            tmp.left.right = tmp.right;
+            tmp.right.left = tmp.left;
+            System.out.println("Delete success");
+            check = false;
+        }if(check){
+            System.out.println("Fail");
+        }
     }
   
 }
