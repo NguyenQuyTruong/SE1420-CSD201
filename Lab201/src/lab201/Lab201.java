@@ -19,10 +19,13 @@ public class Lab201 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
         Lab201 lab = new Lab201();
-        lab.readDataQueue("C:\\Users\\nds72\\Desktop\\user.csv", doublyLinkedList);
-        doublyLinkedList.print();
+
         
-        
+        switch(args[0]){
+            case "-r":
+                lab.readDataQueue(args[1], doublyLinkedList);
+                break;
+        }
         
     }
     
