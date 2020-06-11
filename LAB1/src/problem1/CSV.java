@@ -39,7 +39,7 @@ public class CSV {
 				
 			}
 
-			System.out.println("Finish reading csv file");
+			//System.out.println("Finish reading csv file");
 
 		} catch (FileNotFoundException e) {
 			System.out.println("Csv file not found, please check again!");
