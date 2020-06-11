@@ -30,7 +30,13 @@ public class DoubleLinkList {
         }
         public void insert(String email,int point){
             Node newNode = new Node(email, point);
-            
+            if(head==null){
+                head = newNode;
+                head.left = pre_head;
+                head.right =tail;
+                pre_head.left = head;
+                tail.left=head;
+            }
         }
         
 }
