@@ -97,8 +97,10 @@ public class DoublyLinkedList {
     public int getTop() {
         return head.point;
     }
-    public void deleteTop(){
-        head.left.right=head.right;
-        head.right.left=head.left;
+
+    public void deleteTop() {
+        head.left.right = head.right;
+        head.right.left = head.left;
+        head = head.right;
     }
 }
