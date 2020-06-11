@@ -9,22 +9,46 @@
  * @author SE140279
  */
 public class singlyLinkedList<G> {
+
     // create Node
     private class Node {
-        
-        private G value;
+
+        private G gamer;
         private Node next;
 
-        public Node(G value, Node next) {
-            this.value = value;
+        public Node() {
+        }
+        
+        
+        public Node(G gamer, Node next) {
+            this.gamer = gamer;
             this.next = next;
         }
 
+        public G getGamer() {
+            return gamer;
+        }
+
+        public void setGamer(G gamer) {
+            this.gamer = gamer;
+        }
+
+        public Node getNext() {
+            return next;
+        }
+
+        public void setNext(Node next) {
+            this.next = next;
+        }
+        
     }
     // head and and tail of node
     private Node head = null;
     private Node tail = null;
+    private int size=0;
+    
     // top, size
+    
     public int size() {
         int result = 0;
         for (Node s = head; s != null; s = s.next) {
@@ -34,12 +58,14 @@ public class singlyLinkedList<G> {
     }
 
     public G getTop() {
-        return head.value;
+        return head.gamer;
     }
+
     // check empty
     public boolean isEmpty() {
         return head == null;
     }
+
     // add element
     public void addFirst(G g) {
         head = new Node(g, head);
@@ -54,31 +80,25 @@ public class singlyLinkedList<G> {
         } else {
             tail.next = newNode;
             tail = newNode;
-
         }
     }
-        //remove
-    public G removeFirst(){
+    //remove
+
+    public G removeFirst() {
         G result = null;
-        if(head!=null){
-            result = head.value;
-            head=head.next;
-            tail = head ==null ? null :tail;
+        if (head != null) {
+            result = head.gamer;
+            head = head.next;
+            tail = head == null ? null : tail;
         }
         return result;
     }
+
     // out put on screen
-    public void print(){
-        for(Node n = head;n!=null;n=n.next)
-            System.out.println(n.value+" ");
+    public void print() {
+        for (Node n = head; n != null; n = n.next) {
+            System.out.println(n.gamer + " ");
+        }
         System.out.println("\r");
     }
-    public String toString(){
-        String result = "";
-        for(Node n = head;n!=null;n=n.next)
-            result+=n.value.toString()+" ";
-        result+="\n";
-        return result;
-    }
-    
 }
