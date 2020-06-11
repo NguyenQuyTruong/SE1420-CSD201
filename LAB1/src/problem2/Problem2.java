@@ -62,7 +62,7 @@ public class Problem2 {
 	private void ProcessTag(String tag, String body) throws StackException {
 		tag = tag.toLowerCase(); //make sure, test case can't trick us!
 		
-		if (!tag.contains("</") && StandaloneTag(tag, body)) { //not close tag and that is a standalone tag!! F*** This tag	
+		if (!tag.contains("</") && StandaloneTag(tag, body) && !tag.contentEquals("<!doctype>")) { //not close tag and that is a standalone tag!! F*** This tag	
 			csv.UpdateValue(tag);
 		}else {
 			//fun part which needs stack for process
@@ -108,6 +108,9 @@ public class Problem2 {
 				tag += '>'; //close tag => end of tag
 				suckingCharacterToTag = false;  
 				//Turn this flag off, we already have enough characters to create a tag
+				
+				
+				
 				
 				ProcessTag(tag, body);
 			}
