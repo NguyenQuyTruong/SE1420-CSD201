@@ -18,15 +18,17 @@ public class FileReadWrite {
     
     public static String readData(String fileName) {
 	FileReader fileRead = null;
-	BufferedReader read = null;
-	StringBuilder htmlBody;
+	BufferedReader buffer = null;
+	StringBuilder htmlBody = null;
 	try {
 	    //create file reader
 	    fileRead = new FileReader(fileName);
 	    //create buffer reader
-	    read = new BufferedReader(fileRead);
-	    while (read.ready()) {
-		htmlBody = read.readLine();
+	    buffer = new BufferedReader(fileRead);
+	    htmlBody = new StringBuilder();
+	    String line;
+	    while ((line = buffer.readLine()) != null) {
+		htmlBody.append(line);
 	    }
 	} catch (Exception e) {
 	    System.out.println("File not founded");
@@ -35,13 +37,13 @@ public class FileReadWrite {
 		if (fileRead != null) {
 		    fileRead.close();
 		}
-		if (read != null) {
-		    read.close();
+		if (buffer != null) {
+		    buffer.close();
 		}
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
 	}
-	return htmlBody;
+	return htmlBody.toString();
     }
 }
