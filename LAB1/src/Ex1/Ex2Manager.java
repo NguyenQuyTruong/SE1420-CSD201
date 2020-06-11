@@ -20,7 +20,6 @@ import javax.net.ssl.HttpsURLConnection;
 public class Ex2Manager {
 
     MyStack ms = new MyStack();
-    ArrayList arr = new ArrayList();
     int count = 0;
     final String opening = "<";
     final String closing = ">";
@@ -28,47 +27,34 @@ public class Ex2Manager {
     final String Mark = "!";
     final String Mark2 = "/";
     final String Mark3 = ".";
+
     public void inputStack(String content) {
         StringBuilder sb = new StringBuilder();
         char c[] = content.toCharArray();
         int j = 0;
         int k = 0;
-        int count2 = 0;
         for (int i = 0; i < c.length - 1; i++) {
-            if (opening.indexOf(c[i]) != -1 && Mark.indexOf(c[i + 1]) == -1 && Mark2.indexOf(c[i + 1]) != -1) {
+            if (opening.indexOf(c[i]) != -1 && Mark.indexOf(c[i + 1]) == -1 && Mark2.indexOf(c[i + 1]) == -1) {
                 sb.insert(k, c[i]);
-                count++;
-                if ((c.length - i) > 20) {
-                    for (j = 1; j < 20; j++) {
-                        if (Character.isSpace(c[i + j]) || closing.indexOf(c[i + j]) != -1 ) {
-                            break;
-                        } else {
-                            sb.insert(k, c[i + j]);
-                            count++;
-                        }
-                    }
-                } else {
-                    for (j = 1; j < c.length - i; j++) {
-                        if (Character.isSpace(c[i + j]) || closing.indexOf(c[i + j]) != -1 ) {
-                            break;
-                        } else {
-                            sb.insert(k, c[i + j]);
-                            count++;
-                        }
+                k++;
+                for (j = 1; j < c.length - i; j++) {
+                    if (c[i + j] < 'A' || (c[i + j] > 'Z' && c[i + j] < 'a') || c[i + j] > 'z') {
+                        break;
+                    } else {
+                        sb.insert(k, c[i + j]);
+                        k++;
                     }
                 }
-                sb.insert(0, closing);
-                sb.insert(0 + 1, " ");
-                count += 2;
-                k = count;
+                sb.insert(k, closing);
+                k += 1;
             }
         }
-        sb.reverse();
         System.out.println(sb);
 
     }
 
     public static void main(String[] args) throws MalformedURLException, IOException {
+        // Test 
         Ex2Manager ex2 = new Ex2Manager();
         String line = "";
         String content = "";
