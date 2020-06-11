@@ -133,6 +133,19 @@ public class DoublyLinkedList {
             tmp.left.right = tmp.right;
             System.out.println("Da xoa nguoi choi");
         }
-
+    }
+    
+    public void update(String email, int point) {
+        Node tmp = head;
+        while ((!tmp.email.contentEquals(email) && tmp.point == point) && tmp != trailer) {
+            tmp = tmp.right;
+        }
+        if (tmp == trailer) {
+            System.out.println("ko ton tai nguoi choi de update");
+        }
+        {
+            tmp.setEmail("AAAA");
+            tmp.setPoint(99);
+        }
     }
 }
