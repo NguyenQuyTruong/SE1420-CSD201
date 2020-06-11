@@ -14,10 +14,11 @@ import java.util.Scanner;
 public class Test {
 
     public static void main(String[] args) {
-	Scanner sc = new Scanner(System.in);
-	HTMLValidateAndCount html = new HTMLValidateAndCount();
-	String tag = sc.nextLine();
-	System.out.println(html.checkTag(tag));
-	System.out.println(html.converToCloseTag(tag));
+//	Scanner sc = new Scanner(System.in);
+//	HTMLValidateAndCount html = new HTMLValidateAndCount();
+//	String tag = sc.nextLine();
+//	System.out.println(html.checkTag(tag));
+//	System.out.println(html.converToCloseTag(tag));
+	System.out.println(FileReadWrite.readData("index.html"));
     }
 }
