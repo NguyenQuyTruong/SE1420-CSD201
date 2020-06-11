@@ -9,9 +9,13 @@
  * @author SE140279
  */
 public class main {
+
     public static void main(String[] args) {
-        queue qe = new queue();
-        manageGamer user0 = new manageGamer("ygtoi@gmail.com", 72);
-        qe.insert(user0);
+        singlyLinkedList list = new singlyLinkedList();
+        list.insert("jack", 200);
+        list.insert("jacky", 300);
+        list.insert("kya", 300);
+        System.out.println("Top 10 Scores: ");
+        list.printList();
     }
 }
