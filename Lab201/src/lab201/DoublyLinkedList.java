@@ -61,6 +61,12 @@ public class DoublyLinkedList {
             node.right = head;
             head.left = node;
             head=node;
+        }else if(node.point<trailer.left.point){
+            
+            node.right=trailer;
+            trailer.left=node;
+            node.left=trailer.left;
+            trailer.left.right=node;
         }
     }
 }
