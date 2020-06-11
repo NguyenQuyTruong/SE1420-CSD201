@@ -14,17 +14,17 @@ import problem2.Problem2;
  */
 public class Main {
 	
-	static String tutorials = "java -jar LAB1.jar -h\r\n" + 
-			"   Help me please: \r\n" + 
-			"   java -jar LAB1.jar 1 -r <<user_CSV_file>>: Problem 1, read the user csv file\r\n" + 
-			"   java -jar LAB1.jar 1 -a <<email>> <<point>>: Problem 1, add a new user into the data strucutre\r\n" + 
-			"   java -jar LAB1.jar 1 -d <<email>>: Problem 1, delete a user in the data strucutre\r\n" + 
-			"   java -jar LAB1.jar 1 -u <<email>> <<new_point>>: Problem 1, update new point for user in the data strucutre\r\n" + 
-			"   java -jar LAB1.jar 1 -g <<email>>: Problem 1, get the point of user from the data strucutre\r\n" + 
-			"   java -jar LAB1.jar 1 -t: Problem 1, get the point of the top user from the data strucutre\r\n" + 
-			"   java -jar LAB1.jar 1 -dt: Problem 1, delete the top user from the data strucutre\r\n" + 
-			"   java -jar LAB1.jar 1 -s <<new_user_CSV_file>>: Problem 1, save the data strucutre into csv file\r\n" + 
-			"   java -jar LAB1.jar 2 <<URL-of-website>> <<output-CSV-file>>: Problem 2, read html info from a URL, save all tag information into the CSV output file";
+	static String tutorials =  
+			"java -jar LAB1.jar -h\r\n" + 
+			"Help: \r\n" + 
+			"java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data strucutre into csv file\r\n" + 
+			"java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -a <<email>> <<point>>: Problem 1, add a new user into the data strucutre and save to new csv file\r\n" + 
+			"java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -d <<email>>: Problem 1, delete a user in the data strucutre and save to new csv file\r\n" + 
+			"java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -u <<email>> <<new_point>>: Problem 1, update new point for user in the data strucutre and save to new csv file\r\n" + 
+			"java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -dt: Problem 1, delete the top user from the data strucutre and save to new csv file\r\n" + 
+			"java -jar LAB1.jar 1 -r <<user_CSV_file>> -g <<email>>: Problem 1, get the point of user from the data strucutre\r\n" + 
+			"java -jar LAB1.jar 1 -r <<user_CSV_file>> -t: Problem 1, get the point of the top user from the data strucutre\r\n" + 
+			"java -jar LAB1.jar 2 <<URL-of-website>> <<output-CSV-file>>: Problem 2, read html info from a URL, save all tag information into the CSV output file";
 
 
 	public static void main(String[] args) {
