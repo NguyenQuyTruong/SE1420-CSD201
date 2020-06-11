@@ -39,8 +39,13 @@ public class CSV {
         DoublyLinkedList.Node tmp =dk.header;
         
         while (tmp!=dk.tailer) {            
-            writer.append(tmp.email)
+            writer.append(tmp.email+","+tmp.point+"\n");
+            tmp=tmp.right;
         }
+        
+        writer.flush();//save lai
+        writer.close();//close file
+        
     }
     
 }
