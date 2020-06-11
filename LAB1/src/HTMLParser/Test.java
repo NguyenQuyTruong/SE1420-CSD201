@@ -20,5 +20,8 @@ public class Test {
 //	System.out.println(html.checkTag(tag));
 //	System.out.println(html.converToCloseTag(tag));
 	System.out.println(FileReadWrite.readData("index.html"));
+	System.out.println(FileReadWrite.readData("index.html").length());
+	String s = "Hello ";
+	System.out.println(s.length());
     }
 }
