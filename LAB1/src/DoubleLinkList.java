@@ -1,3 +1,6 @@
+
+import jdk.nashorn.internal.ir.BreakNode;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -43,15 +46,14 @@ public class DoubleLinkList {
         } else {
             if (newNode.point < head.left.point) { // be hon head
                 Node tmp = tail.left;
-                
+
                 newNode.right = tail;
                 tail.left = newNode;
                 tmp.right = newNode;
-                newNode.left=tmp;
-             //   tail = newNode;
+                newNode.left = tmp;
+                //   tail = newNode;
             } else if (newNode.point > head.point) {
-               
-                
+
                 newNode.right = head;
                 head.left = newNode;
                 pre_head.right = newNode;
@@ -75,35 +77,40 @@ public class DoubleLinkList {
 
     public void print() {
         for (Node n = pre_head.right; n != tail; n = n.right) {
-            System.out.println("Email: " + n.email +" "+ " Point: " + n.point);
+            System.out.println("Email: " + n.email + " " + " Point: " + n.point);
         }
     }
-    public void delete(String email){
+
+    public void delete(String email) {
         Node tmp = head;
-        while(!(tmp.email.equals(email)) && tmp != tail){
+        while (!(tmp.email.equals(email)) && tmp != tail) {
             tmp = tmp.right;
-        }boolean check = true;
-        if(tmp != tail){
-            
+        }
+        boolean check = true;
+        if (tmp != tail) {
+
             tmp.left.right = tmp.right;
             tmp.right.left = tmp.left;
             System.out.println("Delete success");
             check = false;
-        }if(check){
+         
+        }
+        if (check==true) {
             System.out.println("Fail");
         }
     }
-    public int geTop(){
+
+    public int geTop() {
         return head.point;
     }
-    public void deleteTop(){
+
+    public void deleteTop() {
         head.left = head.right;
         head.right = head.left;
-        pre_head.right=head.right;
-        head.right=pre_head;
+        pre_head.right = head.right;
+        head.right = pre_head;
         // cap nhat lai head
         head = head.right;
     }
-  
-}
 
+}
