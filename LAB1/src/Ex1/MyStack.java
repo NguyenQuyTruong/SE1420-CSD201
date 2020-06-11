@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class MyStack {
 
-    ArrayList ar = new ArrayList();
+    ArrayList<String> ar = new ArrayList<>();
     int top = -1;
     public boolean isEmpty(){
         return top == -1;
@@ -32,5 +32,8 @@ public class MyStack {
     
     public void print(){
         System.out.println(ar);
+    }
+    public String getTop(){
+        return ar.get(top);
     }
 }
