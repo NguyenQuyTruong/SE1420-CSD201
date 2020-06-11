@@ -46,4 +46,14 @@ public class DoublyLinkedList {
         pre_Head = new Node(null, -1);
         trailer = new Node(null, -1);
     }
+    
+    public void insert(String email, int point){
+        Node node=new Node(email, point);
+        if(head==null){
+            node.right=trailer;
+            trailer.left=node;
+            node.left=pre_Head;
+            pre_Head.right=node;
+        }
+    }
 }
