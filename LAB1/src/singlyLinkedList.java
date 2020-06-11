@@ -105,14 +105,14 @@ public class singlyLinkedList {
                 frontPtr = frontPtr.next;
             }
 
-            if (frontPtr != null && frontPtr.score <= node.score) {
-
-                backPtr.next = node;
-                node.next = frontPtr;
-            } else {
-
+            if (frontPtr == null || frontPtr.score > node.score) {
+                
                 frontPtr.next = node;
                 tail = node;
+            } else {
+                
+                backPtr.next = node;
+                node.next = frontPtr;
             }
         }
         if (size() > 10) {
