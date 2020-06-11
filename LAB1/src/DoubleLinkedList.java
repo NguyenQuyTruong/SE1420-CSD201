@@ -91,5 +91,10 @@ public class DoubleLinkedList {
         return header.point;
     }
     
+    public void deleteTop(){
+        pre_header.right = header.right;
+        header.right.left=pre_header;
+        header=header.right;
+    }
     
 }
