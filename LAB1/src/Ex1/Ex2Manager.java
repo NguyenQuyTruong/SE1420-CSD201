@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
@@ -23,26 +22,28 @@ public class Ex2Manager {
     int count = 0;
     final String opening = "<";
     final String closing = ">";
-
-    final String Mark = "!";
-    final String Mark2 = "/";
-    final String Mark3 = ".";
-
+    final String space = " ";
     public void inputStack(String content) {
         StringBuilder sb = new StringBuilder();
         char c[] = content.toCharArray();
         int j = 0;
         int k = 0;
         for (int i = 0; i < c.length - 1; i++) {
-            if (opening.indexOf(c[i]) != -1 && Mark.indexOf(c[i + 1]) == -1 && Mark2.indexOf(c[i + 1]) == -1) {
+            if (opening.indexOf(c[i]) != -1) {
                 sb.insert(k, c[i]);
                 k++;
-                for (j = 1; j < c.length - i; j++) {
-                    if (c[i + j] < 'A' || (c[i + j] > 'Z' && c[i + j] < 'a') || c[i + j] > 'z') {
-                        break;
-                    } else {
+                for (j = 1; j < c.length; j++) {
+                    if ((c[i + j] >= 'A' && (c[i + j] <= 'Z') || (c[i + j] >= 'a') && c[i + j] <= 'z')) {
                         sb.insert(k, c[i + j]);
                         k++;
+                    } else if(space.indexOf(c[i + j])!= -1){
+                        for(int v = 0; v < c.length; v++){
+                            if(closing.indexOf(c[i + j + v]) != -1){
+                                sb.insert(k, c[i + j + v]);
+                            }else {
+                                
+                            }
+                        }
                     }
                 }
                 sb.insert(k, closing);
@@ -50,7 +51,6 @@ public class Ex2Manager {
             }
         }
         System.out.println(sb);
-
     }
 
     public static void main(String[] args) throws MalformedURLException, IOException {
