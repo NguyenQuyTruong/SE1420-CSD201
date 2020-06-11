@@ -93,6 +93,17 @@ public class DoubleLinkList {
             System.out.println("Fail");
         }
     }
+    public int geTop(){
+        return head.point;
+    }
+    public void deleteTop(){
+        head.left = head.right;
+        head.right = head.left;
+        pre_head.right=head.right;
+        head.right=pre_head;
+        // cap nhat lai head
+        head = head.right;
+    }
   
 }
 
