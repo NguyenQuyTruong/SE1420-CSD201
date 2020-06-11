@@ -17,15 +17,22 @@ import java.io.IOException;
 public class Lab201 {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
 
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        int countLine = 0;
         FileReader fr = new FileReader("C:\\Users\\nds72\\Desktop\\user.csv");
         BufferedReader bufferedReader = new BufferedReader(fr);
         String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            String[] arr = line.split(",");
 
-            doublyLinkedList.insert(arr[0], Integer.parseInt(arr[1]));
+        while ((line = bufferedReader.readLine()) != null) {
+            try {
+                String[] arr = line.split(",");
+
+                doublyLinkedList.insert(arr[0], Integer.parseInt(arr[1].trim()));
+            } catch (Exception e) {
+            }
         }
+
+        doublyLinkedList.print();
     }
 }
