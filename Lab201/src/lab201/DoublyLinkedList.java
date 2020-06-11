@@ -12,8 +12,16 @@ package lab201;
 public class DoublyLinkedList {
 
     class User {
+
         private String email;
         private int point;
         User left, right;
+
+        public User(String email, int point) {
+            this.email = email;
+            this.point = point;
+            left = right = null;
+        }
+
     }
 }
