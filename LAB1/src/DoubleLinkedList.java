@@ -43,13 +43,13 @@ public class DoubleLinkedList {
             pre_header.right = header;
             tailer.left = header;
         } else {
-            if (newNode.point > header.point) {
+            if (newNode.point > header.point) {//khi point lon nhat
                 newNode.right = header;
                 header.left = newNode;
                 pre_header.right = newNode;
                 newNode.left = pre_header;
                 header = newNode; // update lai cai header moi
-            } else if (newNode.point < tailer.left.point) {
+            } else if (newNode.point < tailer.left.point) {//khi point be nhat
                 Node tmp = tailer.left;
                 newNode.right = tailer;
                 tailer.left = newNode;
