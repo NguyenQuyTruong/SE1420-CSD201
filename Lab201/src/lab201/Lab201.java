@@ -9,9 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.IIOException;
+
 
 /**
  *
@@ -19,18 +17,13 @@ import javax.imageio.IIOException;
  */
 public class Lab201 {
 
-    public static void main(String[] args) {
-        DoublyLinkedList dll = new DoublyLinkedList();
-        dll.insert("Cuong", 100);
-        dll.insert("Sang", 9);
-        dll.insert("Minh", 4);
-        dll.insert("Anh", 1);
-        dll.insert("Bao", 5);
-        dll.print();
-        System.out.println("____");
-        
-        dll.delete("Bao");
-        System.out.println("____");
-        dll.print();
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+
+        FileReader fr = new FileReader("C:\\Users\\nds72\\Desktop\\user.csv");
+        BufferedReader bufferedReader = new BufferedReader(fr);
+        String line;
+        while(line=bufferedReader.readLine() && line!=null){
+            
+        }
     }
 }
