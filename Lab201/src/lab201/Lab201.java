@@ -18,12 +18,19 @@ import javax.imageio.IIOException;
  * @author nds72
  */
 public class Lab201 {
+
     public static void main(String[] args) {
-        DoublyLinkedList dll=new DoublyLinkedList();
+        DoublyLinkedList dll = new DoublyLinkedList();
+        dll.insert("Cuong", 100);
         dll.insert("Sang", 9);
         dll.insert("Minh", 4);
         dll.insert("Anh", 1);
         dll.insert("Bao", 5);
+        dll.print();
+        System.out.println("____");
+        
+        dll.delete("Bao");
+        System.out.println("____");
         dll.print();
     }
 }
