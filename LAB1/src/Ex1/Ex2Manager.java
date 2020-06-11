@@ -21,14 +21,42 @@ public class Ex2Manager {
 
     MyStack ms = new MyStack();
     ArrayList arr = new ArrayList();
+    int count = 0;
     final String opening = "<";
+    final String closing = ">";
 
+    final String Mark = "!";
+    final String Mark2 = "/";
     public void inputStack(String content) {
-        for (char c : content.toCharArray()) {
-            if (opening.indexOf(c) != -1) {
+        StringBuilder sb = new StringBuilder();
+        char c[] = content.toCharArray();
+        int j = 0;
+        for (int i = 0; i < c.length - 1; i++) {
+            if (opening.indexOf(c[i]) != -1 && Mark.indexOf(c[i + 1]) == -1 && Mark2.indexOf(c[i + 1]) == -1) {
+                sb.insert(0, c[i]);
+                if ((c.length - i) > 20) {
+                    for (j = 1; j < 20; j++) {
+                        if (Character.isSpace(c[i + j]) || closing.indexOf(c[i + j]) != -1) {
+                            break;
+                        } else {
+                            sb.insert(j, c[i + j]);
+                        }
+                    }
+                } else {
+                    for (j = 1; j < c.length - i; j++) {
+                        if (Character.isSpace(c[i + j]) || closing.indexOf(c[i + j]) != -1) {
+                            break;
+                        } else {
+                            sb.insert(j, c[i + j]);
+                        }
+                    }
+                }
+                sb.insert(j, closing);
+                sb.insert(j + 1, " ");
             }
         }
-        
+        System.out.println(sb);
+
     }
 
     public static void main(String[] args) throws MalformedURLException, IOException {
@@ -43,7 +71,6 @@ public class Ex2Manager {
         while ((line = br.readLine()) != null) {
             content += line;
         }
-        System.out.print(content);
         ex2.inputStack(content);
     }
 }
