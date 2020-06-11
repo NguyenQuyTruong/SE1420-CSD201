@@ -11,17 +11,24 @@ package lab201;
  */
 public class DoublyLinkedList {
 
-    class User {
+    class Node {
 
         private String email;
         private int point;
-        User left, right;
+        Node left, right;
 
-        public User(String email, int point) {
+        public Node(String email, int point) {
             this.email = email;
             this.point = point;
             left = right = null;
         }
+    }
+    public Node head;
+    private Node pre_Head;
+    private Node trailer;
 
+    public DoublyLinkedList() {
+        pre_Head = new Node(null, -1);
+        trailer = new Node(null, -1);
     }
 }
