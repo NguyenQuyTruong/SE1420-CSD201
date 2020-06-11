@@ -120,21 +120,26 @@ public class DoublyLinkedList {
         head = head.right;
     }
 
-    public void delete(String mail) {
-        Node tmp = head;
-        while (!(tmp.email.equals(mail)) && tmp != trailer) {
-            tmp = tmp.right;
-        }
-
+    public void delete(String email) {
+        Node tmp = searchByEmail(email);
         if (tmp == trailer) {
             System.out.println("ko ton tai nguoi choi");
         } else {
             tmp.right.left = tmp.left;
             tmp.left.right = tmp.right;
+            tmp = null;
             System.out.println("Da xoa nguoi choi");
         }
     }
-    
+
+    public Node searchByEmail(String email) {
+        Node tmp = head;
+        while (tmp.email.contentEquals(email) && tmp != trailer) {
+            tmp = tmp.right;
+        }
+        return tmp;
+    }
+
     public void update(String email, int point) {
         Node tmp = head;
         while ((!tmp.email.contentEquals(email) && tmp.point == point) && tmp != trailer) {
@@ -144,8 +149,8 @@ public class DoublyLinkedList {
             System.out.println("ko ton tai nguoi choi de update");
         }
         {
-            tmp.setEmail("AAAA");
-            tmp.setPoint(99);
+            insert(email, point);
+            System.out.println("Email " + email + " Point " + point + " has been update");
         }
     }
 }
