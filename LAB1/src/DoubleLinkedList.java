@@ -60,7 +60,18 @@ public class DoubleLinkedList{
                 tail = p;
             }
     }
+        
+         //output list
+       public void travsel(){
+           Node p = head;
+           while(p != null){
+               System.out.println(p.data + " ");
+               p = p.next;
+               System.out.println("");
+           }
+       }
 
+       //size of the list
         public int size(){
             return 0;
     }
