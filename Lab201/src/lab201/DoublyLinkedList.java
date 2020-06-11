@@ -105,7 +105,7 @@ public class DoublyLinkedList {
     }
     public void delete(String mail){
         Node tmp=head;
-        while(tmp.email.equals(mail) && tmp!=trailer){
+        while(!(tmp.email.equals(mail)) && tmp!=trailer){
             tmp=tmp.right;
         }
         
