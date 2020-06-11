@@ -47,6 +47,16 @@ public class DoublyLinkedList {
         trailer = new Node(null, -1);
     }
 
+    public void print(){
+        for(Node n=pre_Head.right;n!=trailer;n=n.right){
+            System.out.println(n.email+n.point);
+        }
+    }
+    /**
+     * 
+     * @param email
+     * @param point 
+     */
     public void insert(String email, int point) {
         Node node = new Node(email, point);
         if (head == null) {
