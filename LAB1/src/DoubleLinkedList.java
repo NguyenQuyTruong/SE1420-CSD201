@@ -69,5 +69,20 @@ public class DoubleLinkedList {
             }
         }
     }
+    
+    public void delete(String email){
+        Node tmp=header;
+        while (!(tmp.email.contentEquals(email))&&tmp!=tailer) {            
+            tmp=tmp.right;
+        }
+        
+        if (tmp==tailer) {
+            System.out.println("Email ko tim thay");
+        }else{
+            tmp.left.right=tmp.right;
+        }
+        
+    }
+    
 
 }
