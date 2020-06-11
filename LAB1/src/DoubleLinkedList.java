@@ -80,6 +80,9 @@ public class DoubleLinkedList {
             System.out.println("Email ko tim thay");
         }else{
             tmp.left.right=tmp.right;
+            tmp.right.left=tmp.left;
+            tmp=null;
+            System.out.println("Email da dc xoa");
         }
         
     }
