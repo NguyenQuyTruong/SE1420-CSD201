@@ -8,28 +8,28 @@
  *
  * @author SE140279
  */
-public class singlyLinkedList<G> {
+public class singlyLinkedList {
 
     // create Node
     private class Node {
 
-        private G gamer;
+        private manageGamer gamer;
         private Node next;
 
         public Node() {
         }
         
         
-        public Node(G gamer, Node next) {
+        public Node(manageGamer gamer, Node next) {
             this.gamer = gamer;
             this.next = next;
         }
 
-        public G getGamer() {
+        public manageGamer getGamer() {
             return gamer;
         }
 
-        public void setGamer(G gamer) {
+        public void setGamer(manageGamer gamer) {
             this.gamer = gamer;
         }
 
@@ -57,7 +57,7 @@ public class singlyLinkedList<G> {
         return result;
     }
 
-    public G getTop() {
+    public manageGamer getTop() {
         return head.gamer;
     }
 
@@ -67,12 +67,12 @@ public class singlyLinkedList<G> {
     }
 
     // add element
-    public void addFirst(G g) {
+    public void addFirst(manageGamer g) {
         head = new Node(g, head);
         tail = head.next == null ? head : tail;
     }
 
-    public void addLast(G g) {
+    public void addLast(manageGamer g) {
         Node newNode = new Node(g, null);
         if (isEmpty()) {
             head = newNode;
@@ -83,9 +83,8 @@ public class singlyLinkedList<G> {
         }
     }
     //remove
-
-    public G removeFirst() {
-        G result = null;
+    public manageGamer removeFirst() {
+        manageGamer result = null;
         if (head != null) {
             result = head.gamer;
             head = head.next;
@@ -93,12 +92,10 @@ public class singlyLinkedList<G> {
         }
         return result;
     }
-
-    // out put on screen
-    public void print() {
-        for (Node n = head; n != null; n = n.next) {
-            System.out.println(n.gamer + " ");
-        }
-        System.out.println("\r");
+    public manageGamer font(){
+        return head.gamer;
     }
+   
+    // out put on screen
+    
 }
