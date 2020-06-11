@@ -265,5 +265,42 @@ public class DoubleLinkedList {
         }
         return null; //when the node is not found.
     }
-    
+    //Display...
+    /**
+     * Display point using inputed email using in PriQueue
+     * 
+     * @param email 
+     */
+    public void displayPointByEmail(String email){
+        //Still (everytime) check if the List is Empty or not
+        if(isEmpty()){
+            System.out.println("The List is Empty... Try input some data first.");
+        } else{
+            Node randomPlayer = searchPlayerbyEmail(email);
+            if(randomPlayer == null){
+                System.out.println("Player doesn't exist."); //If not found
+            } else{
+                int point = randomPlayer.getPlayer().getPoint(); //If found then create a quick point value
+                System.out.println("'Email: "+ email +"; Point: " + point + ".");//Display the Player
+            }
+        }
+    }
+    /**
+     * Display the Player that have the highest point
+     */
+    public void displayTopPlayer(){
+        //If the List is Empty the getFirst funtion will be null, so check if the List is Empty or not
+        if(getFirst() == null){
+            System.out.println("The List is Empty... Try input some data first");
+        } else{
+            Player topPlayer = getFirst();
+            //Get the info or data 
+            String email; 
+            int point;
+            email = topPlayer.getEmail();
+            point = topPlayer.getPoint();
+            //Display
+            System.out.println("'Email: "+ email +"; Point: " + point + ".");
+        }
+    }
 }
