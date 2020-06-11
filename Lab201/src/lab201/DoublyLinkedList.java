@@ -47,15 +47,16 @@ public class DoublyLinkedList {
         trailer = new Node(null, -1);
     }
 
-    public void print(){
-        for(Node n=pre_Head.right;n!=trailer;n=n.right){
-            System.out.println(n.email+n.point);
+    public void print() {
+        for (Node n = pre_Head.right; n != trailer; n = n.right) {
+            System.out.println("Email "+n.email +"Point "+ n.point);
         }
     }
+
     /**
-     * 
+     *
      * @param email
-     * @param point 
+     * @param point
      */
     public void insert(String email, int point) {
         Node node = new Node(email, point);
@@ -70,13 +71,25 @@ public class DoublyLinkedList {
             node.left = pre_Head;
             node.right = head;
             head.left = node;
-            head=node;
-        }else if(node.point<trailer.left.point){
+            head = node;
+        } else if (node.point < trailer.left.point) {
+            Node tmp = trailer.left;
+
+            node.right = trailer;
+            trailer.left = node;
+            tmp.right = node;
+            node.left = tmp;
+        }else{
+            Node tmp =head;
+            while(tmp.point>node.point){
+                tmp=tmp.right;
+            }
+            Node prevTmp=tmp.left;
             
-            node.right=trailer;
-            trailer.left=node;
-            node.left=trailer.left;
-            trailer.left.right=node;
+            tmp.left=node;
+            node.right=tmp;
+            prevTmp.right=node;
+            node.left=prevTmp;
         }
     }
 }
