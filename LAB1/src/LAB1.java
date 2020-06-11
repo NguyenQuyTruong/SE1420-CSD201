@@ -24,9 +24,23 @@ public class LAB1 {
                     break;
                 case "-s":
                     check =true;
-                    fileSv
+                    fileSv = args[i+1];
+                    break;
+                case  "-a":
+                    ls.insert(args[i+2], i);
+                    break;
+                case "-d":
+                    ls.delete(args[i+1]);
+                    break;
+                case "-dt":
+                    ls.deleteTop();
                     
+                                   
             }
         }
+        if(check == true){
+            cs.writeData(fileSv, ls);
+        }
+        ls.print();
     }
 }
