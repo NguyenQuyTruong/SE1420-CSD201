@@ -10,7 +10,10 @@ package lab201;
  * @author nds72
  */
 public class DoublyLinkedList {
-    class Node{
-        
+
+    class User {
+        private String email;
+        private int point;
+        User left, right;
     }
 }
