@@ -23,6 +23,9 @@ public class Ex2Manager {
     final String opening = "<";
     final String closing = ">";
     final String space = " ";
+    final String Mark = "/";
+    final String Mark2 = "!";
+
     public void inputStack(String content) {
         StringBuilder sb = new StringBuilder();
         char c[] = content.toCharArray();
@@ -30,37 +33,47 @@ public class Ex2Manager {
         int k = 0;
         int tmp = 0;
         for (int i = 0; i < c.length - 1; i++) {
-            tmp = 0;
             if (opening.indexOf(c[i]) != -1) {
                 sb.insert(k, c[i]);
                 k++;
-                tmp++;
                 for (j = 1; j < (c.length - i); j++) {
-                    if ((c[i + j] >= 'A' && (c[i + j] <= 'Z') || (c[i + j] >= 'a') && c[i + j] <= 'z')) {
+                    tmp = 0;
+                    if ((c[i + j] >= 'A' && (c[i + j] <= 'Z') || (c[i + j] >= 'a') && c[i + j] <= 'z') || Mark.indexOf(c[i + j]) != -1) {
                         sb.insert(k, c[i + j]);
                         k++;
-                        tmp++;
-                    } else if(space.indexOf(c[i + j])!= -1){
-                        for(int v = 1; v < (c.length - i - j); v++){
-                            if(closing.indexOf(c[i + j + v]) != -1){
-                                sb.insert(k, c[i + j + v]);
-                                k++;
-                                break;
-                            }
-                            if(opening.indexOf(c[i + j + v]) != -1){
-                                sb.delete(i, i+j);
-                                break;
-                            }
-                        }
-                    }
-                    else {
-                        sb.insert(k,closing);
-                        k++;
-                        
+//                    } else if (space.indexOf(c[i + j]) != -1) {
+//                        for (int v = 1; v < (c.length - i - j); v++) {
+//                            if (closing.indexOf(c[i + j + v]) != -1) {
+//                                sb.insert(k, ">");
+//                                k++;
+//                                break;
+//                            }
+//                            if (opening.indexOf(c[i + j + v]) != -1) {
+//                                sb.delete(i, i + j);
+//                                k = k - j;
+//                                break;
+//                            }
+//                        }
+//                        sb.insert(k, ">");
+                    } else if (Mark2.indexOf(c[i + 1]) != -1) {
+                        sb.delete(k - 1, k);
+                        k--;
+                        tmp = 1;
+                        break;
+//                    } else if (opening.indexOf(c[i + j]) != -1) {
+//                        sb.delete(k - j, k);
+//                        k = k - j;
+//                        tmp = 1;
+//                        break;
+                    } else {
+                        break;
                     }
                 }
-                sb.insert(k, closing);
-                k += 1;
+                if (tmp == 0) {
+                    sb.insert(k, ">");
+                    k++;
+                }
+
             }
         }
         System.out.println(sb);
