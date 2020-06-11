@@ -38,20 +38,25 @@ public class DoubleLinkList {
             head = newNode;
             head.left = pre_head;
             head.right = tail;
-            pre_head.left = head;
+            pre_head.right = head;
             tail.left = head;
         } else {
-            if (newNode.point < head.point) {
+            if (newNode.point < head.left.point) { // be hon head
+                Node tmp = tail.left;
+                
                 newNode.right = tail;
                 tail.left = newNode;
-                newNode.left = head;
-                head.right = newNode;
-                tail = newNode;
+                tmp.right = newNode;
+                newNode.left=tmp;
+             //   tail = newNode;
             } else if (newNode.point > head.point) {
+               
+                
                 newNode.right = head;
                 head.left = newNode;
                 pre_head.right = newNode;
                 newNode.left = pre_head;
+                head = newNode;
             } else {
                 Node tmp = head;
                 while (tmp.point > newNode.point) {
@@ -60,8 +65,8 @@ public class DoubleLinkList {
                 Node preTmp = tmp.left;
                 newNode.right = tmp;
                 tmp.left = newNode;
-                newNode.left = tmp.left;
-                tmp.left.right = newNode;
+                newNode.left = preTmp;
+                preTmp.right = newNode;
 
             }
         }
@@ -79,7 +84,7 @@ public class DoubleLinkList {
     //    ls.insert("xxx", 2);
     //    ls.insert("zzz", 6);
      //   ls.insert("ppp", 5);
-     //   ls.print();
+        ls.print();
     }
   
 }
