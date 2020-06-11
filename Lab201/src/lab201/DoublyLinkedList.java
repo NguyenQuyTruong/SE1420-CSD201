@@ -46,14 +46,21 @@ public class DoublyLinkedList {
         pre_Head = new Node(null, -1);
         trailer = new Node(null, -1);
     }
-    
-    public void insert(String email, int point){
-        Node node=new Node(email, point);
-        if(head==null){
-            node.right=trailer;
-            trailer.left=node;
-            node.left=pre_Head;
-            pre_Head.right=node;
+
+    public void insert(String email, int point) {
+        Node node = new Node(email, point);
+        if (head == null) {
+            head = node;
+            head.left = pre_Head;
+            pre_Head.right = head;
+            head.right = trailer;
+            trailer.left = head;
+        } else if (node.point > head.point) {
+            pre_Head.right = node;
+            node.left = pre_Head;
+            node.right = head;
+            head.left = node;
+            head=node;
         }
     }
 }
