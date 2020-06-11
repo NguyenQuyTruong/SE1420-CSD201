@@ -114,6 +114,14 @@ public class DoublyLinkedList {
         return head.point;
     }
 
+    public int getPoint(String email) {
+        Node tmp = searchByEmail(email);
+        if (tmp != trailer) {
+            return tmp.getPoint();
+        }
+        return 0;
+    }
+
     public void deleteTop() {
         head.left.right = head.right;
         head.right.left = head.left;
@@ -134,7 +142,7 @@ public class DoublyLinkedList {
 
     public Node searchByEmail(String email) {
         Node tmp = head;
-        while (tmp.email.contentEquals(email) && tmp != trailer) {
+        while (!(tmp.email.contentEquals(email)) && tmp != trailer) {
             tmp = tmp.right;
         }
         return tmp;
@@ -153,4 +161,5 @@ public class DoublyLinkedList {
             System.out.println("Email " + email + " Point " + point + " has been update");
         }
     }
+
 }
