@@ -33,6 +33,7 @@ public class Main {
         String oldFileName = null;
         String newFileName = null;
         String email = "";
+        String urlInput = "";
         int point = 0;
         int choice = 0;
         if (args[0].equals("-h")) {
@@ -81,6 +82,7 @@ public class Main {
                 choice = 6;
             }
             if (args[3].equals("2")) {
+                urlInput = args[4];
                 choice = 7;
             }
         }
@@ -303,15 +305,17 @@ public class Main {
                 break;
             }
             case 7: {
-                String link = "";
                 String line = "";
                 String content = "";
-                URL ur = new URL(link);
+                URL ur = new URL(urlInput);
 
                 HttpsURLConnection urlc = (HttpsURLConnection) ur.openConnection();
                 BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
                 
-                while((line = ))
+                while((line = br.readLine()) != null){
+                    content += line;
+                }
+                System.out.print(content);
                 break;
             }
         }
