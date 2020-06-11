@@ -103,4 +103,19 @@ public class DoublyLinkedList {
         head.right.left = head.left;
         head = head.right;
     }
+    public void delete(String mail){
+        Node tmp=head;
+        while(tmp.email.equals(mail) && tmp!=trailer){
+            tmp=tmp.right;
+        }
+        
+        if(tmp==trailer){
+            System.out.println("ko ton tai nguoi choi");
+        }else{
+            tmp.right.left=tmp.left;
+            tmp.left.right=tmp.right;
+            System.out.println("Da xoa nguoi choi");
+        }
+        
+    }
 }
