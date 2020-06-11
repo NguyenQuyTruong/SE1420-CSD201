@@ -27,16 +27,17 @@ public class Ex2Manager {
 
     final String Mark = "!";
     final String Mark2 = "/";
+    final String Mark3 = ".";
     public void inputStack(String content) {
         StringBuilder sb = new StringBuilder();
         char c[] = content.toCharArray();
         int j = 0;
         for (int i = 0; i < c.length - 1; i++) {
-            if (opening.indexOf(c[i]) != -1 && Mark.indexOf(c[i + 1]) == -1 && Mark2.indexOf(c[i + 1]) == -1) {
+            if (opening.indexOf(c[i]) != -1 && Mark.indexOf(c[i + 1]) == -1 && Mark2.indexOf(c[i + 1]) != -1) {
                 sb.insert(0, c[i]);
                 if ((c.length - i) > 20) {
                     for (j = 1; j < 20; j++) {
-                        if (Character.isSpace(c[i + j]) || closing.indexOf(c[i + j]) != -1) {
+                        if (Character.isSpace(c[i + j]) || closing.indexOf(c[i + j]) != -1 ) {
                             break;
                         } else {
                             sb.insert(j, c[i + j]);
@@ -44,7 +45,7 @@ public class Ex2Manager {
                     }
                 } else {
                     for (j = 1; j < c.length - i; j++) {
-                        if (Character.isSpace(c[i + j]) || closing.indexOf(c[i + j]) != -1) {
+                        if (Character.isSpace(c[i + j]) || closing.indexOf(c[i + j]) != -1 ) {
                             break;
                         } else {
                             sb.insert(j, c[i + j]);
