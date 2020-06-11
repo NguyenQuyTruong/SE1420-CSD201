@@ -100,7 +100,9 @@ public class PriorityQueue implements Serializable{
 		if (currentNode == list.tailNode) {
 			System.out.println("Warning: not found to update.. no problem!");
 		}else {
-			currentNode.setPoint(newPoint);
+			Delete(email); 
+			insert(email, newPoint);
+			//reuse insert to "sort" the new point user
 			System.out.println("Updated " + email + " new point: " + newPoint);
 		}
 	}
