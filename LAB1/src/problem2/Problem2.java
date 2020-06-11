@@ -84,8 +84,6 @@ public class Problem2 {
 		
 	}
 	private void ParsingHTML(String body) throws StackException {
-		System.out.println(body);
-		System.out.println("===================");
 		String tag = "";
 		
 		boolean suckingCharacterToTag = false;
