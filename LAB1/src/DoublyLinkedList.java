@@ -10,12 +10,12 @@
  */
 public class DoublyLinkedList {
 
-    private class Node {
+    public class Node {
 
-        private int point;
-        private String email;
-        private Node right;
-        private Node left;
+        public int point;
+        public String email;
+        public Node right;
+        public Node left;
 
         public Node(int point, String email) {
             this.point = point;
@@ -96,5 +96,6 @@ public class DoublyLinkedList {
         header.right.left=pre_header;
         header=header.right;
     }
-    
+        this.DoublyLinkedList = new DoublyLinkedList();
+        
 }
