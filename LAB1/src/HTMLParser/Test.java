@@ -23,6 +23,9 @@ public class Test {
 //	System.out.println(FileReadWrite.readData("index.html").length());
 //	String s = "Hello ";
 //	System.out.println(s.length());
-	System.out.println(HTMLValidateAndCount.regexCheckTag("/"));
+	System.out.println(HTMLValidateAndCount.regexCheckTag(">"));
+	Character c = 'T';
+	System.out.println(Character.toString(c));
+	System.out.println(String.valueOf(c));
     }
 }
