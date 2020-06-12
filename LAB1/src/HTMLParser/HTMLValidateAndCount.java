@@ -5,8 +5,6 @@
  */
 package HTMLParser;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author minhv
@@ -102,37 +100,45 @@ public class HTMLValidateAndCount {
 	return tag.equals(tagInStack);
     }
 
-    public ArrayList<String> seperateTag(String htmlString) {
+    /**
+     * Spit each character and merge it to a tag. Using regex expression to
+     * verify each character. If it a tag put it to checkTag method to verify it
+     * open or close or alone tag
+     *
+     * @param htmlString
+     */
+    public void splitTag(String htmlString) {
 	String tag = "";
-	ArrayList<String> html = new ArrayList<>();
 	boolean isStillValid = true;
 	//htmlString.length() use to get length of string also include space
 	for (int i = 0; i < htmlString.length(); i++) {
 	    //check is "<" or not
 	    if (htmlString.charAt(i) == '<') {
-		//continue to read this String
+		//continue to read this String and isStillValid is the break point of loop
 		for (int j = i; j < htmlString.length() && isStillValid == true; j++) {
-		    if (regexCheckTag(Character.toString(htmlString.charAt(j))) || htmlString.charAt(j) != '>') {
-//			System.out.print(regexCheckTag(Character.toString(htmlString.charAt(j))) + " ");
-//			System.out.println("");
-//			System.out.println(htmlString.charAt(j));
+		    if (regexCheckTag(Character.toString(htmlString.charAt(j))) && htmlString.charAt(j) != '>') {
+			//merge each character to a tag
 			tag += htmlString.charAt(j);
 		    } else {
 			//stop the loop
 			isStillValid = false;
 			//make tag close
 			tag += '>';
-			html.add(tag);
+			//result tag from <!DOCTYPE html> or comment tag
+			if (!tag.equals("<>")) {
+			    //it's time for check tag
+			    checkTag(tag, htmlString);
+			}
+			//reset String tag to none
 			tag = "";
 			i = j;
 		    }
 		}
 	    } else {
+		//reset isStillValid to valid for run the loop
 		isStillValid = true;
-		//it's time for check tag
 	    }
 	}
-	return html;
     }
 
     public void checkTag(String tag, String htmlString) {
@@ -140,6 +146,6 @@ public class HTMLValidateAndCount {
     }
 
     public static boolean regexCheckTag(String character) {
-	return character.matches("^[a-zA-Z0-9'/']+$");
+	return character.matches("^[a-zA-Z0-9'/''<']+$");
     }
 }
