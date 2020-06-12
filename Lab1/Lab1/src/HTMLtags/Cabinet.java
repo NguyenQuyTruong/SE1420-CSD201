@@ -50,6 +50,28 @@ public class Cabinet {
 	}
     }
     
+    /**
+     * this method use to convert special tag like <br> to </br> and use this
+     * convert String compare with HTML body String in another method
+     * @param tag
+     * @return close tag String
+     */
+    private String convertToCloseTag(String tag) {
+	String closeTag = tag.replace("<", "</");
+	return closeTag;
+    }
+    
+    /**
+     * this method use to check the close tag is exist in the HTML body or not
+     * @param tag
+     * @param htmlBody
+     * @return true or false
+     */
+    private boolean existCloseTag(String closeTag, String htmlBody) {
+	return htmlBody.contains(closeTag);
+    }
+    
+    
     private void analysisHTML(String htmlBody) {
 	String tag = "";
 	boolean validTag = false;
@@ -59,6 +81,9 @@ public class Cabinet {
 		validTag = true;
 	    } else if ((htmlBody.charAt(i) != '>' && htmlBody.charAt(i) != ' ') && validTag) {
 		
+		if () {
+		    
+		}
 	    }
 	    
 	}
