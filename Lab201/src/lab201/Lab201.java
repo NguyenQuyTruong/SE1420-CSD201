@@ -63,8 +63,8 @@ public class Lab201 {
 
         }
         doublyLinkedList.print();
-        if(save){
-            writeDataToCsv(savefile,doublyLinkedList);
+        if (save) {
+            writeDataToCsv(savefile, doublyLinkedList);
         }
     }
 
@@ -85,7 +85,7 @@ public class Lab201 {
         }
     }
 
-    public void writeDataToCsv(String path, DoublyLinkedList doublyLinkedList) {
+    public static void writeDataToCsv(String path, DoublyLinkedList doublyLinkedList) {
         try {
             FileWriter fileWriter = new FileWriter(path);
             fileWriter.append("Email, Point");
