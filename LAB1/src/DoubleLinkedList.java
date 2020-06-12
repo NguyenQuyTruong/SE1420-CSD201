@@ -1,6 +1,7 @@
 
+import javafx.scene.Node;
 
-import javax.xml.soap.Node;
+
 
 
 /*
@@ -14,185 +15,79 @@ import javax.xml.soap.Node;
  * @author ACER
  */
 public class DoubleLinkedList{
-    private class Node{
-        private int data;//user data
-        private Node prev;//data head
-        private Node next;//next data
 /**
- * 
- * @param data
- * @param prev
- * @param next 
+ * create class Node in DoubleLinkedList
  */
-        public Node(int data, Node prev, Node next) {
-            this.data = data;
-            this.prev = prev;
-            this.next = next;
-        }  
+    public class Node{
+    public String email;
+    public long point;
+    Node l, r;
+
+/**
+ * Node constructor
+ * @param email
+ * @param point 
+ */
+        public Node(String email, long point) {
+            this.email = email;
+            this.point = point;
+            l = r = null;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public long getPoint() {
+            return point;
+        }
+
+        public void setPoint(long point) {
+            this.point = point;
+        }
 }
-    /**
-     * @return true if DoubleLinkedList empty otherwise return false
-     */
+/**
+ * create head, center and tail
+ */
     private Node head;
+    private Node center;
     private Node tail;
-    private int size = 0;
-        public DoubleLinkedList(){
-          head = tail = null;
-        }
-        
-        
-    /**
-     * 
-     * @append a new node to the end of list 
-     */
-        public boolean isEmpty(){
-          return head == null;
-    }
-        
-    /**
-     * 
-     * @param insert a new node to the beginning of list
-     *  
-     */
-        public void addFirst(int y, Node font, Node back){
-            Node p = new Node(y, font, back);
-            if(isEmpty()){
-                head = tail = p;
-            }
-            else{
-                p.next = head; 
-                head = p;
-            }    
-        }
-    /**
-     * 
-     * @param append a new node to the end of list
-     * 
-     */
-        public void addLast(int y, Node font, Node back){
-            Node p = new Node(y, font, back);
-            if(isEmpty()){
-                head = tail = p;
-            }
-            else{
-                tail.next = p;
-                tail = p;
-            }
-    }
-    
-    /**
-     * @output list
-     */
-       public void travsel(){
-           Node p = head;
-           while(p != null){
-               System.out.println(p.data + " ");
-               p = p.next;
-               System.out.println("");
-           }
-       }
 /**
  * 
- * @size of the list 
  */
-       
-        public int size(){
-            return 0;
+      public DoubleLinkedList(){
+        center = new Node(null, 0);
+        tail = new Node(null, 0);
     }
-    /**
-     * @gamer output list
-     */
-        public void gamer(){
-            Node p = head;
-            while(p != null){
-                System.out.print(p.data + " ");
-                p = p.next;
-                System.out.println("");
-            }
-        }
-    /**
-     * 
-     * @param m
-     * @return a node at position m
-     */
-        public Node get(int m){
-            Node p = head;
-            int c = 0;
-            while(p != null && c < m){
-                c++; p = p.next;
-            }
-            return p;
-        }
-    /**
-     * 
-     * @return number of node in the list
-     */
-        public int last(){
-            Node p = head; 
-            int c = 0;
-            while(p != null){
-                c++; p = p.next;
-            }
-            return c;
-        }
-    /**
-     * 
-     * @param q 
-     */
-        //delete the first node
-        public void delete(Node q){
-            Node f,p; 
-            f = null;p = head;
-            while(p != null){
-                if(p == q) break;
-                f = p;
-                p = p.next;
-        }
-            if(p == null) return;
-            if(f == null){
-                head = head.next;
-                if(head == null) tail = null;
-                    return;
-   }
-            f.next = p.next;
-            if(f.next == null) tail = f;
- }
-    /**
-     * 
-     * @param p 
-     */       
-        //remove the node from the list
-        public void remove(Node p){
-            if(p == null) return;
-            Node f = head, q = null;
-            //find q where q.next = p
-            while(f != null && f != p){
-                q = f; 
-                f = f.next;
-                //remove head
-                if(q == null){
-                    head = head.next;
-                    if(head == null) tail = null;
-                }
-                else{
-                    q.next = p.next;
-                    if(p == tail) tail = q;
-                }
-                p.next = null;
-            }
-        }
-        
-    /**
-     * 
-     * @param n
-     * @return 
-     */
-        //return the first node which data = given n otherwise return null
-       public Node search(int n){
-           Node p = head;
-           while(p != null && p.data != n){
-                p = p.next;
-           }     
-           return p;
-       }
+      
+      public void print(){
+          for(Node p = center.r; p != tail; p = p.r){
+              System.out.println("email" + p.email + "point" + p.point);
+          }
+      }
+      
+/**
+ * create insert
+ */
+      
+      public void insert(String email, long point){
+          Node n = new Node(email, point);
+          if(head == null){
+              head = n;
+              head.l = center;
+              center.r= head;
+              head.r = tail;
+              tail.l = head;
+          }
+          if(n.point > head.point){
+              center.r = n;
+              n.l = center;
+              n.r = head;
+              head.l = n;
+          }
+      }
 }
