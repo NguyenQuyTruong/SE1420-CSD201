@@ -9,10 +9,11 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.imageio.IIOException;
 
 /**
  *
- * 
+ *
  */
 public class CSV {
 
@@ -29,17 +30,21 @@ public class CSV {
         try {
             bufferedReader = new BufferedReader(new FileReader(csvPath));
             while ((line = bufferedReader.readLine()) != null) {
-                String[] rowData = line.split(",");
-                if (rowData.length < 2) {
-                    throw new IOException("errow data");
+                try {
+                    String[] rData = line.split(",");
+                    if (rData.length < 2) {
+                        throw new IOException("not enough data in row");
+                    }
+                    String email = rData[0];
+                    String uPoint = rData[1];
+                    long point = Long.parseLong(uPoint.trim());
+                    Gamer g = new Gamer(email, point);
+                    queue.insert(g);
+                } catch (NumberFormatException e) {
+
                 }
-                String email = rowData[0];
-                String unpoint = rowData[1];
-                long point = Long.parseLong(unpoint.trim());
-                Gamer g = new Gamer(email, point);
-                queue.insert(g);
             }
-            System.out.println("Finished read CSV file");
+
         } catch (FileNotFoundException e) {
             System.out.println("File CSV not found");
         } finally {
