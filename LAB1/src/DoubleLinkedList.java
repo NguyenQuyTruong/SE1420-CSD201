@@ -15,10 +15,6 @@ import javafx.scene.Node;
  * @author ACER
  */
 public class DoubleLinkedList{
-
-    private Node searchEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 /**
  * create class Node in DoubleLinkedList
  */
@@ -114,7 +110,7 @@ public class DoubleLinkedList{
           }
       }
 /**
- * create getPoint
+ * create get point
  * @param email
  * @return 
  */
@@ -126,7 +122,7 @@ public class DoubleLinkedList{
           return 0;
       }
 /**
- * create getTop
+ * create get top
  * @return 
  */
       public int getTop(){
@@ -154,5 +150,34 @@ public class DoubleLinkedList{
               m = null;
               System.out.println("Gamer has delete");
           }
+      }
+/**
+ * create update
+ * @param email
+ * @param point 
+ */      
+      public void update(String email, long point){
+          Node m = head;
+          while((!m.email.contentEquals(email) && m.point == point) && m !=tail){
+              m = m.r;
+          }
+          if(m == tail){
+              System.out.println("Gamer not exsit to update!");
+          }
+          insert(email, point);
+          System.out.println("email" + email + "point" + point + "has update!!!");
+      }
+      
+    /**
+     *
+     * @param email
+     * @return
+     */
+    public Node searchEmail(String email){
+          Node m = head;
+          while((!m.email.contentEquals(email)) && m != tail){
+              m = m.r;
+          }
+          return m;
       }
 }
