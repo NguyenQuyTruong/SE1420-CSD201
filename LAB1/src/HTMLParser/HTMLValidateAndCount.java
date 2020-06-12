@@ -105,16 +105,27 @@ public class HTMLValidateAndCount {
      * @param htmlString 
      */
     public void seperateTag(String htmlString) {
+	String tag = "";
+	boolean isStillValid = true;
 	//htmlString.length() use to get length of string also include space
 	for (int i = 0; i < htmlString.length(); i++) {
 	    //check is "<" or not
 	    if (htmlString.charAt(i) == '<') {
 		//continue to read this String
-		for (int j = i; j < htmlString.length(); j++) {
-		    if (Character.isLetter(0)) {
-			
+		for (int j = i; j < htmlString.length() || isStillValid == false; j++) {
+		    if (regexCheckTag(Character.toString(htmlString.charAt(i)))) {
+			tag += htmlString.charAt(i);
+		    } else {
+			//stop the loop
+			isStillValid = false;
+			//make tag close
+			tag += ">";
+			i=j;
 		    }
 		}
+	    } else {
+		//it's time for check tag
+		checkTag(tag);
 	    }
 	}
     }
@@ -123,7 +134,7 @@ public class HTMLValidateAndCount {
 	
     }
     
-    public boolean regexCheckTag(String character) {
-	return character.matches("^[a-zA-Z0-9'\']+$");
+    public static boolean regexCheckTag(String character) {
+	return character.matches("^[a-zA-Z0-9'/']+$");
     }
 }
