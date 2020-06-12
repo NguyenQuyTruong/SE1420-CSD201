@@ -83,8 +83,8 @@ public class Lab201 {
             FileWriter fileWriter=new FileWriter(path);
             fileWriter.append("Email, Point");
             DoublyLinkedList.Node tmp=doublyLinkedList.head;
-            while(tmp!=trailer){
-                
+            while(tmp!=doublyLinkedList.trailer){
+                fileWriter.append(tmp.)
             }
             
         } catch (IOException ex) {
