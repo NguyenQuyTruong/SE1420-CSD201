@@ -96,7 +96,7 @@ public class Problem2 {
 				
 			}else if ((body.charAt(i) != '>' && body.charAt(i) != ' ') && (suckingCharacterToTag)){
 				
-				if (!(Character.isLetter(body.charAt(i))) && (body.charAt(i) != '!') && (body.charAt(i) != '/')) { //well, this is not a tag "<=" ???
+				if (!(Character.isLetterOrDigit(body.charAt(i))) && (body.charAt(i) != '!') && (body.charAt(i) != '/')) { //well, this is not a tag "<=" ???
 					suckingCharacterToTag = false; //turn off sucking flag
 				}
 				
