@@ -20,7 +20,7 @@ public class User {
         public long point;
         public Node l, r;
     /**
-     * contructor class Node
+     * constructor class Node
      * 
      * @param email
      * @param point
@@ -46,7 +46,6 @@ public class User {
 
         public void setPoint(long point) {
             this.point = point;
-        }
-
-    
+        } 
+    }
 }
