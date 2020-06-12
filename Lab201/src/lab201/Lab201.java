@@ -29,10 +29,7 @@ public class Lab201 {
                 case "-r":
                     lab.readDataQueue(args[i + 1], doublyLinkedList);
                     break;
-                case "-s":
-                    save = true;
-                    savefile = args[i + 1];
-                    break;
+
                 case "-a":
                     int point = Integer.parseInt(args[i + 2]);
                     doublyLinkedList.insert(args[i + 1], point);
@@ -43,11 +40,17 @@ public class Lab201 {
                 case "-dt":
                     doublyLinkedList.deleteTop();
                     break;
-                case "-g": 
-                    doublyLinkedList.getPoint(args[i+1]);
+                case "-g":
+                    doublyLinkedList.getPoint(args[i + 1]);
+                    break;
+                case "-t":
+                    doublyLinkedList.getTop();
                     break;
                 case "-s":
-                    doublyLinkedList.getTop();
+                    save = true;
+                    savefile = args[i + 1];
+                    break;
+                default:
                     break;
 
             }
