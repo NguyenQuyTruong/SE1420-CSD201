@@ -16,8 +16,8 @@ public class DoublyLinkedList {
      */
     class Node {
 
-        private String email;
-        private int point;
+        public String email;
+        public int point;
         Node left, right;
 
         /**
@@ -53,7 +53,7 @@ public class DoublyLinkedList {
      */
     public Node head;
     private Node pre_Head;
-    private Node trailer;
+    public Node trailer;
 
     /**
      * using constructor default for preHead and trailer
