@@ -5,6 +5,8 @@
  */
 package HTMLParser;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author minhv
@@ -100,35 +102,37 @@ public class HTMLValidateAndCount {
 	return tag.equals(tagInStack);
     }
 
-    /**
-     *
-     * @param htmlString
-     */
-    public String seperateTag(String htmlString) {
+    public ArrayList<String> seperateTag(String htmlString) {
 	String tag = "";
+	ArrayList<String> html = new ArrayList<>();
 	boolean isStillValid = true;
 	//htmlString.length() use to get length of string also include space
 	for (int i = 0; i < htmlString.length(); i++) {
 	    //check is "<" or not
 	    if (htmlString.charAt(i) == '<') {
 		//continue to read this String
-		for (int j = i; j < htmlString.length() || isStillValid == false; j++) {
-		    if (regexCheckTag(Character.toString(htmlString.charAt(i)))) {
-			tag += htmlString.charAt(i);
+		for (int j = i; j < htmlString.length() && isStillValid == true; j++) {
+		    if (regexCheckTag(Character.toString(htmlString.charAt(j))) || htmlString.charAt(j) != '>') {
+//			System.out.print(regexCheckTag(Character.toString(htmlString.charAt(j))) + " ");
+//			System.out.println("");
+//			System.out.println(htmlString.charAt(j));
+			tag += htmlString.charAt(j);
 		    } else {
 			//stop the loop
 			isStillValid = false;
 			//make tag close
-			tag += ">";
+			tag += '>';
+			html.add(tag);
+			tag = "";
 			i = j;
 		    }
 		}
 	    } else {
+		isStillValid = true;
 		//it's time for check tag
-//		checkTag(tag);
-		System.out.println(tag);
 	    }
 	}
+	return html;
     }
 
     public void checkTag(String tag, String htmlString) {
