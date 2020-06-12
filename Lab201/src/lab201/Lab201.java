@@ -78,19 +78,20 @@ public class Lab201 {
             }
         }
     }
-    void writeDataToCsv(String path, DoublyLinkedList doublyLinkedList){
+
+    void writeDataToCsv(String path, DoublyLinkedList doublyLinkedList) {
         try {
-            FileWriter fileWriter=new FileWriter(path);
+            FileWriter fileWriter = new FileWriter(path);
             fileWriter.append("Email, Point");
-            DoublyLinkedList.Node tmp=doublyLinkedList.head;
-            while(tmp!=doublyLinkedList.trailer){
-                fileWriter.append(tmp.)
+            DoublyLinkedList.Node tmp = doublyLinkedList.head;
+            while (tmp != doublyLinkedList.trailer) {
+                fileWriter.append(tmp.email + " " + tmp.point);
+                tmp = tmp.right;
             }
-            
+
         } catch (IOException ex) {
         }
-        
-        
+
     }
 
 }
