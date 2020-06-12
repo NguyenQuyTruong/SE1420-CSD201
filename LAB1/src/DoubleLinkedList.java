@@ -88,6 +88,15 @@ public class DoubleLinkedList{
               n.l = center;
               n.r = head;
               head.l = n;
+              tail.l = head;
           }
+          if(n.point < tail.l.point){
+              Node m = tail.l;
+              n.r = tail;
+              tail.l = n;
+              m.r = n;
+              n.l = m;
+          }
+          
       }
 }
