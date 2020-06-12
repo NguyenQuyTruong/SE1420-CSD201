@@ -24,15 +24,12 @@ public class Test {
 //	System.out.println(FileReadWrite.readData("index.html").length());
 //	String s = "Hello ";
 //	System.out.println(s.length());
-//	System.out.println(HTMLValidateAndCount.regexCheckTag(">"));
+//	System.out.println(HTMLValidateAndCount.regexCheckTag(" "));
 //	Character c = 'T';
 //	System.out.println(Character.toString(c));
 //	System.out.println(String.valueOf(c));
 	HTMLValidateAndCount html = new HTMLValidateAndCount();
-	ArrayList<String> htmlList;
-	htmlList = html.seperateTag("<head> <title>My First Page</title>    </head>    <body>");
-	for (String htmlTag : htmlList) {
-	    System.out.println(htmlTag);
-	}
+	String s = FileReadWrite.readData("index.html");
+	html.splitTag(s);
     }
 }
