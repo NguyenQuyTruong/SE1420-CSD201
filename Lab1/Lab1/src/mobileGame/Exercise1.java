@@ -107,8 +107,8 @@ public class Exercise1 {
 	Exercise1 ex = new Exercise1();
 	String inputFile = "";
 	String outputFile = "";
-	for (int i = 0; i < args.length; i++) {
-	    try {
+	try {
+	    for (int i = 0; i < args.length; i++) {
 		switch (args[i]) {
 		    case "-r": //read CSV file and add to queue
 			queue = new PriorityQueue();
@@ -142,11 +142,11 @@ public class Exercise1 {
 			ex.getTopGamer();
 			break;
 		}
-	    } catch (ArrayIndexOutOfBoundsException e) {
-		System.out.println("Can't find argument to excecute!");
 	    }
+	} catch (ArrayIndexOutOfBoundsException e) {
+	    System.out.println("Can't find argument to excecute!");
 	}
-	System.out.println(inputFile);
-	System.out.println(outputFile);
+	System.out.println("File input: " + inputFile);
+	System.out.println("File output: " + outputFile);
     }
 }
