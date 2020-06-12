@@ -15,6 +15,10 @@ import javafx.scene.Node;
  * @author ACER
  */
 public class DoubleLinkedList{
+
+    private Node searchEmail(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 /**
  * create class Node in DoubleLinkedList
  */
@@ -110,5 +114,15 @@ public class DoubleLinkedList{
           }
       }
       
+      public int getPoint(String email){
+          Node m = searchEmail(email);
+          if(m != tail){
+              return (int) m.getPoint();
+          }
+          return 0;
+      }
       
+      public int getTop(){
+          return (int) head.point;
+      }
 }
