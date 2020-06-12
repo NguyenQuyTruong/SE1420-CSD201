@@ -98,7 +98,7 @@ public class DoublyLinkedList {
     }
     public void print(){
         for (Node n=pre_header; n!=tailer;n=n.right) {
-            
+            System.out.println("Email: "+n.email+"Point: "+n.point);
         }
     }
 }
