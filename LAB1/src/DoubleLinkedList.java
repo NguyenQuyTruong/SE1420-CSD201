@@ -1,4 +1,5 @@
 
+
 import javax.xml.soap.Node;
 
 
@@ -17,28 +18,42 @@ public class DoubleLinkedList{
         private int data;//user data
         private Node prev;//data head
         private Node next;//next data
-      ///Node constuctor 
+/**
+ * 
+ * @param data
+ * @param prev
+ * @param next 
+ */
         public Node(int data, Node prev, Node next) {
             this.data = data;
             this.prev = prev;
             this.next = next;
         }  
 }
-    
+    /**
+     * @return true if DoubleLinkedList empty otherwise return false
+     */
     private Node head;
     private Node tail;
     private int size = 0;
         public DoubleLinkedList(){
           head = tail = null;
-          //return true if DoubleLinkedList empty otherwise return false
         }
         
+        
+    /**
+     * 
+     * @append a new node to the end of list 
+     */
         public boolean isEmpty(){
           return head == null;
-        //append a new node to the end of list
     }
         
-        //insert a new node to the beginning of list
+    /**
+     * 
+     * @param insert a new node to the beginning of list
+     *  
+     */
         public void addFirst(int y, Node font, Node back){
             Node p = new Node(y, font, back);
             if(isEmpty()){
@@ -49,7 +64,11 @@ public class DoubleLinkedList{
                 head = p;
             }    
         }
-        //append a new node to the end of list
+    /**
+     * 
+     * @param append a new node to the end of list
+     * 
+     */
         public void addLast(int y, Node font, Node back){
             Node p = new Node(y, font, back);
             if(isEmpty()){
@@ -60,8 +79,10 @@ public class DoubleLinkedList{
                 tail = p;
             }
     }
-        
-         //output list
+    
+    /**
+     * @output list
+     */
        public void travsel(){
            Node p = head;
            while(p != null){
@@ -70,12 +91,17 @@ public class DoubleLinkedList{
                System.out.println("");
            }
        }
-
-       //size of the list
+/**
+ * 
+ * @size of the list 
+ */
+       
         public int size(){
             return 0;
     }
-        //gamer output list
+    /**
+     * @gamer output list
+     */
         public void gamer(){
             Node p = head;
             while(p != null){
@@ -84,7 +110,11 @@ public class DoubleLinkedList{
                 System.out.println("");
             }
         }
-        //return a node at position m
+    /**
+     * 
+     * @param m
+     * @return a node at position m
+     */
         public Node get(int m){
             Node p = head;
             int c = 0;
@@ -93,7 +123,10 @@ public class DoubleLinkedList{
             }
             return p;
         }
-        //return number of node in the list
+    /**
+     * 
+     * @return number of node in the list
+     */
         public int last(){
             Node p = head; 
             int c = 0;
@@ -102,6 +135,10 @@ public class DoubleLinkedList{
             }
             return c;
         }
+    /**
+     * 
+     * @param q 
+     */
         //delete the first node
         public void delete(Node q){
             Node f,p; 
@@ -120,7 +157,10 @@ public class DoubleLinkedList{
             f.next = p.next;
             if(f.next == null) tail = f;
  }
-            
+    /**
+     * 
+     * @param p 
+     */       
         //remove the node from the list
         public void remove(Node p){
             if(p == null) return;
@@ -141,6 +181,12 @@ public class DoubleLinkedList{
                 p.next = null;
             }
         }
+        
+    /**
+     * 
+     * @param n
+     * @return 
+     */
         //return the first node which data = given n otherwise return null
        public Node search(int n){
            Node p = head;
