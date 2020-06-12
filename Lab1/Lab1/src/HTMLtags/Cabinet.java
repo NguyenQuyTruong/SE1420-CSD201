@@ -18,7 +18,7 @@ public class Cabinet {
      * @return true or false if the string input have < or </
      */
     private boolean checkTagOpen(String tag) {
-	return (tag.contains("<") && !tag.contains("</"));
+	return (tag.contains("<") && !checkTagClose(tag));
     }
 
     private boolean checkTagClose(String tag) {
@@ -47,6 +47,20 @@ public class Cabinet {
 	} else {
 	    String normalTag = splitSpace[0] + '>';
 	    return normalTag;
+	}
+    }
+    
+    private void analysisHTML(String htmlBody) {
+	String tag = "";
+	boolean validTag = false;
+	for (int i = 0; i < htmlBody.length(); i++) {
+	    if (htmlBody.charAt(i) == '<') {
+		tag = "<";
+		validTag = true;
+	    } else if ((htmlBody.charAt(i) != '>' && htmlBody.charAt(i) != ' ') && validTag) {
+		
+	    }
+	    
 	}
     }
 }
