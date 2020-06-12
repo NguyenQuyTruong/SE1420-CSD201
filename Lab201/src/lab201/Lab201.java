@@ -46,6 +46,9 @@ public class Lab201 {
                 case "-g": 
                     doublyLinkedList.getPoint(args[i+1]);
                     break;
+                case "-s":
+                    doublyLinkedList.getTop();
+                    break;
 
             }
 
