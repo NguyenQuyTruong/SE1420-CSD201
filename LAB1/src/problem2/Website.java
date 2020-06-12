@@ -19,7 +19,7 @@ public class Website {
 	public static String DownloadWebsiteBody(String siteUrl) throws MalformedURLException, IOException {
 		HttpURLConnection connection = (HttpURLConnection) new URL(siteUrl).openConnection();
 		//open new connection to site url		
-		connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2");
+		connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36");
 		//Add useragent to prevent 403 Response code
 
 		
@@ -38,6 +38,7 @@ public class Website {
 				body.append(currentLine);
 			}
 			
+			//System.out.println(body);
 			reader.close(); //remember to close it!
 			
 			return body.toString();
