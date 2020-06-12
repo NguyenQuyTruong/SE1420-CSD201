@@ -42,8 +42,8 @@ public class DoubleLinkedList {
         }
        
     }
-    private Node head;
-    private Node trail;
+    Node head;
+    Node trail;
     private int nodeSize = 0;               
     
     //Default Contructor
@@ -139,7 +139,7 @@ public class DoubleLinkedList {
     /**
     *Remove a player by email
     *
-    *@param email 
+    *@param email
     *
     */
     public void deletePlayerNode(String email){
@@ -338,33 +338,6 @@ public class DoubleLinkedList {
                 playerNode.getPlayer().setPoint(point);
                 System.out.println("Update point successfull");
                 System.out.println("Email: " + email + ", New point: " + playerNode.getPlayer().getPoint());
-            }
-        }
-    }
-    /**
-     *Get the List and write the data down to the file.
-     * 
-     * @param fileName
-     * @throws IOException
-     */
-    public void writeToFile ( String fileName) {
-        FileWriter file = null;
-        try{
-            file = new FileWriter(fileName);
-            file.append("Email, Point(s)\n");
-            for(Node n = head.getNext(); n!= trail; n = n.getNext()){
-                String data = String.format("%s, %d\n", n.getPlayer().getEmail(), n.getPlayer().getPoint());
-                file.append(data);
-            }
-        }catch(IOException e){
-            System.out.println("---Error: Something has gone wrong---");
-        } finally {
-            try {
-                if(file != null){
-                    file.close();
-                }
-            } catch (Exception e) {
-                System.out.println("File doesn't exist.");
             }
         }
     }
