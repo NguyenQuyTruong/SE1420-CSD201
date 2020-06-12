@@ -113,7 +113,11 @@ public class DoubleLinkedList{
               n.l = centerM;
           }
       }
-      
+/**
+ * create getPoint
+ * @param email
+ * @return 
+ */
       public int getPoint(String email){
           Node m = searchEmail(email);
           if(m != tail){
@@ -121,8 +125,34 @@ public class DoubleLinkedList{
           }
           return 0;
       }
-      
+/**
+ * create getTop
+ * @return 
+ */
       public int getTop(){
           return (int) head.point;
+      }
+/**
+ * create delete top
+ */
+      public void deleteTop(){
+          head.l.r = head.r;
+          head.r.l = head.l;
+          head = head.r;
+      }
+/**
+ * create delete
+ */    
+      public void delete(String email){
+          Node m = searchEmail(email);
+          if(m == tail){
+              System.out.println("Gamer not exsit!!!");
+          }
+          else{
+              m.r.l = m.l;
+              m.l.r = m.r;
+              m = null;
+              System.out.println("Gamer has delete");
+          }
       }
 }
