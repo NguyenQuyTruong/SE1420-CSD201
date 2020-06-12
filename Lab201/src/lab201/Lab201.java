@@ -8,7 +8,10 @@ package lab201;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -74,6 +77,17 @@ public class Lab201 {
             } catch (Exception e) {
             }
         }
+    }
+    void writeDataToCsv(String path, DoublyLinkedList doublyLinkedList){
+        try {
+            FileWriter fileWriter=new FileWriter(path);
+            fileWriter.append("Email, Point");
+            DoublyLinkedList.Node tmp=doublyLinkedList.head;
+            
+        } catch (IOException ex) {
+        }
+        
+        
     }
 
 }
