@@ -22,25 +22,31 @@ public class Cabinet {
     }
 
     private boolean checkTagClose(String tag) {
-	return tag.contains("/");
+	return tag.contains("</");
     }
-    
+
     /**
-     * this method use regex to check the stirng input is the tag or not
+     * this method use regex to check the string input is the tag or not
      * @param tag
      * @return true or false
      */
     private boolean checkTagByRegex(String tag) {
 	return tag.matches("^['<''/'A-Za-z0-9]+$");
     }
+
     /**
      * some special tag like <a ...>, <img ...> don't have the close / character
      * so this method use to convert them to a normal tag => <a>, <img>,...
      *
      * @return normail Tag
      */
-    private String convertToTag(String allHTML) {
-	String tag = "";
-	return normalTag;
+    private String convertToTag(String tag) {
+	String[] splitSpace = tag.split(" ");
+	if (splitSpace.length == 1) {
+	    return tag;
+	} else {
+	    String normalTag = splitSpace[0] + '>';
+	    return normalTag;
+	}
     }
 }
