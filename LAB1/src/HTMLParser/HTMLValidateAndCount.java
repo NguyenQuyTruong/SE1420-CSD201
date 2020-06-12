@@ -97,14 +97,14 @@ public class HTMLValidateAndCount {
 	//convert open tag to close tag
 	tagInStack = converToCloseTag(tagInStack);
 	//return an compare if equal return true else false
-	return tag.equals(tagInStack);	
+	return tag.equals(tagInStack);
     }
-    
+
     /**
-     * 
-     * @param htmlString 
+     *
+     * @param htmlString
      */
-    public void seperateTag(String htmlString) {
+    public String seperateTag(String htmlString) {
 	String tag = "";
 	boolean isStillValid = true;
 	//htmlString.length() use to get length of string also include space
@@ -120,20 +120,21 @@ public class HTMLValidateAndCount {
 			isStillValid = false;
 			//make tag close
 			tag += ">";
-			i=j;
+			i = j;
 		    }
 		}
 	    } else {
 		//it's time for check tag
-		checkTag(tag);
+//		checkTag(tag);
+		System.out.println(tag);
 	    }
 	}
     }
-    
+
     public void checkTag(String tag, String htmlString) {
-	
+
     }
-    
+
     public static boolean regexCheckTag(String character) {
 	return character.matches("^[a-zA-Z0-9'/']+$");
     }
