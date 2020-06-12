@@ -1,6 +1,7 @@
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -53,44 +54,37 @@ public class PriorityQueue extends DoubleLinkedList{
         }
     }
     /**
-     * Method for Saving the data back to the .csv file
-     * @param fileName 
-     */
-    public void writeToCSV(String fileName) {
-        writeToFile(fileName);
-    }
-    /**
-     * Method use to read file.
+     *Get the List and write the data down to the file.
      * 
-     * @param queue
-     * @param fileName 
+     * @param fileName
      */
-    public void readFile(PriorityQueue queue, String fileName){
-        FileReader fr = null;
-        BufferedReader br = null;
+    public void writeToFile ( String fileName) {
+        FileWriter file = null;
         try{
-            fr = new FileReader(fileName);
-            br = new BufferedReader(fr);
-            while (br.ready()){
-                String s = br.readLine();
-                String[] arr = s.split(", ");
-                if(!(arr[1].equalsIgnoreCase("point"))){
-                    queue.insertPlayer(new Player(arr[0], Integer.valueOf(arr[1])));
-                }
+            file = new FileWriter(fileName);
+            file.append("Email, Point(s)\n");
+            for(DoubleLinkedList.Node n = head.getNext(); n!= trail; n = n.getNext()){
+                String data = String.format("%s, %d\n", n.getPlayer().getEmail(), n.getPlayer().getPoint());
+                file.append(data);
             }
-        }catch(IOException e ){
-            System.out.println("---File not exist---");
-        } finally{
+        }catch(IOException e){
+            System.out.println("---Error: Something has gone wrong---");
+        } finally {
             try {
-                if(fr != null){
-                    fr.close();
-                }
-                if(br != null){
-                    br.close();
+                if(file != null){
+                    file.close();
                 }
             } catch (Exception e) {
-                System.out.println("---Something when wrong when reading file---");
+                System.out.println("File doesn't exist.");
             }
         }
+    }
+    
+    /**
+     * Method for Print the whole List
+     * @return List
+     */
+    public void printDaList(){
+        printList();
     }
 }
