@@ -29,11 +29,24 @@ public class User {
         public Node(String email, long point, Node l, Node r) {
             this.email = email;
             this.point = point;
-            this.l = l;
-            this.r = r;
+            l = r = null;
         }
-        
-        
-    }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public long getPoint() {
+            return point;
+        }
+
+        public void setPoint(long point) {
+            this.point = point;
+        }
+
     
 }
