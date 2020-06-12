@@ -161,5 +161,4 @@ public class DoublyLinkedList {
             System.out.println("Email " + email + " Point " + point + " has been update");
         }
     }
-
 }
