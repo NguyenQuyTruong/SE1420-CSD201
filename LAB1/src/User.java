@@ -1,3 +1,6 @@
+
+import javax.xml.soap.Node;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,35 +12,28 @@
  * @author ACER
  */
 public class User {
-    private String email;//user email
-    private long point;//game point
-
-    public User(String email, long point) {
-        this.email = email;
-        this.point = point;
-    }
-
-    public User() {
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public long getPoint() {
-        return point;
-    }
-
-    public void setPoint(long point) {
-        this.point = point;
-    }
-    
-    DoubleLinkedList list = new DoubleLinkedList();
-    public void insert(String email, long point){
+    /**
+     * create class Node 
+     */
+    public class Node{
+        public String email;
+        public long point;
+        public Node l, r;
+    /**
+     * contructor class Node
+     * 
+     * @param email
+     * @param point
+     * 
+     */
+        public Node(String email, long point, Node l, Node r) {
+            this.email = email;
+            this.point = point;
+            this.l = l;
+            this.r = r;
+        }
+        
         
     }
+    
 }
