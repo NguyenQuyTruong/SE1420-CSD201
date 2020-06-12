@@ -4,7 +4,7 @@ import java.io.IOException;
 
 /**
  *
- * @author Khanh Hoa
+ *  @author Khanh Hoa
  */
 public class Excersise1 {
 

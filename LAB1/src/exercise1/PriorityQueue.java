@@ -6,7 +6,7 @@
  * delete a game player account (use method search game player by email to identify which account is deleted).
  * update a game player account (use method search game player by email to identify account updated)
  * find and delete the top user.
- * write queue to CSV files.
+ * write queue to CSV files.  
  */
 package exercise1;
 

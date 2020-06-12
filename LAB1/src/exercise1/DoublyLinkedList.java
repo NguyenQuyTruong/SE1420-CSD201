@@ -1,5 +1,5 @@
 /*
- *  Reference: Data Structures and Algorithms in Java(Sixth Edition).
+ * Reference: Data Structures and Algorithms in Java(Sixth Edition).
  */
 package exercise1;
 

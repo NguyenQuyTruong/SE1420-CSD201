@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Khanh Hoa
+ *  @author Khanh Hoa
  */
 public class Node<E> implements Serializable {
 
