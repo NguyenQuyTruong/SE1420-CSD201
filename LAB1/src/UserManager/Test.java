@@ -66,8 +66,5 @@ public class Test {
 //		    break;
 //	    }
 //	} while (choice != 9);
-	HTMLValidateAndCount html = new HTMLValidateAndCount();
-	String tag = sc.nextLine();
-	System.out.println(html.checkTag(tag));
     }
 }
