@@ -36,4 +36,8 @@ public class User {
         this.point = point;
     }
     
+    DoubleLinkedList list = new DoubleLinkedList();
+    public void insert(String email, long point){
+        
+    }
 }
