@@ -96,6 +96,9 @@ public class DoublyLinkedList {
         header.right.left=pre_header;
         header=header.right;
     }
-        this.DoublyLinkedList = new DoublyLinkedList();
-        
+    public void print(){
+        for (Node n=pre_header; n!=tailer;n=n.right) {
+            
+        }
+    }
 }
