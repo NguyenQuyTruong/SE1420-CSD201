@@ -105,16 +105,14 @@ public class PriorityQueue implements Serializable {
      * Get point of user
      *
      * @param email
-     *
+     *@return null if cannot find account, else return value point
      */
-    public void Search(String email) {
-        node = searchByEmail(email);
-        if (node == list.trailer) {
-            System.out.println("Don't have this email in list");
-        } else {
-            System.out.println("Email: " + email);
-            System.out.println("Point: " + node.getElement().getPoint());
+    public Long GetPointOfUser(String email){
+        node =searchByEmail(email);
+        if(node!=list.trailer){
+            return node.getElement().getPoint();
         }
+        return null;
     }
 
     /**
@@ -128,8 +126,7 @@ public class PriorityQueue implements Serializable {
             System.out.println("Player information is null");
         }
         if (!(list.isEmpty())) {
-            System.out.println("Player has the highest point is: " + list.header.getNext().getElement().getEmail());
-            System.out.println("Highest point:" + list.header.getNext().getElement().getPoint());
+            System.out.println(list.header.getNext().getElement().getPoint());
         }
     }
 
@@ -146,7 +143,7 @@ public class PriorityQueue implements Serializable {
         }
         if (!(list.isEmpty())) {
             list.remove(list.header.getNext());
-            System.out.println("Delete completed");
+            System.out.println("Delete top completed");
         }
     }
 
@@ -159,10 +156,12 @@ public class PriorityQueue implements Serializable {
      */
     public void writeToCSV(String path) throws IOException {
         FileWriter writer = new FileWriter(path);
+        writer.append("Email,Point\n");
         node = list.header.getNext();
         while (node != list.trailer) {
             String data = String.format("%s,%d\n", node.getElement().getEmail(), node.getElement().getPoint());
             writer.append(data);
+            node=node.getNext();
         }
         writer.flush();
         writer.close();
