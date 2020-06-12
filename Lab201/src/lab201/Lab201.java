@@ -38,7 +38,13 @@ public class Lab201 {
                     doublyLinkedList.insert(args[i + 1], point);
                     break;
                 case "-u":
-                    doublyLinkedList.update(savefile, Integer.parseInt(point));
+                    doublyLinkedList.update(args[i + 1], Integer.parseInt(args[i + 2]));
+                    break;
+                case "-dt":
+                    doublyLinkedList.deleteTop();
+                    break;
+                case "-g": 
+                    doublyLinkedList.getPoint(args[i+1]);
                     break;
 
             }
