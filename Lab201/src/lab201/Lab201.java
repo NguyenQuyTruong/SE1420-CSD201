@@ -43,6 +43,9 @@ public class Lab201 {
                 case "-dt":
                     doublyLinkedList.deleteTop();
                     break;
+                case "-d":
+                    doublyLinkedList.delete(args[i + 1]);
+                    break;
                 case "-g":
                     doublyLinkedList.getPoint(args[i + 1]);
                     break;
@@ -60,6 +63,9 @@ public class Lab201 {
 
         }
         doublyLinkedList.print();
+        if(save){
+            writeDataToCsv(savefile,doublyLinkedList);
+        }
     }
 
     public void readDataQueue(String path, DoublyLinkedList doublyLinkedList) throws FileNotFoundException, IOException {
@@ -79,7 +85,7 @@ public class Lab201 {
         }
     }
 
-    void writeDataToCsv(String path, DoublyLinkedList doublyLinkedList) {
+    public void writeDataToCsv(String path, DoublyLinkedList doublyLinkedList) {
         try {
             FileWriter fileWriter = new FileWriter(path);
             fileWriter.append("Email, Point");
@@ -88,7 +94,8 @@ public class Lab201 {
                 fileWriter.append(tmp.email + " " + tmp.point);
                 tmp = tmp.right;
             }
-
+            fileWriter.flush();
+            fileWriter.close();
         } catch (IOException ex) {
         }
 
