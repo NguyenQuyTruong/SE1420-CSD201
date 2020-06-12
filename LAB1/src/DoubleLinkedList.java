@@ -97,6 +97,18 @@ public class DoubleLinkedList{
               m.r = n;
               n.l = m;
           }
-          
+          else{
+              Node m = head;
+              while(m.point > n.point){
+                  m = m.r;
+              }
+              Node centerM = m.l;
+              m.l = n;
+              n.r = m;
+              centerM.r = n;
+              n.l = centerM;
+          }
       }
+      
+      
 }
