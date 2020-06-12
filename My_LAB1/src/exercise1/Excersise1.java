@@ -59,7 +59,7 @@ public class Excersise1 {
      */
     public void Update(String email, String point) {
         try {
-            long newPoint = Long.parseLong(point);
+            long newPoint = Long.parseLong(point.trim());
             queue.Update(email, newPoint);
         } catch (Exception e) {
             System.out.println("error, point must be number");
