@@ -22,18 +22,29 @@ public class Lab201 {
 
         String savefile = null;
         boolean save = false;
+        doublyLinkedList.print();
         for (int i = 0; i < args.length; i++) {
 
             switch (args[i]) {
                 case "-r":
-                    lab.readDataQueue(args[i], doublyLinkedList);
+                    lab.readDataQueue(args[i + 1], doublyLinkedList);
                     break;
                 case "-s":
                     save = true;
                     savefile = args[i + 1];
-                
+                    break;
+                case "-a":
+                    int point = Integer.parseInt(args[i + 2]);
+                    doublyLinkedList.insert(args[i + 1], point);
+                    break;
+                case "-u":
+                    doublyLinkedList.update(savefile, Integer.parseInt(point));
+                    break;
+
             }
+
         }
+        doublyLinkedList.print();
     }
 
     public void readDataQueue(String path, DoublyLinkedList doublyLinkedList) throws FileNotFoundException, IOException {
@@ -51,7 +62,6 @@ public class Lab201 {
             } catch (Exception e) {
             }
         }
-
     }
 
 }
