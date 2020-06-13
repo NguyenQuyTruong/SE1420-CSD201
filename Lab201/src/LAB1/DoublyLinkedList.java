@@ -193,7 +193,7 @@ public class DoublyLinkedList {
         if (tmp == trailer) {
             System.out.println("ko ton tai nguoi choi de update");
         }
-        {
+        {   delete(email);
             insert(email, point);
             System.out.println("Email " + email + " Point " + point + " has been update");
         }
