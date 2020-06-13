@@ -5,14 +5,13 @@
  */
 package HTMLParser;
 
-import UserManager.DoublyLinkedList;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 /**
  *
@@ -69,10 +68,10 @@ public class FileReadWrite {
 	}
     }
 
-    private static TreeMap<String, HTMLTag> list;
+    private static HashMap<String, HTMLTag> list;
 
     public FileReadWrite() {
-	list = new TreeMap<>();
+	list = new HashMap<>();
     }
 
     public static String readData(String fileName) {
@@ -113,30 +112,39 @@ public class FileReadWrite {
     }
 
     public void updateValue(String tag) {
-	HTMLTag hTMLTag = new HTMLTag(tag, 0);
-	String tempTag = list.get(tag).toString();
-	if (tempTag.equals(hTMLTag)) {
-	    list.get(tag).setCount(list.get(tag).getCount() + 1);
-	} else {
+	HTMLTag hTMLTag = new HTMLTag(tag, 1);
+	HTMLTag tempTag = list.get(tag);
+	System.out.println(tempTag);
+	if (list.isEmpty()) {
+	    System.out.println("New: " + tag);
 	    list.put(tag, hTMLTag);
+	} else {
+	    if (tempTag.getTag().equals(hTMLTag.getTag())) {
+		System.out.println("Exist: " + tag);
+		list.get(tag).setCount(list.get(tag).getCount() + 1);
+	    } else {
+		System.out.println("New: " + tag);
+		list.put(tag, hTMLTag);
+	    }
 	}
     }
 
     public static void writeData(String fileName) {
 	//prevent exception
 	if (list.isEmpty()) {
+	    System.out.println(list.isEmpty());
 	    return;
 	}
 	//create file write
-	PrintWriter writeFile = null;
+	FileWriter writeFile = null;
 	try {
-	    writeFile = new PrintWriter(fileName);
+	    writeFile = new FileWriter(fileName);
 	    //create loop to read all list and write to File
-	    writeFile.println("Tag, Frequency");
-	    Set<String> key = list.keySet();
+	    writeFile.write("Tag, Frequency");
+	    Set key = list.keySet();
 	    Iterator it = key.iterator();
 	    while (it.hasNext()) {
-		writeFile.println(it.next().toString());
+		writeFile.write(it.next().toString());
 	    }
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -148,6 +156,14 @@ public class FileReadWrite {
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
+	}
+    }
+
+    public static void display() {
+	Set key = list.keySet();
+	Iterator it = key.iterator();
+	while (it.hasNext()) {
+	    System.out.println(list.get(it.next()));
 	}
     }
 }
