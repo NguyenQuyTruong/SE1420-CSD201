@@ -6,24 +6,32 @@
 package UserManager;
 
 /**
- *
+ * This class create an user for storage
  * @author minhv
  */
 public class User {
     private String email;
     private int point;
-
+    
+    /**
+     * Constructor default
+     */
     public User() {
 	email = "";
 	point = 0;
     }
 
-    
+    /**
+     * Constructor for getting parameter
+     * @param email
+     * @param point 
+     */
     public User(String email, int point) {
 	this.email = email;
 	this.point = point;
     }
 
+    //getter setter
     public String getEmail() {
 	return email;
     }
@@ -40,6 +48,10 @@ public class User {
 	this.point = point;
     }
 
+    /**
+     * toString for write to csv file
+     * @return email, point
+     */
     @Override
     public String toString() {
 	return email + ", " + point;
