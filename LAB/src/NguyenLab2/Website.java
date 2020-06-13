@@ -38,9 +38,10 @@ public class Website {
 			String currentLine; //current line in HTML
 			while((currentLine = reader.readLine()) != null) {
 				body.append(currentLine);
+                                }
                                 reader.close(); //remember to close it!
 			return body.toString();
-		}
+		
 		
 			}
                  return null;
