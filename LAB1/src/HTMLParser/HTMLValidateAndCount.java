@@ -77,6 +77,7 @@ public class HTMLValidateAndCount {
 	//convert open tag to close tag
 	tagInStack = converToCloseTag(tagInStack);
 	//return an compare if equal return true else false
+	System.out.println("Compare tag function: " + tag.equals(tagInStack));
 	return tag.equals(tagInStack);
     }
 
@@ -104,13 +105,16 @@ public class HTMLValidateAndCount {
 			isStillValid = false;
 			//make tag close
 			tag += '>';
+//			System.out.println("Tag in slipTag: " + tag);
 			//result tag from <!DOCTYPE html> or comment tag
 			if (!tag.equals("<>")) {
+			    System.out.println("Tag in slipTag after compare '<>': " + tag);
 			    //it's time for check tag
 			    checkTag(tag, htmlString);
 			}
 			//reset String tag to none
 			tag = "";
+			j--;
 			i = j;
 		    }
 		}
@@ -131,14 +135,19 @@ public class HTMLValidateAndCount {
     public void checkTag(String tag, String htmlString) {
 	String tagCompare = "";
 	boolean isValid;
-	if (isOpenTag(tag) && !isAloneTag(tag, htmlString)) {
-	    stack.push(tag);
-	} else if (isAloneTag(tag, htmlString)) {
-	    file.updateValue(tag);
+	if (isOpenTag(tag)) {
+	    if (!isAloneTag(tag, htmlString)) {
+		System.out.println("Push: " + tag);
+		stack.push(tag);
+	    } else {
+		System.out.println("Tag: " + tag + " isValid: " + isAloneTag(tag, htmlString));
+		file.updateValue(tag);
+	    }
 	} else if (isCloseTag(tag)) {
 	    tagCompare = stack.top();
 	    isValid = compareTag(tag, tagCompare);
 	    if (isValid) {
+		System.out.println("Pop: " + tag);
 		file.updateValue(stack.pop());
 	    }
 	}
