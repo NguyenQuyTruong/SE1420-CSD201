@@ -44,6 +44,15 @@ public void push(String element) throws Exception
                 System.out.print(array[i]+" ");               
             }
 	}
+     public String topEl() 
+	{
+            if (currentElement != -1) {
+			return null;	
+		}
+		return array[currentElement];
+	} 
+        
+
 }
 
 
