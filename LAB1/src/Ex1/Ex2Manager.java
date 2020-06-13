@@ -21,11 +21,6 @@ public class Ex2Manager {
 
     MyStack ms = new MyStack();
     ArrayList<Tag> ar = new ArrayList<>();
-//    final char opening = '<';
-//    final char closing = '>';
-//    final String space = " ";
-//    final String Mark = "/";
-//    final String Mark2 = "!";
 
     public void inputStack(String content) {
         char c[] = content.toCharArray();
@@ -70,18 +65,21 @@ public class Ex2Manager {
                 for (k = 2; k < c.length - i; k++) {
                     if ((c[i + k] >= 'A' && c[i + k] <= 'Z') || (c[i + k] >= 'a' && c[i + k] <= 'z')) {
                         closeTag += c[i + k];
+                    }else{
+                        break;
                     }
                 }
                 closeTag += '>';
                 closeTag = closeTag.replace("</", "<");
                 while (tmp != 1) {
                     if (closeTag.equals(ms.getTop())) {
-                        tmp = 1;
                         ms.pop();
+                        tmp = 1;
                     } else {
                         for(int l = 0 ; l< ar.size() ;l++){
                             if(ar.get(l).getTagName().equals(ms.getTop())){
                                 ar.remove(l);
+                                break;
                             }
                         }
                         ms.pop();
