@@ -6,7 +6,6 @@ import jdk.nashorn.internal.ir.BreakNode;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author liemn
@@ -24,6 +23,38 @@ public class DoubleLinkList {
             this.point = point;
             left = right = null;
         }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public int getPoint() {
+            return point;
+        }
+
+        public void setPoint(int point) {
+            this.point = point;
+        }
+
+        public Node getLeft() {
+            return left;
+        }
+
+        public void setLeft(Node left) {
+            this.left = left;
+        }
+
+        public Node getRight() {
+            return right;
+        }
+
+        public void setRight(Node right) {
+            this.right = right;
+        }
     }
     public Node head;
     private Node pre_head;
@@ -35,6 +66,7 @@ public class DoubleLinkList {
         tail = new Node(null, -1);
     }
 // Insert email and point of player
+
     public void insert(String email, int point) {
         Node newNode = new Node(email, point);
         if (head == null) {
@@ -53,7 +85,7 @@ public class DoubleLinkList {
                 newNode.left = tmp;
                 //   tail = newNode;
             } else if (newNode.point > head.point) {//point lon hon haed
-                    
+
                 newNode.right = head;
                 head.left = newNode;
                 pre_head.right = newNode;
@@ -81,11 +113,9 @@ public class DoubleLinkList {
         }
     }
 // delete player from email
+
     public void delete(String email) {
-        Node tmp = head;
-        while (!(tmp.email.equals(email)) && tmp != tail) {
-            tmp = tmp.right;
-        }
+        Node tmp = searchEmail(email);
         boolean check = true;
         if (tmp != tail) {
 
@@ -93,17 +123,18 @@ public class DoubleLinkList {
             tmp.right.left = tmp.left;
             System.out.println("Delete success");
             check = false;
-         
         }
-        if (check==true) {
+        if (check == true) {
             System.out.println("Fail");
         }
     }
 // get info top1 
+
     public int geTop() {
         return head.point;
     }
 // delete info top 1
+
     public void deleteTop() {
         head.left.right = head.right;
         head.right.left = head.left;
@@ -112,16 +143,31 @@ public class DoubleLinkList {
         // cap nhat lai head
         head = head.right;
     }
+
     // update email and point
-    public void  update(String email, int point){
-        Node n =head;
-        while(!n.email.contentEquals(email) && n != tail);
-        n=n.right;
-        if(n == tail){
+    public void update(String email, int point) {
+        Node n = searchEmail(email);
+        if (n == tail) {
             System.err.println("Don't have that player!");
         }
         insert(email, point);
         System.out.println("Email: " + email + "Point: " + point);;
-        
+
+    }
+
+    public int getPoint(String email) {
+        Node n = searchEmail(email);
+        if(n!=tail){
+          return n.getPoint();
+        }
+        return -1;
+    }
+
+    public Node searchEmail(String emali) {
+        Node n = head;
+        while (!(n.email.contentEquals(emali)) && n != tail) {
+            n = n.right;
+        }
+        return n;
     }
 }
