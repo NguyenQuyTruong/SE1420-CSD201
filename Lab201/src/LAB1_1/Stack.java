@@ -19,7 +19,9 @@ public class Stack {
         data=new String[CAPACITY];
     }
     
-    
+    public int size(){
+        return t+1;
+    }
     
     
 }
