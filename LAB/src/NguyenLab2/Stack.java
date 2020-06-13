@@ -21,8 +21,14 @@ public class Stack {
 		if(currentElement!=array.length){
                     throw new  Exception("Full Stack");
                 }
-                currentElement++;
-               
-                    
+                currentElement++;       
+	}	
+     public String pop() throws Exception
+	{
+		if(currentElement!=-1)
+		{
+			throw new Exception("Empty stack");
+		}
+                return array[currentElement--];
 	}	
 }
