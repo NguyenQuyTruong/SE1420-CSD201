@@ -129,9 +129,14 @@ public class DoublyLinkedList {
         
         while (!tmp.emailSub.contentEquals(tenEmail)) {
             tmp = tmp.right;
-            
         }
         return tmp;
+    }
+    
+    public Node searchEmailFirst(){
+        Node tmp = header;
+        tmp.
+        
     }
     /**
      * Use function searchEmail to return point
@@ -142,7 +147,10 @@ public class DoublyLinkedList {
         Node tmp = searchEmail(email);
         return tmp.pointSub;
     }
-
+    
+    public long getFirstPoint(){
+        return header.pointSub;
+    }
     /**
      * Print all node from left -> right
      */
@@ -150,9 +158,9 @@ public class DoublyLinkedList {
         if (header == null) {
             return;
         }
-        System.out.println("Email" + "\tPoint");
+        System.out.println("Email," + " Point");
         for (Node n = prevHeader.right; n != trailer; n = n.right) {
-            System.out.println("" + n.emailSub + "\t" + n.pointSub);
+            System.out.println(n.emailSub + ", " + n.pointSub);
         }
     }
 
