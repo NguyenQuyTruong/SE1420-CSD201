@@ -23,7 +23,7 @@ public class main {
 public void searchGamer(String email) {
 	manageGamer data = queue.searchUser(email);
 	if (data == null) {
-	    System.out.println("Not found!!");
+	    System.out.println("not found!!");
 	} else {
 	    System.out.println("email: " + email + ", point: " + data.getPoint());
 	}
@@ -47,21 +47,19 @@ public void deleteGame(String email) {
  public void getTopGamer() {
 	manageGamer data = queue.getTop();
 	System.out.println("A best gamer here:");
-	System.out.println("Email: " + data.getUserEmail() + ", Point: " + data.getPoint());
+	System.out.println("email: " + data.getUserEmail() + ", point: " + data.getPoint());
     }
  public void deleteTopGamer() {
 	queue.deleteTop();
 	System.out.println("remove successful!!");
     }
     public static void main(String[] args) {
-        String input = "";
-        String output = "";
-        try {
-           
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Can't find!");
-        }
-        System.out.println("Input: " + input);
-        System.out.println("output: " + output);
+//        try {
+//           
+//        } catch (ArrayIndexOutOfBoundsException e) {
+//            System.out.println("Can't find!");
+//        }
+//        System.out.println("Input: " + input);
+//        System.out.println("output: " + output);
     }
 }
