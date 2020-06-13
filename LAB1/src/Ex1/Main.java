@@ -88,10 +88,11 @@ public class Main {
             if (args[i].equals("-t")) {
                 choice = 6;
             }
-            if (args[3].equals("2")) {
-                urlInput = args[4];
-                choice = 7;
-            }
+        }
+        if (args[3].equals("2")) {
+            urlInput = args[4];
+            newFileName = args[5];
+            choice = 7;
         }
         switch (choice) {
             case 0: {
@@ -256,14 +257,10 @@ public class Main {
             case 5: {
                 try {
                     FileReader file = new FileReader(oldFileName);
-                    PrintWriter pw = null;
                     int pointRead = 0;
                     String emailRead = "";
                     try (Scanner inputStream = new Scanner(file)) {
                         inputStream.nextLine();
-                        FileWriter fw = new FileWriter(newFileName);
-                        BufferedWriter bw = new BufferedWriter(fw);
-                        pw = new PrintWriter(bw);
                         String line;
                         while (inputStream.hasNext()) {
                             line = inputStream.nextLine();
@@ -285,14 +282,10 @@ public class Main {
             case 6: {
                 try {
                     FileReader file = new FileReader(oldFileName);
-                    PrintWriter pw = null;
                     int pointRead = 0;
                     String emailRead = "";
                     try (Scanner inputStream = new Scanner(file)) {
                         inputStream.nextLine();
-                        FileWriter fw = new FileWriter(newFileName);
-                        BufferedWriter bw = new BufferedWriter(fw);
-                        pw = new PrintWriter(bw);
                         String line;
                         while (inputStream.hasNext()) {
                             line = inputStream.nextLine();
@@ -315,7 +308,7 @@ public class Main {
                 Ex2Manager ex2 = new Ex2Manager();
                 String line = "";
                 String content = "";
-                URL ur = new URL("https://vnexpress.net/");
+                URL ur = new URL(urlInput);
 
                 HttpsURLConnection urlc = (HttpsURLConnection) ur.openConnection();
                 BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
@@ -337,6 +330,23 @@ public class Main {
                         }
                     }
                 });
+                for (Tag ar1 : ex2.ar) {
+                    System.out.println(ar1.getTagName() + ", " + ar1.getQuantity());
+                }
+                try {
+                    FileWriter fw = new FileWriter(newFileName);
+                    PrintWriter pw = new PrintWriter(fw);
+                    pw.println("Tag, Quantity");
+                    for (Tag ar1 : ex2.ar) {
+                        pw.print(ar1.getTagName());
+                        pw.print(", ");
+                        pw.println(ar1.getQuantity());
+                    }
+                    pw.close();
+                } catch (Exception e) {
+                    System.err.println("ERROR!");
+                }
+
             }
         }
     }
