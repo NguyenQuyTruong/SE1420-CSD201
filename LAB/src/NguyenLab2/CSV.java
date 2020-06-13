@@ -5,6 +5,7 @@
  */
 package NguyenLab2;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -13,5 +14,15 @@ import java.util.Map;
  */
 public class CSV {
     Map<String, Integer> csv;
+    
+public CSV() {
+        csv = new LinkedHashMap<>();
+    }
+
+
+
+
+
+
 
 }
