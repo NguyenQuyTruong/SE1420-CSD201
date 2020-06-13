@@ -77,7 +77,7 @@ public class LinkList {
     }
 
     public manageGamer getFisrt() {
-        if (isEmpty()) {            //If list empty return null, if not funtion cam be error
+        if (isEmpty()) {            //If list empty return null, if not funtion can be error
             return null;
         }
         return header.getNext().getData();
@@ -92,12 +92,12 @@ public class LinkList {
     }
 
     private manageGamer remove(Node userNode) {
-        Node nextNode = userNode.getNext(); //get next Node of Node inputted
-        Node prevNode = userNode.getPrev(); //get prev Node of Node inputted
-        nextNode.setPrev(prevNode); //set prev of next Node is prev Node has getted
-        prevNode.setNext(nextNode); //set next of prev Node is next Node has getted
-        sizeList--;		    //decrease size of list after remoce
-        return userNode.getData(); //return data
+        Node nextNode = userNode.getNext();
+        Node prevNode = userNode.getPrev();
+        nextNode.setPrev(prevNode);
+        prevNode.setNext(nextNode);
+        sizeList--;
+        return userNode.getData();
     }
 
     public manageGamer removeFirst() {
@@ -136,7 +136,7 @@ public class LinkList {
         if (isEmpty()) {
             System.out.println("Please add a new user for use, list is empty");
         } else {
-            Node userNode = searchUserByEmail(email);	
+            Node userNode = searchUserByEmail(email);
             if (userNode == null) {			//not founded
                 System.out.println("User doesn't exit");
             } else {					//founded
@@ -160,9 +160,7 @@ public class LinkList {
     }
 
     public void addLast(manageGamer data) {
-                                                        //call function add
-                                                        //return to trailer
-        addFL(data, trailer, trailer.getPrev());
+        addFL(data, trailer, trailer.getPrev());            //call function add, return trailer
     }
 
     public void addBetween(manageGamer data, Node nodeNext) {
@@ -176,5 +174,34 @@ public class LinkList {
             sizeList++;                                 //increase size of list
         }
     }
-  
+
+    public Node searchNode(int point) {
+        Node nextnode = header.getNext(); //get node after header
+        do {
+            //find the user have low point
+            if (point > nextnode.getData().getPoint()) {
+                return nextnode.next;
+            } else {
+                // else find a highest point
+                nextnode = nextnode.getNext();
+            }
+        } while (nextnode != trailer);
+        return null;
+    }
+
+    public void add(manageGamer data) {
+        int point = data.getPoint();    //get point from data
+        if (isEmpty()) {
+            addFirst(data); 
+        } else {
+            if (point > header.getNext().getData().getPoint()) {
+                addFirst(data);
+            } else if (point < trailer.getPrev().getData().getPoint()) {
+                addLast(data);
+            } else {
+                addBetween(data, found);
+            }
+        }
+    }
+
 }
