@@ -5,8 +5,10 @@
  */
 package NguyenLab2;
 
+import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -33,9 +35,11 @@ public void print() {
             System.out.println("key: " + key + " value: " + value);
         }
     }
+public void sorrt(String file) throws FileNotFoundException {
 
-
-
-
-
+        Map<String, Integer> sortedByFrequences = csv.entrySet()
+                .stream()
+                .sorted((Map.Entry.<String, Integer>comparingByValue().reversed()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+}
 }
