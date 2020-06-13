@@ -64,7 +64,7 @@ public class DoublyLinkedList {
     }
 
     public void print() {
-        if(head==null){
+        if (head == null) {
             return;
         }
         for (Node n = pre_Head.right; n != trailer; n = n.right) {
@@ -76,22 +76,26 @@ public class DoublyLinkedList {
      * to insert element
      *
      * @param email
-     * @param point
+     * @param point create new data
      */
     public void insert(String email, int point) {
+        //create new Node 
         Node node = new Node(email, point);
+        //case ddl null
         if (head == null) {
             head = node;
             head.left = pre_Head;
             pre_Head.right = head;
             head.right = trailer;
             trailer.left = head;
+            //case new Node> head
         } else if (node.point > head.point) {
             pre_Head.right = node;
             node.left = pre_Head;
             node.right = head;
             head.left = node;
             head = node;
+            //case newNode <trailer left
         } else if (node.point < trailer.left.point) {
             Node tmp = trailer.left;
 
@@ -100,6 +104,7 @@ public class DoublyLinkedList {
             tmp.right = node;
             node.left = tmp;
         } else {
+            //case newNode between head and trailer
             Node tmp = head;
             while (tmp.point > node.point) {
                 tmp = tmp.right;
@@ -112,11 +117,19 @@ public class DoublyLinkedList {
             node.left = prevTmp;
         }
     }
+    /*
+     return biggest node
+     */
 
     public int getTop() {
         return head.point;
     }
 
+    /**
+     * get point base email
+     * @param email
+     * @return 
+     */    
     public int getPoint(String email) {
         Node tmp = searchByEmail(email);
         if (tmp != trailer) {
@@ -124,13 +137,18 @@ public class DoublyLinkedList {
         }
         return 0;
     }
-
+    /**
+     * delete top point
+     */
     public void deleteTop() {
         head.left.right = head.right;
         head.right.left = head.left;
         head = head.right;
     }
-
+    /**
+     * delete user base email
+     * @param email 
+     */
     public void delete(String email) {
         Node tmp = searchByEmail(email);
         if (tmp == trailer) {
@@ -142,7 +160,11 @@ public class DoublyLinkedList {
             System.out.println("Da xoa nguoi choi");
         }
     }
-
+    /**
+     * function to return Node base email
+     * @param email
+     * @return 
+     */
     public Node searchByEmail(String email) {
         Node tmp = head;
         while (!(tmp.email.contentEquals(email)) && tmp != trailer) {
@@ -150,7 +172,11 @@ public class DoublyLinkedList {
         }
         return tmp;
     }
-
+    /**
+     * update user 
+     * @param email
+     * @param point 
+     */
     public void update(String email, int point) {
         Node tmp = head;
         while ((!tmp.email.contentEquals(email) && tmp.point == point) && tmp != trailer) {
