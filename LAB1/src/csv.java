@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -39,11 +40,10 @@ public class csv {
             while(tmp!= ls.tail){
                 writer.append(tmp.email + "," + tmp.point + "\n");
                 tmp = tmp.right;
-                writer.flush(); // luu file
-                writer.close();
+                writer.flush(); // save file
+                writer.close(); // close file
             }
-        } catch (Exception e) {
-        }
-        
+        } catch (IOException e) {
+        }       
     }
 }
