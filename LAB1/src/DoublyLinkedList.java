@@ -133,11 +133,7 @@ public class DoublyLinkedList {
         return tmp;
     }
     
-    public Node searchEmailFirst(){
-        Node tmp = header;
-        tmp.
-        
-    }
+
     /**
      * Use function searchEmail to return point
      * @param email
