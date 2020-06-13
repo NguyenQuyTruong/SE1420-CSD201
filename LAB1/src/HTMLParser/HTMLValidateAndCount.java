@@ -10,6 +10,9 @@ package HTMLParser;
  * @author minhv
  */
 public class HTMLValidateAndCount {
+    private FileReadWrite file = new FileReadWrite();
+    //Create an stack
+    private Stack stack = new Stack();
 
     /**
      * Check is open tag or not
@@ -72,7 +75,7 @@ public class HTMLValidateAndCount {
 
     /**
      * If it (in status close tag after converted) is contain in HTML return
-     * true, else return false. Khang explains for me how to identify alone tag
+     * false, else return true. Khang explains for me how to identify alone tag
      * like <br>
      * Thanks for his helping
      *
@@ -83,6 +86,8 @@ public class HTMLValidateAndCount {
     public boolean isAloneTag(String tag, String htmlString) {
 	tag = converToCloseTag(tag);	//convert to close tag
 	return !htmlString.contains(tag);	//compare tag in the HTMl
+	//htmlString.contains(tag) is true when it have close tag -> not alone tag
+	//else false -> it is alone tag
     }
 
     /**
@@ -141,11 +146,47 @@ public class HTMLValidateAndCount {
 	}
     }
 
+    /**
+     * Check an tag is valid or not and than add to list in File to write to csv
+     * File
+     *
+     * @param tag
+     * @param htmlString
+     */
     public void checkTag(String tag, String htmlString) {
-
+	String tagCompare = "";
+	boolean isValid;
+	if (isOpenTag(tag) && !isAloneTag(tag, htmlString)) {
+	    stack.push(tag);
+	} else if (isCloseTag(tag)) {
+	    tagCompare = stack.top();
+	    isValid = compareTag(tag, tagCompare);
+	    if (isValid) {
+		file.updateValue(stack.pop());
+	    }
+	}
     }
 
+    /**
+     * Check each character base on regex expression start from a to z, A to Z,
+     * 0 to 9 and include '/' also + for check not empty (space), if match
+     * return true else false
+     *
+     * @param character
+     * @return true or false
+     */
     public static boolean regexCheckTag(String character) {
 	return character.matches("^[a-zA-Z0-9'/''<']+$");
+    }
+    
+    public void manage (String csvFile, String fileName) {
+	try {
+	    String htmlString = FileReadWrite.readData(fileName);
+	    splitTag(htmlString);
+//	    FileReadWrite.writeData(csvFile);
+	    FileReadWrite.display();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
     }
 }
