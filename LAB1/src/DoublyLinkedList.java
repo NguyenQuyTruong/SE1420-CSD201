@@ -75,7 +75,7 @@ public class DoublyLinkedList {
 
     public void delete(String email) {
         Node tmp = header;
-        while (!(tmp.email.contentEquals(email)) && tmp != tailer) {
+        while (!(tmp.email.contentEquals(email)) && tmp != tailer) { // neu email giong thi xoa
             tmp = tmp.right;
         }
 
@@ -90,11 +90,11 @@ public class DoublyLinkedList {
 
     }
 
-    public int getTop() {
+    public int getTop() { // lay du lieu o dau
         return header.point;
     }
 
-    public void deleteTop() {
+    public void deleteTop() {// xoa du lieu o dau
         pre_header.right = header.right;
         header.right.left = pre_header;
         header = header.right;
