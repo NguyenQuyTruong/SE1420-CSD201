@@ -52,8 +52,62 @@ public class DoubleLinkedList {
             hideHead.next = newNode;
             head = newNode;
         } else if (newNode.point < tail.pre.point){
+            node testing = tail.pre;
             newNode.next = tail;
-            tail.pre = newNode
+            tail.pre = newNode;
+            newNode.pre = testing;
+            testing.next = newNode;
+        } else {
+            node tesing = head;
+            while (tesing.point > newNode.point){
+                tesing= tesing.next;
+            }
+            node preTesting = tesing.pre;
+            newNode.next= tesing;
+            tesing.pre = newNode;
+            newNode.pre = preTesting;
+            preTesting.next = newNode;
+        }
+    }
+    
+    public void remove (String Name){
+        
+        node testing = head;
+        while(!(testing.Name.contentEquals(Name)) && testing != tail){
+            testing= testing.next;
+        }
+        
+        if (testing == tail){
+            System.out.println("Name not found!");
+        }else {
+            testing.pre.next = testing.next;
+            testing.next.pre = testing.pre;
+            testing = null;
+            System.out.println("Remove succes!");
+        }
+        
+    }
+    
+    public void removeTop(){
+        hideHead.next = head.next;
+        head.next.pre = hideHead;
+        head = head.next;
+        
+    }
+    
+    public int gettop(){
+        return head.point;
+    }
+    
+    public void update(String Name , int point){
+        node testing = head;
+        while(!(testing.Name.contentEquals(Name)) && testing != tail){
+            testing= testing.next;
+        }
+        if (testing == tail){
+            System.out.println("Name not found!");
+        }else {
+            testing.point = point;
         }
     }
     
