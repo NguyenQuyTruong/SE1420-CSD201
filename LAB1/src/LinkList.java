@@ -195,9 +195,7 @@ public class LinkList {
     }
     
     public void printList() {
-        //begin in the first node after header
         Node currentNode = header.getNext();
-        //this loop will scan every node and it will stop until meet the trailer
         while (currentNode != trailer) {
             System.out.println(currentNode.getData() + "\n");
             currentNode = currentNode.getNext();
