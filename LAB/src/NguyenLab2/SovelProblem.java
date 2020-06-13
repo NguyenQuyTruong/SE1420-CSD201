@@ -50,9 +50,10 @@ public class SovelProblem {
         }
     }
   public void processingHTMLTag(String tag) throws Exception {
-        
         if(tag.equalsIgnoreCase("<!DOCTYPE>"))
             myCsv.countTag(tag);
+        else if(tag.equalsIgnoreCase("<!-"))
+             myCsv.countTag("<!--comment-->");
         else if(tag.equalsIgnoreCase("<meta>"))
              myCsv.countTag(tag);
         else if(tag.equalsIgnoreCase("<link>"))
