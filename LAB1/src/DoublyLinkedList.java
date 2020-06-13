@@ -70,6 +70,17 @@ public class DoublyLinkedList {
             newNode.left = tmp;
             tmp.right=newNode;
 
+        }else{
+            Node tmp = header;
+            while(tmp.pointSub > newNode.pointSub){
+                tmp = tmp.right;
+            }
+            Node save = tmp.left;
+            
+            save.right = newNode;
+            newNode.left = save;
+            tmp.left = newNode;
+            newNode.right = tmp;
         }
     }
 
