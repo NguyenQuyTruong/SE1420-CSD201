@@ -2,16 +2,16 @@ package Ex1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 import javax.net.ssl.HttpsURLConnection;
 
@@ -27,6 +27,13 @@ import javax.net.ssl.HttpsURLConnection;
  */
 public class Main {
 
+    /**
+     * Main method
+     *
+     * @param args
+     * @throws MalformedURLException
+     * @throws IOException
+     */
     public static void main(String[] args) throws MalformedURLException, IOException {
         MyQueue mq = new MyQueue();
         int i = 0;
@@ -305,18 +312,31 @@ public class Main {
                 break;
             }
             case 7: {
+                Ex2Manager ex2 = new Ex2Manager();
                 String line = "";
                 String content = "";
-                URL ur = new URL(urlInput);
+                URL ur = new URL("https://vnexpress.net/");
 
                 HttpsURLConnection urlc = (HttpsURLConnection) ur.openConnection();
                 BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
-                
-                while((line = br.readLine()) != null){
+
+                while ((line = br.readLine()) != null) {
                     content += line;
                 }
-                System.out.print(content);
-                break;
+                ex2.inputStack(content);
+                System.out.println("Tag, Quantity");
+                Collections.sort(ex2.ar, new Comparator<Tag>() {
+                    @Override
+                    public int compare(Tag o1, Tag o2) {
+                        if (o1.getQuantity() < o2.getQuantity()) {
+                            return 1;
+                        } else if (o1.getQuantity() == o2.getQuantity()) {
+                            return 0;
+                        } else {
+                            return -1;
+                        }
+                    }
+                });
             }
         }
     }
