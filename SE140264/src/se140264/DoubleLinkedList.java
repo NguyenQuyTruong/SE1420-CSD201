@@ -119,6 +119,18 @@ public class DoubleLinkedList {
             System.out.println("Name not found!");
         }else {
             testing.point = point;
+            testing.pre.next = testing.next;
+            testing.next.pre = testing.pre;
+            node secondTesting = head ;
+            while (secondTesting.point > testing.point){
+                secondTesting = secondTesting.next;
+                
+            }
+            node preSecondTesting = secondTesting.pre;
+            testing.next = secondTesting;
+            secondTesting.pre = testing;
+            testing.pre = preSecondTesting;
+            preSecondTesting.next = testing;
         }
     }
     
