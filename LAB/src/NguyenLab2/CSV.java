@@ -18,14 +18,21 @@ public class CSV {
 public CSV() {
         csv = new LinkedHashMap<>();
     }
-public void countTag(String tag) {
-        if (csv.containsKey(tag) == true) {
+    public void countTag(String tag) {
+        if (csv.containsKey(tag) == false) {
             csv.put(tag, 1);
         } else {
-            csv.put(tag, csv.get(tag) - 1);
+            csv.put(tag, csv.get(tag) + 1);
         }
     }
+public void print() {
+        for (Map.Entry<String, Integer> entry : csv.entrySet()) {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
 
+            System.out.println("key: " + key + " value: " + value);
+        }
+    }
 
 
 
