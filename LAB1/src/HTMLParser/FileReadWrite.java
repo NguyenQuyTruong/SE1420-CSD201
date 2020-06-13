@@ -7,10 +7,15 @@ package HTMLParser;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -59,11 +64,11 @@ public class FileReadWrite {
 	public int compareTo(HTMLTag tag) {
 
 	    if (count > tag.getCount()) {
-		return 1;
+		return -1;
 	    } else if (count == tag.getCount()) {
 		return 0;
 	    } else {
-		return -1;
+		return 1;
 	    }
 	}
     }
@@ -124,22 +129,43 @@ public class FileReadWrite {
 	}
     }
 
+    public static HashMap<String, HTMLTag> sortData() {
+	List<Map.Entry<String, HTMLTag>> listTag
+		= new LinkedList<Map.Entry<String, HTMLTag>>(list.entrySet());
+
+	// Sort the list 
+	Collections.sort(listTag, new Comparator<Map.Entry<String, HTMLTag>>() {
+	    public int compare(Map.Entry<String, HTMLTag> o1,
+		    Map.Entry<String, HTMLTag> o2) {
+		return (o1.getValue()).compareTo(o2.getValue());
+	    }
+	});
+
+	// put data from sorted list to hashmap  
+	HashMap<String, HTMLTag> temp = new LinkedHashMap<String, HTMLTag>();
+	for (Map.Entry<String, HTMLTag> aa : listTag) {
+	    temp.put(aa.getKey(), aa.getValue());
+	}
+	return temp;
+    }
+
     public static void writeData(String fileName) {
+	HashMap<String, HTMLTag> listTag = sortData();
 	//prevent exception
-	if (list.isEmpty()) {
-	    System.out.println(list.isEmpty());
+	if (listTag.isEmpty()) {
+	    System.out.println(listTag.isEmpty());
 	    return;
 	}
 	//create file write
-	FileWriter writeFile = null;
+	PrintWriter writeFile = null;
 	try {
-	    writeFile = new FileWriter(fileName);
+	    writeFile = new PrintWriter(fileName);
 	    //create loop to read all list and write to File
-	    writeFile.write("Tag, Frequency");
-	    Set key = list.keySet();
+	    writeFile.println("Tag, Frequency");
+	    Set key = listTag.keySet();
 	    Iterator it = key.iterator();
 	    while (it.hasNext()) {
-		writeFile.write(it.next().toString());
+		writeFile.println(listTag.get(it.next()));
 	    }
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -151,14 +177,6 @@ public class FileReadWrite {
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
-	}
-    }
-
-    public static void display() {
-	Set key = list.keySet();
-	Iterator it = key.iterator();
-	while (it.hasNext()) {
-	    System.out.println(list.get(it.next()));
 	}
     }
 }
