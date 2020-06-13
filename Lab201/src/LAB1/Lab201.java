@@ -48,10 +48,11 @@ public class Lab201 {
                             doublyLinkedList.delete(args[i + 1]);
                             break;
                         case "-g":
-                            doublyLinkedList.getPoint(args[i + 1]);
+                            int s=doublyLinkedList.getPoint(args[i + 1]);
+                            System.out.println("Point ne: "+s);
                             break;
                         case "-t":
-                            doublyLinkedList.getTop();
+                            System.out.println(doublyLinkedList.getTop());
                             break;
                         case "-s":
                             save = true;
