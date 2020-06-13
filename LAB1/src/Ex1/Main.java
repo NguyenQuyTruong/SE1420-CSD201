@@ -88,12 +88,13 @@ public class Main {
             if (args[i].equals("-t")) {
                 choice = 6;
             }
+            if (args[i].equals("LAB1.jar") && args[i+1].equals("2")) {
+                urlInput = args[i+2];
+                newFileName = args[i+3];
+                choice = 7;
+            }
         }
-        if (args[3].equals("2")) {
-            urlInput = args[4];
-            newFileName = args[5];
-            choice = 7;
-        }
+
         switch (choice) {
             case 0: {
                 try {
