@@ -18,42 +18,40 @@ public class queue {
     public void insert(manageGamer data) {
         list.addBetween(data);
     }
-
-    public LinkList getTop() {
-        return list;
-    }
-
     public void deleteTop() {
         list.removeFirst();
     }
 
     public manageGamer deleteUser(String email) {
-        manageGamer data =list.removeFirst();
+        manageGamer data = list.removeFirst();
         return data;
     }
 
     public void updateUser(String email, int point) {
-       manageGamer data = list.searchUserByEmail(email);
-	if (data == null) {
-	    System.out.println("Not found users for this!!");
-	    return;
-	} else {
-	    data.setPoint(point);
-	       deleteUser(email);
-	    list.addBetween(data);
-	    System.out.println("Update point successfull");
-	    System.out.println("Email: " + email + ", New point: " + data.getPoint());
-	}
+        manageGamer data = list.searchUserByEmail(email);
+        if (data == null) {
+            System.out.println("Not found users for this!!");
+            return;
+        } else {
+            data.setPoint(point);
+            deleteUser(email);
+            list.addBetween(data);
+            System.out.println("Update point successfull");
+            System.out.println("Email: " + email + ", New point: " + data.getPoint());
+        }
     }
 
     public manageGamer searchUser(String email) {
-          manageGamer data = list.searchUserByEmail(email);
-          return data;
+        manageGamer data = list.searchUserByEmail(email);
+        return data;
     }
 
     public manageGamer getTop() {
+        return list.getFisrt();
     }
 
     public manageGamer removeTop() {
-       
+        return list.removeFirst();
+
+    }
 }
