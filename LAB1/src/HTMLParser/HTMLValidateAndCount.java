@@ -11,7 +11,7 @@ package HTMLParser;
  */
 public class HTMLValidateAndCount {
 
-    private FileProcess file = new FileProcess();
+    private FileProcessHTML file = new FileProcessHTML();
     //Create an stack
     private Stack stack = new Stack();
 
@@ -159,11 +159,11 @@ public class HTMLValidateAndCount {
 	return character.matches("^[a-zA-Z0-9'/''<']+$");
     }
 
-    public void manage(String csvFile, String fileName) {
+    public void manage(String csvFile, String urlString) {
 	try {
-	    String htmlString = FileProcess.readData(fileName);
+	    String htmlString = FileProcessHTML.downloadWebsite(urlString);
 	    splitTag(htmlString);
-	    FileProcess.writeData(csvFile);
+	    FileProcessHTML.writeData(csvFile);
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
