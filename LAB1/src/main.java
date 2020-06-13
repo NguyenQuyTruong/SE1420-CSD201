@@ -16,9 +16,9 @@ public class main {
     public static void main(String[] args) throws FileNotFoundException {
         DoublyLinkedList dk = new DoublyLinkedList();
         CSV cs = new CSV();
-        String savefile = null;
+        String save_file = null;
 
-        boolean willsave = false;
+        boolean check = false;
 
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
@@ -27,8 +27,8 @@ public class main {
                     break;
 
                 case "-s":
-                    willsave = true;
-                    savefile = args[i + 1];
+                    check = true;
+                    save_file = args[i + 1];
                     break;
                 case "-a":
                     dk.insert(Integer.parseInt(args[i + 2]), args[i + 1]);
@@ -36,5 +36,7 @@ public class main {
 
             }
         }
+        
+        
     }
 }
