@@ -64,6 +64,9 @@ public class DoublyLinkedList {
     }
 
     public void print() {
+        if(head==null){
+            return;
+        }
         for (Node n = pre_Head.right; n != trailer; n = n.right) {
             System.out.println("Email " + n.email + "Point " + n.point);
         }

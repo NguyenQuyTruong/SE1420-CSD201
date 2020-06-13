@@ -25,49 +25,53 @@ public class Lab201 {
 
         String savefile = null;
         boolean save = false;
-        doublyLinkedList.print();
         try {
-            for (int i = 0; i < args.length; i++) {
+            if (args[0].contentEquals("1")) { 
+                System.out.println("Bai 1"); 
+                for (int i = 0; i < args.length; i++) {
+                    switch (args[i]) {
+                        case "-r":
+                            lab.readDataQueue(args[i + 1], doublyLinkedList);
+                            break;
 
-                switch (args[i]) {
-                    case "-r":
-                        lab.readDataQueue(args[i + 1], doublyLinkedList);
-                        break;
+                        case "-a":
+                            int point = Integer.parseInt(args[i + 2]);
+                            doublyLinkedList.insert(args[i + 1], point);
+                            break;
+                        case "-u":
+                            doublyLinkedList.update(args[i + 1], Integer.parseInt(args[i + 2]));
+                            break;
+                        case "-dt":
+                            doublyLinkedList.deleteTop();
+                            break;
+                        case "-d":
+                            doublyLinkedList.delete(args[i + 1]);
+                            break;
+                        case "-g":
+                            doublyLinkedList.getPoint(args[i + 1]);
+                            break;
+                        case "-t":
+                            doublyLinkedList.getTop();
+                            break;
+                        case "-s":
+                            save = true;
+                            savefile = args[i + 1];
+                            break;
+                        default:
+                            break;
 
-                    case "-a":
-                        int point = Integer.parseInt(args[i + 2]);
-                        doublyLinkedList.insert(args[i + 1], point);
-                        break;
-                    case "-u":
-                        doublyLinkedList.update(args[i + 1], Integer.parseInt(args[i + 2]));
-                        break;
-                    case "-dt":
-                        doublyLinkedList.deleteTop();
-                        break;
-                    case "-d":
-                        doublyLinkedList.delete(args[i + 1]);
-                        break;
-                    case "-g":
-                        doublyLinkedList.getPoint(args[i + 1]);
-                        break;
-                    case "-t":
-                        doublyLinkedList.getTop();
-                        break;
-                    case "-s":
-                        save = true;
-                        savefile = args[i + 1];
-                        break;
-                    default:
-                        break;
+                    }
 
                 }
+                doublyLinkedList.print();
+                if (save) {
+                    writeDataToCsv(savefile, doublyLinkedList);
 
+                }
+            }else if (args[0].contentEquals("2")){ 
+                System.out.println("Bai 2");
             }
-            doublyLinkedList.print();
-            if (save) {
-                writeDataToCsv(savefile, doublyLinkedList);
-            
-            }
+
         } catch (Exception e) {
         }
 
@@ -93,17 +97,15 @@ public class Lab201 {
     public static void writeDataToCsv(String path, DoublyLinkedList doublyLinkedList) {
         try {
             FileWriter fileWriter = new FileWriter(path);
-            fileWriter.append("Email, Point");
+            fileWriter.append("Email, Point\n");
             DoublyLinkedList.Node tmp = doublyLinkedList.head;
             while (tmp != doublyLinkedList.trailer) {
-                fileWriter.append(tmp.email + " " + tmp.point);
+                fileWriter.append(tmp.email + "," + tmp.point+"\n");
                 tmp = tmp.right;
             }
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException ex) {
         }
-
     }
-
 }
