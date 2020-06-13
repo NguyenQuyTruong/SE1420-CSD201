@@ -200,7 +200,6 @@ public class MyQueue {
         while (current != tail) {
             if (current.next.user.getEmail().equals(email)) {
                 current.next = current.next.next;
-                System.out.println("Deleted ! ! !");
                 size--;
             }
             current = current.next;
@@ -214,12 +213,12 @@ public class MyQueue {
      * It will return null if this email does not exist in the queue
      */
     public Entry update(String email, int New_point) {
-        Entry user = search(email);
-        if (user != null) {
-            user.setPoint(New_point);
-            return user;
+        if(search(email) != null){
+            delete(email);
+            Entry e = new Entry(New_point, email);
+            enqueue(e);
+            return e;
         }
         return null;
     }
-
 }
