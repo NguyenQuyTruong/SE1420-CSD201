@@ -17,13 +17,14 @@ public class DoubleLinkList {
         String email;
         int point;
         Node left, right;
-
+// constructor 
         Node(String email, int point) {
             this.email = email;
             this.point = point;
             left = right = null;
         }
-
+// getter setter
+        
         public String getEmail() {
             return email;
         }
@@ -65,8 +66,13 @@ public class DoubleLinkList {
         pre_head = newNode;
         tail = new Node(null, -1);
     }
-// Insert email and point of player
 
+/**
+ * 
+ * @param email
+ * @param point 
+ *  Insert email and point of player
+ */
     public void insert(String email, int point) {
         Node newNode = new Node(email, point);
         if (head == null) {
@@ -112,7 +118,11 @@ public class DoubleLinkList {
             System.out.println("Email: " + n.email + " " + " Point: " + n.point);
         }
     }
-// delete player from email
+    /**
+     * 
+     * @param email 
+     * delete player from email
+     */ 
 
     public void delete(String email) {
         Node tmp = searchEmail(email);
@@ -144,8 +154,13 @@ public class DoubleLinkList {
         // cap nhat lai head
         head = head.right;
     }
-
-    // update email and point
+/**
+ * 
+ * @param email
+ * @param point 
+ * // update email and point
+ */
+    
     public void update(String email, int point) {
         Node n = searchEmail(email);
         if (n == tail) {
@@ -155,7 +170,7 @@ public class DoubleLinkList {
         System.out.println("Email: " + email + "Point: " + point);;
 
     }
-
+// get point from data
     public int getPoint(String email) {
         Node n = searchEmail(email);
         if(n!=tail){
@@ -163,7 +178,7 @@ public class DoubleLinkList {
         }
         return -1;
     }
-
+// tool searching by email
     public Node searchEmail(String emali) {
         Node n = head;
         while (!(n.email.contentEquals(emali)) && n != tail) {
