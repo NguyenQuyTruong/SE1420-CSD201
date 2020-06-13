@@ -47,4 +47,34 @@ public class SovelProblem {
             }
         }
     }
+  public void processingHTMLTag(String tag) throws Exception {
+        
+        if(tag.equalsIgnoreCase("<!DOCTYPE>"))
+            myCsv.countTag(tag);
+        else if(tag.equalsIgnoreCase("<!-"))
+             myCsv.countTag("<!--comment-->");
+        else if(tag.equalsIgnoreCase("<meta>"))
+             myCsv.countTag(tag);
+        else if(tag.equalsIgnoreCase("<link>"))
+             myCsv.countTag(tag);
+        else if(tag.equalsIgnoreCase("<img>"))
+            myCsv.countTag(tag);
+        else if(tag.equalsIgnoreCase("<br>"))
+             myCsv.countTag(tag);
+        else if(tag.equalsIgnoreCase("<hr>"))
+            myCsv.countTag(tag);
+        else if(tag.equalsIgnoreCase("<input>"))
+             myCsv.countTag(tag);
+        else if(tag.equalsIgnoreCase("<![endif]-"))
+             myCsv.countTag("<![endif]-->");
+        else{
+            if(tag.contains("</") == false) {
+                mystack.push(tag);
+                myCsv.countTag(tag);
+            }
+            else if(mystack.topEl().equalsIgnoreCase(tag.replace("/", "")) == true) {
+                mystack.pop();
+            }
+        }
+    }
 }
