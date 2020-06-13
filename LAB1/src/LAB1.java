@@ -27,13 +27,15 @@ public class LAB1 {
                     fileSv = args[i+1];
                     break;
                 case  "-a":
-                    ls.insert(args[i+2], i);
+                    ls.insert(args[i+1], Integer.parseInt(args[i+2]));
                     break;
                 case "-d":
                     ls.delete(args[i+1]);
                     break;
                 case "-dt":
                     ls.deleteTop();
+                case "u":
+                    ls.
                                                        
             }
         }
