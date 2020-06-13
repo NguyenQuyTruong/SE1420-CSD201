@@ -127,9 +127,10 @@ public class DoublyLinkedList {
 
     /**
      * get point base email
+     *
      * @param email
-     * @return 
-     */    
+     * @return
+     */
     public int getPoint(String email) {
         Node tmp = searchByEmail(email);
         if (tmp != trailer) {
@@ -137,6 +138,7 @@ public class DoublyLinkedList {
         }
         return 0;
     }
+
     /**
      * delete top point
      */
@@ -145,9 +147,11 @@ public class DoublyLinkedList {
         head.right.left = head.left;
         head = head.right;
     }
+
     /**
      * delete user base email
-     * @param email 
+     *
+     * @param email
      */
     public void delete(String email) {
         Node tmp = searchByEmail(email);
@@ -160,10 +164,12 @@ public class DoublyLinkedList {
             System.out.println("Da xoa nguoi choi");
         }
     }
+
     /**
      * function to return Node base email
+     *
      * @param email
-     * @return 
+     * @return
      */
     public Node searchByEmail(String email) {
         Node tmp = head;
@@ -172,10 +178,12 @@ public class DoublyLinkedList {
         }
         return tmp;
     }
+
     /**
-     * update user 
+     * update user
+     *
      * @param email
-     * @param point 
+     * @param point
      */
     public void update(String email, int point) {
         Node tmp = head;
