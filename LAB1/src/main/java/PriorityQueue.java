@@ -79,7 +79,38 @@ public class PriorityQueue extends DoubleLinkedList{
             }
         }
     }
-    
+    /**
+     * Method use to Read file and push the data to queue
+     * @param queue
+     * @param fileName 
+     */
+    public void readFile(PriorityQueue queue, String fileName){
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+            fr = new FileReader(fileName);
+            br = new BufferedReader(fr);
+            while (br.ready()){
+                String line = br.readLine();
+                String[] arr = line.split(", ");
+                if(!(arr[1].equalsIgnoreCase("point"))){
+                    queue.insertPlayer(new Player(arr[0], Integer.valueOf(arr[0])));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("---File not exist---");
+        } finally{
+            try{
+                if(fr != null){
+                    fr.close();
+                } else if (br != null){
+                    br.close();
+                }
+            } catch(IOException e){
+                System.out.println("---Some Error Has Occur---");
+            }
+        }
+    }
     /**
      * Method for Print the whole List
      * @return List
