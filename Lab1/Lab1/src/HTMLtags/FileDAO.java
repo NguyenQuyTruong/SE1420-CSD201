@@ -5,6 +5,8 @@
  */
 package HTMLtags;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -37,18 +39,36 @@ public class FileDAO {
 	}
     }
 
-    public void outputCSV() {
-
-	Map<String, Integer> result = data.entrySet()
-		.stream()
-		.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-		.collect(Collectors.toMap(
-			Map.Entry::getKey,
-			Map.Entry::getValue,
-			(oldValue, newValue) -> oldValue, LinkedHashMap::new));
-	for (Map.Entry<String, Integer> entry : result.entrySet()) {
-	    System.out.println(entry.getKey() + ", " + entry.getValue());
-	    //String format {key: "html", value: 1} to raw string => "html,1\n" => append it to csv file
+    /**
+     * this method use to write the map to the file
+     * @param csvFile
+     * @throws IOException
+     */
+    public void outputCSV(String csvFile) throws IOException {
+	FileWriter fw = null;
+	try {
+	    fw = new FileWriter(csvFile);
+	    //sort the map in descending order
+	    Map<String, Integer> result = data.entrySet()
+		    .stream()
+		    .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+		    .collect(Collectors.toMap(
+			    Map.Entry::getKey,
+			    Map.Entry::getValue,
+			    (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+	    //go though the map, read line by line and write to file
+	    fw.append("Tag, Frequency\n");
+	    for (Map.Entry<String, Integer> entry : result.entrySet()) {
+		String line = String.format("%s, %d\n", entry.getKey(), entry.getValue());
+		fw.append(line);
+//		System.out.println(entry.getKey() + ", " + entry.getValue());
+	    }
+	} catch (IOException e) {
+	    System.out.println("Can't write to file now!!");
+	} finally {
+	    if (fw != null) {
+		fw.close();
+	    }
 	}
     }
 }
