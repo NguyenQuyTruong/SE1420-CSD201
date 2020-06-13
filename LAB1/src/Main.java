@@ -1,5 +1,8 @@
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 /*
@@ -13,7 +16,7 @@ import java.io.IOException;
  * @author ACER
  */
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException, IOException{
+    public static void main(String[] args, String saveFile) throws FileNotFoundException, IOException{
         DoubleLinkedList d = new DoubleLinkedList();
         Main l = new Main();
         String savefile = null;
@@ -56,5 +59,39 @@ public class Main {
         if(save){
             writeDataToCsv(saveFile, d);
         }
+    }
+    
+    public void readDataQueue(String path, DoubleLinkedList d) throws FileNotFoundException, IOException{
+        int countFile = 0;
+        FileReader fr = new FileReader(path);
+        BufferedReader b = new BufferedReader(fr);
+        String line;
+        while((line = b.readLine()) != null){
+            try{
+                String[] arr = line.split(",");
+                d.insert(arr[0], Integer.parseInt(arr[1]));
+            }
+            catch(Exception e){
+                
+            }
+        }
+    }
+    
+    @SuppressWarnings("empty-statement")
+    public static void writeDataToCsv(String path, DoubleLinkedList d) throws IOException {
+        try {
+            FileWriter fileWriter = new FileWriter(path);
+            fileWriter.append("Email, Point");
+            DoubleLinkedList.Node m = d.head;
+            while (m != d.tail){
+                fileWriter.append(m.email + " " + m.point);
+                m = m.r;
+            }
+            fileWriter.flush();
+            fileWriter.close();
+        }
+        catch(Exception e){
+        } 
+
     }
 }
