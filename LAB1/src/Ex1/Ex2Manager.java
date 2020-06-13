@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
+import java.util.ArrayList;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
@@ -20,7 +20,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class Ex2Manager {
 
     MyStack ms = new MyStack();
-    HashMap hm = new HashMap();
+    ArrayList<Tag> ar = new ArrayList<>();
     int count = 0;
 //    final char opening = '<';
 //    final char closing = '>';
@@ -44,6 +44,7 @@ public class Ex2Manager {
                     }
                     openTag += '>';
                     ms.push(openTag);
+                    Tag t = new Tag(openTag,0);
                 }
             }
             if (c[i] == '<' && c[i + 1] == '/') {
@@ -57,7 +58,11 @@ public class Ex2Manager {
                 closeTag = closeTag.replace("</", "<");
                 while (!closeTag.equals(ms.pop())) {
                     if (closeTag.equals(ms.pop())) {
-                        break;
+                        for(Tag o:ar){
+                            if(o.getTagName().equals(closeTag)){
+                                o.setQuantity(o.getQuantity()+1);
+                            }
+                        }
                     } else {
                         ms.pop();
                     }
