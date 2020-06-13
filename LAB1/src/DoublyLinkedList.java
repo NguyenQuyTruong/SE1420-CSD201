@@ -33,7 +33,7 @@ public class DoublyLinkedList {
 
     public DoublyLinkedList() {
         prevHeader = new Node(null, Integer.MIN_VALUE);
-        trailer = new Node(null, -1);
+        trailer = new Node(null, Integer.MIN_VALUE);
     }
 
     /**
@@ -101,12 +101,19 @@ public class DoublyLinkedList {
     }
 
     /**
-     * Remove by Email
+     * Remove information of player by Email
      */
-    public void remove() {
-
+    public void remove(String email) {
+        Node tmp = searchEmail(email);
+        Node moveleft = tmp.left;
+        Node moveright = tmp.right;
+        
         if (header == null) {
             return;
+        }else {
+            moveleft.right = moveright;
+            moveright.left = moveleft;
+            tmp = null;
         }
 
     }
@@ -119,12 +126,12 @@ public class DoublyLinkedList {
      */
     public Node searchEmail(String tenEmail) {
         Node tmp = header;
-
+        
         while (!tmp.emailSub.contentEquals(tenEmail)) {
             tmp = tmp.right;
+            
         }
         return tmp;
-
     }
     /**
      * Use function searchEmail to return point
