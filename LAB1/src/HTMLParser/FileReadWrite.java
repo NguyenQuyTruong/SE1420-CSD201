@@ -90,7 +90,7 @@ public class FileReadWrite {
 	    String line;
 	    while ((line = buffer.readLine()) != null) {
 		//link each line together
-		htmlBody.append(line);
+		htmlBody.append(line).append("\n");
 	    }
 	} catch (Exception e) {
 	    System.out.println("File not founded");
