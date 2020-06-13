@@ -142,7 +142,7 @@ public class Cabinet {
     private void handlingTag(String tag, String htmlBody) {
 	tag = tag.toLowerCase();
 
-	if (!tag.contains("</") && alongTag(tag, htmlBody)) {
+	if (!tag.contains("</") && alongTag(tag, htmlBody) && !tag.contentEquals("<!doctype>")) {
 	    file.setTagValue(tag);
 //	    System.out.println(tag);
 	} else {
