@@ -31,57 +31,64 @@ public class Ex2Manager {
         char c[] = content.toCharArray();
         String openTag = "";
         String closeTag = "";
+        int tmp = 0;
+        int k = 0;
+        int exist = 0;
         for (int i = 0; i < c.length; i++) {
             openTag = "";
+            exist = 0;
             if (c[i] == '<' && c[i + 1] != '/') {
                 if ((c[i + 1] >= 'A' && c[i + 1] <= 'Z') || (c[i + 1] >= 'a' && c[i + 1] <= 'z')) {
                     openTag += '<';
+//                    openTag += '/';
                     for (int j = 1; j < c.length - i; j++) {
                         if ((c[i + j] >= 'A' && c[i + j] <= 'Z') || (c[i + j] >= 'a' && c[i + j] <= 'z')) {
                             openTag += c[i + j];
+                        } else {
+                            break;
                         }
                     }
                     openTag += '>';
-                }
-                if (!"".equals(openTag)) {
                     ms.push(openTag);
-                    for (Tag ar2 : ar) {
-                        if (ar2.getTagName().equals(openTag)) {
-                            ar2.setQuantity(ar2.getQuantity() + 1);
-                        } else {
-                            Tag t = new Tag(openTag, 0);
-                            ar.add(t);
+
+                    for (Tag ar1 : ar) {
+                        if (ar1.getTagName().equals(openTag)) {
+                            ar1.setQuantity(ar1.getQuantity() + 1);
+                            exist = 1;
+                            break;
                         }
+                    }
+                    if (exist == 0) {
+                        Tag t = new Tag(openTag, 1);
+                        ar.add(t);
                     }
                 }
             }
             if (c[i] == '<' && c[i + 1] == '/') {
+                tmp = 0;
                 closeTag = "</";
-                for (int k = 2; k < c.length - i; k++) {
+                for (k = 2; k < c.length - i; k++) {
                     if ((c[i + k] >= 'A' && c[i + k] <= 'Z') || (c[i + k] >= 'a' && c[i + k] <= 'z')) {
                         closeTag += c[i + k];
                     }
                 }
                 closeTag += '>';
                 closeTag = closeTag.replace("</", "<");
-//                while (!ms.getTop().equals(closeTag)) {
-//                    if (closeTag.equals(ms.getTop())) {
-//                        ms.pop();
-//                        for (Tag o : ar) {
-//                            if (o.getTagName().equals(closeTag)) {
-//                                o.setQuantity(o.getQuantity() + 1);
-//                            }
-//                        }
-//                    } else {
-//                        ms.pop();
-//                    }
-//                    if(ms.getTop() == null){
-//                        break;
-//                    }
-//                }
+                while (tmp != 1) {
+                    if (closeTag.equals(ms.getTop())) {
+                        tmp = 1;
+                        ms.pop();
+                    } else {
+                        for(int l = 0 ; l< ar.size() ;l++){
+                            if(ar.get(l).getTagName().equals(ms.getTop())){
+                                ar.remove(l);
+                            }
+                        }
+                        ms.pop();
+                    }
+                }
             }
         }
-        ms.print();
     }
 
     public static void main(String[] args) throws MalformedURLException, IOException {
@@ -89,7 +96,7 @@ public class Ex2Manager {
         Ex2Manager ex2 = new Ex2Manager();
         String line = "";
         String content = "";
-        URL ur = new URL("https://thanhnien.vn/");
+        URL ur = new URL("https://vnexpress.net/");
 
         HttpsURLConnection urlc = (HttpsURLConnection) ur.openConnection();
         BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
@@ -99,8 +106,8 @@ public class Ex2Manager {
         }
         ex2.inputStack(content);
         System.out.println("Tag, Quantity");
-//        for (Tag ar1 : ex2.ar) {
-//            System.out.println(ar1.getTagName() + ", " + ar1.getQuantity());
-//        }
+        for (Tag ar1 : ex2.ar) {
+            System.out.println(ar1.getTagName() + ", " + ar1.getQuantity());
+        }
     }
 }
