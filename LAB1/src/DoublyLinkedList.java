@@ -25,7 +25,7 @@ public class DoublyLinkedList {
     }
 
     public Node header;
-    private Node prev_header;
+    private Node prev_header;// khai bao 1 node ao vi xai doublylinkedlist
     public Node tailer;
 
     public void DoublyLinkedList() {
