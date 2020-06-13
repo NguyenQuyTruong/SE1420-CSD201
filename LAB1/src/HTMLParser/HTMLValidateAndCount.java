@@ -10,6 +10,7 @@ package HTMLParser;
  * @author minhv
  */
 public class HTMLValidateAndCount {
+
     private FileReadWrite file = new FileReadWrite();
     //Create an stack
     private Stack stack = new Stack();
@@ -34,32 +35,6 @@ public class HTMLValidateAndCount {
     private boolean isCloseTag(String tag) {
 	//if it contain "</"
 	return tag.contains("</");
-    }
-
-    /**
-     * If it is open tag and have any information after that like href, id,
-     * class,... Remove it and then add ">" after name tag then return it Else
-     * close tag return it
-     *
-     * @param tag
-     * @return an open tag or a close tag
-     */
-    public String checkTag(String tag) {
-	//check tag is open or close
-	if (isOpenTag(tag)) {
-	    //slipt an tag
-	    String[] separateTag = tag.split(" ");
-	    //an tag without next information inside this tag
-	    if (separateTag.length == 1) {
-		return tag;
-	    } else {
-		//put ">" to tag a tag
-		return separateTag[0] + ">";
-	    }
-	} else if (isCloseTag(tag)) {	//is an close tag
-	    return tag;
-	}
-	return null;
     }
 
     /**
@@ -158,6 +133,8 @@ public class HTMLValidateAndCount {
 	boolean isValid;
 	if (isOpenTag(tag) && !isAloneTag(tag, htmlString)) {
 	    stack.push(tag);
+	} else if (isAloneTag(tag, htmlString)) {
+	    file.updateValue(tag);
 	} else if (isCloseTag(tag)) {
 	    tagCompare = stack.top();
 	    isValid = compareTag(tag, tagCompare);
@@ -178,8 +155,8 @@ public class HTMLValidateAndCount {
     public static boolean regexCheckTag(String character) {
 	return character.matches("^[a-zA-Z0-9'/''<']+$");
     }
-    
-    public void manage (String csvFile, String fileName) {
+
+    public void manage(String csvFile, String fileName) {
 	try {
 	    String htmlString = FileReadWrite.readData(fileName);
 	    splitTag(htmlString);
