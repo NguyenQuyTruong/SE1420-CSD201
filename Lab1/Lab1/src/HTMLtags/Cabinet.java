@@ -66,16 +66,18 @@ public class Cabinet {
     /**
      * this method use to scan all HTML body to find out which characters is tag
      * and it can also check some special tag
+     *
      * @param htmlBody
      */
-    private String analysisHTML(String htmlBody) {
+    private void analysisHTML(String htmlBody) {
 	String tag = "";
 	boolean validTag = false;
 	for (int i = 0; i < htmlBody.length(); i++) {
 	    if (htmlBody.charAt(i) == '<') {
 		tag = "<";
 		validTag = true;
-	    } else if ((htmlBody.charAt(i) != '>' && htmlBody.charAt(i) != ' ') && validTag) {
+	    } else if ((htmlBody.charAt(i) != '>' && htmlBody.charAt(i) != ' ')
+		    && validTag) {
 
 		if (!(Character.isLetterOrDigit(htmlBody.charAt(i)))
 			&& (htmlBody.charAt(i) != '!') //check if the tag maybe the comment tag
@@ -84,21 +86,20 @@ public class Cabinet {
 		}
 		tag = tag + htmlBody.charAt(i);
 	    } else if ((htmlBody.charAt(i) != '>' || htmlBody.charAt(i) != ' ')
-			&& validTag) {
+		    && validTag) {
 		tag = tag + '>';
 		validTag = false; //enough char to create a tag so we turn this of =))
+		System.out.println(tag);
 	    }
 	}
-	return tag;
     }
 
     public static void main(String[] args) {
 	Cabinet cage = new Cabinet();
-	String body = "<a>Huy</a>....<br>";
+	String body = "<a>Huy</a>....<h2><!--huy-->";
 	String tag = "<b>";
 	cage.existAlongTag(tag, body);
 //	System.out.println(cage.existAlongTag(tag, body));
-	String test = cage.analysisHTML(body);
-	System.out.println(test);
+	cage.analysisHTML(body);
     }
 }
