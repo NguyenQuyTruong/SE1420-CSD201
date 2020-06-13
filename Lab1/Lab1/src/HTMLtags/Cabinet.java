@@ -36,6 +36,17 @@ public class Cabinet {
     }
 
     /**
+     * this method use to check the tag have close tag or not by convert it to
+     * a normal close tag and compare it to every word in HTML body
+     * @param tag
+     * @param htmlBody
+     * @return true if converted tag not in HTML body
+     */
+    private boolean checkAloneTag(String tag, String htmlBody) {
+	tag = tag.replace("<", "</");
+	return !htmlBody.contains(tag);
+    }
+    /**
      * some special tag like <a ...>, <img ...> don't have the close / character
      * so this method use to convert them to a normal tag => <a>, <img>,...
      *
@@ -93,6 +104,8 @@ public class Cabinet {
 	    }
 	}
     }
+    
+    private void
 
     public static void main(String[] args) {
 	Cabinet cage = new Cabinet();
