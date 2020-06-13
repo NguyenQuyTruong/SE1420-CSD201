@@ -20,63 +20,31 @@ public class Ex2Manager {
 
     MyStack ms = new MyStack();
     int count = 0;
-    final String opening = "<";
-    final String closing = ">";
-    final String space = " ";
-    final String Mark = "/";
-    final String Mark2 = "!";
+    final char opening = '<';
+    final char closing = '>';
+//    final String space = " ";
+//    final String Mark = "/";
+//    final String Mark2 = "!";
 
     public void inputStack(String content) {
-        StringBuilder sb = new StringBuilder();
         char c[] = content.toCharArray();
-        int j = 0;
-        int k = 0;
-        int tmp = 0;
-        for (int i = 0; i < c.length - 1; i++) {
-            if (opening.indexOf(c[i]) != -1) {
-                sb.insert(k, c[i]);
-                k++;
-                for (j = 1; j < (c.length - i); j++) {
-                    tmp = 0;
-                    if ((c[i + j] >= 'A' && (c[i + j] <= 'Z') || (c[i + j] >= 'a') && c[i + j] <= 'z') || Mark.indexOf(c[i + j]) != -1) {
-                        sb.insert(k, c[i + j]);
-                        k++;
-//                    } else if (space.indexOf(c[i + j]) != -1) {
-//                        for (int v = 1; v < (c.length - i - j); v++) {
-//                            if (closing.indexOf(c[i + j + v]) != -1) {
-//                                sb.insert(k, ">");
-//                                k++;
-//                                break;
-//                            }
-//                            if (opening.indexOf(c[i + j + v]) != -1) {
-//                                sb.delete(i, i + j);
-//                                k = k - j;
-//                                break;
-//                            }
-//                        }
-//                        sb.insert(k, ">");
-                    } else if (Mark2.indexOf(c[i + 1]) != -1) {
-                        sb.delete(k - 1, k);
-                        k--;
-                        tmp = 1;
-                        break;
-//                    } else if (opening.indexOf(c[i + j]) != -1) {
-//                        sb.delete(k - j, k);
-//                        k = k - j;
-//                        tmp = 1;
-//                        break;
-                    } else {
+        String tagString = "";
+        for (int i = 0; i < c.length; i++) {
+            tagString = "";
+            if(Character.compare(c[i], opening) == 0){
+                tagString += c[i];
+                for(int j = 1; j < c.length - i; j++){
+                    if((c[i + j] >= 'A' && c[i + j] <= 'Z') || (c[i + j] >= 'a' && c[i + j] <='z')){
+                        tagString += c[i + j];
+                    } 
+                    else{
                         break;
                     }
                 }
-                if (tmp == 0) {
-                    sb.insert(k, ">");
-                    k++;
-                }
-
+                tagString += closing;
+                ms.push(tagString);
             }
         }
-        System.out.println(sb);
     }
 
     public static void main(String[] args) throws MalformedURLException, IOException {
@@ -84,7 +52,7 @@ public class Ex2Manager {
         Ex2Manager ex2 = new Ex2Manager();
         String line = "";
         String content = "";
-        URL ur = new URL("https://vnexpress.net/");
+        URL ur = new URL("https://thanhnien.vn/");
 
         HttpsURLConnection urlc = (HttpsURLConnection) ur.openConnection();
         BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
