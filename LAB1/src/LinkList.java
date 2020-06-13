@@ -138,6 +138,13 @@ public class LinkList {
         }
         return null;
     }
+    public manageGamer getfirst(){
+         if (isEmpty()) {
+            return null;
+        }
+        return header.getNext().getData();
+    }
+    
     public void addFirst(Node node) {
         //call function add
         header.next.prev = node;
@@ -186,7 +193,7 @@ public class LinkList {
         }
         sizeList++;                                 //increase size of list
     }
-
+    
     public void printList() {
         //begin in the first node after header
         Node currentNode = header.getNext();
