@@ -10,40 +10,42 @@ import java.io.IOException;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author liemn
  */
 public class csv {
-    public void readToQueue(String pathString, DoubleLinkList ls) throws 
-            FileNotFoundException{
-      //  DoubleLinkList ls = new DoubleLinkList();
+
+    public void readToQueue(String pathString, DoubleLinkList ls) throws
+            FileNotFoundException {
+        //  DoubleLinkList ls = new DoubleLinkList();
         BufferedReader bf = new BufferedReader(new FileReader("user.csv"));
-        String line ="";
-        
-        do {            
+        String line = "";
+
+        do {
             try {
                 line = bf.readLine();
-                String [] arr = line.split(",");
+                String[] arr = line.split(",");
                 int point = Integer.parseInt(arr[1]);
                 ls.insert(arr[0], point);
             } catch (Exception e) {
             }
         } while (true);
     }
-    public void writeData(String filePath, DoubleLinkList ls){
+
+    public void writeData(String filePath, DoubleLinkList ls) {
         try {
             FileWriter writer = new FileWriter(filePath);
             writer.append("Email, Point\n");
             DoubleLinkList.Node tmp = ls.head; // chay tu head
-            while(tmp!= ls.tail){
+            while (tmp != ls.tail) {
                 writer.append(tmp.email + "," + tmp.point + "\n");
                 tmp = tmp.right;
-                writer.flush(); // save file
-                writer.close(); // close file
+
             }
+            writer.flush(); // save file
+            writer.close(); // close file
         } catch (IOException e) {
-        }       
+        }
     }
 }
