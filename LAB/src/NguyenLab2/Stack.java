@@ -51,8 +51,16 @@ public void push(String element) throws Exception
 		}
 		return array[currentElement];
 	} 
-        
-
+        public void print(){
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i]+" ");
+            }
+        }
+      public int Size()
+	{
+		return array.length;
+	}
+	
 }
 
 
