@@ -22,5 +22,21 @@ public class DoubleLinkedList {
         }
         
    }
+    public node head, hideHead, tail;
+    
+    public DoubleLinkedList(){
+        node newNode = new node(null, 0);
+        hideHead = newNode;
+        tail = newNode;
+        
+    }
+    public void print(){
+        for (node i = hideHead.next; i != tail; i = i.next) {
+            System.out.println("Name: "+ i.Name + "// point: "+ i.point);
+            
+        }
+    }
+    
+    
     
 }
