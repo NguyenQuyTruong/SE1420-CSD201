@@ -407,6 +407,7 @@ public class DoublyLinkedList {
 	    writeFile = new PrintWriter(fileName);
 	    //create loop to read all list and write to File
 	    Node node = header.getNext();
+	    writeFile.println("Email, Point");
 	    while (node != trailer) {
 		writeFile.println(node.getData().toString());
 		node = node.next;
