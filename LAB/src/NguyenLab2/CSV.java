@@ -18,7 +18,13 @@ public class CSV {
 public CSV() {
         csv = new LinkedHashMap<>();
     }
-
+public void countTag(String tag) {
+        if (csv.containsKey(tag) == true) {
+            csv.put(tag, 1);
+        } else {
+            csv.put(tag, csv.get(tag) - 1);
+        }
+    }
 
 
 
