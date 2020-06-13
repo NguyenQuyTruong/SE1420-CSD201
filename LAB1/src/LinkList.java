@@ -114,4 +114,67 @@ public class LinkList {
         return remove(trailer.getPrev());
     }
 
+    public Node searchUserByEmail(String email) {
+        if (isEmpty()) {
+            System.out.println("Please add a new user for use, list is empty");
+        } else {
+            //get node after header
+            Node nodeNext = header.getNext();
+
+            do {
+                if (nodeNext.getData().getUserEmail().equalsIgnoreCase(email)) {
+                    return nodeNext;
+                } else {                                //countinue to search
+                    nodeNext = nodeNext.getNext();
+                }
+            } while (nodeNext != trailer);
+        }
+        return null;                                    //no user founded
+    }
+
+    public void deleteUserNode(String email) {
+        if (isEmpty()) {
+            System.out.println("Please add a new user for use, list is empty");
+        } else {
+            Node userNode = searchUserByEmail(email);	
+            if (userNode == null) {			//not founded
+                System.out.println("User doesn't exit");
+            } else {					//founded
+                remove(userNode);			//remove
+            }
+        }
+    }
+
+    private void addFL(manageGamer data, Node nextNode, Node prevNode) {
+        //create new node
+        Node newNode = new Node(data, nextNode, prevNode);
+        nextNode.setPrev(newNode);  //set prev of next  
+        prevNode.setNext(newNode);  //set next of prev  
+        sizeList++;		    //increase size of list
+    }
+
+    public void addFirst(manageGamer data) {
+        //call function add
+        //return to header
+        addFL(data, header.getNext(), header);
+    }
+
+    public void addLast(manageGamer data) {
+                                                        //call function add
+                                                        //return to trailer
+        addFL(data, trailer, trailer.getPrev());
+    }
+
+    public void addBetween(manageGamer data, Node nodeNext) {
+        if (nodeNext == null) {                         //founded is lowest score so use addLast
+            addLast(data);
+        } else {
+            Node prevNode = nodeNext.getPrev();         //get previous Node
+            Node newNode = new Node(data, nodeNext, prevNode); //create new Node
+            nodeNext.setPrev(newNode);                  //set newnode( prev of next )
+            prevNode.setNext(newNode);                  //set newnode ( next of prev )
+            sizeList++;                                 //increase size of list
+        }
+    }
+  
 }
