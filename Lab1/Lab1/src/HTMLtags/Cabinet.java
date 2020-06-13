@@ -68,7 +68,7 @@ public class Cabinet {
      * and it can also check some special tag
      * @param htmlBody
      */
-    private void analysisHTML(String htmlBody) {
+    private String analysisHTML(String htmlBody) {
 	String tag = "";
 	boolean validTag = false;
 	for (int i = 0; i < htmlBody.length(); i++) {
@@ -89,6 +89,7 @@ public class Cabinet {
 		validTag = false; //enough char to create a tag so we turn this of =))
 	    }
 	}
+	return tag;
     }
 
     public static void main(String[] args) {
@@ -96,6 +97,8 @@ public class Cabinet {
 	String body = "<a>Huy</a>....<br>";
 	String tag = "<b>";
 	cage.existAlongTag(tag, body);
-	System.out.println(cage.existAlongTag(tag, body));
+//	System.out.println(cage.existAlongTag(tag, body));
+	String test = cage.analysisHTML(body);
+	System.out.println(test);
     }
 }
