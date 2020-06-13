@@ -14,8 +14,13 @@ import java.util.Map;
  */
 public class FileDAO {
     Map<String, Integer> data = new LinkedHashMap<>();
-    
-    public void setTagCount(String tag) {
+
+    /**
+     * this method use to receive tag input and put it to linkedHashMap and count
+     * the time it appear.
+     * @param tag
+     */
+    public void setTagValue(String tag) {
 	if (!data.containsKey(tag)) { //if the tag not exist, put it to hashmap and set value 1
 	    data.put(tag, 1);
 	} else { //if the tag exist, get the exist value +1
