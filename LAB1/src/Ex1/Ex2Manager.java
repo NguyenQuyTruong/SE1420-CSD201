@@ -21,13 +21,12 @@ public class Ex2Manager {
 
     MyStack ms = new MyStack();
     ArrayList<Tag> ar = new ArrayList<>();
-    int count = 0;
 //    final char opening = '<';
 //    final char closing = '>';
 //    final String space = " ";
 //    final String Mark = "/";
 //    final String Mark2 = "!";
-    
+
     public void inputStack(String content) {
         char c[] = content.toCharArray();
         String openTag = "";
@@ -36,15 +35,24 @@ public class Ex2Manager {
             openTag = "";
             if (c[i] == '<' && c[i + 1] != '/') {
                 if ((c[i + 1] >= 'A' && c[i + 1] <= 'Z') || (c[i + 1] >= 'a' && c[i + 1] <= 'z')) {
-                    openTag += c[i];
+                    openTag += '<';
                     for (int j = 1; j < c.length - i; j++) {
                         if ((c[i + j] >= 'A' && c[i + j] <= 'Z') || (c[i + j] >= 'a' && c[i + j] <= 'z')) {
                             openTag += c[i + j];
                         }
                     }
                     openTag += '>';
+                }
+                if (!"".equals(openTag)) {
                     ms.push(openTag);
-                    Tag t = new Tag(openTag,0);
+                    for (Tag ar2 : ar) {
+                        if (ar2.getTagName().equals(openTag)) {
+                            ar2.setQuantity(ar2.getQuantity() + 1);
+                        } else {
+                            Tag t = new Tag(openTag, 0);
+                            ar.add(t);
+                        }
+                    }
                 }
             }
             if (c[i] == '<' && c[i + 1] == '/') {
@@ -56,17 +64,21 @@ public class Ex2Manager {
                 }
                 closeTag += '>';
                 closeTag = closeTag.replace("</", "<");
-                while (!closeTag.equals(ms.pop())) {
-                    if (closeTag.equals(ms.pop())) {
-                        for(Tag o:ar){
-                            if(o.getTagName().equals(closeTag)){
-                                o.setQuantity(o.getQuantity()+1);
-                            }
-                        }
-                    } else {
-                        ms.pop();
-                    }
-                }
+//                while (!ms.getTop().equals(closeTag)) {
+//                    if (closeTag.equals(ms.getTop())) {
+//                        ms.pop();
+//                        for (Tag o : ar) {
+//                            if (o.getTagName().equals(closeTag)) {
+//                                o.setQuantity(o.getQuantity() + 1);
+//                            }
+//                        }
+//                    } else {
+//                        ms.pop();
+//                    }
+//                    if(ms.getTop() == null){
+//                        break;
+//                    }
+//                }
             }
         }
         ms.print();
@@ -86,5 +98,9 @@ public class Ex2Manager {
             content += line;
         }
         ex2.inputStack(content);
+        System.out.println("Tag, Quantity");
+//        for (Tag ar1 : ex2.ar) {
+//            System.out.println(ar1.getTagName() + ", " + ar1.getQuantity());
+//        }
     }
 }
