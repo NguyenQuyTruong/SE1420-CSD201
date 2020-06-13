@@ -5,6 +5,7 @@
  */
 package HTMLtags;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -38,19 +39,14 @@ public class FileDAO {
 
     public void outputCSV() {
 
-//	Map<String, Integer> result = data.entrySet()
-//		.stream()
-//		.sorted(Map.Entry.comparingByValue())
-//		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue),
-//			(oldValue, newValue) -> oldValue, LinkedHashMap::new));
 	Map<String, Integer> result = data.entrySet()
 		.stream()
-		.sorted(Map.Entry.comparingByValue())
+		.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
 		.collect(Collectors.toMap(
 			Map.Entry::getKey,
 			Map.Entry::getValue,
 			(oldValue, newValue) -> oldValue, LinkedHashMap::new));
-	for (HashMap.Entry<String, Integer> entry : result.entrySet()) {
+	for (Map.Entry<String, Integer> entry : result.entrySet()) {
 	    System.out.println(entry.getKey() + ", " + entry.getValue());
 	    //String format {key: "html", value: 1} to raw string => "html,1\n" => append it to csv file
 	}
