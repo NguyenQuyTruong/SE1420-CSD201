@@ -53,9 +53,9 @@ public class DoubleLinkedList{
 /**
  * create head, center and tail
  */
-    private Node head;
-    private Node center;
-    private Node tail;
+    public Node head;
+    public Node center;
+    public Node tail;
 /**
  * 
  */
