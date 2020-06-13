@@ -5,6 +5,15 @@
  */
 package HTMLtags;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 /**
  *
  * @author nhoxr
@@ -13,6 +22,7 @@ public class Cabinet {
 
     FileDAO file = new FileDAO();
     Stack stack = new Stack(500);
+
     /**
      * this method use to check the tag is open or not
      *
@@ -122,9 +132,10 @@ public class Cabinet {
     }
 
     /**
-     * this method use to handling tag from HTML body, it will check the tag is open
-     * or close and depend on it to push to stack or pop of stack, this method also
-     * send tag to file
+     * this method use to handling tag from HTML body, it will check the tag is
+     * open or close and depend on it to push to stack or pop of stack, this
+     * method also send tag to file
+     *
      * @param tag
      * @param htmlBody
      */
@@ -133,27 +144,52 @@ public class Cabinet {
 
 	if (!tag.contains("</") && alongTag(tag, htmlBody)) {
 	    file.setTagValue(tag);
+	    System.out.println(tag);
 	} else {
 	    tag = convertToTag(tag);
 	    if (!tag.contains("</")) {
 		stack.push(tag);
-		System.out.println(tag);
-	    } else if(compare2Tag(tag, stack.top())) {
+	    } else if (compare2Tag(tag, stack.top())) {
 		file.setTagValue(stack.top());
 		stack.pop();
 	    }
 	}
     }
-    
-    
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
 	Cabinet cage = new Cabinet();
-	String body = "<a>Huy</a>....<h2><!--huy-->";
-	String tag = "<b>";
-	cage.alongTag(tag, body);
+	String body = downloadWebsite("https://vnexpress.net");
 //	System.out.println(cage.existAlongTag(tag, body));
-//	cage.analysisHTML(body);
+	cage.analysisHTML(body);
 //	System.out.println(cage.compare2Tag("</a>", "<a>"));
-	cage.handlingTag("</a>", "<a>Huy</a>....<h2><!--huy-->");
+//	cage.handlingTag("</a>", "<a>Huy</a>....<h2><!--huy-->");
+
+    }
+
+    /**
+     * this method use to download the whole HTML site depend on URL input
+     * and the body will be converted to String
+     * @param siteUrl
+     * @return
+     * @throws MalformedURLException
+     * @throws IOException
+     */
+    public static String downloadWebsite(String siteUrl) throws MalformedURLException, IOException {
+	HttpURLConnection connection = (HttpURLConnection) new URL(siteUrl).openConnection();
+	connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36");
+	StringBuilder htmlBody = new StringBuilder();
+	try {
+	    InputStream inputstream = connection.getInputStream();
+	    BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
+
+	    String line;
+	    while ((line = reader.readLine()) != null) {
+		htmlBody.append(line);
+	    }
+	    reader.close();
+	} catch (IOException e) {
+	    System.out.println("Can't open the link!!");
+	}
+	return htmlBody.toString();
     }
 }
