@@ -30,7 +30,7 @@ public class DoublyLinkedList {
 
     public void DoublyLinkedList() {
         Node newNode = new Node(-1, null);//ban dau point va email chua co se la -1 va null
-        prev_header_header = newNode;
+        prev_header = newNode;
         tailer = new Node(-1, null);
     }
 
