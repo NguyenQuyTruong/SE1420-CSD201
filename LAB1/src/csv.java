@@ -15,7 +15,12 @@ import java.io.IOException;
  * @author liemn
  */
 public class csv {
-
+/**
+ * 
+ * @param pathString
+ * @param ls
+ * @throws FileNotFoundException 
+ */
     public void readToQueue(String pathString, DoubleLinkList ls) throws
             FileNotFoundException {
         //  DoubleLinkList ls = new DoubleLinkList();
@@ -32,7 +37,11 @@ public class csv {
             }
         } while (true);
     }
-
+/**
+ * 
+ * @param filePath
+ * @param ls 
+ */
     public void writeData(String filePath, DoubleLinkList ls) {
         try {
             FileWriter writer = new FileWriter(filePath);
