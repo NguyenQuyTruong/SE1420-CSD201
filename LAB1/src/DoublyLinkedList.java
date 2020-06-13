@@ -103,6 +103,23 @@ public class DoublyLinkedList {
             header = header.right;
         }
     }
+    /**
+     * Remove by Email 
+     */
+    public void remove(){
+        if(header == null) return;
+        
+    }
+    
+    /**
+     * Use to search email of player. Function remove will use this function.
+     * @param email
+     * @return 
+     */
+    public Node searchEmail(String email){
+        Node tmp = header;
+        
+    }
     
     /**
      * Print all node from left -> right
