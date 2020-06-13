@@ -27,6 +27,7 @@ public class Cabinet {
 
     /**
      * this method use regex to check the string input is the tag or not
+     *
      * @param tag
      * @return true or false
      */
@@ -49,29 +50,20 @@ public class Cabinet {
 	    return normalTag;
 	}
     }
-    
+
     /**
      * this method use to convert special tag like <br> to </br> and use this
-     * convert String compare with HTML body String in another method
+     * convert String compare with HTML body String
+     *
      * @param tag
      * @return close tag String
      */
-    private String convertToCloseTag(String tag) {
+    private boolean convertToCloseTag(String tag, String htmlBody) {
 	String closeTag = tag.replace("<", "</");
-	return closeTag;
-    }
-    
-    /**
-     * this method use to check the close tag is exist in the HTML body or not
-     * @param tag
-     * @param htmlBody
-     * @return true or false
-     */
-    private boolean existCloseTag(String closeTag, String htmlBody) {
 	return htmlBody.contains(closeTag);
+
     }
-    
-    
+
     private void analysisHTML(String htmlBody) {
 	String tag = "";
 	boolean validTag = false;
@@ -80,12 +72,16 @@ public class Cabinet {
 		tag = "<";
 		validTag = true;
 	    } else if ((htmlBody.charAt(i) != '>' && htmlBody.charAt(i) != ' ') && validTag) {
-		
+
 		if () {
-		    
+
 		}
 	    }
-	    
 	}
+    }
+
+    public static void main(String[] args) {
+	Cabinet cage = new Cabinet();
+	cage.
     }
 }
