@@ -36,7 +36,26 @@ public class DoubleLinkedList {
             
         }
     }
-    
+    public void add(String Name, int point){
+        node newNode = new node(Name, point);
+        if (head == null)
+        {
+            head = newNode;
+            head.pre = hideHead;
+            hideHead.next = head;
+            head.next = tail;
+            tail.pre = head;
+        } else if (newNode.point > head.point){
+            newNode.next = head;
+            head.pre = newNode;
+            newNode.pre = hideHead;
+            hideHead.next = newNode;
+            head = newNode;
+        } else if (newNode.point < tail.pre.point){
+            newNode.next = tail;
+            tail.pre = newNode
+        }
+    }
     
     
 }
