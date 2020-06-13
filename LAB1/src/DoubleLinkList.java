@@ -121,6 +121,7 @@ public class DoubleLinkList {
 
             tmp.left.right = tmp.right;
             tmp.right.left = tmp.left;
+            tmp=null;
             System.out.println("Delete success");
             check = false;
         }
