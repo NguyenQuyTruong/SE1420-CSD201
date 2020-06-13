@@ -104,7 +104,7 @@ public class DoublyLinkedList {
      * Remove by Email
      */
     public void remove() {
-        
+
         if (header == null) {
             return;
         }
@@ -112,21 +112,28 @@ public class DoublyLinkedList {
     }
 
     /**
-     * Use to search email of player. Function remove will use this function.
+     * Use to search email of player. other Functions can use this function.
      *
      * @param email
      * @return
      */
     public Node searchEmail(String tenEmail) {
         Node tmp = header;
-        while (true) {
-            if (tmp.emailSub.contentEquals(tenEmail) && tmp.emailSub.contains(tenEmail)) {
-                return tmp;
-            } else {
-                System.out.println("Not found");
-            }
-            return null;
+
+        while (!tmp.emailSub.contentEquals(tenEmail)) {
+            tmp = tmp.right;
         }
+        return tmp;
+
+    }
+    /**
+     * Use function searchEmail to return point
+     * @param email
+     * @return 
+     */
+    public long getPoint(String email){
+        Node tmp = searchEmail(email);
+        return tmp.pointSub;
     }
 
     /**
