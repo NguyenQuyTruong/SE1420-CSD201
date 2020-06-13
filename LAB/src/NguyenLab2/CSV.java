@@ -51,5 +51,6 @@ public void sorrt(String file) throws FileNotFoundException {
             Integer value = entry.getValue();
             pw.println(key + "," + value);
         }
+        pw.close();
 }
 }
