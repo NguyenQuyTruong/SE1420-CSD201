@@ -5,13 +5,7 @@
  */
 package Ex1;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import javax.net.ssl.HttpsURLConnection;
 
 /**
  *
@@ -65,7 +59,7 @@ public class Ex2Manager {
                 for (k = 2; k < c.length - i; k++) {
                     if ((c[i + k] >= 'A' && c[i + k] <= 'Z') || (c[i + k] >= 'a' && c[i + k] <= 'z')) {
                         closeTag += c[i + k];
-                    }else{
+                    } else {
                         break;
                     }
                 }
@@ -76,8 +70,8 @@ public class Ex2Manager {
                         ms.pop();
                         tmp = 1;
                     } else {
-                        for(int l = 0 ; l< ar.size() ;l++){
-                            if(ar.get(l).getTagName().equals(ms.getTop())){
+                        for (int l = 0; l < ar.size(); l++) {
+                            if (ar.get(l).getTagName().equals(ms.getTop())) {
                                 ar.remove(l);
                                 break;
                             }
@@ -86,26 +80,6 @@ public class Ex2Manager {
                     }
                 }
             }
-        }
-    }
-
-    public static void main(String[] args) throws MalformedURLException, IOException {
-        // Test 
-        Ex2Manager ex2 = new Ex2Manager();
-        String line = "";
-        String content = "";
-        URL ur = new URL("https://vnexpress.net/");
-
-        HttpsURLConnection urlc = (HttpsURLConnection) ur.openConnection();
-        BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
-
-        while ((line = br.readLine()) != null) {
-            content += line;
-        }
-        ex2.inputStack(content);
-        System.out.println("Tag, Quantity");
-        for (Tag ar1 : ex2.ar) {
-            System.out.println(ar1.getTagName() + ", " + ar1.getQuantity());
         }
     }
 }
