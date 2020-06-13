@@ -23,7 +23,7 @@ public class LAB1 {
                     cs.readToQueue(args [i+1], ls);
                     break;
                 case "-s":
-                    check =true;
+                    check =false;
                     fileSv = args[i+1];
                     break;
                 case  "-a":
@@ -34,8 +34,7 @@ public class LAB1 {
                     break;
                 case "-dt":
                     ls.deleteTop();
-                    
-                                   
+                                                       
             }
         }
         if(check == true){
