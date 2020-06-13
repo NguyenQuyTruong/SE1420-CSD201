@@ -11,7 +11,7 @@ package Main;
  */
 public class Main {
 
-    public static void CLI(String[] args) {
+    public static String CLI(String[] args) {
 	String result = "";
 	if (args.length == 0 || args[0].equals("-h")) {
 	    result = result + "Help:\n";
@@ -26,17 +26,26 @@ public class Main {
 	    result = result + "java -jar LAB1.jar 2 <<URL-of-website>> <<output-CSV-file>>: Problem 2, read html info from a URL, save all tag information into the CSV output file\n";
 	} else if (!args[0].equals("1") && !args[0].equals("2")) {
 	    result = result + "Error: The problem name is not correct !";
-	} else if (args[0].equals("1") && contains(args, "-r") == -1) {
+	} else if (args[0].equals("1") && include(args, "-r") == -1) {
 	    result = result + "Error: No user input file !";
-	} else if (args[0].equals("1") && contains(args, "-r") != -1 && contains(args, "-r") + 1 >= args.length) {
+	} else if (args[0].equals("1") && include(args, "-r") != -1 && include(args, "-r") + 1 >= args.length) {
 	    result = result + "Error: No input filename !";
 	} else if (args[0].equals("2") && args.length < 3) {
 	    result = result + "Error: Your CLI format is not correct !";
 	}
 	return result;
     }
-    
-    pbulic static void 
+
+    public static int include(String[] array, String value) {
+	int result = -1;
+	for (int i = 0; i < array.length; i++) {
+	    if (array[i].equals(value)) {
+		result = i;
+		break;
+	    }
+	}
+	return result;
+    }
 
     public static void main(String[] args) {
 
