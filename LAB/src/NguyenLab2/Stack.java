@@ -46,7 +46,7 @@ public void push(String element) throws Exception
 	}
      public String topEl() 
 	{
-            if (currentElement != -1) {
+            if (currentElement == -1) {
 			return null;	
 		}
 		return array[currentElement];
