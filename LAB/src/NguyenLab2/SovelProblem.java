@@ -24,7 +24,7 @@ public class SovelProblem {
         }    
     }
 
-  public void analyzeHTMLTag(String content) throws Exception {
+     public void analyzeHTMLTag(String content) throws Exception {
         String tag = "";
         boolean check = false;        
         for(int i = 0; i < content.length(); i++) {           
@@ -34,16 +34,18 @@ public class SovelProblem {
                 check = true;
             }           
             // Only comment tag has '-' character => <!--comment-->
-            else if(content.charAt(i) == '-' ) {
+            else if(content.charAt(i) == '-' && check == true) {
                 tag += "-";
+                processingHTMLTag(tag);
                 check = false;
             }
-            else if(content.charAt(i) != '>' && content.charAt(i) != ' ' ) {
+            else if(content.charAt(i) != '>' && content.charAt(i) != ' ' && check == true) {
                 tag += content.charAt(i);
             }
-            else if(((content.charAt(i) == '>') || (content.charAt(i) == ' ')) ) {
+            else if(((content.charAt(i) == '>') || (content.charAt(i) == ' ')) && check == true) {
                 tag += ">";
                 check = false;
+                processingHTMLTag(tag);
             }
         }
     }
