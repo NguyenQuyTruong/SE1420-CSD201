@@ -34,8 +34,8 @@ public class LAB1 {
                     break;
                 case "-dt":
                     ls.deleteTop();
-                case "u":
-                    ls.
+                case "-u":
+                    ls.update(args[i + 1], Integer.parseInt(args[i + 2]));
                                                        
             }
         }
