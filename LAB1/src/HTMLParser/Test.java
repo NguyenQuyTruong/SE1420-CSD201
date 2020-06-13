@@ -29,7 +29,6 @@ public class Test {
 //	System.out.println(Character.toString(c));
 //	System.out.println(String.valueOf(c));
 	HTMLValidateAndCount html = new HTMLValidateAndCount();
-	String s = FileReadWrite.readData("index.html");
-	html.splitTag(s);
+	html.manage("test.csv", "index.html");
     }
 }
