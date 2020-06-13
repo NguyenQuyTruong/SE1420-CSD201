@@ -44,7 +44,7 @@ public class DoublyLinkedList {
      */
     public void add(String email, long point) {
         Node newNode = new Node(email, point);
-        
+
         // this situation : list is empty
         if (header == null) {
             newNode.right = trailer;
@@ -52,9 +52,7 @@ public class DoublyLinkedList {
             newNode.left = prevHeader;
             prevHeader.right = newNode;
             header = newNode;
-        } 
-        
-        // this situation: add First   (between prevHeader and header)
+        } // this situation: add First   (between prevHeader and header)
         else if (header.pointSub < newNode.pointSub) {
 
             newNode.right = header;
@@ -63,64 +61,74 @@ public class DoublyLinkedList {
             prevHeader.right = newNode;
 
             header = newNode;
-        } 
-        
-        // this situation: add last (between trailer.left and trailer)
+        } // this situation: add last (between trailer.left and trailer)
         else if (trailer.left.pointSub > newNode.pointSub) {
 
-            Node tmp=trailer.left;
-            
+            Node tmp = trailer.left;
+
             newNode.right = trailer;
             trailer.left = newNode;
             newNode.left = tmp;
-            tmp.right=newNode;
-        }
-        
-        // this situation: add to the middle 
-        else{
+            tmp.right = newNode;
+        } // this situation: add to the middle 
+        else {
             Node tmp = header;
-            while(tmp.pointSub > newNode.pointSub){
+            while (tmp.pointSub > newNode.pointSub) {
                 tmp = tmp.right;
             }
             Node save = tmp.left;
-            
+
             save.right = newNode;
             newNode.left = save;
             tmp.left = newNode;
             newNode.right = tmp;
         }
     }
+
     /**
      * Remove the first Node
      */
-    public void removeFirst(){
+    public void removeFirst() {
         Node headLeft = header.left;
         Node headRight = header.right;
-        if(header == null) return;
-        else{
+        if (header == null) {
+            return;
+        } else {
             headLeft.right = headRight;
             headRight.left = headLeft;
             header = header.right;
         }
     }
+
     /**
-     * Remove by Email 
+     * Remove by Email
      */
-    public void remove(){
-        if(header == null) return;
+    public void remove() {
         
+        if (header == null) {
+            return;
+        }
+
     }
-    
+
     /**
      * Use to search email of player. Function remove will use this function.
+     *
      * @param email
-     * @return 
+     * @return
      */
-    public Node searchEmail(String email){
+    public Node searchEmail(String tenEmail) {
         Node tmp = header;
-        
+        while (true) {
+            if (tmp.emailSub.contentEquals(tenEmail) && tmp.emailSub.contains(tenEmail)) {
+                return tmp;
+            } else {
+                System.out.println("Not found");
+            }
+            return null;
+        }
     }
-    
+
     /**
      * Print all node from left -> right
      */
