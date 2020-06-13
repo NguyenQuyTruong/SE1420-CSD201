@@ -27,14 +27,23 @@ public void push(String element) throws Exception
 	}	
      public String pop() throws Exception
 	{
-		if(currentElement!=-1)
+		if(currentElement==-1)
 		{
 			throw new Exception("Empty stack");
 		}
+		array[currentElement]=null;
                 return array[currentElement--];
-	}	
+        }
      public boolean isEmpty()
 	{
-		return array.length==0;}
+		return array.length==0;
+        }
+     public void printAll() throws Exception
+	{
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i]+" ");               
+            }
+	}
 }
+
 
