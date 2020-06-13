@@ -16,12 +16,14 @@ public class Stack {
         array=new String[sopt];
         currentElement=-1;//mang chua co phan tu
      }
-     public void push(String element) throws Exception
+public void push(String element) throws Exception
 	{
-		if(currentElement!=array.length){
+		if(currentElement==array.length){
                     throw new  Exception("Full Stack");
                 }
-                currentElement++;       
+                currentElement++;
+                array[currentElement]=element;
+                    
 	}	
      public String pop() throws Exception
 	{
@@ -31,4 +33,8 @@ public class Stack {
 		}
                 return array[currentElement--];
 	}	
+     public boolean isEmpty()
+	{
+		return array.length==0;}
 }
+
