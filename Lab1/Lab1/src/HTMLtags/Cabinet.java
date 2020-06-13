@@ -20,7 +20,7 @@ import java.net.URL;
  */
 public class Cabinet {
 
-    FileDAO file = new FileDAO();
+    static FileDAO file = new FileDAO();
     Stack stack = new Stack(500);
 
     /**
@@ -144,31 +144,42 @@ public class Cabinet {
 
 	if (!tag.contains("</") && alongTag(tag, htmlBody)) {
 	    file.setTagValue(tag);
-	    System.out.println(tag);
+//	    System.out.println(tag);
 	} else {
 	    tag = convertToTag(tag);
 	    if (!tag.contains("</")) {
 		stack.push(tag);
+//		System.out.println(tag);
 	    } else if (compare2Tag(tag, stack.top())) {
 		file.setTagValue(stack.top());
 		stack.pop();
+//		System.out.println(tag);
 	    }
 	}
     }
 
     public static void main(String[] args) throws IOException {
 	Cabinet cage = new Cabinet();
+//	FileDAO file = new FileDAO();
+	Stack stack = new Stack(100);
+//	stack.push("<div>");
+//	stack.push("<a>");
+//	stack.push("<h1>");
+//	stack.push("<h2>");
+//	stack.pop();
+//	System.out.println(stack.top());
 	String body = downloadWebsite("https://vnexpress.net");
-//	System.out.println(cage.existAlongTag(tag, body));
 	cage.analysisHTML(body);
-//	System.out.println(cage.compare2Tag("</a>", "<a>"));
-//	cage.handlingTag("</a>", "<a>Huy</a>....<h2><!--huy-->");
+	
+	file.outputCSV();
+//	System.out.println(body);
 
     }
 
     /**
-     * this method use to download the whole HTML site depend on URL input
-     * and the body will be converted to String
+     * this method use to download the whole HTML site depend on URL input and
+     * the body will be converted to String
+     *
      * @param siteUrl
      * @return
      * @throws MalformedURLException
