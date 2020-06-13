@@ -120,7 +120,7 @@ public class LinkList {
         } else {
             //get node after header
             Node nodeNext = header.getNext();
-            
+
             do {
                 if (nodeNext.getData().getUserEmail().equalsIgnoreCase(email)) {
                     return nodeNext;
@@ -145,34 +145,53 @@ public class LinkList {
         }
     }
 
-    private void addFL(manageGamer data, Node nextNode, Node prevNode) {
-        //create new node
-        Node newNode = new Node(data, nextNode, prevNode);
-        nextNode.setPrev(newNode);  //set prev of next  
-        prevNode.setNext(newNode);  //set next of prev  
-        sizeList++;		    //increase size of list
-    }
-
-    public void addFirst(manageGamer data) {
+    public void addFirst(Node node) {
         //call function add
+        header.next.prev = node;
+        node.next = header.next;
+        node.prev = header;
+        header.next = node;
         //return to header
-        addFL(data, header.getNext(), header);
+
     }
 
-    public void addLast(manageGamer data) {
-        addFL(data, trailer, trailer.getPrev());            //call function add, return trailer
+    public void addLast(Node node) {
+        //call function add, return trailer
+        trailer.prev.next = node;
+        node.prev = trailer.prev;
+        node.next = trailer;
+        trailer.prev = node;
+
     }
 
-    public void addBetween(manageGamer data, Node nodeNext) {
-        if (nodeNext == null) {                         //founded is lowest score so use addLast
-            addLast(data);
+    public void addBetween(manageGamer data) {
+        Node newbie = new Node(data, trailer, header);
+        int point = data.getPoint();
+        if (isEmpty()) {
+            header.next = newbie;
+            newbie.prev = header;
+            newbie.next = trailer;
+            trailer.prev = newbie;
         } else {
-            Node prevNode = nodeNext.getPrev();         //get previous Node
-            Node newNode = new Node(data, nodeNext, prevNode); //create new Node
-            nodeNext.setPrev(newNode);                  //set newnode( prev of next )
-            prevNode.setNext(newNode);                  //set newnode ( next of prev )
-            sizeList++;                                 //increase size of list
+            int pointOfHeader = header.next.getData().getPoint();
+            int pointOfTrailer = trailer.prev.getData().getPoint();
+
+            if (point < pointOfTrailer) {
+                addLast(newbie);
+            } else if (point > pointOfHeader) {
+                addFirst(newbie);
+            } else {
+                Node currentNode = header.next;
+                while (currentNode.getData().getPoint() > newbie.getData().getPoint()) {
+                    currentNode = currentNode.next;
+                }
+                currentNode.prev.next = newbie;
+                newbie.next = currentNode;
+                newbie.prev = currentNode.prev;
+                currentNode.prev = newbie;
+            }
         }
+        sizeList++;                                 //increase size of list
     }
 
     public Node searchNode(int point) {
@@ -189,31 +208,14 @@ public class LinkList {
         return null;
     }
 
-    public void add(manageGamer data) {
-        int point = data.getPoint();    //get point from data
-        if (isEmpty()) {
-            addFirst(data);
-        } else {
-            if (point > header.getNext().getData().getPoint()) {
-                addFirst(data);
-            } else if (point < trailer.getPrev().getData().getPoint()) {
-                addLast(data);
-            } else {
-                Node found = searchNode(point);
-                addBetween(data, found);
-            }
+    public void printList() {
+        //begin in the first node after header
+        Node currentNode = header.getNext();
+        //this loop will scan every node and it will stop until meet the trailer
+        while (currentNode != trailer) {
+            System.out.println(currentNode.getData() + "\n");
+            currentNode = currentNode.getNext();
         }
     }
 
-    public void displayPointUserEmail(String email) {
-        if (isEmpty()) {
-            System.out.println("Please add a new user for use, list is empty");
-        } else {
-            Node founed = searchUserByEmail(email);
-            //user not founded
-            if (founed==null) {
-                System.out.println("Don't found user yet");
-            }
-        }
-    }
 }
