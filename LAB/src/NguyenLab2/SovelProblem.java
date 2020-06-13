@@ -24,7 +24,27 @@ public class SovelProblem {
         }    
     }
 
-    private void analyzeHTMLTag(String content) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public void analyzeHTMLTag(String content) throws Exception {
+        String tag = "";
+        boolean check = false;        
+        for(int i = 0; i < content.length(); i++) {           
+            // '<' is begin of every tag
+            if(content.charAt(i) == '<') {
+                tag = "<";
+                check = true;
+            }           
+            // Only comment tag has '-' character => <!--comment-->
+            else if(content.charAt(i) == '-' ) {
+                tag += "-";
+                check = false;
+            }
+            else if(content.charAt(i) != '>' && content.charAt(i) != ' ' ) {
+                tag += content.charAt(i);
+            }
+            else if(((content.charAt(i) == '>') || (content.charAt(i) == ' ')) ) {
+                tag += ">";
+                check = false;
+            }
+        }
     }
 }
