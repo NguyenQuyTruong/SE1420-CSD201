@@ -43,62 +43,66 @@ public class DoublyLinkedList {
             pre_header.right = header;
             tailer.left = header;
         } else {
-            if (newNode.point > header.point) {//khi point lon nhat
-                newNode.right = header;
-                header.left = newNode;
-                pre_header.right = newNode;
-                newNode.left = pre_header;
-                header = newNode; // update lai cai header moi
-            } else if (newNode.point < tailer.left.point) {//khi point be nhat
+            if (newNode.point < header.point) {//khi point be nhat 
+
                 Node tmp = tailer.left;
                 newNode.right = tailer;
                 tailer.left = newNode;
                 tmp.right = newNode;
                 newNode.left = tmp;
+
+            } else if (newNode.point > tailer.left.point) {//khi point lon nhat
+
+                newNode.right = header;
+                header.left = newNode;
+                pre_header.right = newNode;
+                newNode.left = pre_header;
+                header = newNode; // update lai cai header moi
             } else {
                 Node tmp = header;
-                while (tmp.point>newNode.point) {                    
-                    tmp=tmp.right;
+                while (tmp.point > newNode.point) { // tim toi vi tri
+                    tmp = tmp.right;
                 }
-                Node preTmp =tmp.left;
-                
-                newNode.right=tmp;
-                tmp.left=newNode;
-                newNode.left=preTmp;
-                preTmp.right=newNode;
+                Node preTmp = tmp.left;
+
+                newNode.right = tmp;
+                tmp.left = newNode;
+                newNode.left = preTmp;
+                preTmp.right = newNode;
             }
         }
     }
-    
-    public void delete(String email){
-        Node tmp=header;
-        while (!(tmp.email.contentEquals(email))&&tmp!=tailer) {            
-            tmp=tmp.right;
+
+    public void delete(String email) {
+        Node tmp = header;
+        while (!(tmp.email.contentEquals(email)) && tmp != tailer) {
+            tmp = tmp.right;
         }
-        
-        if (tmp==tailer) {
+
+        if (tmp == tailer) {
             System.out.println("Email ko tim thay");
-        }else{
-            tmp.left.right=tmp.right;
-            tmp.right.left=tmp.left;
-            tmp=null;
+        } else {
+            tmp.left.right = tmp.right;
+            tmp.right.left = tmp.left;
+            tmp = null;
             System.out.println("Email da dc xoa");
         }
-        
+
     }
-    
-    public int getTop(){
+
+    public int getTop() {
         return header.point;
     }
-    
-    public void deleteTop(){
+
+    public void deleteTop() {
         pre_header.right = header.right;
-        header.right.left=pre_header;
-        header=header.right;
+        header.right.left = pre_header;
+        header = header.right;
     }
-    public void print(){
-        for (Node n=pre_header; n!=tailer;n=n.right) {
-            System.out.println("Email: "+n.email+"Point: "+n.point);
+
+    public void print() {
+        for (Node n = pre_header; n != tailer; n = n.right) {
+            System.out.println("Email: " + n.email + "Point: " + n.point);
         }
     }
 }
