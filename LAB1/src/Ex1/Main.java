@@ -7,9 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -27,22 +25,15 @@ import javax.net.ssl.HttpsURLConnection;
  */
 public class Main {
 
-    /**
-     * Main method
-     *
-     * @param args
-     * @throws MalformedURLException
-     * @throws IOException
-     */
-    public static void main(String[] args) throws MalformedURLException, IOException {
+    public static void main(String[] args) throws IOException {
         MyQueue mq = new MyQueue();
         int i = 0;
         String oldFileName = null;
         String newFileName = null;
         String email = "";
-        String urlInput = "";
         int point = 0;
         int choice = 0;
+        String urlInput = "";
         if (args[0].equals("-h")) {
             System.out.println("Exercise 1");
             System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data strucuture into csv file\n");
@@ -57,7 +48,6 @@ public class Main {
         }
 
         for (i = 0; i < args.length; i++) {
-
             if (args[i].equals("-r")) {
                 oldFileName = args[i + 1];
             }
@@ -88,13 +78,12 @@ public class Main {
             if (args[i].equals("-t")) {
                 choice = 6;
             }
-            if (args[i].equals("LAB1.jar") && args[i+1].equals("2")) {
-                urlInput = args[i+2];
-                newFileName = args[i+3];
+            if (args[i].equals("2")) {
+                urlInput = args[i + 1];
+                newFileName = args[i + 2];
                 choice = 7;
             }
         }
-
         switch (choice) {
             case 0: {
                 try {
@@ -318,7 +307,6 @@ public class Main {
                     content += line;
                 }
                 ex2.inputStack(content);
-                System.out.println("Tag, Quantity");
                 Collections.sort(ex2.ar, new Comparator<Tag>() {
                     @Override
                     public int compare(Tag o1, Tag o2) {
@@ -331,9 +319,6 @@ public class Main {
                         }
                     }
                 });
-                for (Tag ar1 : ex2.ar) {
-                    System.out.println(ar1.getTagName() + ", " + ar1.getQuantity());
-                }
                 try {
                     FileWriter fw = new FileWriter(newFileName);
                     PrintWriter pw = new PrintWriter(fw);
@@ -347,7 +332,8 @@ public class Main {
                 } catch (Exception e) {
                     System.err.println("ERROR!");
                 }
-
+                choice = 0;
+                break;
             }
         }
     }
