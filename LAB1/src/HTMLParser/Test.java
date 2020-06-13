@@ -29,6 +29,6 @@ public class Test {
 //	System.out.println(Character.toString(c));
 //	System.out.println(String.valueOf(c));
 	HTMLValidateAndCount html = new HTMLValidateAndCount();
-	html.manage("test.csv", "Wikipedia.html");
+	html.manage("test.csv", "Michigan.html");
     }
 }
