@@ -36,8 +36,9 @@ public class Cabinet {
     }
 
     /**
-     * this method use to check the tag have close tag or not by convert it to
-     * a normal close tag and compare it to every word in HTML body
+     * this method use to check the tag have close tag or not by convert it to a
+     * normal close tag and compare it to every word in HTML body
+     *
      * @param tag
      * @param htmlBody
      * @return true if converted tag not in HTML body
@@ -46,6 +47,19 @@ public class Cabinet {
 	tag = tag.replace("<", "</");
 	return !htmlBody.contains(tag);
     }
+
+    /**
+     * this method use to compare input tag and the tag in stack
+     *
+     * @param tag
+     * @param tagInStack
+     * @return true if the tag is the close tag
+     */
+    private boolean compare2Tag(String tag, String tagInStack) {
+	tag = tag.replace("/", "");
+	return tag.equals(tagInStack);
+    }
+
     /**
      * some special tag like <a ...>, <img ...> don't have the close / character
      * so this method use to convert them to a normal tag => <a>, <img>,...
@@ -104,15 +118,15 @@ public class Cabinet {
 	    }
 	}
     }
-    
-    private void
 
+//    private void
     public static void main(String[] args) {
 	Cabinet cage = new Cabinet();
 	String body = "<a>Huy</a>....<h2><!--huy-->";
 	String tag = "<b>";
 	cage.existAlongTag(tag, body);
 //	System.out.println(cage.existAlongTag(tag, body));
-	cage.analysisHTML(body);
+//	cage.analysisHTML(body);
+	System.out.println(cage.compare2Tag("</a>", "<a>"));
     }
 }
