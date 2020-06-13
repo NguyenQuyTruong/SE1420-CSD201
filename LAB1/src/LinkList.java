@@ -113,38 +113,31 @@ public class LinkList {
         }
         return remove(trailer.getPrev());
     }
-
-    public Node searchUserByEmail(String email) {
-        if (isEmpty()) {
-            System.out.println("Please add a new user for use, list is empty");
-        } else {
-            //get node after header
-            Node nodeNext = header.getNext();
-
-            do {
-                if (nodeNext.getData().getUserEmail().equalsIgnoreCase(email)) {
-                    return nodeNext;
-                } else {                                //countinue to search
-                    nodeNext = nodeNext.getNext();
-                }
-            } while (nodeNext != trailer);
+ public manageGamer removeNode(String email) {
+        Node delNode = searchGamerToDelete(email);
+        if (delNode != null) {
+            return remove(delNode);
         }
-        return null;                                    //no user founded
+        return null;
     }
 
-    public void deleteUserNode(String email) {
-        if (isEmpty()) {
-            System.out.println("Please add a new user for use, list is empty");
-        } else {
-            Node userNode = searchUserByEmail(email);
-            if (userNode == null) {			//not founded
-                System.out.println("User doesn't exit");
-            } else {					//founded
-                remove(userNode);			//remove
+    public manageGamer searchUserByEmail(String email) {
+        for (Node n = header.next; n != trailer; n = n.next) {
+            if (n.getData().getUserEmail().contentEquals(email)) {
+                return n.getData();
             }
         }
+        return null;
     }
 
+    public Node searchGamerToDelete(String email) {
+        for (Node n = header.next; n != trailer; n = n.next) {
+            if (n.getData().getUserEmail().contentEquals(email)) {
+                return n;
+            }
+        }
+        return null;
+    }
     public void addFirst(Node node) {
         //call function add
         header.next.prev = node;
@@ -192,20 +185,6 @@ public class LinkList {
             }
         }
         sizeList++;                                 //increase size of list
-    }
-
-    public Node searchNode(int point) {
-        Node nextnode = header.getNext(); //get node after header
-        do {
-            //find the user have low point
-            if (point > nextnode.getData().getPoint()) {
-                return nextnode.next;
-            } else {
-                // else find a highest point
-                nextnode = nextnode.getNext();
-            }
-        } while (nextnode != trailer);
-        return null;
     }
 
     public void printList() {
