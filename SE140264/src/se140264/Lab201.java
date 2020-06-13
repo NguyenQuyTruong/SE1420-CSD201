@@ -19,7 +19,7 @@ public class Lab201 {
 
         String savefile = null;
         boolean savePermission = false;
-
+        boolean printPermission = true;
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
                 case "-r":
@@ -47,11 +47,11 @@ public class Lab201 {
                     else{
                         System.out.println(dll.getPoint(args[i+1]));
                     }
-                    savePermission = false;
+                    printPermission = false;
                     break;
                 case "-t":
                     System.out.println(dll.getTop());
-                    savePermission = false;
+                    printPermission = false;
                     break;
                     
                     
@@ -66,8 +66,10 @@ public class Lab201 {
             rns.writeData(savefile, dll);
         }
 
+        if (printPermission){
+            dll.print();
+        }
         
-        dll.print();
 
     }
     
