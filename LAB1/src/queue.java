@@ -1,56 +1,59 @@
-
-import java.util.ArrayList;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
  *
  * @author SE140279
  */
 public class queue {
-    singlyLinkedList sll =new singlyLinkedList();
-    //Entry manageGamer to arrayList
-    private ArrayList<manageGamer> list = new ArrayList<>();
-    //creat contructor Node, getter & setter
-   
-    // insert to manageGamer
-    public void insert(manageGamer g) {
-        int point = g.getPoint();
-        int size = size();
-        if (size == 0) {
-            list.add(size, g);
-        } else {
-            for (int i = 0; i < size; i++) {
-                int index = size - 1;
-                if (point <= list.get(index).getPoint()) {
-                    list.add(index, g);
-                    return;
-                }
-            }
-        }
-    }
-    //contructor queue
-    public manageGamer min() {
-        return list.get(0);
+
+    LinkList list = new LinkList();
+
+    public queue() {
     }
 
-    public manageGamer removeMin() {
-        return list.remove(0);
+    public void insert(manageGamer data) {
+        list.addBetween(data);
     }
 
-    public boolean isEmpty() {
-        return list.isEmpty();
+    public LinkList getTop() {
+        return list;
     }
 
-    public int size() {
-        return list.size();
+    public void deleteTop() {
+        list.removeFirst();
     }
 
-    public String toString() {
-        return list.toString() + "\n";
+    public manageGamer deleteUser(String email) {
+        manageGamer data =list.removeFirst();
+        return data;
     }
 
+    public void updateUser(String email, int point) {
+       manageGamer data = list.searchUserByEmail(email);
+	if (data == null) {
+	    System.out.println("Not found users for this!!");
+	    return;
+	} else {
+	    data.setPoint(point);
+	       deleteUser(email);
+	    list.addBetween(data);
+	    System.out.println("Update point successfull");
+	    System.out.println("Email: " + email + ", New point: " + data.getPoint());
+	}
+    }
+
+    public manageGamer searchUser(String email) {
+          manageGamer data = list.searchUserByEmail(email);
+          return data;
+    }
+
+    public manageGamer getTop() {
+    }
+
+    public manageGamer removeTop() {
+       
 }
