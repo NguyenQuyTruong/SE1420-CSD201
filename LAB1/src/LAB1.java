@@ -42,12 +42,15 @@ public class LAB1 {
                     ls.geTop();
                     break;
                 case "-g":
-                    
+                    ls.getPoint(args[i + 1]);
+                    break;
+                default:
+                    break;
             }
         }
+        ls.print();
         if (check == true) {
             cs.writeData(fileSv, ls);
         }
-        ls.print();
     }
 }
