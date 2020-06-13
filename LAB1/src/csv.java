@@ -27,7 +27,7 @@ public class csv {
                 line = bf.readLine();
                 String[] arr = line.split(",");
                 int point = Integer.parseInt(arr[1]);
-                ls.insert(arr[0], point);
+                ls.insert(arr[0], Integer.parseInt(arr[1].trim()));
             } catch (Exception e) {
             }
         } while (true);
