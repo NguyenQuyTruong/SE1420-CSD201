@@ -61,7 +61,6 @@ public class FileDAO {
 	    for (Map.Entry<String, Integer> entry : result.entrySet()) {
 		String line = String.format("%s, %d\n", entry.getKey(), entry.getValue());
 		fw.append(line);
-//		System.out.println(entry.getKey() + ", " + entry.getValue());
 	    }
 	} catch (IOException e) {
 	    System.out.println("Can't write to file now!!");

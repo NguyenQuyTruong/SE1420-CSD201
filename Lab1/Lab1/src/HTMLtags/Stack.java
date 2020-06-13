@@ -9,6 +9,7 @@ package HTMLtags;
  *
  * @author nhoxr
  */
+
 public class Stack {
     public static final int CAPACITY = 1000; //default arrya capacity
     private String[] tag; //data type of tag html
@@ -57,7 +58,7 @@ public class Stack {
 	}
 	return tag[t];
     }
-    
+
     /**
      * this method use to remove the top of the stack
      * @return htmlTag(String)
