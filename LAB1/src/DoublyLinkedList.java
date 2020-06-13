@@ -25,12 +25,12 @@ public class DoublyLinkedList {
     }
 
     public Node header;
-    private Node pre_header;
+    private Node prev_header;
     public Node tailer;
 
     public void DoublyLinkedList() {
         Node newNode = new Node(-1, null);//ban dau point va email chua co se la -1 va null
-        pre_header = newNode;
+        prve_header = newNode;
         tailer = new Node(-1, null);
     }
 
@@ -38,9 +38,9 @@ public class DoublyLinkedList {
         Node newNode = new Node(point, email);
         if (header == null) {
             header = newNode;
-            header.left = pre_header;
+            header.left = prev_header;
             header.right = tailer;
-            pre_header.right = header;
+            prev_header.right = header;
             tailer.left = header;
         } else {
             if (newNode.point < header.point) {//khi point be nhat 
@@ -55,8 +55,8 @@ public class DoublyLinkedList {
 
                 newNode.right = header;
                 header.left = newNode;
-                pre_header.right = newNode;
-                newNode.left = pre_header;
+                prev_header.right = newNode;
+                newNode.left = prev_header;
                 header = newNode; // update lai cai header moi
             } else {
                 Node tmp = header;
@@ -74,7 +74,7 @@ public class DoublyLinkedList {
     }
 
     public void delete(String email) {
-        Node tmp = header;
+        Node tmp = header;// khai bao 1 bien tam
         while (!(tmp.email.contentEquals(email)) && tmp != tailer) { // neu email giong thi xoa
             tmp = tmp.right;
         }
@@ -95,13 +95,13 @@ public class DoublyLinkedList {
     }
 
     public void deleteTop() {// xoa du lieu o dau
-        pre_header.right = header.right;
-        header.right.left = pre_header;
+        prev_header.right = header.right;
+        header.right.left = prev_header;
         header = header.right;
     }
 
     public void print() {
-        for (Node n = pre_header; n != tailer; n = n.right) {
+        for (Node n = prev_header; n != tailer; n = n.right) {
             System.out.println("Email: " + n.email + "Point: " + n.point);
         }
     }
