@@ -11,7 +11,7 @@ package HTMLParser;
  */
 public class HTMLValidateAndCount {
 
-    private FileReadWrite file = new FileReadWrite();
+    private FileProcess file = new FileProcess();
     //Create an stack
     private Stack stack = new Stack();
 
@@ -161,9 +161,9 @@ public class HTMLValidateAndCount {
 
     public void manage(String csvFile, String fileName) {
 	try {
-	    String htmlString = FileReadWrite.readData(fileName);
+	    String htmlString = FileProcess.readData(fileName);
 	    splitTag(htmlString);
-	    FileReadWrite.writeData(csvFile);
+	    FileProcess.writeData(csvFile);
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
