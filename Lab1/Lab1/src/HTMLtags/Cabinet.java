@@ -24,29 +24,6 @@ public class Cabinet {
     Stack stack = new Stack(500);
 
     /**
-     * this method use to check the tag is open or not
-     *
-     * @param tag
-     * @return true or false if the string input have < or </
-     */
-    private boolean checkTagOpen(String tag) {
-	return (tag.contains("<") && !tag.contains("</"));
-    }
-
-    /**
-     * this method use to check the tag have close tag or not by convert it to a
-     * normal close tag and compare it to every word in HTML body
-     *
-     * @param tag
-     * @param htmlBody
-     * @return true if converted tag not in HTML body
-     */
-    private boolean checkAloneTag(String tag, String htmlBody) {
-	tag = tag.replace("<", "</");
-	return !htmlBody.contains(tag);
-    }
-
-    /**
      * this method use to compare input tag and the tag in stack
      *
      * @param tag
@@ -157,7 +134,7 @@ public class Cabinet {
 	String body = downloadWebsite("https://vnexpress.net");
 	cage.analysisHTML(body);
 	
-	file.outputCSV();
+	file.outputCSV("html.csv");
 //	System.out.println(body);
 
     }
