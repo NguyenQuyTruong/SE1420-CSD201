@@ -95,8 +95,19 @@ public class DoubleLinkedList {
         
     }
     
-    public int gettop(){
+    public int getTop(){
         return head.point;
+    }
+    
+    public  int getPoint(String Name){
+        node testing = head;
+        while(!(testing.Name.contentEquals(Name)) && testing != tail){
+            testing= testing.next;
+        }
+        if (testing == tail){
+            return 0;
+        }
+        return testing.point;
     }
     
     public void update(String Name , int point){
