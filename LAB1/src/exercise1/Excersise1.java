@@ -61,7 +61,7 @@ public class Excersise1 {
         try {
             long newPoint = Long.parseLong(point.trim());
             queue.Update(email, newPoint);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             System.out.println("error, point must be number");
         }
     }
