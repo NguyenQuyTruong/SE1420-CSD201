@@ -89,30 +89,28 @@ public class singlyLinkedList {
         if (isEmpty()) {
 
             head = node;
-            tail = node;
+            head.next = tail; 
         } else if (head.score <= node.score) {
 
             node.next = head;
             head = node;
         } else {
 
-            Node frontPtr = head.next;
-            Node backPtr = head;
+            Node beforeNode = head;
 
-            while (frontPtr.score > node.score && frontPtr.next != null) {
+            while (beforeNode.score > node.score && beforeNode.next != null) {
 
-                backPtr = backPtr.next;
-                frontPtr = frontPtr.next;
+                beforeNode = beforeNode.next;
             }
 
-            if (frontPtr == null || frontPtr.score > node.score) {
+            if (beforeNode == null || beforeNode.score > node.score) {
                 
-                frontPtr.next = node;
+                beforeNode.next = node;
                 tail = node;
             } else {
                 
-                backPtr.next = node;
-                node.next = frontPtr;
+                beforeNode.next = node;
+                node.next = beforeNode;
             }
         }
         if (size() > 10) {
