@@ -13,8 +13,8 @@ public class DoublyLinkedList {
     // Create a class Node include information's gamer with 2 Node right, left 
     public class Node {
 
-        private String emailSub; // to link this emailSub -> email (InfoGamer.java)
-        private long pointSub;       // and this pointSub -> point (InfoGamer.java)
+        private String emailSub;    // mobile game need email
+        private long pointSub;       // and point
         private Node right, left;  // doubly linked list has Node left and right
 
         // Create an contructor for email, point of players with 2 default Node = null
@@ -44,6 +44,7 @@ public class DoublyLinkedList {
      */
     public void add(String email, long point) {
         Node newNode = new Node(email, point);
+        
         // this situation : list is empty
         if (header == null) {
             newNode.right = trailer;
@@ -51,8 +52,10 @@ public class DoublyLinkedList {
             newNode.left = prevHeader;
             prevHeader.right = newNode;
             header = newNode;
-            // this situation: add First   
-        } else if (header.pointSub < newNode.pointSub) {
+        } 
+        
+        // this situation: add First   (between prevHeader and header)
+        else if (header.pointSub < newNode.pointSub) {
 
             newNode.right = header;
             header.left = newNode;
@@ -60,8 +63,10 @@ public class DoublyLinkedList {
             prevHeader.right = newNode;
 
             header = newNode;
-            // this situation: add last
-        } else if (trailer.left.pointSub > newNode.pointSub) {
+        } 
+        
+        // this situation: add last (between trailer.left and trailer)
+        else if (trailer.left.pointSub > newNode.pointSub) {
 
             Node tmp=trailer.left;
             
@@ -69,8 +74,10 @@ public class DoublyLinkedList {
             trailer.left = newNode;
             newNode.left = tmp;
             tmp.right=newNode;
-
-        }else{
+        }
+        
+        // this situation: add to the middle 
+        else{
             Node tmp = header;
             while(tmp.pointSub > newNode.pointSub){
                 tmp = tmp.right;
@@ -83,7 +90,20 @@ public class DoublyLinkedList {
             newNode.right = tmp;
         }
     }
-
+    /**
+     * Remove the first Node
+     */
+    public void removeFirst(){
+        Node headLeft = header.left;
+        Node headRight = header.right;
+        if(header == null) return;
+        else{
+            headLeft.right = headRight;
+            headRight.left = headLeft;
+            header = header.right;
+        }
+    }
+    
     /**
      * Print all node from left -> right
      */
