@@ -42,25 +42,11 @@ public class MyQueue {
             this.next = next;
         }
     }
-    /**
-     * Create Node head = null and Node tail = null Create new variable size = 0
-     */
     private Node head = null;
     private Node tail = null;
     private int size = 0;
 
     /**
-     * Insert an Entry into Queue by using SinglyLinkedList First, if the queue is
-     * empty, it will insert new Node by using head = newNode and tail = newNode
-     * Size will increase 1 after an enqueue method complete If the point of
-     * Entry is greater than the point of head Node, it will be inserted before
-     * head like "newNode.next = head" and head Node will transfer to this
-     * newNode If the point of Entry is equal the point of head Node, it will be
-     * inserted before head like "newNode.next = head" and swap their point and
-     * email If the point of Entry is less than or equal the point of tail Node,
-     * it will be inserted before head like "tail.next = newNode" and tail Node
-     * will transfer to this newNode Use for loop to insert in the middle of the
-     * queue
      *
      * @param e
      */
