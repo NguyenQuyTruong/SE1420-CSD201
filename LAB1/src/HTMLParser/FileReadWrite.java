@@ -113,17 +113,12 @@ public class FileReadWrite {
 
     public void updateValue(String tag) {
 	HTMLTag hTMLTag = new HTMLTag(tag, 1);
-	HTMLTag tempTag = list.get(tag);
-	System.out.println(tempTag);
 	if (list.isEmpty()) {
-	    System.out.println("New: " + tag);
 	    list.put(tag, hTMLTag);
 	} else {
-	    if (tempTag.getTag().equals(hTMLTag.getTag())) {
-		System.out.println("Exist: " + tag);
+	    if (list.containsKey(tag)) {
 		list.get(tag).setCount(list.get(tag).getCount() + 1);
 	    } else {
-		System.out.println("New: " + tag);
 		list.put(tag, hTMLTag);
 	    }
 	}
