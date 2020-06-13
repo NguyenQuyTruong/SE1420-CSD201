@@ -31,11 +31,11 @@ public class LinkList {
 
         //getter and setter
         public manageGamer getData() {
-            return data;
+            return data;                //contructor get all data 
         }
 
         public void setData(manageGamer data) {
-            this.data = data;
+            this.data = data;           // contructor sett data 
         }
 
         public Node getNext() {
@@ -120,7 +120,7 @@ public class LinkList {
         } else {
             //get node after header
             Node nodeNext = header.getNext();
-
+            
             do {
                 if (nodeNext.getData().getUserEmail().equalsIgnoreCase(email)) {
                     return nodeNext;
@@ -192,16 +192,28 @@ public class LinkList {
     public void add(manageGamer data) {
         int point = data.getPoint();    //get point from data
         if (isEmpty()) {
-            addFirst(data); 
+            addFirst(data);
         } else {
             if (point > header.getNext().getData().getPoint()) {
                 addFirst(data);
             } else if (point < trailer.getPrev().getData().getPoint()) {
                 addLast(data);
             } else {
+                Node found = searchNode(point);
                 addBetween(data, found);
             }
         }
     }
 
+    public void displayPointUserEmail(String email) {
+        if (isEmpty()) {
+            System.out.println("Please add a new user for use, list is empty");
+        } else {
+            Node founed = searchUserByEmail(email);
+            //user not founded
+            if (founed==null) {
+                System.out.println("Don't found user yet");
+            }
+        }
+    }
 }
