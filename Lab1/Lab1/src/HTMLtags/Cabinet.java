@@ -30,21 +30,7 @@ public class Cabinet {
      * @return true or false if the string input have < or </
      */
     private boolean checkTagOpen(String tag) {
-	return (tag.contains("<") && !checkTagClose(tag));
-    }
-
-    private boolean checkTagClose(String tag) {
-	return tag.contains("</");
-    }
-
-    /**
-     * this method use regex to check the string input is the tag or not
-     *
-     * @param tag
-     * @return true or false
-     */
-    private boolean checkTagByRegex(String tag) {
-	return tag.matches("^['<''/'A-Za-z0-9]+$");
+	return (tag.contains("<") && !tag.contains("</"));
     }
 
     /**
