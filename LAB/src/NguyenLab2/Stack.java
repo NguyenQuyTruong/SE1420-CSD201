@@ -16,4 +16,13 @@ public class Stack {
         array=new String[sopt];
         currentElement=-1;//mang chua co phan tu
      }
+     public void push(String element) throws Exception
+	{
+		if(currentElement!=array.length){
+                    throw new  Exception("Full Stack");
+                }
+                currentElement++;
+               
+                    
+	}	
 }
