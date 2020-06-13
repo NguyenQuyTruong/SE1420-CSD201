@@ -18,7 +18,7 @@ public class main {
         CSV cs = new CSV();
         String save_file = null;
 
-        boolean check = false;// kiem tra da luu file chua
+        boolean check = false;// kiem tra da luu file chua ban dau chua luu file
 
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
@@ -27,7 +27,7 @@ public class main {
                     break;
 
                 case "-s":
-                    check = true;
+                    check = true;// neu la true thi se luu file lai
                     save_file = args[i + 1];// save file dang string
                     break;
                 case "-a":
@@ -36,7 +36,7 @@ public class main {
 
             }
         }
-        if (check) {
+        if (check==false) {//neu van chua luu
             cs.writeData(save_file, dk);
         }
         
