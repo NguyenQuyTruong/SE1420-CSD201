@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, Exception {
         DoublyLinkedList dk = new DoublyLinkedList();
         CSV cs = new CSV();
         String save_file = null;
@@ -36,7 +36,9 @@ public class main {
 
             }
         }
-        
+        if (check) {
+            cs.writeData(save_file, dk);
+        }
         
     }
 }
