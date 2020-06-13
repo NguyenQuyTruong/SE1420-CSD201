@@ -15,7 +15,10 @@ public class Ex2Manager {
 
     MyStack ms = new MyStack();
     ArrayList<Tag> ar = new ArrayList<>();
-
+/**
+ * 
+ * @param content : whole source code of the link 
+ */
     public void inputStack(String content) {
         char c[] = content.toCharArray();
         String openTag = "";
