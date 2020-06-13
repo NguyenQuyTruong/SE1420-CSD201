@@ -24,7 +24,7 @@ private int point;
         return userEmail;
     }
 
-    public void setUserEmail(String userEmail) {
+    public void setUser(String userEmail) {
         this.userEmail = userEmail;
     }
 
