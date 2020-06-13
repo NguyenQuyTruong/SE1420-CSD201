@@ -58,9 +58,9 @@ public class Cabinet {
      * @param tag
      * @return close tag String
      */
-    private boolean convertToCloseTag(String tag, String htmlBody) {
+    private boolean existAlongTag(String tag, String htmlBody) {
 	String closeTag = tag.replace("<", "</");
-	return htmlBody.contains(closeTag);
+	return !htmlBody.contains(closeTag);
 
     }
 
