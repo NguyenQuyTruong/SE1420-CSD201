@@ -15,17 +15,17 @@ private int point;
     public manageGamer() {
     }
 
-    public manageGamer(String userGamer, int point) {
-        this.userEmail = userGamer;
+    public manageGamer(String userEmail, int point) {
+        this.userEmail = userEmail;
         this.point = point;
     }
     // getter & setter
-    public String getUserGamer() {
+    public String getUserEmail() {
         return userEmail;
     }
 
-    public void setUserGamer(String userGamer) {
-        this.userEmail = userGamer;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public int getPoint() {
