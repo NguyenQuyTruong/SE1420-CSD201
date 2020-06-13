@@ -16,7 +16,7 @@ public class Main {
      */
     public static void main(String[] args) {
           // TODO code application logic here
-        String url = "http://lms-undergrad.fpt.edu.vn/login/index.php";
+        String url = "https://www.google.com/";
         String file = "output.csv";
         SovelProblem s = new SovelProblem(url, file);
     }
