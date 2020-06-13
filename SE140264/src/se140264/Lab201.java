@@ -47,9 +47,11 @@ public class Lab201 {
                     else{
                         System.out.println(dll.getPoint(args[i+1]));
                     }
+                    savePermission = false;
                     break;
                 case "-t":
-                    dll.getTop();
+                    System.out.println(dll.getTop());
+                    savePermission = false;
                     break;
                     
                     
