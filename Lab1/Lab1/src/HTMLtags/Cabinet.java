@@ -11,6 +11,8 @@ package HTMLtags;
  */
 public class Cabinet {
 
+    FileDAO file = new FileDAO();
+    Stack stack = new Stack(500);
     /**
      * this method use to check the tag is open or not
      *
@@ -83,7 +85,7 @@ public class Cabinet {
      * @param tag
      * @return close tag String
      */
-    private boolean existAlongTag(String tag, String htmlBody) {
+    private boolean alongTag(String tag, String htmlBody) {
 	String closeTag = tag.replace("<", "</");
 	return !htmlBody.contains(closeTag);
     }
@@ -114,19 +116,44 @@ public class Cabinet {
 		    && validTag) {
 		tag = tag + '>';
 		validTag = false; //enough char to create a tag so we turn this of =))
-		System.out.println(tag);
+		handlingTag(tag, htmlBody);
 	    }
 	}
     }
 
-//    private void
+    /**
+     * this method use to handling tag from HTML body, it will check the tag is open
+     * or close and depend on it to push to stack or pop of stack, this method also
+     * send tag to file
+     * @param tag
+     * @param htmlBody
+     */
+    private void handlingTag(String tag, String htmlBody) {
+	tag = tag.toLowerCase();
+
+	if (!tag.contains("</") && alongTag(tag, htmlBody)) {
+	    file.setTagValue(tag);
+	} else {
+	    tag = convertToTag(tag);
+	    if (!tag.contains("</")) {
+		stack.push(tag);
+		System.out.println(tag);
+	    } else if(compare2Tag(tag, stack.top())) {
+		file.setTagValue(stack.top());
+		stack.pop();
+	    }
+	}
+    }
+    
+    
     public static void main(String[] args) {
 	Cabinet cage = new Cabinet();
 	String body = "<a>Huy</a>....<h2><!--huy-->";
 	String tag = "<b>";
-	cage.existAlongTag(tag, body);
+	cage.alongTag(tag, body);
 //	System.out.println(cage.existAlongTag(tag, body));
 //	cage.analysisHTML(body);
-	System.out.println(cage.compare2Tag("</a>", "<a>"));
+//	System.out.println(cage.compare2Tag("</a>", "<a>"));
+	cage.handlingTag("</a>", "<a>Huy</a>....<h2><!--huy-->");
     }
 }
