@@ -36,8 +36,8 @@ public class queue {
             data.setPoint(point);
             deleteUser(email);
             list.addBetween(data);
-            System.out.println("Update point successfull");
-            System.out.println("Email: " + email + ", New point: " + data.getPoint());
+            System.out.println("update successfull");
+            System.out.println("email: " + email + ", new point: " + data.getPoint());
         }
     }
 
@@ -53,5 +53,8 @@ public class queue {
     public manageGamer removeTop() {
         return list.removeFirst();
 
+    }
+    public void printQ(){
+        list.printList();
     }
 }
