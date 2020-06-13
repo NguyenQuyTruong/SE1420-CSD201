@@ -1,5 +1,5 @@
 # SE1420-CSD201
-# LAB 1 - NGUYEN XUAN KHANH HOA
+# LAB 1 - NGUYEN XUAN KHANH HOA - SE140424
 ***
 > ### Exercise 1
 * The solution for exercise 1 is in LAB1. Please ignore project My_LAB1 and lab0 as they are drafts.
