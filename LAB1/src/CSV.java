@@ -31,7 +31,7 @@ public class CSV {
                 case "1":
                     csv.ParseArgument(RemovedProblemID);
                     break;
-                case "2":
+                case "-h":
                     System.out.println(tutorials);
                     break;
                 default:
