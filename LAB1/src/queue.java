@@ -1,3 +1,8 @@
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,6 +23,7 @@ public class queue {
     public void insert(manageGamer data) {
         list.addBetween(data);
     }
+    
     public void deleteTop() {
         list.removeFirst();
     }
@@ -26,7 +32,7 @@ public class queue {
         manageGamer data = list.removeFirst();
         return data;
     }
-
+   
     public void updateUser(String email, int point) {
         manageGamer data = list.searchUserByEmail(email);
         if (data == null) {
@@ -54,7 +60,36 @@ public class queue {
         return list.removeFirst();
 
     }
-    public void write(String namefile) throw IOException{
-        
+      public void ReadFile(queue q, String fileName) {
+	FileReader fr = null;
+	BufferedReader bf = null;
+	try {
+	    fr = new FileReader(fileName);
+	    bf = new BufferedReader(fr);
+	    while (bf.ready()) {
+		String s = bf.readLine();
+		String[] arr = s.split(", ");
+		if (!(arr[1].equalsIgnoreCase("point :"))) {
+		    q.insert(new manageGamer(arr[0], Integer.valueOf(arr[1])));
+		}
+	    }
+	} catch (IOException e) {
+	    System.out.println("File not exist!!");
+	} finally {
+	    try {
+		if (fr != null) {
+		    fr.close();
+		}
+		if (bf != null) {
+		    bf.close();
+		}
+	    } catch (IOException e) {
+		System.out.println("Something wrong with Reading file");
+	    }
+	}
+    }
+
+    public void write(String namefile) throws IOException{
+        list.writeToCSVfile(namefile);
 }
 }
