@@ -22,15 +22,28 @@ public class Stack {
 	html = new String[SIZEARRAY];
     }
 
+    /**
+     * Get size of stack
+     * @return size of stack 
+     */
     public int size() {
 	int size = top;
+	//because top start from -1 so need to +1 to become true length
 	return (size + 1);
     }
 
+    /**
+     * Check is empty or not
+     * @return true or false
+     */
     public boolean isEmpty() {
 	return size() < 0;
     }
 
+    /**
+     * Push an element into stack
+     * @param tag 
+     */
     public void push(String tag) {
 	if (top == html.length) {
 	    System.out.println("Out of stack");
@@ -39,20 +52,33 @@ public class Stack {
 	    html[top] = tag; //add stack
 	}
     }
-
+    
+    /**
+     * Take first element in stack
+     * @return an element
+     */
     public String pop() {
 	String tag;
+	//make sure tag is not empty for take
 	if (isEmpty()) {
 	    return null;
 	}
+	//get tag
 	tag = html[top];
+	//set top to null 
+	//set address of top to null for Garbage Collection remove it
 	html[top] = null;
+	//decrease size
 	if (top > -1) {
 	    top--;
 	}
 	return tag;
     }
 
+    /**
+     * Get top of stack without remove it
+     * @return top of stack
+     */
     public String top() {
 	if (isEmpty()) {
 	    return null;
