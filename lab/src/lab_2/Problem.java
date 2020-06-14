@@ -1,0 +1,110 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package lab_2;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+/**
+ *
+ * @author Khả Thi
+ */
+public class Problem {
+    Csv cv = new Csv();
+    StackBaseArray ba = new StackBaseArray(200);
+    DownWeb d = new DownWeb();
+ public void processingHTMLTag(String tag) throws Exception {
+     
+           
+     if(tag.equalsIgnoreCase("<!DOCTYPE>"))
+            cv.CheckAndUpdate(tag);
+        else if(tag.equalsIgnoreCase("<!-"))
+             cv.CheckAndUpdate("<!--comment-->");
+        else if(tag.equalsIgnoreCase("<meta>"))
+             cv.CheckAndUpdate(tag);
+        else if(tag.equalsIgnoreCase("<link>"))
+             cv.CheckAndUpdate(tag);
+        else if(tag.equalsIgnoreCase("<img>"))
+            cv.CheckAndUpdate(tag);
+        else if(tag.equalsIgnoreCase("<br>"))
+             cv.CheckAndUpdate(tag);
+        else if(tag.equalsIgnoreCase("<hr>"))
+            cv.CheckAndUpdate(tag);
+        else if(tag.equalsIgnoreCase("<input>"))
+             cv.CheckAndUpdate(tag);
+        else if(tag.equalsIgnoreCase("<![endif]-"))
+             cv.CheckAndUpdate("<![endif]-->");
+        else if(tag.equalsIgnoreCase("<head>"))
+             cv.CheckAndUpdate("<head>");
+        else if(tag.equalsIgnoreCase("<body>"))
+             cv.CheckAndUpdate("<body>");
+        else if(tag.equalsIgnoreCase("<a>"))
+             cv.CheckAndUpdate("<a>");
+        else if(tag.equalsIgnoreCase("<h1>"))
+             cv.CheckAndUpdate("<h1>");
+        else if(tag.equalsIgnoreCase("<script>"))
+             cv.CheckAndUpdate("<script>");
+        else if(tag.equalsIgnoreCase("<picture>"))
+             cv.CheckAndUpdate("<picture>");
+        
+        else{
+            if(tag.contains("</") == false) {
+                ba.Push(tag);
+                cv.CheckAndUpdate(tag);
+            }
+            else if(ba.GetTop().equalsIgnoreCase(tag.replace("/", "")) == true) {
+                ba.Pop();
+            }
+        }
+ }
+  public void CheckTag() throws Exception {
+        String line;
+        String tag="";
+        BufferedReader reader = new BufferedReader(new FileReader("page.html"));
+        while((line = reader.readLine()) != null) {
+	String checkTag = line;
+        boolean caseTag = false;        
+        for(int i = 0; i < checkTag.length(); i++) {           
+            if(checkTag.charAt(i) == '<') {
+                tag = "<";
+                caseTag = true;
+            }           
+            else if(checkTag.charAt(i) == '-' && caseTag == true) {//comment tag
+                tag += "-";
+                processingHTMLTag(tag);
+                caseTag = false;
+            }
+            else if(checkTag.charAt(i) != '>' && checkTag.charAt(i) != ' ' && caseTag == true) {
+                tag += checkTag.charAt(i);
+            }
+            else if(((checkTag.charAt(i) == '>') || (checkTag.charAt(i) == ' ')) && caseTag == true) {
+                tag += ">";
+                caseTag = false;
+                processingHTMLTag(tag);
+            }
+          }
+       }
+        
+    }
+  public Problem(String urlWeb, String filename) {
+        try {
+           DownWeb.Download(urlWeb);
+//           String content =cv.readFile(filename);
+            CheckTag();
+            ba.Print();
+            cv.SaveToFile("OutPut.csv");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }    
+    }
+    public static void main(String[] args) {
+        String url ="http://lms-undergrad.fpt.edu.vn/login/index.php";
+        String filename ="page.htm";
+        Problem pr = new Problem(url, filename);
+    }
+ 
+    
+}
