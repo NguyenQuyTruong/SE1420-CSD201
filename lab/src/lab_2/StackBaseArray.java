@@ -25,16 +25,22 @@ public class StackBaseArray implements Stack{
         Array[Check] = tag;
     }
     @Override
-    public int Pop(){
+    public String Pop(){
         if(Check == -1){
             System.out.println("Stack is empty!");
+            return null;
         }
-        
+        Array[Check] = null;
+        return Array[Check--];
     }
 
     @Override
-    public void GetTop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String GetTop() {
+        if(Check == -1){
+            System.out.println("Stack is empty!");
+            return null;
+        }
+        return Array[Check];
     }
 
     @Override
