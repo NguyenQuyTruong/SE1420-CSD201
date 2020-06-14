@@ -9,11 +9,15 @@ package lab_2;
  *
  * @author Khả Thi
  */
+/**
+	 * make a base value to check stack and array to store value
+	 * @param check,Array
+	 */
 public class StackBaseArray implements Stack{
     int Check =-1;
     String Array[];
-    public StackBaseArray(String n){
-        
+    public StackBaseArray(int n){
+        Array = new String[n];
         Check = -1;
     }
     @Override
@@ -59,8 +63,10 @@ public class StackBaseArray implements Stack{
 
     @Override
     public void Print() {
-        for (int i = 0; i < Array.length; i++) {
-            System.out.println(Array[i]);
-        }
+        Csv cv = new Csv();
+        for (String keys : cv.map.keySet())
+{
+   System.out.println(keys);
+}
     }
 }
