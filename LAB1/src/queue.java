@@ -54,7 +54,7 @@ public class queue {
         return list.removeFirst();
 
     }
-    public void printQ(){
-        list.printList();
-    }
+    public void write(String namefile) throw IOException{
+        
+}
 }
