@@ -10,11 +10,45 @@ package lab_2;
  * @author Khả Thi
  */
 public class StackBaseArray implements Stack{
-    int Size ;
+    int Check =-1;
     String Array[];
-    public StackBaseArray(){
-        Size = -1;
+    public StackBaseArray(String n){
+        
+        Check = -1;
     }
     @Override
-    
+    public void Push(String tag){
+        if(Check ==Array.length){
+            System.out.println("Stack is full!");
+        }
+        Check++;
+        Array[Check] = tag;
+    }
+    @Override
+    public int Pop(){
+        if(Check == -1){
+            System.out.println("Stack is empty!");
+        }
+        
+    }
+
+    @Override
+    public void GetTop() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean IsEmpty() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int Size() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Print() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
