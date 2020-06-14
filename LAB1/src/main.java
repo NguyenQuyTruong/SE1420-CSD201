@@ -66,24 +66,13 @@ public class main {
         System.out.println("remove successful!!");
     }
 
-    private static int contains(String[] arr, String value) {
-        int result = -1;
-
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i].equals(value)) {
-                result = i;
-            }
-        }
-        return result;
-    }
-
     public static void main(String[] args) {
         queue q = new queue();
         String email = null;
         int point = 0;
-        String file = null;
+        String oldfile = null;
         String newfile = null;
-        int choice;
+        int choice = 0;
         if (args[0].equals("-h")) {
             System.out.println("Exercise 1");
             System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data strucuture into csv file\n");
@@ -98,7 +87,8 @@ public class main {
         }
         for (int i = 0; i < args.length; i++) {
             if (args[i].equals("-r")) {
-                file = args[i + 1];
+                oldfile = args[i + 1];
+
             }
             if (args[i].equals("-s")) {
                 newfile = args[i + 1];
@@ -106,23 +96,60 @@ public class main {
             if (args[i].equals("-a")) {
                 email = args[i + 1];
                 point = Integer.parseInt(args[i + 2]);
+                choice = 1;
             }
             if (args[i].equals("-d")) {
                 email = args[i + 1];
-
+                choice = 2;
             }
             if (args[i].equals("-u")) {
                 email = args[i + 1];
                 point = Integer.parseInt(args[i + 2]);
-
+                choice = 3;
             }
             if (args[i].equals("-dt")) {
-
+                choice = 4;
             }
             if (args[i].equals("-g")) {
                 email = args[i + 1];
+                choice = 5;
             }
             if (args[i].equals("-t")) {
+                choice = 6;
+            }
+
+            switch (choice) {
+                case 0: {
+                    queue = new queue();
+                    oldfile = args[i + 1];
+                    queue.ReadFile(queue, oldfile);
+                    break;
+                }
+                case 1: {
+                    NewGamer(args[i + 1], args[i + 2]);
+                    break;
+                }
+                case 2: {
+                    deleteGame(email);
+                    break;
+                }
+                case 3: {
+                    updateGamer(args[i + 1], args[i + 2]);
+                    break;
+                }
+                case 4: {
+                    deleteTopGamer();
+                    break;
+                }
+                case 5: {
+                    searchGamer(email);
+                    break;
+                }
+                case 6: {
+                    getTopGamer();
+                    break;
+                }
+
             }
         }
 
