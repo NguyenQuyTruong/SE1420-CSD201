@@ -5,7 +5,7 @@
 
 1. Exercise 1
 - I use Priority Queue based on Double Linked List to store data of gamer
-- Not to hard but it take me 4 days to solve =))
+- Not too hard but it take me 4 days to solve =))
 2. Exercise 2
 - This problem is about counting tags in a HTML page :v
 - Well this thing make me Google **a lot** =)) and I also borrow my friend's algorithm a little bit :>, maybe it not perfect but i have 
