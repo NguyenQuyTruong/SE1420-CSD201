@@ -17,6 +17,7 @@ public class LAB1 {
         FileCsv fileCsv = new FileCsv();
         try {
             for (int i = 0; i < args.length; i++) {
+                if(args[0].contentEquals("1")){
                 switch (args[i]) {
                     case "-h":
                         System.out.println(
@@ -34,6 +35,15 @@ public class LAB1 {
                         fileCsv.readDataFormFileCsv(args[i + 1], d);
                         break;
                     case "-s":
+                        fileCsv.write(args[i+1], d);
+                        break;
+                    case "-a":
+                        d.add(args[i+1],Long.parseLong(args[i+2]));
+                        break;
+                    case "-d":
+                        d.remove(args[i+1]);
+                        break;
+                }
                 }
             }
             d.print();
