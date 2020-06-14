@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 /**
  *
  * @author nhoxr
@@ -46,6 +45,7 @@ public class PriorityQueue {
 
     /**
      * this method will delete Gamer depend on input email
+     *
      * @param email
      * @return Gamer
      */
@@ -57,6 +57,7 @@ public class PriorityQueue {
     /**
      * this method will receive email input and return Gamer, if the list don't
      * have this gamer return null
+     *
      * @param email
      * @return Gamer
      */
@@ -68,6 +69,7 @@ public class PriorityQueue {
     /**
      * this method use to update Gamer by receive email input and let the user
      * edit point.
+     *
      * @param email
      * @param point
      */
@@ -75,10 +77,9 @@ public class PriorityQueue {
 	Gamer data = list.searchGamerByEmail(email);
 	if (data == null) {
 	    System.out.println("Not found!!");
-	    return;
 	} else {
 	    data.setPoint(point);
-	    deleteGamer(email);
+	    list.removeNode(email);
 	    list.addBetween(data);
 	    System.out.println("Update point successfull");
 	    System.out.println("Email: " + email + ", New point: " + data.getPoint());
@@ -86,7 +87,9 @@ public class PriorityQueue {
     }
 
     /**
-     * this method use to Read the file and import Gamer data(email, point) to the queue
+     * this method use to Read the file and import Gamer data(email, point) to
+     * the queue
+     *
      * @param queue
      * @param fileName
      */

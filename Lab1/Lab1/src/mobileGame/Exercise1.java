@@ -103,7 +103,7 @@ public class Exercise1 {
 	queue.printQueue();
     }
 
-    public static void main(String[] args) throws IOException {
+    public void inputCLI(String[] args) throws IOException {
 	Exercise1 ex = new Exercise1();
 	String inputFile = "";
 	String outputFile = "";
@@ -146,7 +146,5 @@ public class Exercise1 {
 	} catch (ArrayIndexOutOfBoundsException e) {
 	    System.out.println("Can't find argument to excecute!");
 	}
-	System.out.println("File input: " + inputFile);
-	System.out.println("File output: " + outputFile);
     }
 }

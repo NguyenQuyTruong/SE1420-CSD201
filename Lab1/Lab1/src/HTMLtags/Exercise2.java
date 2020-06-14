@@ -6,7 +6,6 @@
 package HTMLtags;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,7 +17,7 @@ import java.net.URL;
  *
  * @author nhoxr
  */
-public class Cabinet {
+public class Exercise2 {
 
     static FileDAO file = new FileDAO();
     Stack stack = new Stack(500);
@@ -121,22 +120,16 @@ public class Cabinet {
 	}
     }
 
-    public static void main(String[] args) throws IOException {
-	Cabinet cage = new Cabinet();
-//	FileDAO file = new FileDAO();
-	Stack stack = new Stack(100);
-//	stack.push("<div>");
-//	stack.push("<a>");
-//	stack.push("<h1>");
-//	stack.push("<h2>");
-//	stack.pop();
-//	System.out.println(stack.top());
-	String body = downloadWebsite("https://vnexpress.net");
-	cage.analysisHTML(body);
-	
-	file.outputCSV("html.csv");
-//	System.out.println(body);
-
+    public void inputCLI(String url, String fileName) throws IOException {
+	try {
+	    String body = downloadWebsite(url);
+	    analysisHTML(body);
+	    file.outputCSV(fileName);
+	} catch (IOException e) {
+	    System.out.println("Can't write to file =(((");
+	} catch (Exception e) {
+	    System.out.println("Can't read the URL");
+	}
     }
 
     /**
@@ -148,7 +141,7 @@ public class Cabinet {
      * @throws MalformedURLException
      * @throws IOException
      */
-    public static String downloadWebsite(String siteUrl) throws MalformedURLException, IOException {
+    public static String downloadWebsite(String siteUrl) throws MalformedURLException, IOException{
 	HttpURLConnection connection = (HttpURLConnection) new URL(siteUrl).openConnection();
 	connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36");
 	StringBuilder htmlBody = new StringBuilder();
