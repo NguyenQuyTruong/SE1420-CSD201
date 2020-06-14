@@ -45,16 +45,22 @@ public class StackBaseArray implements Stack{
 
     @Override
     public boolean IsEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(Check == -1){
+            return true;
+        }
+
+        return false;
     }
 
     @Override
     public int Size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Check;
     }
 
     @Override
     public void Print() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < Array.length; i++) {
+            System.out.println(Array[i]);
+        }
     }
 }
