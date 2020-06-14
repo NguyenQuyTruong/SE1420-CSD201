@@ -1,3 +1,7 @@
+
+import java.io.FileWriter;
+import java.io.IOException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -113,8 +117,9 @@ public class LinkList {
         }
         return remove(trailer.getPrev());
     }
- public manageGamer removeNode(String email) {
-        Node delNode = searchGamerToDelete(email);
+
+    public manageGamer removeNode(String email) {
+        Node delNode = searchDelete(email);
         if (delNode != null) {
             return remove(delNode);
         }
@@ -130,21 +135,21 @@ public class LinkList {
         return null;
     }
 
-    public Node searchGamerToDelete(String email) {
-        for (Node n = header.next; n != trailer; n = n.next) {
+    public Node searchDelete(String email) {
+        for (Node n = trailer.next; n != trailer; n = n.next) {
             if (n.getData().getUserEmail().contentEquals(email)) {
-                return n;
             }
         }
         return null;
     }
-    public manageGamer getfirst(){
-         if (isEmpty()) {
+
+    public manageGamer getfirst() {
+        if (isEmpty()) {
             return null;
         }
         return header.getNext().getData();
     }
-    
+
     public void addFirst(Node node) {
         //call function add
         header.next.prev = node;
@@ -193,7 +198,7 @@ public class LinkList {
         }
         sizeList++;                                 //increase size of list
     }
-    
+
     public void printList() {
         Node currentNode = header.getNext();
         while (currentNode != trailer) {
@@ -201,5 +206,25 @@ public class LinkList {
             currentNode = currentNode.getNext();
         }
     }
-
+    public void writeToCSVfile(String fileName) throws IOException {
+	FileWriter fr = null;
+	try {
+	    fr = new FileWriter(fileName);
+	    fr.append("email, eoint\n");
+	    for (Node n = header.next; n != trailer; n = n.next) {
+		String data = String.format("%s, %d\n", n.getData().getUserEmail(),n.getData().getPoint());
+		fr.append(data);
+	    }
+	} catch (IOException e) {
+	    System.out.println("Can't write a file!!");
+	} finally {
+	    try {
+		if (fr != null) {
+		    fr.close();
+		}
+	    } catch (IOException e) {
+		System.out.println("File not exist!!");
+	    }
+	}
+    }
 }
