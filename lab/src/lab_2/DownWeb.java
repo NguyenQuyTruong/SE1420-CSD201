@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+import java.util.Scanner;
 
 /**
  *
@@ -22,8 +22,17 @@ public class DownWeb {
     public static void Download(String url) throws MalformedURLException, IOException{
        URL urld = new URL(url);
        String Path;
-       BufferedReader reader =  new BufferedReader(new InputStreamReader(url.openStream()));
-       BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\page.html"));
-    }
+      
+      try(
+         BufferedReader reader =  new BufferedReader(new InputStreamReader(urld.openStream()));         
+         BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\page.html"));       
+      )  {      
+         String line;
+         while ((line = reader.readLine()) != null) {
+            writer.write(line);
+         }            
+         System.out.println("Page downloaded.");
+      } 
     
+    }
 }
