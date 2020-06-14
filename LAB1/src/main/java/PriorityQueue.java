@@ -6,79 +6,73 @@ import java.io.IOException;
 
 
 public class PriorityQueue extends DoubleLinkedList{
-    public PriorityQueue(){}
+    private DoubleLinkedList list = new DoubleLinkedList();
+
     /**
-     * Method for Insert Player
-     * @param data 
+     * Method for adding new Player to the List
+     *
+     * @param Player data
      */
-    public void insertPlayer(Player data){
-        add(data);
+    public void push(Player data) {
+	list.addBetween(data);
+//	System.out.println("push Player data successful!!");
     }
+
     /**
-     * Method for Update Player
-     * @param email
-     * @param point 
-     */
-    public void updatePlayer(String email, int point){
-        updateNode(email, point);
-    }
-    /**
-     * Method for delete Player
-     * @param email 
-     */
-    public void deletePlayer(String email){
-        deletePlayerNode(email);
-    }
-    /**
-     * Method for Search Player
-     * @param email 
-     */
-    public void searchPlayer(String email){
-        displayPointByEmail(email);
-    }
-    /**
-     * Method for Getting data of the top Player
+     * Method for getting the Top Player
+     *
      * @return Player
      */
-    public void getTop(){
-        displayTopPlayer();
+    public Player getTop() {
+	return list.first();
     }
+
     /**
-     * Method for Deleting the top Player
+     * Method for deleting the Top Player
      */
-    public void removeTop(){
-        if(isEmpty()){
-            System.out.println("The List is Empty.... try input some data first.");
-        }else{
-            removeFirst();
-        }
+    public void deleteTop() {
+	list.removeFirst();
     }
+
     /**
-     *Get the List and write the data down to the file.
-     * 
-     * @param fileName
+     * Method for deleting a Player by inputted
+     * @param email
+     * @return Player
      */
-    public void writeToFile ( String fileName) {
-        FileWriter file = null;
-        try{
-            file = new FileWriter(fileName);
-            file.append("Email, Point(s)\n");
-            for(DoubleLinkedList.Node n = head.getNext(); n!= trail; n = n.getNext()){
-                String data = String.format("%s, %d\n", n.getPlayer().getEmail(), n.getPlayer().getPoint());
-                file.append(data);
-            }
-        }catch(IOException e){
-            System.out.println("---Error: Something has gone wrong---");
-        } finally {
-            try {
-                if(file != null){
-                    file.close();
-                }
-            } catch (Exception e) {
-                System.out.println("File doesn't exist.");
-            }
-        }
+    public Player deletePlayer(String email) {
+	Player data = list.removeNode(email);
+	return data;
     }
+
+    /**
+     * Method for returning the Player data by Email
+     * @param email
+     * @return Player
+     */
+    public Player searchPlayer(String email) {
+	Player data = list.searchPlayerByEmail(email);
+	return data;
+    }
+
+    /**
+     * Method for updating inputted email's point
+     * @param email
+     * @param point
+     */
+    public void updatePlayer(String email, int point) {
+	Player data = list.searchPlayerByEmail(email);
+	if (data == null) {
+	    System.out.println("Not found!!");
+	    return;
+	} else {
+	    data.setPoint(point);
+	    deletePlayer(email);
+	    list.addBetween(data);
+	    System.out.println("Update point successfull");
+	    System.out.println("Email: " + email + ", New point: " + data.getPoint());
+	}
+    }
+
     /**
      * Method use to Read file and push the data to queue
      * @param queue
@@ -94,7 +88,7 @@ public class PriorityQueue extends DoubleLinkedList{
                 String line = br.readLine();
                 String[] arr = line.split(", ");
                 if(!(arr[1].equalsIgnoreCase("point"))){
-                    queue.insertPlayer(new Player(arr[0], Integer.valueOf(arr[0])));
+                    queue.push(new Player(arr[0], Integer.valueOf(arr[1])));
                 }
             }
         } catch (Exception e) {
@@ -116,6 +110,6 @@ public class PriorityQueue extends DoubleLinkedList{
      * @return List
      */
     public void printDaList(){
-        printList();
+        list.printList();
     }
 }
