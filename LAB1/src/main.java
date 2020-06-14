@@ -65,123 +65,44 @@ public class main {
         queue.deleteTop();
         System.out.println("remove successful!!");
     }
+     private static int contains(String[] arr, String value) {
+	int result = -1;
 
+	for (int i = 0; i < arr.length; i++) {
+	    if (arr[i].equals(value)) {
+		result = i;
+	    }
+	}
+	return result;
+    }
+    private static String CLIcheck(String[] args) {
+	String result = "";
+	if (args.length != 0 && !args[0].equals("-h")) {
+	    if (!args[0].equals("1") && !args[0].equals("2")) {
+		result = result + "Error: The problem name is not correct !";
+	    } else if (args[0].equals("1") && contains(args, "-r") == -1) {
+		result = result + "Error: No user input file !";
+	    } else if (args[0].equals("1") && contains(args, "-r") != -1 && contains(args, "-r") + 1 >= args.length) {
+		result = result + "Error: No input filename !";
+	    } else if (args[0].equals("2") && args.length < 3) {
+		result = result + "Error: Your CLI format is not correct !";
+	    }
+	} else {
+	    result += "Help:\n";
+	    result += "./lab1 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data structure into csv file\n";
+	    result += "./lab1 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -a <<email>> <<point>>: Problem 1, add a new user into the data structure and save to new csv file\n";
+	    result += "./lab1 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -d <<email>>: Problem 1, delete a user in the data structure and save to new csv file\n";
+	    result += "./lab1 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -u <<email>> <<new_point>>: Problem 1, update new point for user in the data structure and save to new csv file\n";
+	    result += "./lab1 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -dt: Problem 1, delete the top user from the data structure and save to new csv file\n";
+	    result += "./lab1 1 -r <<user_CSV_file>> -g <<email>>: Problem 1, get the point of user from the data structure\n";
+	    result += "./lab1 1 -r <<user_CSV_file>> -t: Problem 1, get the point of the top user from the data structure\n";
+	    result += "./lab1 1 -r <<user_CSV_file>> -t: Problem 1, get the point of the top user from the data structure\n";
+	    result += "./lab1 2 <<URL-of-website>> <<output-CSV-file>>: Problem 2, read html info from a URL, save all tag information into the CSV output file\n";
+	}
+
+	return result;
+    }
     public static void main(String[] args) {
-        queue q = new queue();
-        int i = 0;
-        int point;
-        String oldFile = "";
-        String newFile = "";
-        String email = "";
-        int choice = 0;
-        if (args[0].equals("-h")) {
-            System.out.println("Exercise 1");
-            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data strucuture into csv file\n");
-            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -a <<email>> <<point>>: Problem 1, add a new user into the data strucutre and save to new csv file\n");
-            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -d <<email>>: Problem 1, delete a user in the data strucutre and save to new csv file\n");
-            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -u <<email>> <<new_point>>: Problem 1, update new point for user in the data strucutre and save to new csv file\n");
-            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -dt: Problem 1, delete the top user from the data strucutre and save to new csv file\n");
-            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -g <<email>>: Problem 1, get the point of user from the data strucutre\n");
-            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -t: Problem 1, get the point of the top user from the data strucutre\n");
-            System.out.print("java -jar LAB1.jar 2 <<URL-of-website>> <<output-CSV-file>>: Problem 2, read html info from a URL, save all tag information into the CSV output file");
-            return;
-        }
-        for (i = 0; i < args.length; i++) {
-            if (args[i].equals("-r")) {
-                oldFile = args[i + 1];
-            }
-            if (args[i].equals("-s")) {
-                newFile = args[i + 1];
-            }
-            if (args[i].equals("-a")) {
-                email = args[i + 1];
-                point = Integer.parseInt(args[i + 2]);
-                choice = 1;
-            }
-            if (args[i].equals("-d")) {
-                email = args[i + 1];
-                choice = 2;
-            }
-            if (args[i].equals("-u")) {
-                email = args[i + 1];
-                point = Integer.parseInt(args[i + 2]);
-                choice = 3;
-            }
-            if (args[i].equals("-dt")) {
-                choice = 4;
-            }
-            if (args[i].equals("-g")) {
-                email = args[i + 1];
-                choice = 5;
-            }
-            if (args[i].equals("-t")) {
-                choice = 6;
-            }
-        }
-        switch (choice) {
-            case 0: {
-                try {
-                    FileReader file = new FileReader(oldFile);
-                    PrintWriter pw = null;
-                    int Rpoint = 0;
-                    String Remail = "";
-                    try (Scanner inputStream = new Scanner(file)) {
-                        inputStream.nextLine();
-                        FileWriter fw = new FileWriter(newFile);
-                        BufferedWriter bw = new BufferedWriter(fw);
-                        pw = new PrintWriter(bw);
-                        String line;
-                        while (inputStream.hasNextLine()) {
-                            line = inputStream.nextLine();
-                            String[] results = line.split(", ");
-                            point = Integer.parseInt(results[1]);
-                            email = results[0];
-                            manageGamer gamer = new manageGamer(Remail, Rpoint);
-                            q.insert(gamer);
-                        }
-                        inputStream.close();
-                    }
-                    pw.println("Email ,Point");
-                    pw.write(q.toString());
-                    pw.close();
-                } catch (IOException gamer) {
-                    System.out.println("Not found this email");
-                }
-                break;
-            }
-            case 1: {
-                try {
-                    FileReader file = new FileReader(oldFile);
-                    PrintWriter pw = null;
-                    int Rpoint = 0;
-                    String Remail = "";
-                    try (Scanner inputStream = new Scanner(file)) {
-                        inputStream.nextLine();
-                        FileWriter fw = new FileWriter(newFile);
-                        BufferedWriter bw = new BufferedWriter(fw);
-                        pw = new PrintWriter(bw);
-                        String line;
-                        while (inputStream.hasNext()) {
-                            line = inputStream.nextLine();
-                            String[] results = line.split(", ");
-                            Rpoint = Integer.parseInt(results[1]);
-                            Remail = results[0];
-                            manageGamer gamer = new manageGamer(Remail, Rpoint);
-                            q.insert(gamer);
-                        }
-                        inputStream.close();
-                    }
-                    manageGamer gamer = new manageGamer(Remail, Rpoint);
-                    q.insert(gamer);
-                    pw.println("Email ,Point");
-                    pw.write(q.toString());
-                    pw.close();
-                } catch (IOException e) {
-                    System.out.println("Email not found");
-                }
-                choice = 0;
-                break;
-            }
-        }
+        
     }
 }
