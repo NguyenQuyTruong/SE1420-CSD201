@@ -90,11 +90,13 @@ public class Main {
             }
         }
     }
-    
-    @SuppressWarnings("empty-statement")
 /**
  * create write data 
+ * @param path
+ * @param d
+ * @throws IOException 
  */
+    @SuppressWarnings("empty-statement")
     public static void writeDataToCsv(String path, DoubleLinkedList d) throws IOException {
         try {
             FileWriter fileWriter = new FileWriter(path);
