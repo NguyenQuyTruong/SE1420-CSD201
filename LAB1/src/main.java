@@ -18,56 +18,79 @@ import java.util.Scanner;
 public class main {
 
     public static queue queue;
-
+/**
+ * add new gamer to queue
+ * @param email
+ * @param point 
+ */
     public static void NewGamer(String email, String point) {
-        try {
-            int checkPoint = Integer.parseInt(point.trim());
+        try {       // add a new gamer to queue
+            int checkPoint = Integer.parseInt(point.trim());    
             queue.insert(new manageGamer(email, checkPoint));
         } catch (NumberFormatException e) {
             System.out.println("must be integer!!");
         }
     }
-
+/**
+ * search user by email
+ * @param email 
+ */
+    
     public static void searchGamer(String email) {
-        manageGamer data = queue.searchUser(email);
-        if (data == null) {
+        manageGamer data = queue.searchUser(email);     //that method for search someone by email
+        if (data == null) {                             // if it no one, we have not found
             System.out.println("not found!!");
         } else {
             System.out.println("email: " + email + ", point: " + data.getPoint());
         }
     }
-
+/**
+ * delete user by email (node)
+ * @param email 
+ */
     public static void deleteGame(String email) {
-        manageGamer data = queue.deleteUser(email);
-        if (data == null) {
+        manageGamer data = queue.deleteUser(email);     //that method for delete user by email
+        if (data == null) {                             // if it no one, we have not found
             System.out.println("Not found!!");
         } else {
             System.out.println("remove " + email + " successful!");
         }
     }
-
+/**
+ * update email and point, parse point from string (arg) to int
+ * @param email
+ * @param point 
+ */
     public static void updateGamer(String email, String point) {
         try {
-            int newPoint = Integer.parseInt(point.trim());
-            queue.updateUser(email, newPoint);
+            int newPoint = Integer.parseInt(point.trim());  //arg always a string, so we need pasrse int
+            queue.updateUser(email, newPoint);              //upadte
         } catch (NumberFormatException e) {
             System.out.println("must be Integer!!");
         }
     }
-
+/**
+ * get user by highest point 
+ */
     public static void getTopGamer() {
-        manageGamer data = queue.getTop();
+        manageGamer data = queue.getTop();                  //get a gamer from fisrt place
         System.out.println("A best gamer here:");
         System.out.println("email: " + data.getUserEmail() + ", point: " + data.getPoint());
     }
-
+/**
+ * delete a user in a first place
+ */
     public static void deleteTopGamer() {
-        queue.deleteTop();
+        queue.deleteTop();                                  //dele a gamer in first place
         System.out.println("remove successful!!");
     }
+/**
+ * main EX1
+ * @param args 
+ */
 
     public static void main(String[] args) {
-        queue q = new queue();
+        queue q = new queue();                              //add queue
         String email = null;
         int point = 0;
         String oldfile = null;
