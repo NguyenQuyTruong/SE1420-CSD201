@@ -127,12 +127,5 @@ public class Problem {
         } catch (Exception e) {
             e.printStackTrace();
         }    
-    }
-    public static void main(String[] args) {
-        String url ="http://lms-undergrad.fpt.edu.vn/login/index.php";
-        String filename ="page.htm";
-        Problem pr = new Problem(url, filename);
-    }
- 
-    
+    }    
 }
