@@ -107,7 +107,7 @@ public class DoublyLinkedList {
         Node tmp = searchEmail(email);
         Node moveleft = tmp.left;
         Node moveright = tmp.right;
-        
+        // if header is null so don't do anything
         if (header == null) {
             return;
         }else {
@@ -126,26 +126,46 @@ public class DoublyLinkedList {
      */
     public Node searchEmail(String tenEmail) {
         Node tmp = header;
-        
-        while (!tmp.emailSub.contentEquals(tenEmail)) {
+        //If comparation of 2 emails don't match -> header will move right ..right..(loop...)
+        while (!tmp.emailSub.equalsIgnoreCase(tenEmail)) {
             tmp = tmp.right;
         }
+        // When 2 email match each other -> return tmp (email found)
         return tmp;
     }
     
 
     /**
-     * Use function searchEmail to return point
+     * User search by email then return their point
      * @param email
      * @return 
      */
-    public long getPoint(String email){
+    public long getPointByEmail(String email){
         Node tmp = searchEmail(email);
         return tmp.pointSub;
     }
     
+    /**
+     * Return a highest point
+     * @return 
+     */
     public long getFirstPoint(){
         return header.pointSub;
+    }
+    
+    /**
+     * Update a new point base on Email
+     * -Delete a Node by email
+     * -Then add them again with a new email and new point
+     * @param newEmail 
+     */
+    public void update(String newEmail, long newPoint){
+        Node tmp = searchEmail(newEmail);
+        if(tmp == trailer) return;
+        else{
+            remove(newEmail);
+            add(newEmail, newPoint);
+        }
     }
     /**
      * Print all node from left -> right
