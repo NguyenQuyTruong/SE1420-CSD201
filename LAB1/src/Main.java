@@ -85,7 +85,7 @@ public class Main {
     
     @SuppressWarnings("empty-statement")
 /**
- * create write data for csv
+ * create write data 
  */
     public static void writeDataToCsv(String path, DoubleLinkedList d) throws IOException {
         try {
