@@ -17,6 +17,11 @@ import java.io.IOException;
  */
 public class Main {
 
+    /**
+     * Display help and prevent some error from inputted
+     * @param args
+     * @return 
+     */
     public static String CLI(String[] args) {
 	String result = "";
 	if (args.length == 0 || args[0].equals("-h")) {
@@ -46,6 +51,12 @@ public class Main {
 	return result;
     }
 
+    /**
+     * Get input from String args
+     * @param array
+     * @param value
+     * @return String
+     */
     public static int include(String[] array, String value) {
 	int result = -1;
 	for (int i = 0; i < array.length; i++) {
@@ -57,6 +68,11 @@ public class Main {
 	return result;
     }
 
+    /**
+     * Main class
+     * @param args
+     * @throws IOException 
+     */
     public static void main(String[] args) throws IOException {
 	String result = CLI(args);
 	if (result.equals("") && args[0].equals("1")) {
