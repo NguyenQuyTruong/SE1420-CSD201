@@ -23,24 +23,10 @@ public class Lab {
      */
            static PriorityQueue queue;
            String filename;
-    public void Save() throws IOException {
-		try {
-			FileOutputStream FOS = new FileOutputStream(filename);
-			ObjectOutputStream OS = new ObjectOutputStream(FOS);
-			
-			OS.writeObject(queue);
-			
-			OS.close();
-			FOS.close();
-		}catch(FileNotFoundException e){
-                    e.printStackTrace();
-                }catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        boolean save = false;
+        boolean saveB = false;
         String Path = null;
         for (int i = 0; i < args.length; i++) {
             switch(args[i]){
@@ -53,9 +39,36 @@ public class Lab {
                     Logger.getLogger(Lab.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-                    
-                    
+            break;
+                case "a":
+                    long apoint = Long.parseLong(args[i+1].trim());
+                    queue.InSert(args[i], apoint);
+                    break;
+                case"u":
+                    long upoint = Long.parseLong(args[i+1].trim());
+                    queue.Update(args[i], upoint);
+                    break;
+                case"d":
+                    queue.Delete(args[i]);
+                    break;
+                case"dt":
+                    queue.DeleteT();
+                    break;
+                case"g":
+                    queue.Find(args[i]);
+                    break;
+                case"t":
+                    queue.Gettop();
+                case"s":
+                    saveB = true;
+                    Path = args[i];
+                    break;
+                default:
+                    break;
             }
+        }
+        if(saveB){
+            Csv.WriteToFile(queue, Path);
         }
         
         
