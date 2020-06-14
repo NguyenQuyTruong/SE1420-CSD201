@@ -18,4 +18,12 @@ public class Csv {
 	public Csv() {
 		data = new LinkedHashMap<String, Integer>();
 	}
+    public void CheckAndUpdate(String tag){
+        if(data.containsKey(tag)){
+            data.put(tag, 1);
+        }
+        else{
+            data.put(tag, data.get(tag)+1);
+        }
+    }
 }
