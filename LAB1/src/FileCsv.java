@@ -10,27 +10,36 @@ import java.io.IOException;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
- * @author Nguyen Chi  Cuong
+ * @author Nguyen Chi Cuong
  */
 public class FileCsv {
-    
-    public void readDataFormFileCsv(String path, DoublyLinkedList dll) throws FileNotFoundException, IOException{
-        
+
+    public void readDataFormFileCsv(String path, DoublyLinkedList dll) throws FileNotFoundException, IOException {
+
         BufferedReader read = new BufferedReader(new FileReader(path));
         String data;
-        while((data = read.readLine()) != null ){
-            String [] array = data.split(",");
-            
+        while ((data = read.readLine()) != null) {
+            try {
+                String[] array = data.split(",");
+
             dll.add(array[0], Long.parseLong(array[1].trim()));
+            } catch (Exception e) {
+            }
+            
         }
     }
-    public void write(String path, DoublyLinkedList dll) throws IOException{
+
+    public void write(String path, DoublyLinkedList dll) throws IOException {
         FileWriter fileWriter = new FileWriter(path);
-        fileWriter.append("Email,"+ " Point"+"\n");
+        fileWriter.append("Email," + " Point" + "\n");
         DoublyLinkedList.Node tmp = dll.header;
-        while(tmp != dll.trailer )
+        while (tmp != dll.trailer) {
+            fileWriter.append(tmp.email + ", " + tmp.point + "\n");
+            tmp = tmp.right;
+        }
+        fileWriter.flush();
+        fileWriter.close();
     }
 }
