@@ -1,7 +1,7 @@
 # SE1420-CSD201
 
-###Lab 1
-####SE140055 - VAN DUC HUY
+### Lab 1
+#### SE140055 - VAN DUC HUY
 
 1. Exercise 1
 - I'm using Priority Queue depend on Double Linked List to store data of gamer
