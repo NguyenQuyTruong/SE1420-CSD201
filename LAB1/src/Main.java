@@ -64,7 +64,7 @@ public class Main {
         }
         
         d.print();
-        if(save){
+        if(saveData){
             writeDataToCsv(saveFile, d);
         }
     }
