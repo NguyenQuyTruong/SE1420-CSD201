@@ -94,7 +94,11 @@ public class LinkList {
         }
         return trailer.getPrev().getData();
     }
-
+/**
+ * remove node (user)
+ * @param userNode
+ * @return 
+ */
     private manageGamer remove(Node userNode) {
         Node nextNode = userNode.getNext();
         Node prevNode = userNode.getPrev();
@@ -117,7 +121,11 @@ public class LinkList {
         }
         return remove(trailer.getPrev());
     }
-
+/**
+ * remove node by email
+ * @param email
+ * @return 
+ */
     public manageGamer removeNode(String email) {
         Node delNode = searchDelete(email);
         if (delNode != null) {
@@ -125,7 +133,11 @@ public class LinkList {
         }
         return null;
     }
-
+/**
+ * search user by email
+ * @param email
+ * @return 
+ */
     public manageGamer searchUserByEmail(String email) {
         for (Node n = header.next; n != trailer; n = n.next) {
             if (n.getData().getUserEmail().contentEquals(email)) {
@@ -134,7 +146,11 @@ public class LinkList {
         }
         return null;
     }
-
+/**
+ * search for delete
+ * @param email
+ * @return 
+ */
     public Node searchDelete(String email) {
         for (Node n = trailer.next; n != trailer; n = n.next) {
             if (n.getData().getUserEmail().contentEquals(email)) {
@@ -149,7 +165,10 @@ public class LinkList {
         }
         return header.getNext().getData();
     }
-
+/**
+ * add user in top
+ * @param node 
+ */
     public void addFirst(Node node) {
         //call function add
         header.next.prev = node;
@@ -159,7 +178,10 @@ public class LinkList {
         //return to header
 
     }
-
+/**
+ * add user int last
+ * @param node 
+ */
     public void addLast(Node node) {
         //call function add, return trailer
         trailer.prev.next = node;
@@ -168,7 +190,10 @@ public class LinkList {
         trailer.prev = node;
 
     }
-
+/** 
+ * add user if user not in last and top
+ * @param data 
+ */
     public void addBetween(manageGamer data) {
         Node newbie = new Node(data, trailer, header);
         int point = data.getPoint();
@@ -198,7 +223,9 @@ public class LinkList {
         }
         sizeList++;                                 //increase size of list
     }
-
+/**
+ * print
+ */
     public void printList() {
         Node currentNode = header.getNext();
         while (currentNode != trailer) {
@@ -206,6 +233,11 @@ public class LinkList {
             currentNode = currentNode.getNext();
         }
     }
+    /**
+     * write file
+     * @param fileName
+     * @throws IOException 
+     */
     public void writeToCSVfile(String fileName) throws IOException {
 	FileWriter fr = null;
 	try {
@@ -216,14 +248,14 @@ public class LinkList {
 		fr.append(data);
 	    }
 	} catch (IOException e) {
-	    System.out.println("Can't write a file!!");
+	    System.out.println("can't write a file!!");
 	} finally {
 	    try {
 		if (fr != null) {
 		    fr.close();
 		}
 	    } catch (IOException e) {
-		System.out.println("File not exist!!");
+		System.out.println("file not exist!!");
 	    }
 	}
     }
