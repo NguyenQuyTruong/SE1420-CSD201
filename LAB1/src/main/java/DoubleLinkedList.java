@@ -8,10 +8,10 @@ public class DoubleLinkedList {
         //Create Node
     public class Node{
         private Player player;
-        private Node next;
-        private Node prev;
+        private Node next = null;
+        private Node prev = null;
         //Contructor + Setter + Getter
-        public Node(Player player, Node right, Node Left){
+        public Node(Player player, Node next, Node Left){
             this.player = player;
             this.next = next;
             this.prev = prev;
@@ -46,7 +46,7 @@ public class DoubleLinkedList {
     Node trail;
     private int nodeSize = 0;               
     
-    //Default Contructor
+    //Contructor
             
     public DoubleLinkedList(){
         head = new Node(null,null,null);
@@ -54,7 +54,7 @@ public class DoubleLinkedList {
         head.setNext(head);
     }
 /**    
-   * Check if List is empty or not
+   * Check if List is Empty or not
    *
    * @return Player
    */ 
@@ -64,281 +64,191 @@ public class DoubleLinkedList {
 /**    
    *Return Size of the List
    * 
-   * @return number of size
+   * @return number of nodeSize
    */ 
-    public int sizeOfList(){
+    public int nodeSizeOfList(){
         return nodeSize;
     }
-/**     
-   * Return the data of the Player on top of the List
-   * 
-   *  @return Player
-   */ 
-    public Player getFirst(){
-        //Check if the List is Empty or not...
-        if(isEmpty()){
-            return null;
-        }else{
-            //Return the Player's data
-            return head.getNext().getPlayer();
-        }
-    }
-/**    
-   * Return the data of the Player on the bottom of the List
-   * 
-   *  @return Player
-   */ 
-    public Player getLast(){
-        //Check if the List is Empty or not...
-        if(isEmpty()){
-            return null;
-        }else{
-            //Return the Player's data
-            return trail.getPrev().getPlayer();
-        }
-    }
-/**    
-   * Remove a node from List
-   * 
-   * @param playerNode
-   * @return Data of the removed node
-   */ 
-    private Player remove(Node playerNode){
-        Node nextNode = playerNode.getNext();
-        Node prevNode = playerNode.getPrev();
-        prevNode.setPrev(prevNode);
-        nextNode.setNext(nextNode);
-        nodeSize--;
-        return playerNode.getPlayer();
-    }
-/**    
-   * Remove the Last Player of the List
-   * 
-     * @return Data of the removed Player
-   * 
-   */ 
-    public Player removeLast(){
-        if(isEmpty()){
-            return null;
-        }else{
-            return remove(trail.getPrev());
-        }
-    }
-/**    
-   * Remove the First Player of the List
-   * 
-   *  @Data of the removed Player
-   */ 
-    public Player removeFirst(){
-        if(isEmpty()){
-            return null;
-        }else{
-            return remove(head.getNext());
-        }
-    }
     /**
-    *Remove a player by email
-    *
-    *@param email
-    *
-    */
-    public void deletePlayerNode(String email){
-        //Check if the List is Empty or not...
-        if(isEmpty()){
-            System.out.println("The List is Empty... Try input some data first.");
-        } else{
-            Node playerNode = searchPlayerbyEmail(email);
-            if(playerNode == null){
-                System.out.println("Player doesn't exist."); //Check if the Player is valid
-            }else{
-                remove(playerNode);
-            }
-        }
+     * Method for adding Node on the top
+     *
+     * @param newNode
+     */
+    public void addFirst(Node newNode) {
+        head.next.prev = newNode;
+        newNode.next = head.next;
+        newNode.prev = head;
+        head.next = newNode;
     }
+
     /**
-     * Add a new Node
-     * 
+     * Method for Adding New Node near Trail
+     *
+     * @param newNode
+     */
+    public void addLast(Node newNode) {
+        trail.prev.next = newNode;
+        newNode.prev = trail.prev;
+        newNode.next = trail;
+        trail.prev = newNode;
+    }
+
+    /**
+     * Method for adding element between the Node
+     *
      * @param data
-     * @param nextNode
-     * @param prevNode 
      */
-    private void addNewNode(Player data, Node nextNode, Node prevNode){
-        //Make a new Node
-        Node newNode = new Node(data, nextNode, prevNode);
-        nextNode.setPrev(newNode); //set prev of next node is new node
-        prevNode.setNext(newNode); //set next of prev node is new node
-        nodeSize++; //Increase the List's size
-    }
-     /**
-     * Add a new Player
-     * 
-     * @param data 
-     */
-    public void add(Player data){
+    public void addBetween(Player data) {
+        Node newbie = new Node(data, trail, head);
         int point = data.getPoint();
-        //Check if the List is empty or not
-        if(isEmpty()){
-            addFirst(data);
-        } else{
-            //If the Player inputed have higher score than the one next to the header
-            //Add First
-            if (point > head.getNext().getPlayer().getPoint()){
-                addFirst(data);
-            } else if (point < trail.getPrev().getPlayer().getPoint()){
-                addLast(data);
-            } else {
-                // If the point is between the highest and lowest 
-                Node randomNode = searchNode(point);
-                addBetween(data, randomNode);
+        //Check If List is Empty
+        if (isEmpty()) {
+            head.next = newbie;
+            newbie.prev = head;
+            newbie.next = trail;
+            trail.prev = newbie;
+        } else {
+            int pointOfHeader = head.next.getPlayer().getPoint();
+            int pointOfTrailer = trail.prev.getPlayer().getPoint();
+            //if input point < point of trail, add new trail
+            if (point < pointOfTrailer) {
+                addLast(newbie);
+            } //if input point > point of head, add new head
+            else if (point > pointOfHeader) {
+                addFirst(newbie);
+            } //normal case, go through the list and compare every node until get next position
+            else {
+                Node currentNode = head.next;
+                while (currentNode.getPlayer().getPoint() > newbie.getPlayer().getPoint()) {
+                    currentNode = currentNode.next;
+                }
+                currentNode.prev.next = newbie;
+                newbie.next = currentNode;
+                newbie.prev = currentNode.prev;
+                currentNode.prev = newbie;
             }
         }
+        nodeSize++;
     }
+
     /**
-     * Add a Node on top of the List
-     * 
-     * @param data 
+     * Removing Node Method
+     *
+     * @param node
+     * @return info of node
      */
-    public void addFirst(Player data){
-        addNewNode(data, head.getNext(), head); //Call the addNewNode function (next to the head)
+    private Player remove(Node node) {
+        Node prev = node.prev;
+        Node next = node.next;
+        prev.setNext(next);
+        next.setPrev(prev);
+        nodeSize--;
+        return node.getPlayer();
     }
+
     /**
-     * Add a Node on the bottom of the List
-     * 
-     * @param data 
+     * Method for returning the First Player for the list
+     *
+     * @return Player
      */
-    public void addLast(Player data){
-        addNewNode(data, trail, trail.getPrev()); //Call the addNewNode function (next to the trail)
+    public Player first() {
+        if (isEmpty()) {
+            return null;
+        }
+        return head.getNext().getPlayer();
     }
+
     /**
-     * Add a Node in between
-     * 
-     * @param data
-     * @param nextNode 
+     * Method for Removing the first
      */
-    public void addBetween(Player data,Node nextNode){
-        if(nextNode == null){
-            addLast(data); //if the Player inputed have the point lower than the lowest one already there
-        }else{
-            Node prevNode = nextNode.getPrev();
-            Node newNode = new Node(data, nextNode, prevNode);
-            nextNode.setPrev(newNode); //Set the previous node of nextNode a NewNode
-            nextNode.setNext(newNode); //Set the next node of the nextNode a NewNode
-            nodeSize++; //Increase List's size
+    public void removeFirst() {
+        if (isEmpty()) {
+            System.out.println("The list is empty!!");
+        } else {
+            remove(head.getNext());
         }
     }
+
     /**
-     * Find the node for priority queue what is higher
-     * 
-     * @param inputpoint
+     * Method for returning the data of the inputted email
+     *
+     * @param email
+     * @return Player
+     */
+    public Player searchPlayerByEmail(String email) {
+        for (Node n = head.next; n != trail; n = n.next) {
+            if (n.getPlayer().getEmail().contentEquals(email)) {
+                return n.getPlayer();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Method for Checking the whole List for an email to delete
+     *
+     * @param email
      * @return Node
      */
-    public Node searchNode(int inputpoint){
-        //Get Node after head
-        Node nextNode = head.getNext();
-        
-        do{
-            if (nextNode.getPlayer().getPoint() > inputpoint)//find the first player that have higher point
-            {
-                return nextNode;
-            } else {
-                nextNode = nextNode.getNext(); //Move to next Node
+    public Node searchPlayerToDelete(String email) {
+        for (Node n = head.next; n != trail; n = n.next) {
+            if (n.getPlayer().getEmail().contentEquals(email)) {
+                return n;
             }
-        } while (nextNode != trail);
-        return null;   //this is the highest point on the List
+        }
+        return null;
     }
+
     /**
-     * Find node that the Player have the same inputted email
-     * 
+     * Method for deleting the node of the Player have the input email
+     *
      * @param email
-     * @return Player (null if not found)
+     * @return Player has been remove
      */
-    public Node searchPlayerbyEmail (String email){
-        //Check if the List is Empty or not
-        if(isEmpty()){
-            System.out.println("The List is Empty... Try input some data first.");
-        }else{
-            Node nextNode = head.getNext();
-            
-            do{
-                //Compare the email inputed
-                if(nextNode.getPlayer().equals(email)){
-                    return nextNode;
-                }else{nextNode.getNext();}//If not, then go to the next node
-            }while(nextNode != trail);
+    public Player removeNode(String email) {
+        Node delNode = searchPlayerToDelete(email);
+        if (delNode != null) {
+            return remove(delNode);
         }
-        return null; //when the node is not found.
+        return null;
     }
-    //Display...
     /**
-     * Display point using inputed email using in PriQueue
+     * Method to write down to .csv file
      * 
-     * @param email 
+     * @param fileName
+     * @throws IOException 
      */
-    public void displayPointByEmail(String email){
-        //Still (everytime) check if the List is Empty or not
-        if(isEmpty()){
-            System.out.println("The List is Empty... Try input some data first.");
-        } else{
-            Node randomPlayer = searchPlayerbyEmail(email);
-            if(randomPlayer == null){
-                System.out.println("Player doesn't exist."); //If not found
-            } else{
-                int point = randomPlayer.getPlayer().getPoint(); //If found then create a quick point value
-                System.out.println("'Email: "+ email +"; Point: " + point + ".");//Display the Player
+    public void writeToCSVfile(String fileName) throws IOException {
+        FileWriter fr = null;
+        try {
+            fr = new FileWriter(fileName);
+	    fr.append("Email, Point\n");
+            for (Node n = head.next; n != trail; n = n.next) {
+                String data = String.format("%s, %d\n", n.getPlayer().getEmail(), n.getPlayer().getPoint());
+                fr.append(data);
+            }
+        } catch (IOException e) {
+            System.out.println("Something wrong with writing to file!!");
+        } finally {
+            try {
+                if (fr != null) {
+                    fr.close();
+                }
+            } catch (IOException e) {
+                System.out.println("File not exist!!");
             }
         }
     }
     /**
-     * Display the Player that have the highest point
+     * Method for Printing the List out
      */
-    public void displayTopPlayer(){
-        //If the List is Empty the getFirst funtion will be null, so check if the List is Empty or not
-        if(getFirst() == null){
-            System.out.println("The List is Empty... Try input some data first");
-        } else{
-            Player topPlayer = getFirst();
-            //Get the info or data 
-            String email; 
-            int point;
-            email = topPlayer.getEmail();
-            point = topPlayer.getPoint();
-            //Display
-            System.out.println("'Email: "+ email +"; Point: " + point + ".");
-        }
-    }
-    /**
-     * Print the whole List by Looping
-     */
-    public void printList(){
-        //Start on the Node next to the Head
-        Node currNode = head.getNext();
-        //Loop until tail
-        while(currNode != trail){
-            System.out.println(currNode.getPlayer() + "\n");
-            currNode = currNode.getNext();
-        }
-    }
-    /**
-     * Update point for inputed email
-     * 
-     * @param email
-     * @param point 
-     */
-    public void updateNode(String email, int point){
-        //Check if the List is Empty or not...
-        if(isEmpty()){
-            System.out.println("The List is Empty... try input some data first.");
-        }else{
-            Node playerNode = searchPlayerbyEmail(email);
-            //Check if the Email is valid for the List or not
-            if(playerNode == null){
-                System.out.println("The Player is invalid. Please check the email you inputed");
-            }else{
-                playerNode.getPlayer().setEmail(email);
-                playerNode.getPlayer().setPoint(point);
-                System.out.println("Update point successfull");
-                System.out.println("Email: " + email + ", New point: " + playerNode.getPlayer().getPoint());
-            }
+    public void printList() {
+        //Begin After the Head
+        Node currentNode = head.getNext();
+        //Loop will scan every node
+        while (currentNode != trail) {
+            System.out.println(currentNode.getPlayer() + "\n");
+            currentNode = currentNode.getNext();
         }
     }
 }
