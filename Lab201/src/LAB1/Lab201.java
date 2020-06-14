@@ -26,8 +26,8 @@ public class Lab201 {
         String savefile = null;
         boolean save = false;
         try {
-            if (args[0].contentEquals("1")) { 
-                System.out.println("Bai 1"); 
+            if (args[0].contentEquals("1")) {
+                System.out.println("Bai 1");
                 for (int i = 0; i < args.length; i++) {
                     switch (args[i]) {
                         case "-r":
@@ -48,8 +48,8 @@ public class Lab201 {
                             doublyLinkedList.delete(args[i + 1]);
                             break;
                         case "-g":
-                            int s=doublyLinkedList.getPoint(args[i + 1]);
-                            System.out.println("Point ne: "+s);
+                            int s = doublyLinkedList.getPoint(args[i + 1]);
+                            System.out.println("Point ne: " + s);
                             break;
                         case "-t":
                             System.out.println(doublyLinkedList.getTop());
@@ -69,7 +69,7 @@ public class Lab201 {
                     writeDataToCsv(savefile, doublyLinkedList);
 
                 }
-            }else if (args[0].contentEquals("2")){ 
+            } else if (args[0].contentEquals("2")) {
                 System.out.println("Bai 2");
             }
 
@@ -78,9 +78,16 @@ public class Lab201 {
 
     }
 
+    /**
+     * read data from file and throws FileNotFoundException, IOException
+     *
+     * @param path
+     * @param doublyLinkedList
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public void readDataQueue(String path, DoublyLinkedList doublyLinkedList) throws FileNotFoundException, IOException {
 
-        int countLine = 0;
         FileReader fr = new FileReader(path);
         BufferedReader bufferedReader = new BufferedReader(fr);
         String line;
@@ -95,13 +102,19 @@ public class Lab201 {
         }
     }
 
+    /**
+     * write data to new file
+     *
+     * @param path
+     * @param doublyLinkedList
+     */
     public static void writeDataToCsv(String path, DoublyLinkedList doublyLinkedList) {
         try {
             FileWriter fileWriter = new FileWriter(path);
             fileWriter.append("Email, Point\n");
             DoublyLinkedList.Node tmp = doublyLinkedList.head;
             while (tmp != doublyLinkedList.trailer) {
-                fileWriter.append(tmp.email + "," + tmp.point+"\n");
+                fileWriter.append(tmp.email + "," + tmp.point + "\n");
                 tmp = tmp.right;
             }
             fileWriter.flush();
