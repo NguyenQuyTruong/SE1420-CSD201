@@ -9,7 +9,9 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -18,12 +20,16 @@ import java.net.URL;
  * @author Khả Thi
  */
 public class DownWeb {
+    /**
+	 * Down web and save it into path
+	 * @param url,Path
+	 */
     public static void Download(String url) throws MalformedURLException, IOException{
        URL urld = new URL(url);
        String Path;      
       try(
          BufferedReader reader =  new BufferedReader(new InputStreamReader(urld.openStream()));         
-         BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\page.html"));       
+         BufferedWriter writer = new BufferedWriter(new FileWriter("page.html"));       
       )  {      
          String line;
          while ((line = reader.readLine()) != null) {
@@ -32,6 +38,7 @@ public class DownWeb {
          }            
          System.out.println("Page downloaded.");
       } 
-    
+
+                 
     }
 }
