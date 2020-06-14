@@ -60,7 +60,13 @@ public class Main {
             writeDataToCsv(saveFile, d);
         }
     }
-    
+ /**
+  * create read queue
+  * @param path
+  * @param d
+  * @throws FileNotFoundException
+  * @throws IOException 
+  */
     public void readDataQueue(String path, DoubleLinkedList d) throws FileNotFoundException, IOException{
         int countFile = 0;
         FileReader fr = new FileReader(path);
@@ -78,6 +84,9 @@ public class Main {
     }
     
     @SuppressWarnings("empty-statement")
+/**
+ * create write data for csv
+ */
     public static void writeDataToCsv(String path, DoubleLinkedList d) throws IOException {
         try {
             FileWriter fileWriter = new FileWriter(path);
@@ -91,6 +100,7 @@ public class Main {
             fileWriter.close();
         }
         catch(Exception e){
+            System.out.println("");
         } 
 
     }
