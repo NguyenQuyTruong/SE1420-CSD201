@@ -6,26 +6,39 @@ import java.io.IOException;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
- * @author Nguyen Chi  Cuong
+ * @author Nguyen Chi Cuong
  */
 public class LAB1 {
+
     public static void main(String[] args) throws IOException {
         DoublyLinkedList d = new DoublyLinkedList();
-        
-        d.add("H", 5);
-        d.add("LL", 1);
-        d.add("k", 2);
-        d.add("jj", 3);
-        d.add("jaj", 9);
-        d.update("H", 1000);
-                
-//        d.print();
-        FileCsv fc=new FileCsv();
-        fc.readDataFormFileCsv("D:\\CSD\\lab1\\SE1420-CSD201\\LAB1\\user.csv", d);
-        fc.write("csvvv.csv", d);
-        
+        FileCsv fileCsv = new FileCsv();
+        try {
+            for (int i = 0; i < args.length; i++) {
+                switch (args[i]) {
+                    case "-h":
+                        System.out.println(
+                                "Help:\n"
+                                + "java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data strucutre into csv file\n"
+                                + "java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -a <<email>> <<point>>: Problem 1, add a new user into the data strucutre and save to new csv file\n"
+                                + "java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -d <<email>>: Problem 1, delete a user in the data strucutre and save to new csv file\n"
+                                + "java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -u <<email>> <<new_point>>: Problem 1, update new point for user in the data strucutre and save to new csv file\n"
+                                + "java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -dt: Problem 1, delete the top user from the data strucutre and save to new csv file\n"
+                                + "java -jar LAB1.jar 1 -r <<user_CSV_file>> -g <<email>>: Problem 1, get the point of user from the data strucutre\n"
+                                + "java -jar LAB1.jar 1 -r <<user_CSV_file>> -t: Problem 1, get the point of the top user from the data strucutre\n"
+                                + "java -jar LAB1.jar 2 <<URL-of-website>> <<output-CSV-file>>: Problem 2, read html info from a URL, save all tag information into the CSV output file");
+                                break;
+                    case "-r":
+                        fileCsv.readDataFormFileCsv(args[i + 1], d);
+                        break;
+                    case "-s":
+                }
+            }
+            d.print();
+        } catch (Exception e) {
+        }
+
     }
 }
