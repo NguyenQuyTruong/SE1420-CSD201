@@ -65,44 +65,68 @@ public class main {
         queue.deleteTop();
         System.out.println("remove successful!!");
     }
-     private static int contains(String[] arr, String value) {
-	int result = -1;
 
-	for (int i = 0; i < arr.length; i++) {
-	    if (arr[i].equals(value)) {
-		result = i;
-	    }
-	}
-	return result;
-    }
-    private static String CLIcheck(String[] args) {
-	String result = "";
-	if (args.length != 0 && !args[0].equals("-h")) {
-	    if (!args[0].equals("1") && !args[0].equals("2")) {
-		result = result + "Error: The problem name is not correct !";
-	    } else if (args[0].equals("1") && contains(args, "-r") == -1) {
-		result = result + "Error: No user input file !";
-	    } else if (args[0].equals("1") && contains(args, "-r") != -1 && contains(args, "-r") + 1 >= args.length) {
-		result = result + "Error: No input filename !";
-	    } else if (args[0].equals("2") && args.length < 3) {
-		result = result + "Error: Your CLI format is not correct !";
-	    }
-	} else {
-	    result += "Help:\n";
-	    result += "./lab1 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data structure into csv file\n";
-	    result += "./lab1 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -a <<email>> <<point>>: Problem 1, add a new user into the data structure and save to new csv file\n";
-	    result += "./lab1 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -d <<email>>: Problem 1, delete a user in the data structure and save to new csv file\n";
-	    result += "./lab1 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -u <<email>> <<new_point>>: Problem 1, update new point for user in the data structure and save to new csv file\n";
-	    result += "./lab1 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -dt: Problem 1, delete the top user from the data structure and save to new csv file\n";
-	    result += "./lab1 1 -r <<user_CSV_file>> -g <<email>>: Problem 1, get the point of user from the data structure\n";
-	    result += "./lab1 1 -r <<user_CSV_file>> -t: Problem 1, get the point of the top user from the data structure\n";
-	    result += "./lab1 1 -r <<user_CSV_file>> -t: Problem 1, get the point of the top user from the data structure\n";
-	    result += "./lab1 2 <<URL-of-website>> <<output-CSV-file>>: Problem 2, read html info from a URL, save all tag information into the CSV output file\n";
-	}
+    private static int contains(String[] arr, String value) {
+        int result = -1;
 
-	return result;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].equals(value)) {
+                result = i;
+            }
+        }
+        return result;
     }
+
     public static void main(String[] args) {
-        
+        queue q = new queue();
+        String email = null;
+        int point = 0;
+        String file = null;
+        String newfile = null;
+        int choice;
+        if (args[0].equals("-h")) {
+            System.out.println("Exercise 1");
+            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data strucuture into csv file\n");
+            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -a <<email>> <<point>>: Problem 1, add a new user into the data strucutre and save to new csv file\n");
+            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -d <<email>>: Problem 1, delete a user in the data strucutre and save to new csv file\n");
+            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -u <<email>> <<new_point>>: Problem 1, update new point for user in the data strucutre and save to new csv file\n");
+            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -dt: Problem 1, delete the top user from the data strucutre and save to new csv file\n");
+            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -g <<email>>: Problem 1, get the point of user from the data strucutre\n");
+            System.out.print("java -jar LAB1.jar 1 -r <<user_CSV_file>> -t: Problem 1, get the point of the top user from the data strucutre\n");
+            System.out.print("java -jar LAB1.jar 2 <<URL-of-website>> <<output-CSV-file>>: Problem 2, read html info from a URL, save all tag information into the CSV output file");
+            return;
+        }
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].equals("-r")) {
+                file = args[i + 1];
+            }
+            if (args[i].equals("-s")) {
+                newfile = args[i + 1];
+            }
+            if (args[i].equals("-a")) {
+                email = args[i + 1];
+                point = Integer.parseInt(args[i + 2]);
+            }
+            if (args[i].equals("-d")) {
+                email = args[i + 1];
+
+            }
+            if (args[i].equals("-u")) {
+                email = args[i + 1];
+                point = Integer.parseInt(args[i + 2]);
+
+            }
+            if (args[i].equals("-dt")) {
+
+            }
+            if (args[i].equals("-g")) {
+                email = args[i + 1];
+            }
+            if (args[i].equals("-t")) {
+            }
+        }
+        switch(choice){
+            
+        }
     }
 }
