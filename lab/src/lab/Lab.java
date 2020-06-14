@@ -24,6 +24,10 @@ public class Lab {
            static PriorityQueue queue;
            String filename;
 
+          /**
+	 * run program by args 
+	 * @param args
+	 */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         boolean saveB = false;
