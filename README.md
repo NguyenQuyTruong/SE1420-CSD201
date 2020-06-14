@@ -4,7 +4,7 @@
 #### SE140055 - VAN DUC HUY
 
 1. Exercise 1
-- I'm using Priority Queue depend on Double Linked List to store data of gamer
+- I use Priority Queue based on Double Linked List to store data of gamer
 - Not to hard but it take me 4 days to solve =))
 2. Exercise 2
 - This problem is about counting tags in a HTML page :v
