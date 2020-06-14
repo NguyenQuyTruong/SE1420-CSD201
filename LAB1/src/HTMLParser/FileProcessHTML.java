@@ -34,20 +34,27 @@ public class FileProcessHTML {
      * Create an HTMLTag for easy use
      */
     class HTMLTag implements Comparable<HTMLTag> {
-
+	//field
 	private String tag;
 	private int count;
-
+	/**
+	 * Default constructor
+	 */
 	public HTMLTag() {
 	    tag = "";
 	    count = 0;
 	}
 
+	/**
+	 * Constructor for get parameters
+	 * @param tag
+	 * @param count 
+	 */
 	public HTMLTag(String tag, int count) {
 	    this.tag = tag;
 	    this.count = count;
 	}
-
+	//getter setter
 	public String getTag() {
 	    return tag;
 	}
@@ -69,6 +76,11 @@ public class FileProcessHTML {
 	    return tag + ", " + count;
 	}
 
+	/**
+	 * Compare method use for sorting an list
+	 * @param tag
+	 * @return integer number
+	 */
 	@Override
 	public int compareTo(HTMLTag tag) {
 
