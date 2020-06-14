@@ -111,7 +111,10 @@ public class HTMLValidateAndCount {
 			}
 			//reset String tag to none
 			tag = "";
+			//decrease j-- unless it will cause an error when it
+			//execute in else it also run j++ and then it will skip tag
 			j--;
+			//let start i from j position
 			i = j;
 		    }
 		}
@@ -132,16 +135,22 @@ public class HTMLValidateAndCount {
     public void checkTag(String tag, String htmlString) {
 	String tagCompare = "";
 	boolean isValid;
+	//check open tag or close tag
 	if (isOpenTag(tag)) {
+	    //if it not alone tag put it to stack
 	    if (!isAloneTag(tag, htmlString)) {
 		stack.push(tag);
 	    } else {
+		//update it value
 		file.updateValue(tag);
 	    }
 	} else if (isCloseTag(tag)) {
+	    //close tag then tag it from stack and compare it
 	    tagCompare = stack.top();
+	    //compare tag return true if it matches
 	    isValid = compareTag(tag, tagCompare);
 	    if (isValid) {
+		//increase count
 		file.updateValue(stack.pop());
 	    }
 	}
@@ -158,7 +167,13 @@ public class HTMLValidateAndCount {
     public static boolean regexCheckTag(String character) {
 	return character.matches("^[a-zA-Z0-9'/''<']+$");
     }
-
+    
+    /**
+     * Function to run all or function to split and count HTML tag from and url
+     * and write it to csv file
+     * @param csvFile
+     * @param urlString 
+     */
     public void manage(String csvFile, String urlString) {
 	try {
 	    String htmlString = FileProcessHTML.downloadWebsite(urlString);
