@@ -5,7 +5,7 @@
  */
 
 /**
- *
+ *EX2 but it ís not complete
  * @author SE140279
  */
 public class Stack {
