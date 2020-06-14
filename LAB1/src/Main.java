@@ -20,7 +20,7 @@ public class Main {
         DoubleLinkedList d = new DoubleLinkedList();
         Main l = new Main();
         String savefile = null;
-        boolean save = false;
+        boolean saveData = false;
         d.print();
         for(int a = 0; a < args.length; a++){
             switch(args[a]){
@@ -47,7 +47,7 @@ public class Main {
                     d.getTop();
                     break;
                 case "-s":
-                    save = true;
+                    saveData = true;
                     saveFile = args[a + 1];
                     break;
                 case "-h":
