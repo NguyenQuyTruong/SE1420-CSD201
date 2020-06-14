@@ -13,22 +13,22 @@ public class DoublyLinkedList {
     // Create a class Node include information's gamer with 2 Node right, left 
     public class Node {
 
-        private String emailSub;    // mobile game need email
-        private long pointSub;       // and point
-        private Node right, left;  // doubly linked list has Node left and right
+        String email;    // mobile game need email
+        long point;       // and point
+             Node right, left;  // doubly linked list has Node left and right
 
         // Create an contructor for email, point of players with 2 default Node = null
         public Node(String emailSub, long pointSub) {
-            this.emailSub = emailSub;
-            this.pointSub = pointSub;
+            this.email = emailSub;
+            this.point = pointSub;
             right = left = null;
         }
     }
     /**
      * Create some Node to manage doubly linked list
      */
-    private Node header;
-    private Node trailer;
+    public Node header;
+    public Node trailer;
     private Node prevHeader;
 
     public DoublyLinkedList() {
@@ -53,7 +53,7 @@ public class DoublyLinkedList {
             prevHeader.right = newNode;
             header = newNode;
         } // this situation: add First   (between prevHeader and header)
-        else if (header.pointSub < newNode.pointSub) {
+        else if (header.point < newNode.point) {
 
             newNode.right = header;
             header.left = newNode;
@@ -62,7 +62,7 @@ public class DoublyLinkedList {
 
             header = newNode;
         } // this situation: add last (between trailer.left and trailer)
-        else if (trailer.left.pointSub > newNode.pointSub) {
+        else if (trailer.left.point > newNode.point) {
 
             Node tmp = trailer.left;
 
@@ -73,7 +73,7 @@ public class DoublyLinkedList {
         } // this situation: add to the middle 
         else {
             Node tmp = header;
-            while (tmp.pointSub > newNode.pointSub) {
+            while (tmp.point > newNode.point) {
                 tmp = tmp.right;
             }
             Node save = tmp.left;
@@ -127,7 +127,7 @@ public class DoublyLinkedList {
     public Node searchEmail(String tenEmail) {
         Node tmp = header;
         //If comparation of 2 emails don't match -> header will move right ..right..(loop...)
-        while (!tmp.emailSub.equalsIgnoreCase(tenEmail)) {
+        while (!tmp.email.equalsIgnoreCase(tenEmail)) {
             tmp = tmp.right;
         }
         // When 2 email match each other -> return tmp (email found)
@@ -142,7 +142,7 @@ public class DoublyLinkedList {
      */
     public long getPointByEmail(String email){
         Node tmp = searchEmail(email);
-        return tmp.pointSub;
+        return tmp.point;
     }
     
     /**
@@ -150,7 +150,7 @@ public class DoublyLinkedList {
      * @return 
      */
     public long getFirstPoint(){
-        return header.pointSub;
+        return header.point;
     }
     
     /**
@@ -176,7 +176,7 @@ public class DoublyLinkedList {
         }
         System.out.println("Email," + " Point");
         for (Node n = prevHeader.right; n != trailer; n = n.right) {
-            System.out.println(n.emailSub + ", " + n.pointSub);
+            System.out.println(n.email + ", " + n.point);
         }
     }
 
