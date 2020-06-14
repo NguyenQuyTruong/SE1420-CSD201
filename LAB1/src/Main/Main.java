@@ -37,7 +37,7 @@ public class Main {
 	} else if (args[0].equals("1") && include(args, "-r") != -1 && include(args, "-r") + 1 >= args.length) {
 	    result = result + "Error: No input filename !";
 	} else if (args[0].equals("1") && include(args, "-s") != -1) {
-	    result = result + "Error: No user input file !";
+	    result = result + "Error: No user output file !";
 	} else if (args[0].equals("1") && include(args, "-s") != -1 && include(args, "-s") + 1 >= args.length) {
 	    result = result + "Error: No output filename !";
 	} else if (args[0].equals("2") && args.length < 3) {
