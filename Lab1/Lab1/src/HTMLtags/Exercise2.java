@@ -87,7 +87,7 @@ public class Exercise2 {
 	    } else if ((htmlBody.charAt(i) != '>' || htmlBody.charAt(i) != ' ')
 		    && validTag) {
 		tag = tag + '>';
-		validTag = false; //enough char to create a tag so we turn this of =))
+		validTag = false;
 		handlingTag(tag, htmlBody);
 	    }
 	}
