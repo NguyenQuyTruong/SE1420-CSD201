@@ -40,26 +40,26 @@ public class Lab {
                 }
             }
             break;
-                case "a":
+                case "-a":
                     long apoint = Long.parseLong(args[i+1].trim());
                     queue.InSert(args[i], apoint);
                     break;
-                case"u":
+                case"-u":
                     long upoint = Long.parseLong(args[i+1].trim());
                     queue.Update(args[i], upoint);
                     break;
-                case"d":
+                case"-d":
                     queue.Delete(args[i]);
                     break;
-                case"dt":
+                case"-dt":
                     queue.DeleteT();
                     break;
-                case"g":
-                    queue.Find(args[i]);
+                case"-g":
+                    queue.GetP(args[i]);
                     break;
-                case"t":
+                case"-t":
                     queue.Gettop();
-                case"s":
+                case"-s":
                     saveB = true;
                     Path = args[i];
                     break;
