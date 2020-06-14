@@ -125,8 +125,6 @@ public class main {
             if (args[i].equals("-t")) {
             }
         }
-        switch(choice){
-            
-        }
+
     }
 }
