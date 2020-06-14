@@ -28,7 +28,7 @@ public class Lab {
 	 * run program by args 
 	 * @param args
 	 */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException  {
         // TODO code application logic here
         boolean saveB = false;
         String Path = null;
@@ -74,7 +74,6 @@ public class Lab {
         if(saveB){
             Csv.WriteToFile(queue, Path);
         }
-        
         
     }
     
