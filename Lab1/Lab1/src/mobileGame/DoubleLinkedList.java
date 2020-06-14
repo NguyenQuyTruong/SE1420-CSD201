@@ -209,7 +209,7 @@ public class DoubleLinkedList {
      */
     public Gamer searchGamerByEmail(String email) {
 	for (Node n = header.right; n != trailer; n = n.right) {
-	    if (n.getGamer().getEmail().contentEquals(email)) {
+	    if (n.getGamer().getEmail().equalsIgnoreCase(email)) {
 		return n.getGamer();
 	    }
 	}
@@ -225,8 +225,8 @@ public class DoubleLinkedList {
      * @return Node
      */
     public Node searchGamerToDelete(String email) {
-	for (Node n = header.right; n != trailer; n = n.right) {
-	    if (n.getGamer().getEmail().contentEquals(email)) {
+	for (Node n = trailer.left; n != header; n = n.left) {
+	    if (n.getGamer().getEmail().equalsIgnoreCase(email)) {
 		return n;
 	    }
 	}
