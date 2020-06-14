@@ -84,10 +84,10 @@ public class Problem {
  /**
 	 * Check tag type
 	 */
-  public void CheckTag() throws Exception {
+  public void CheckTag(String filename) throws Exception {
         String line;
         String tag="";
-        BufferedReader reader = new BufferedReader(new FileReader("page.html"));
+        BufferedReader reader = new BufferedReader(new FileReader(filename));
         while((line = reader.readLine()) != null) {
 	String checkTag = line;
         boolean caseTag = false;        
@@ -121,7 +121,7 @@ public class Problem {
         try {
            DownWeb.Download(urlWeb);
 //           String content =cv.readFile(filename);
-            CheckTag();
+            CheckTag(filename);
             ba.Print();
             cv.SaveToFile("OutPut.csv");
         } catch (Exception e) {
