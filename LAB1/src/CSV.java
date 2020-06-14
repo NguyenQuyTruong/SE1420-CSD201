@@ -13,8 +13,8 @@ import javax.xml.soap.Node;
  *
  * @author ACER
  */
-public class CSV {
-    public static String tutorials = "java -jar LAB1.jar -h\r\n"
+public class CSV {   //Bỏ
+   /*public static String tutorials = "java -jar LAB1.jar -h\r\n"
             + "Help: \r\n"
             + "java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>>: Problem 1, read the user csv file and save the data strucutre into csv file\r\n"
             + "java -jar LAB1.jar 1 -r <<user_CSV_file>> -s <<new_user_CSV_file>> -a <<email>> <<point>>: Problem 1, add a new user into the data strucutre and save to new csv file\r\n"
@@ -43,5 +43,5 @@ public class CSV {
 
     private void ParseArgument(String[] parametersRemovedProblemID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 }
