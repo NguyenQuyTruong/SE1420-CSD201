@@ -10,6 +10,10 @@ package lab;
  * @author Khả Thi
  */
 import java.io.*;
+          /**
+	 * read data form file and add to queue 
+	 * @param Path,queue
+	 */
 public class Csv {
     public static void ReadCsv(String path,PriorityQueue queue) throws IOException{
         String line ="";
@@ -29,6 +33,10 @@ public class Csv {
             System.out.println("File don.t exit!");
         }
     }
+    /**
+	 * write data to file and add to queue 
+	 * @param Path,queue
+	 */
     public static void WriteToFile(PriorityQueue queue, String path) throws IOException{
         queue.Writefile(path);
     }

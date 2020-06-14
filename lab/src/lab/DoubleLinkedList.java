@@ -9,15 +9,14 @@ package lab;
  *
  * @author Khả Thi
  */
-public class DoubleLinkedList {
-    public Node head,tail;
+/**
+	 * make head,tail base value
+         * make contructor, seter,getter for the value
+	 */
+public final class DoubleLinkedList {
+     public Node head,tail;
 
-    public DoubleLinkedList(Node head, Node tail) {
-        head = Push("", 1);
-        tail = Push("", 1);
-        head.prev = tail;
-        tail.next = head;
-    }
+
     public DoubleLinkedList(){
         
     }
@@ -49,12 +48,18 @@ public class DoubleLinkedList {
             this.point = point;
         }
     }
+        public DoubleLinkedList(Node head, Node tail) {
+        head = Push("", -1);
+        tail = Push("", -1);
+        head.prev = tail;
+        tail.next = head;
+    }
     public Node Push(String email, long point){
         Node newNode = new Node(email, point);
         return newNode;
     }
     public boolean IsEmpty(){
-        return (head.prev == tail);
+        return head == tail.next;
     }
 
 }

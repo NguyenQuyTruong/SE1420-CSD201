@@ -16,7 +16,11 @@ import lab.DoubleLinkedList.Node;
 
 public class PriorityQueue {
     DoubleLinkedList dll = new DoubleLinkedList();
-    
+    /**
+	 * check queue, base on case choose what happen to the Insert data 
+	 * @param email,point
+        * @param point
+	 */
     public void InSert(String email, long point){
         Node new_node  = dll.Push(email, point);
         if(dll.IsEmpty()){
@@ -51,6 +55,11 @@ public class PriorityQueue {
         }
    
     }
+    /**
+	 * Find node by email and return node
+     * @param fmail
+     * @return 
+	 */
     public Node Find(String fmail){
         Node fnode = dll.head.prev;
         while(fnode.getEmail().contentEquals(fmail) && fnode != dll.tail){
@@ -58,6 +67,10 @@ public class PriorityQueue {
         }
         return fnode;
     }
+    /**
+	 * Delete node base on email 
+	 * @param demail
+	 */
     public void Delete(String demail){
         Node dnode = Find(demail);
         if(dnode != dll.tail){
@@ -69,6 +82,11 @@ public class PriorityQueue {
             dnode = null;
         }
     }
+    /**
+	 * Find and update data by email 
+     * @param uEmail
+     * @param Newpoint
+	 */
     public void Update(String uEmail, long Newpoint){
         Node uNode = dll.Push(uEmail, Newpoint);
         if(uNode != dll.tail){
@@ -85,6 +103,9 @@ public class PriorityQueue {
         }
         return 0;
     }
+    /**
+	 * Get the top value
+	 */
     public void Gettop(){
     if(dll.IsEmpty()){
         System.out.println("List empty!");
@@ -93,6 +114,9 @@ public class PriorityQueue {
         System.out.println("Top:"+dll.head.prev.getEmail()+" "+dll.head.prev.getPoint()+"P");
     }
 }
+    /**
+	 * Delete top value
+	 */
     public void DeleteT(){
         if(dll.IsEmpty()){
             System.out.println("List empty!");
@@ -104,15 +128,20 @@ public class PriorityQueue {
             n = null;
         }
     }
+    /**
+	 * Write data to file  
+	 * @param path
+     * @throws java.io.IOException
+	 */
     public void Writefile(String path) throws IOException{
-        FileWriter writer = new FileWriter(path);
-        Node n = dll.head.prev;
-       while(n != dll.tail){
-           String data = String.format("%s,%ld\n",n.getEmail(),n.getPoint());
-           writer.append(data);
-           n = n.prev;
-       }
-       writer.flush();
-       writer.close();
+        try (FileWriter writer = new FileWriter(path)) {
+            Node n = dll.head.prev;
+            while(n != dll.tail){
+                String data = String.format("%s,%ld\n",n.getEmail(),n.getPoint());
+                writer.append(data);
+                n = n.prev;
+            }
+            writer.flush();
+        }
     }
 }
