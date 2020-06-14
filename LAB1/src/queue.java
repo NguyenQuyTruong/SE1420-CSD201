@@ -92,4 +92,5 @@ public class queue {
     public void write(String namefile) throws IOException{
         list.writeToCSVfile(namefile);
 }
+    
 }
