@@ -11,7 +11,6 @@ import java.util.Scanner;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author SE140279
@@ -137,7 +136,7 @@ public class main {
                             String[] results = line.split(", ");
                             point = Integer.parseInt(results[1]);
                             email = results[0];
-                            manageGamer gamer= new manageGamer(Remail, Rpoint);
+                            manageGamer gamer = new manageGamer(Remail, Rpoint);
                             q.insert(gamer);
                         }
                         inputStream.close();
@@ -167,7 +166,7 @@ public class main {
                             String[] results = line.split(", ");
                             Rpoint = Integer.parseInt(results[1]);
                             Remail = results[0];
-                            manageGamer gamer = new manageGamer(Remail,Rpoint);
+                            manageGamer gamer = new manageGamer(Remail, Rpoint);
                             q.insert(gamer);
                         }
                         inputStream.close();
@@ -182,6 +181,7 @@ public class main {
                 }
                 choice = 0;
                 break;
-                }
+            }
+        }
     }
 }
